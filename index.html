@@ -1,7 +1,612 @@
 <!DOCTYPE html>
-<html>
-  <body>
-    <h1>Your Name</h1>
-    <p>Welcome to my website!</p>
-  </body>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matter That Thinks — Ashutosh Nayak</title>
+<meta name="description" content="Essays on physics, philosophy, and the examined life. By Ashutosh Nayak.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:      #f7f4ef;
+  --bg2:     #ede9e1;
+  --bg3:     #e3ddd2;
+  --ink:     #18160f;
+  --ink2:    #3a3628;
+  --ink3:    #7a7264;
+  --rule:    #d0c9bc;
+  --accent:  #2c4a3e;
+  --accent2: #4a7c66;
+  --gold:    #a07828;
+  --serif:   'Cormorant Garamond', Georgia, serif;
+  --sans:    'DM Sans', system-ui, sans-serif;
+  --mono:    'DM Mono', monospace;
+  --t:       0.2s ease;
+}
+
+[data-theme="dark"] {
+  --bg:      #111009;
+  --bg2:     #1a1812;
+  --bg3:     #242018;
+  --ink:     #f0ece2;
+  --ink2:    #c8c2b0;
+  --ink3:    #7a7264;
+  --rule:    #2e2b22;
+  --accent:  #5a9e80;
+  --accent2: #7bbda0;
+  --gold:    #c09848;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.6;
+  transition: background var(--t), color var(--t);
+}
+
+a { color: inherit; text-decoration: none; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 2px; }
+
+/* HEADER */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+  transition: background var(--t), border-color var(--t);
+}
+
+.header-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+  height: 56px;
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+}
+
+.logo {
+  font-family: var(--serif); font-size: 1.15rem; font-weight: 500;
+  color: var(--ink); white-space: nowrap;
+}
+.logo em { font-style: italic; font-weight: 300; color: var(--accent2); }
+
+.header-nav { display: flex; align-items: center; gap: 0.25rem; }
+.header-nav a {
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink3);
+  padding: 0.4rem 0.75rem; border-radius: 4px;
+  transition: background var(--t), color var(--t);
+}
+.header-nav a:hover { background: var(--bg2); color: var(--ink); }
+
+.header-right { display: flex; align-items: center; gap: 0.75rem; }
+
+.substack-btn {
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--bg); background: var(--accent);
+  padding: 0.4rem 1rem; border-radius: 4px; white-space: nowrap;
+  transition: opacity var(--t);
+}
+.substack-btn:hover { opacity: 0.8; }
+
+.theme-toggle {
+  width: 36px; height: 36px; border: 1px solid var(--rule); border-radius: 6px;
+  background: transparent; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--t), border-color var(--t);
+  flex-shrink: 0;
+}
+.theme-toggle:hover { background: var(--bg2); }
+.theme-toggle svg { width: 16px; height: 16px; fill: var(--ink3); transition: fill var(--t); }
+
+/* HERO */
+.hero {
+  max-width: 1200px; margin: 0 auto; padding: 5rem 2rem 4rem;
+  display: grid; grid-template-columns: 1fr 1px 380px;
+  gap: 0 4rem; align-items: start;
+  border-bottom: 1px solid var(--rule);
+  animation: fadeUp 0.55s 0.05s both;
+}
+.hero-divider { background: var(--rule); align-self: stretch; transition: background var(--t); }
+
+.hero-eyebrow {
+  font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--accent2);
+  margin-bottom: 1.25rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.hero-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--rule); max-width: 60px; }
+
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 400; line-height: 1.15; letter-spacing: -0.01em;
+  color: var(--ink); margin-bottom: 1.25rem;
+}
+.hero-title em { font-style: italic; font-weight: 300; color: var(--ink2); }
+
+.hero-dek {
+  font-family: var(--serif); font-size: 1.15rem; font-weight: 300;
+  font-style: italic; color: var(--ink2); line-height: 1.7;
+  margin-bottom: 2rem; max-width: 540px;
+}
+
+.hero-meta { display: flex; align-items: center; gap: 1.5rem; }
+
+.read-now {
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent);
+  border-bottom: 1px solid var(--accent); padding-bottom: 1px;
+  transition: opacity var(--t);
+}
+.read-now:hover { opacity: 0.6; }
+
+.hero-dateline {
+  font-family: var(--mono); font-size: 0.58rem;
+  letter-spacing: 0.1em; color: var(--ink3);
+}
+
+.hero-sidebar { padding-top: 0.5rem; }
+.sidebar-label {
+  font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink3);
+  margin-bottom: 1.5rem; padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.sidebar-item {
+  padding: 1.1rem 0; border-bottom: 1px solid var(--rule);
+}
+.sidebar-item:last-child { border-bottom: none; }
+
+.sidebar-cat {
+  font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem;
+}
+
+.sidebar-title {
+  font-family: var(--serif); font-size: 1.05rem; font-weight: 400;
+  line-height: 1.35; color: var(--ink); display: block;
+  margin-bottom: 0.35rem; transition: color var(--t);
+}
+.sidebar-title:hover { color: var(--accent2); }
+
+.sidebar-blurb {
+  font-size: 0.8rem; color: var(--ink3); line-height: 1.55;
+  font-family: var(--sans); font-weight: 300;
+}
+
+/* CATEGORY BAR */
+.category-bar {
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg2); transition: background var(--t);
+}
+.category-bar-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+  display: flex; align-items: center;
+  overflow-x: auto; scrollbar-width: none;
+}
+.category-bar-inner::-webkit-scrollbar { display: none; }
+
+.cat-tab {
+  font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink3);
+  padding: 0.65rem 1.1rem; white-space: nowrap;
+  border-right: 1px solid var(--rule); cursor: pointer;
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+  transition: background var(--t), color var(--t);
+}
+.cat-tab:first-child { border-left: 1px solid var(--rule); }
+.cat-tab:hover { color: var(--ink); background: var(--bg3); }
+.cat-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* CONTENT AREA */
+.content-area {
+  max-width: 1200px; margin: 0 auto; padding: 3rem 2rem 5rem;
+}
+
+.section-label {
+  font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink3);
+  margin-bottom: 2rem;
+}
+
+/* GRID */
+.essays-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+  margin-bottom: 4rem;
+  animation: fadeUp 0.55s 0.15s both;
+  transition: background var(--t), border-color var(--t);
+}
+
+.essay-card {
+  background: var(--bg); padding: 2rem 1.75rem;
+  transition: background var(--t);
+  position: relative; overflow: hidden;
+}
+.essay-card::before {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.essay-card:hover { background: var(--bg2); }
+.essay-card:hover::before { transform: scaleX(1); }
+
+.card-index {
+  font-family: var(--mono); font-size: 0.58rem; color: var(--rule);
+  letter-spacing: 0.1em; margin-bottom: 1.25rem; transition: color var(--t);
+}
+.card-cat {
+  font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem;
+}
+.card-title {
+  font-family: var(--serif); font-size: 1.15rem; font-weight: 400;
+  line-height: 1.35; color: var(--ink); margin-bottom: 0.75rem;
+}
+.card-title a:hover { color: var(--accent2); }
+.card-blurb {
+  font-size: 0.82rem; color: var(--ink3); line-height: 1.6;
+  margin-bottom: 1.25rem; font-weight: 300;
+}
+.card-foot { display: flex; align-items: center; justify-content: space-between; }
+.card-date { font-family: var(--mono); font-size: 0.56rem; color: var(--ink3); letter-spacing: 0.08em; }
+
+/* PULL QUOTE */
+.pull-quote {
+  border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink);
+  padding: 3rem 0; margin: 0 0 4rem; text-align: center;
+  background: var(--bg2); transition: background var(--t), border-color var(--t);
+}
+.pull-quote blockquote {
+  font-family: var(--serif); font-style: italic; font-size: clamp(1.25rem, 2.5vw, 1.85rem);
+  font-weight: 300; line-height: 1.5; color: var(--ink2);
+  max-width: 700px; margin: 0 auto 1rem; padding: 0 2rem;
+}
+.pull-quote cite {
+  font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--ink3); font-style: normal;
+}
+
+/* ARCHIVE */
+.archive-list { margin-bottom: 4rem; }
+.archive-item {
+  display: grid; grid-template-columns: 3rem 1fr auto;
+  gap: 0 1.5rem; align-items: baseline;
+  padding: 0.95rem 0; border-bottom: 1px solid var(--rule);
+}
+.archive-item:first-child { border-top: 1px solid var(--rule); }
+.archive-n {
+  font-family: var(--mono); font-size: 0.56rem; color: var(--rule);
+  text-align: right; letter-spacing: 0.05em;
+}
+.archive-title {
+  font-family: var(--serif); font-size: 1rem; font-weight: 400;
+  color: var(--ink); display: block; margin-bottom: 0.15rem;
+  transition: color var(--t);
+}
+.archive-title:hover { color: var(--accent2); }
+.archive-sub {
+  font-size: 0.72rem; font-family: var(--mono); color: var(--ink3); letter-spacing: 0.06em;
+}
+.archive-date {
+  font-family: var(--mono); font-size: 0.56rem; color: var(--ink3);
+  white-space: nowrap; letter-spacing: 0.06em;
+}
+
+/* ABOUT */
+.about-section {
+  display: grid; grid-template-columns: 220px 1fr;
+  gap: 4rem; padding: 3rem 0 0;
+  border-top: 1px solid var(--rule); margin-bottom: 4rem;
+}
+.about-title {
+  font-family: var(--serif); font-size: 2.2rem; font-style: italic;
+  font-weight: 300; color: var(--ink2); line-height: 1.2; margin-bottom: 1.5rem;
+}
+.about-links { display: flex; flex-direction: column; gap: 0.5rem; }
+.about-link {
+  font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent2);
+  border-bottom: 1px solid var(--rule); padding-bottom: 0.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: color var(--t), border-color var(--t);
+}
+.about-link:hover { color: var(--accent); border-color: var(--accent); }
+.about-link::after { content: '→'; }
+
+.about-text {
+  font-family: var(--serif); font-size: 1.05rem; font-weight: 300;
+  line-height: 1.85; color: var(--ink2);
+}
+.about-text p + p { margin-top: 1.1em; }
+.about-text strong { font-weight: 500; color: var(--ink); }
+
+/* SUBSCRIBE */
+.subscribe-band {
+  background: var(--accent); padding: 3rem 2rem; text-align: center;
+  transition: background var(--t);
+}
+.subscribe-band h3 {
+  font-family: var(--serif); font-size: 1.6rem; font-style: italic;
+  font-weight: 300; color: #fff; margin-bottom: 0.5rem;
+}
+.subscribe-band p {
+  font-size: 0.82rem; color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; font-weight: 300;
+}
+.subscribe-cta {
+  display: inline-block; font-family: var(--mono); font-size: 0.62rem;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+  background: #fff; padding: 0.7rem 1.75rem; border-radius: 4px;
+  transition: opacity var(--t);
+}
+.subscribe-cta:hover { opacity: 0.85; }
+
+/* FOOTER */
+footer {
+  background: var(--bg2); border-top: 1px solid var(--rule);
+  padding: 1.5rem 2rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  transition: background var(--t), border-color var(--t);
+}
+.footer-logo { font-family: var(--serif); font-style: italic; font-size: 0.9rem; color: var(--ink3); }
+.footer-mono { font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.1em; color: var(--ink3); text-transform: uppercase; }
+
+/* ANIMATION */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; gap: 2.5rem 0; padding: 3rem 2rem; }
+  .hero-divider { display: none; }
+  .essays-grid { grid-template-columns: 1fr 1fr; }
+  .about-section { grid-template-columns: 1fr; gap: 2rem; }
+  .header-nav { display: none; }
+}
+@media (max-width: 600px) {
+  .header-inner, .content-area, .subscribe-band { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .hero { padding: 2.5rem 1.25rem; }
+  .essays-grid { grid-template-columns: 1fr; }
+  .archive-item { grid-template-columns: 2.5rem 1fr; }
+  .archive-date { display: none; }
+  footer { flex-direction: column; text-align: center; padding: 1.5rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">Matter That <em>Thinks</em></a>
+    <nav class="header-nav">
+      <a href="#essays">Essays</a>
+      <a href="#archive">Archive</a>
+      <a href="#about">About</a>
+    </nav>
+    <div class="header-right">
+      <a href="https://matterthathinks.substack.com" target="_blank" class="substack-btn">Subscribe</a>
+      <button class="theme-toggle" id="themeBtn" aria-label="Toggle dark mode">
+        <svg id="themeIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <article>
+    <div class="hero-eyebrow">Latest Essay &nbsp;·&nbsp; Physics</div>
+    <h2 class="hero-title">The Arrow of Time <em>Is Not What You Think</em> It Is</h2>
+    <p class="hero-dek">Why entropy does not explain why we remember the past and not the future — and what that silence reveals about the structure of reality.</p>
+    <div class="hero-meta">
+      <a href="#" class="read-now">Read essay</a>
+      <span class="hero-dateline">April 2026 &nbsp;·&nbsp; 14 min</span>
+    </div>
+  </article>
+
+  <div class="hero-divider"></div>
+
+  <aside class="hero-sidebar">
+    <div class="sidebar-label">Also worth reading</div>
+    <div class="sidebar-item">
+      <div class="sidebar-cat">Philosophy of Mind</div>
+      <a href="#" class="sidebar-title">What It Is Like to Be a Wave Function</a>
+      <p class="sidebar-blurb">On measurement, observation, and the uncomfortable question of who is doing the looking.</p>
+    </div>
+    <div class="sidebar-item">
+      <div class="sidebar-cat">Personal Essay</div>
+      <a href="#" class="sidebar-title">Learning to Live in Approximations</a>
+      <p class="sidebar-blurb">A physicist's notebook on error bars, uncertainty, and why precision is overrated in life.</p>
+    </div>
+    <div class="sidebar-item">
+      <div class="sidebar-cat">Philosophy</div>
+      <a href="#" class="sidebar-title">Wittgenstein's Ladder and the Limits of Models</a>
+      <p class="sidebar-blurb">When you have climbed high enough on a model, do you still need it?</p>
+    </div>
+  </aside>
+</section>
+
+<div class="category-bar">
+  <div class="category-bar-inner">
+    <span class="cat-tab active" onclick="filterCards('all', event)">All</span>
+    <span class="cat-tab" onclick="filterCards('physics', event)">Physics</span>
+    <span class="cat-tab" onclick="filterCards('philosophy', event)">Philosophy</span>
+    <span class="cat-tab" onclick="filterCards('personal', event)">Personal</span>
+    <span class="cat-tab" onclick="filterCards('notebook', event)">Notebook</span>
+  </div>
+</div>
+
+<div class="content-area">
+
+  <div class="section-label" id="essays">Recent Essays</div>
+
+  <div class="essays-grid" id="essayGrid">
+    <article class="essay-card" data-cat="physics">
+      <div class="card-index">001</div>
+      <div class="card-cat">Physics &amp; Cosmology</div>
+      <h3 class="card-title"><a href="#">The Arrow of Time Is Not What You Think It Is</a></h3>
+      <p class="card-blurb">Why entropy does not explain why we remember the past and not the future.</p>
+      <div class="card-foot"><span class="card-date">Apr 2026</span><a href="#" class="read-now">Read</a></div>
+    </article>
+
+    <article class="essay-card" data-cat="philosophy">
+      <div class="card-index">002</div>
+      <div class="card-cat">Philosophy of Mind</div>
+      <h3 class="card-title"><a href="#">What It Is Like to Be a Wave Function</a></h3>
+      <p class="card-blurb">On measurement, observation, and the uncomfortable question of who is doing the looking.</p>
+      <div class="card-foot"><span class="card-date">Mar 2026</span><a href="#" class="read-now">Read</a></div>
+    </article>
+
+    <article class="essay-card" data-cat="personal">
+      <div class="card-index">003</div>
+      <div class="card-cat">Personal Essay</div>
+      <h3 class="card-title"><a href="#">Learning to Live in Approximations</a></h3>
+      <p class="card-blurb">A physicist's notebook on error bars, uncertainty, and why precision is overrated in life.</p>
+      <div class="card-foot"><span class="card-date">Feb 2026</span><a href="#" class="read-now">Read</a></div>
+    </article>
+
+    <article class="essay-card" data-cat="philosophy">
+      <div class="card-index">004</div>
+      <div class="card-cat">Philosophy</div>
+      <h3 class="card-title"><a href="#">Wittgenstein's Ladder and the Limits of Models</a></h3>
+      <p class="card-blurb">When you have climbed high enough on a model, do you need to keep it?</p>
+      <div class="card-foot"><span class="card-date">Jan 2026</span><a href="#" class="read-now">Read</a></div>
+    </article>
+
+    <article class="essay-card" data-cat="physics">
+      <div class="card-index">005</div>
+      <div class="card-cat">Physics</div>
+      <h3 class="card-title"><a href="#">Symmetry Is Not Beauty. It Is Constraint.</a></h3>
+      <p class="card-blurb">What conservation laws actually say, and why physicists have confused elegance with truth.</p>
+      <div class="card-foot"><span class="card-date">Jan 2026</span><a href="#" class="read-now">Read</a></div>
+    </article>
+
+    <article class="essay-card" data-cat="personal">
+      <div class="card-index">006</div>
+      <div class="card-cat">Personal</div>
+      <h3 class="card-title"><a href="#">On Growing Up in a Navodaya</a></h3>
+      <p class="card-blurb">Distance, dislocation, and what residential school teaches you about belonging.</p>
+      <div class="card-foot"><span class="card-date">Dec 2025</span><a href="#" class="read-now">Read</a></div>
+    </article>
+  </div>
+
+  <div class="pull-quote">
+    <blockquote>"The most incomprehensible thing about the world is that it is comprehensible."</blockquote>
+    <cite>— Albert Einstein</cite>
+  </div>
+
+  <div class="section-label" id="archive">Full Archive</div>
+
+  <div class="archive-list">
+    <div class="archive-item">
+      <span class="archive-n">001</span>
+      <div><a href="#" class="archive-title">The Arrow of Time Is Not What You Think It Is</a><span class="archive-sub">Physics &amp; Cosmology &nbsp;·&nbsp; 14 min</span></div>
+      <span class="archive-date">Apr 2026</span>
+    </div>
+    <div class="archive-item">
+      <span class="archive-n">002</span>
+      <div><a href="#" class="archive-title">What It Is Like to Be a Wave Function</a><span class="archive-sub">Philosophy of Mind &nbsp;·&nbsp; 10 min</span></div>
+      <span class="archive-date">Mar 2026</span>
+    </div>
+    <div class="archive-item">
+      <span class="archive-n">003</span>
+      <div><a href="#" class="archive-title">Learning to Live in Approximations</a><span class="archive-sub">Personal Essay &nbsp;·&nbsp; 8 min</span></div>
+      <span class="archive-date">Feb 2026</span>
+    </div>
+    <div class="archive-item">
+      <span class="archive-n">004</span>
+      <div><a href="#" class="archive-title">Wittgenstein's Ladder and the Limits of Models</a><span class="archive-sub">Philosophy &nbsp;·&nbsp; 11 min</span></div>
+      <span class="archive-date">Jan 2026</span>
+    </div>
+    <div class="archive-item">
+      <span class="archive-n">005</span>
+      <div><a href="#" class="archive-title">Symmetry Is Not Beauty. It Is Constraint.</a><span class="archive-sub">Physics &nbsp;·&nbsp; 9 min</span></div>
+      <span class="archive-date">Jan 2026</span>
+    </div>
+    <div class="archive-item">
+      <span class="archive-n">006</span>
+      <div><a href="#" class="archive-title">On Growing Up in a Navodaya</a><span class="archive-sub">Personal &nbsp;·&nbsp; 7 min</span></div>
+      <span class="archive-date">Dec 2025</span>
+    </div>
+  </div>
+
+  <section class="about-section" id="about">
+    <div>
+      <div class="about-title">About this place</div>
+      <div class="about-links">
+        <a href="https://matterthathinks.substack.com" target="_blank" class="about-link">Substack</a>
+        <a href="#" class="about-link">RSS Feed</a>
+        <a href="mailto:hello@matterthathinks.com" class="about-link">Contact</a>
+      </div>
+    </div>
+    <div class="about-text">
+      <p>This is a blog about things that matter — matter that thinks, equations that feel, ideas that resist easy summary. Written from <strong>NISER Bhubaneswar</strong>, between problem sets and experiments.</p>
+      <p>I write about <strong>physics</strong> (radiation, measurement, the stubborn weirdness of quantum mechanics), <strong>philosophy</strong> (how we know what we know, and why that's harder than it looks), and the <strong>examined life</strong> — what growing up inside science actually feels like from the inside.</p>
+      <p>The blog will change as I change. Right now it is earnest and exploratory. It may become sharper, stranger, or quieter. That seems right for writing done honestly over time.</p>
+      <p>No algorithm selects what appears here. No advertiser shapes it. Just writing, as carefully as I can manage.</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="subscribe-band">
+  <h3>Essays by email, when they're ready</h3>
+  <p>No schedule, no noise. Just a note when something new is worth your time.</p>
+  <a href="https://matterthathinks.substack.com" target="_blank" class="subscribe-cta">Subscribe on Substack</a>
+</div>
+
+<footer>
+  <span class="footer-logo">Matter That Thinks</span>
+  <span class="footer-mono">Bhubaneswar &nbsp;·&nbsp; Est. 2026 &nbsp;·&nbsp; Independent</span>
+  <span class="footer-mono" id="footerDate"></span>
+</footer>
+
+<script>
+const btn  = document.getElementById('themeBtn');
+const icon = document.getElementById('themeIcon');
+const html = document.documentElement;
+
+const SUN  = 'M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M12 5a7 7 0 1 0 0 14A7 7 0 0 0 12 5z';
+const MOON = 'M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z';
+
+function applyTheme(dark) {
+  html.setAttribute('data-theme', dark ? 'dark' : 'light');
+  icon.innerHTML = '<path d="' + (dark ? SUN : MOON) + '"/>';
+  try { localStorage.setItem('mtt-theme', dark ? 'dark' : 'light'); } catch(e){}
+}
+
+const saved = (function(){ try { return localStorage.getItem('mtt-theme'); } catch(e){ return null; } })();
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+applyTheme(saved ? saved === 'dark' : prefersDark);
+
+btn.addEventListener('click', function() {
+  applyTheme(html.getAttribute('data-theme') === 'light');
+});
+
+function filterCards(cat, e) {
+  document.querySelectorAll('.cat-tab').forEach(function(t){ t.classList.remove('active'); });
+  if (e && e.target) e.target.classList.add('active');
+  document.querySelectorAll('.essay-card').forEach(function(card) {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+  });
+}
+
+document.getElementById('footerDate').textContent =
+  new Date().toLocaleDateString('en-GB', { year:'numeric', month:'long', day:'numeric' });
+</script>
+
+</body>
 </html>
