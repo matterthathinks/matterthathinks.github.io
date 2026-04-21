@@ -133,7 +133,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background var(--t);
+      transition: background var(--t), border-color var(--t);
       flex-shrink: 0;
     }
     .theme-toggle:hover { background: var(--bg2); }
@@ -157,6 +157,7 @@
       text-transform: uppercase;
       color: var(--accent2);
       transition: color var(--t);
+      white-space: nowrap;
     }
 
     .page-back:hover { color: var(--accent); }
@@ -181,6 +182,7 @@
       overflow-x: auto;
       scrollbar-width: none;
       border-bottom: 1px solid var(--rule);
+      transition: border-color var(--t);
     }
 
     .page-nav::-webkit-scrollbar { display: none; }
@@ -356,7 +358,14 @@
       margin-bottom: 1.2rem;
     }
 
-    canvas { display: block; max-width: 100%; width: 100%; }
+    canvas { 
+      display: block; 
+      max-width: 100%; 
+      width: 100%; 
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      transition: background var(--t), border-color var(--t);
+    }
 
     .chart-source {
       font-size: 0.72rem;
@@ -840,14 +849,14 @@
       <div class="chart-wrap">
         <div class="chart-label">GDP PPP — Trillions USD · 1980 to 2024</div>
         <div class="legend-row" id="gdp-leg"></div>
-        <canvas id="gdpChart" height="340"></canvas>
+        <canvas id="gdpChart" width="800" height="340"></canvas>
         <p class="chart-source">Sources: IMF World Economic Outlook April 2026; World Bank WDI. In 1980, India's GDP (PPP) $383B actually exceeded China's $306B.</p>
       </div>
 
       <div class="chart-wrap">
         <div class="chart-label">GDP Per Capita PPP — USD · 1980 to 2024</div>
         <div class="legend-row" id="pcap-leg"></div>
-        <canvas id="pcapChart" height="300"></canvas>
+        <canvas id="pcapChart" width="800" height="300"></canvas>
         <p class="chart-source">Sources: IMF WEO April 2026. Both India and China were within $100 of each other per capita in 1980. Singapore's trajectory shows what is possible with the right institutions.</p>
       </div>
 
@@ -917,7 +926,7 @@
       </div>
     </section>
 
-    <!-- ══════════════ 02 · STATE CAPACITY ══════════════ -->
+    <!-- STATE CAPACITY -->
     <section id="state">
       <div class="section-header">
         <span class="section-num">02</span>
@@ -972,7 +981,7 @@
       </div>
     </section>
 
-    <!-- ══════════════ 03 · PROGRAMMES ══════════════ -->
+    <!-- PROGRAMMES -->
     <section id="programs">
       <div class="section-header">
         <span class="section-num">03</span>
@@ -1071,7 +1080,7 @@
       </div>
     </section>
 
-    <!-- ══════════════ 04 · EDUCATION & HUMAN CAPITAL ══════════════ -->
+    <!-- EDUCATION -->
     <section id="education">
       <div class="section-header">
         <span class="section-num">04</span>
@@ -1218,12 +1227,12 @@
       <div class="chart-wrap">
         <div class="chart-label">Research Publications (thousands of citable documents) — SCOPUS</div>
         <div class="legend-row" id="pub-leg"></div>
-        <canvas id="pubChart" height="300"></canvas>
+        <canvas id="pubChart" width="800" height="300"></canvas>
         <p class="chart-source">Sources: SCImago Journal & Country Rank (Elsevier SCOPUS). India's output increased 6-fold in 15 years (34,000 in 2010 → 195,000 in 2024), now ranked 3rd globally. China overtook USA in Web of Science papers in 2024 by 75%. India's citations per document (~16.9) actually exceed China's (~13.1) — quality is there, volume is catching up.</p>
       </div>
     </section>
 
-    <!-- ══════════════ 05 · INDUSTRY ══════════════ -->
+    <!-- INDUSTRY -->
     <section id="industry">
       <div class="section-header">
         <span class="section-num">05</span>
@@ -1313,7 +1322,7 @@
       </div>
     </section>
 
-    <!-- ══════════════ 06 · INFRASTRUCTURE ══════════════ -->
+    <!-- INFRASTRUCTURE -->
     <section id="infrastructure">
       <div class="section-header">
         <span class="section-num">06</span>
@@ -1426,7 +1435,7 @@
       </div>
     </section>
 
-    <!-- ══════════════ 07 · WHAT INDIA MISSED ══════════════ -->
+    <!-- MISSED -->
     <section id="missed">
       <div class="section-header">
         <span class="section-num">07</span>
@@ -1539,7 +1548,7 @@
       </div>
     </section>
 
-    <!-- ══════════════ 08 · SOURCES ══════════════ -->
+    <!-- SOURCES -->
     <section id="sources">
       <div class="section-header">
         <span class="section-num">08</span>
@@ -1564,7 +1573,7 @@
       </div>
 
       <div class="callout neutral">
-        <p><strong>This is a living document.</strong> I am a physics student at NISER who finds development economics genuinely fascinating — especially the questions that sit at the intersection of institutions, incentives, and human capital. If you have corrections, better data, or arguments I've missed, I'd genuinely like to hear them. <a href="mailto:heyashutoshg@gmail.com" style="color:var(--accent2);text-decoration:underline;">heyashutosh@gmail.com</a></p>
+        <p><strong>This is a living document.</strong> I am a physics student at NISER who finds development economics genuinely fascinating — especially the questions that sit at the intersection of institutions, incentives, and human capital. If you have corrections, better data, or arguments I've missed, I'd genuinely like to hear them. <a href="mailto:heyashutosh@gmail.com" style="color:var(--accent2);text-decoration:underline;">heyashutosh@gmail.com</a></p>
       </div>
     </section>
 
@@ -1577,7 +1586,7 @@
   </footer>
 
   <script>
-    // ── Theme toggle (uses parent page theme) ──
+    // ── THEME TOGGLE ──
     const themeBtn = document.getElementById('themeBtn');
     const html = document.documentElement;
     const themeIcon = document.getElementById('themeIcon');
@@ -1588,19 +1597,25 @@
       html.setAttribute('data-theme', dark ? 'dark' : 'light');
       themeIcon.innerHTML = '<path d="' + (dark ? SUN : MOON) + '"/>';
       try { localStorage.setItem('mtt-theme', dark ? 'dark' : 'light'); } catch(e){}
-      drawAll();
+      // Redraw charts when theme changes
+      setTimeout(drawAll, 50);
     }
 
+    // Load saved theme or use system preference
     (function() {
-      const saved = localStorage.getItem('mtt-theme');
-      applyTheme(saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
+      let saved = null;
+      try { saved = localStorage.getItem('mtt-theme'); } catch(e){}
+      const isDark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(isDark);
     })();
 
+    // Toggle theme on button click
     themeBtn.addEventListener('click', function() {
-      applyTheme(html.getAttribute('data-theme') === 'light');
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      applyTheme(!isDark);
     });
 
-    // ── Page nav active state ──
+    // ── PAGE NAV ACTIVE STATE ──
     const navLinks = document.querySelectorAll('.page-nav a');
     window.addEventListener('scroll', () => {
       let current = '';
@@ -1618,7 +1633,7 @@
       });
     });
 
-    // ── Chart data ──
+    // ── CHART DATA ──
     const years = [1980, 1985, 1990, 1995, 2000, 2005, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024];
     const gdpDatasets = [
       { label: 'China',     color: '#8B1A1A', data: [0.31,0.56,1.12,1.94,3.68,7.27,10.5,13.5,17.1,20.7,23.2,27.1,27.8,33.0,35.3] },
@@ -1642,16 +1657,17 @@
       { label: 'Japan', color: '#5A2A3E', data: [90,92,95,95,95,95,90,85,80,78,76,75,72] },
     ];
 
-    // ── Chart helpers ──
+    // ── CHART HELPERS ──
     function getCSSVar(name) {
-      return getComputedStyle(document.body).getPropertyValue(name).trim();
+      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
     }
 
     function setupCanvas(id, H) {
       const canvas = document.getElementById(id);
       if (!canvas) return null;
       const dpr = window.devicePixelRatio || 1;
-      const W = canvas.parentElement.offsetWidth - 64;
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const W = rect.width - 64;
       if (W <= 0) return null;
       canvas.width = W * dpr;
       canvas.height = H * dpr;
@@ -1680,10 +1696,13 @@
 
       const ruleColor = getCSSVar('--rule');
       const textColor = getCSSVar('--ink3');
-      const mutedColor = ruleColor + '40';
+
+      // Background
+      ctx.fillStyle = getCSSVar('--bg');
+      ctx.fillRect(0, 0, W, H);
 
       // Grid
-      ctx.strokeStyle = mutedColor;
+      ctx.strokeStyle = ruleColor + '40';
       ctx.lineWidth = 1;
       for (let i = 0; i <= 5; i++) {
         const y = pt + ch * i / 5;
@@ -1694,7 +1713,7 @@
         const val = maxY * (1 - i / 5);
         const label = (opts.prefix || '') + (val >= 1000 ? (val / 1000).toFixed(0) + 'k' : val.toFixed(0));
         ctx.fillStyle = textColor;
-        ctx.font = '10px var(--sans)';
+        ctx.font = '11px "DM Sans", sans-serif';
         ctx.textAlign = 'right';
         ctx.fillText(label, pl - 6, y + 4);
       }
@@ -1703,14 +1722,14 @@
       const step = xData.length > 12 ? 3 : 2;
       xData.filter((_, i) => i % step === 0 || i === xData.length - 1).forEach(yr => {
         ctx.fillStyle = textColor;
-        ctx.font = '10px var(--sans)';
+        ctx.font = '11px "DM Sans", sans-serif';
         ctx.textAlign = 'center';
         ctx.fillText(yr, mapX(yr), H - pb + 16);
       });
 
       // Axes
       ctx.strokeStyle = ruleColor;
-      ctx.lineWidth = 1;
+      ctx.lineWidth = 1.5;
       ctx.beginPath();
       ctx.moveTo(pl, pt);
       ctx.lineTo(pl, pt + ch);
@@ -1721,8 +1740,9 @@
       datasets.forEach(d => {
         if (d.visible === false) return;
         ctx.strokeStyle = d.color;
-        ctx.lineWidth = 2.5;
+        ctx.lineWidth = 3;
         ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
         ctx.beginPath();
         xData.forEach((yr, i) => {
           const x = mapX(yr), y = mapY(d.data[i]);
@@ -1732,16 +1752,16 @@
         // Dots
         xData.forEach((yr, i) => {
           ctx.beginPath();
-          ctx.arc(mapX(yr), mapY(d.data[i]), 2.5, 0, Math.PI * 2);
+          ctx.arc(mapX(yr), mapY(d.data[i]), 3, 0, Math.PI * 2);
           ctx.fillStyle = d.color;
           ctx.fill();
         });
         // End label
-        const lx = mapX(maxX) + 7, ly = mapY(d.data[d.data.length - 1]);
+        const lx = mapX(maxX) + 8, ly = mapY(d.data[d.data.length - 1]);
         ctx.fillStyle = d.color;
-        ctx.font = '500 10px var(--sans)';
+        ctx.font = '600 12px "DM Sans", sans-serif';
         ctx.textAlign = 'left';
-        ctx.fillText(d.label, Math.min(lx, W - 80), ly + 3);
+        ctx.fillText(d.label, Math.min(lx, W - 100), ly + 4);
       });
     }
 
@@ -1766,7 +1786,12 @@
       drawLines('pubChart', 300, pubDatasets, pubYears, { pr: 80 });
     }
 
-    window.addEventListener('load', () => setTimeout(drawAll, 100));
+    // Draw on load and resize
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => setTimeout(drawAll, 100));
+    } else {
+      setTimeout(drawAll, 100);
+    }
     window.addEventListener('resize', drawAll);
   </script>
 </body>
