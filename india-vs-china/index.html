@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -11,21 +11,17 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ── THEME VARIABLES (from Matter That Thinks) ── */
+    /* ── THEME VARIABLES ── */
     :root {
-      --bg:       #f7f4ef;
-      --bg2:      #ede9e1;
-      --bg3:      #e3ddd2;
-      --ink:      #18160f;
-      --ink2:     #3a3628;
-      --ink3:     #7a7264;
-      --rule:     #d0c9bc;
-      --accent:   #2c4a3e;
-      --accent2:  #4a7c66;
-      --serif:    'Cormorant Garamond', Georgia, serif;
-      --sans:     'DM Sans', system-ui, sans-serif;
-      --mono:     'DM Mono', monospace;
+      --cream:   #f5f2ed;
+      --ink:     #1a1814;
+      --muted:   #7a756e;
+      --rule:    #dedad4;
+      --surface: #f0ece5;
+      --serif:   'Cormorant Garamond', Georgia, serif;
+      --sans:    'DM Sans', sans-serif;
 
+      /* Country accents — muted, ink-on-paper register */
       --india:   #8B3A2A;
       --china:   #8B1A1A;
       --usa:     #2B4A6F;
@@ -40,25 +36,20 @@
     }
 
     /* ── DARK MODE ── */
-    [data-theme="dark"] {
-      --bg:       #111009;
-      --bg2:      #1a1812;
-      --bg3:      #242018;
-      --ink:      #f0ece2;
-      --ink2:     #c8c2b0;
-      --ink3:     #7a7264;
-      --rule:     #2e2b22;
-      --accent:   #5a9e80;
-      --accent2:  #7bbda0;
-    }
     body.dark {
+      --cream:   #1a1814;
+      --ink:     #f0ece5;
+      --muted:   #8a857e;
+      --rule:    #2e2b26;
+      --surface: #201e1a;
+
       --india-light:   rgba(160,80,60,0.1);
       --china-light:   rgba(160,40,40,0.1);
     }
 
     html { scroll-behavior: smooth; }
     body {
-      background: var(--bg);
+      background: var(--cream);
       color: var(--ink);
       font-family: var(--sans);
       font-weight: 300;
@@ -68,106 +59,99 @@
       transition: background 0.4s, color 0.4s;
     }
 
-    /* ── HEADER (NEW STYLE from Matter That Thinks) ── */
-    .site-header {
-      position: sticky;
-      top: 0;
+    /* ── TOP BAR (dark mode toggle) ── */
+    .top-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
       z-index: 200;
-      background: var(--bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 4rem;
+      background: var(--cream);
       border-bottom: 1px solid var(--rule);
       transition: background 0.4s, border-color 0.4s;
     }
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-    }
-    .logo {
-      font-family: var(--serif);
-      font-size: 1.15rem;
-      font-weight: 500;
-      color: var(--ink);
-      white-space: nowrap;
-      letter-spacing: 0.01em;
-      text-decoration: none;
-      transition: color 0.4s;
-    }
-    .logo em {
-      font-style: italic;
-      font-weight: 300;
-      color: var(--accent2);
-    }
-    .header-nav {
-      display: flex;
-      align-items: center;
-      gap: 0.15rem;
-      list-style: none;
-    }
-    .header-nav a {
-      font-family: var(--mono);
-      font-size: 0.59rem;
-      letter-spacing: 0.1em;
+    .top-bar-left {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--ink3);
-      padding: 0.4rem 0.7rem;
-      border-radius: 4px;
-      transition: background 0.2s, color 0.2s;
+      color: var(--muted);
+    }
+    .top-bar-left a {
+      color: var(--muted);
       text-decoration: none;
+      transition: color 0.2s;
     }
-    .header-nav a:hover {
-      background: var(--bg2);
-      color: var(--ink);
-    }
-    .header-right {
+    .top-bar-left a:hover { color: var(--ink); }
+    .top-bar-right {
       display: flex;
       align-items: center;
       gap: 0.75rem;
     }
-    .substack-btn {
-      font-family: var(--mono);
-      font-size: 0.59rem;
-      letter-spacing: 0.1em;
+    .mode-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #f7f4ef;
-      background: var(--accent);
-      padding: 0.4rem 1rem;
-      border-radius: 4px;
-      white-space: nowrap;
-      transition: opacity 0.2s;
-      text-decoration: none;
+      color: var(--muted);
     }
-    .substack-btn:hover {
-      opacity: 0.8;
-    }
-    .theme-toggle {
-      width: 34px;
-      height: 34px;
-      border: 1px solid var(--rule);
-      border-radius: 6px;
-      background: transparent;
+    .toggle-track {
+      width: 48px; height: 24px;
+      background: var(--ink);
+      border-radius: 12px;
+      position: relative;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
+      transition: background 0.4s;
       flex-shrink: 0;
-      padding: 0;
-      font-size: 0;
     }
-    .theme-toggle:hover {
-      background: var(--bg2);
+    .toggle-thumb {
+      width: 18px; height: 18px;
+      background: var(--cream);
+      border-radius: 50%;
+      position: absolute;
+      top: 3px; left: 3px;
+      transition: left 0.3s, background 0.4s;
     }
-    .theme-toggle svg {
-      width: 15px;
-      height: 15px;
-      fill: var(--ink3);
-      transition: fill 0.2s;
+    body.dark .toggle-thumb { left: 27px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 38px; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 4rem;
+      background: rgba(245,242,237,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, background 0.4s;
     }
+    body.dark nav {
+      background: rgba(26,24,20,0.94);
+    }
+    nav.scrolled { border-color: var(--rule); }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.4s;
+    }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--ink); }
 
     /* ── HERO ── */
     #hero {
@@ -193,9 +177,7 @@
       user-select: none;
       letter-spacing: -0.02em;
     }
-    [data-theme="dark"] .hero-bg-text {
-      color: rgba(240,236,229,0.04);
-    }
+    body.dark .hero-bg-text { color: rgba(240,236,229,0.04); }
     .hero-eyebrow {
       font-size: 0.7rem;
       letter-spacing: 0.18em;
@@ -218,7 +200,7 @@
     h1 em { font-style: italic; color: var(--india); }
     .hero-desc {
       max-width: 540px;
-      color: var(--ink3);
+      color: var(--muted);
       font-size: 0.92rem;
       line-height: 1.85;
       margin-bottom: 2rem;
@@ -238,14 +220,14 @@
       color: var(--ink); background: transparent;
       transition: all 0.25s; cursor: pointer;
     }
-    .btn:hover { background: var(--ink); color: var(--bg); }
+    .btn:hover { background: var(--ink); color: var(--cream); }
     .btn.solid { background: var(--india); border-color: var(--india); color: #f5f2ed; }
     .btn.solid:hover { background: var(--ink); border-color: var(--ink); }
 
     /* ── SECTIONS ── */
     section { padding: 6rem 4rem; border-top: 1px solid var(--rule); transition: border-color 0.4s; }
     .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 3.5rem; }
-    .section-num { font-size: 0.68rem; letter-spacing: 0.15em; color: var(--ink3); text-transform: uppercase; }
+    .section-num { font-size: 0.68rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
     h2 {
       font-family: var(--serif);
       font-size: clamp(1.8rem, 3.5vw, 2.8rem);
@@ -253,7 +235,7 @@
     }
     .section-lead {
       max-width: 660px;
-      color: var(--ink3);
+      color: var(--muted);
       font-size: 0.92rem;
       line-height: 1.85;
       margin-bottom: 3rem;
@@ -261,7 +243,7 @@
 
     /* ── GDP CHART AREA ── */
     .chart-wrap {
-      background: var(--bg2);
+      background: var(--surface);
       border: 1px solid var(--rule);
       padding: 2rem;
       margin-bottom: 2rem;
@@ -271,18 +253,18 @@
       font-size: 0.68rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--ink3);
+      color: var(--muted);
       margin-bottom: 1.2rem;
     }
     canvas { display: block; max-width: 100%; }
-    .chart-source { font-size: 0.72rem; color: var(--ink3); margin-top: 0.75rem; font-style: italic; }
+    .chart-source { font-size: 0.72rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
 
     /* ── LEGEND PILLS ── */
     .legend-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
     .leg {
       display: flex; align-items: center; gap: 6px;
       font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--ink3);
+      color: var(--muted);
       border: 1px solid var(--rule);
       padding: 0.2rem 0.7rem;
       transition: border-color 0.2s, color 0.2s, background 0.4s;
@@ -298,16 +280,16 @@
     }
     .stat-cell:last-child { border-right: none; }
     .stat-num { font-family: var(--serif); font-size: 2.8rem; font-weight: 300; line-height: 1; }
-    .stat-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-top: 0.4rem; }
-    .stat-sub { font-size: 0.75rem; color: var(--ink3); margin-top: 0.25rem; }
+    .stat-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; }
+    .stat-sub { font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem; }
 
     /* ── BAR ROWS ── */
     .bar-list { display: flex; flex-direction: column; gap: 0; }
     .bar-row { display: grid; grid-template-columns: 150px 1fr 80px; gap: 1rem; align-items: center; padding: 0.55rem 0; border-bottom: 1px solid var(--rule); transition: border-color 0.4s; }
-    .bar-name { font-size: 0.75rem; color: var(--ink3); text-align: right; }
-    .bar-track { height: 20px; background: var(--bg2); position: relative; overflow: hidden; transition: background 0.4s; }
+    .bar-name { font-size: 0.75rem; color: var(--muted); text-align: right; }
+    .bar-track { height: 20px; background: var(--surface); position: relative; overflow: hidden; transition: background 0.4s; }
     .bar-fill { height: 100%; display: flex; align-items: center; padding-left: 8px; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.04em; white-space: nowrap; }
-    .bar-unit { font-size: 0.7rem; color: var(--ink3); }
+    .bar-unit { font-size: 0.7rem; color: var(--muted); }
 
     /* ── GRID LAYOUTS ── */
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
@@ -322,25 +304,25 @@
     .grid-3-cell:nth-last-child(-n+3) { border-bottom: none; }
     .cell-tag { font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--india); margin-bottom: 0.6rem; }
     .cell-tag.china { color: var(--china); }
-    .cell-tag.neutral { color: var(--ink3); }
+    .cell-tag.neutral { color: var(--muted); }
     .cell-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; margin-bottom: 0.6rem; line-height: 1.3; }
-    .cell-body { font-size: 0.82rem; color: var(--ink3); line-height: 1.75; }
+    .cell-body { font-size: 0.82rem; color: var(--muted); line-height: 1.75; }
 
     /* ── TIMELINE ── */
     .timeline { position: relative; padding-left: 1.4rem; }
     .timeline::before { content: ''; position: absolute; left: 5px; top: 0; bottom: 0; width: 1px; background: var(--rule); transition: background 0.4s; }
     .tl-item { position: relative; margin-bottom: 1.8rem; opacity: 0; transform: translateY(14px); transition: opacity 0.5s, transform 0.5s; }
     .tl-item.visible { opacity: 1; transform: translateY(0); }
-    .tl-dot { position: absolute; left: -1.1rem; top: 5px; width: 8px; height: 8px; border-radius: 50%; background: var(--bg2); border: 1px solid var(--ink3); transition: background 0.4s; }
+    .tl-dot { position: absolute; left: -1.1rem; top: 5px; width: 8px; height: 8px; border-radius: 50%; background: var(--surface); border: 1px solid var(--muted); transition: background 0.4s; }
     .tl-dot.key { background: var(--india); border-color: var(--india); }
     .tl-dot.china { background: var(--china); border-color: var(--china); }
     .tl-yr { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--india); margin-bottom: 0.2rem; }
     .tl-yr.china { color: var(--china); }
-    .tl-yr.neutral { color: var(--ink3); }
+    .tl-yr.neutral { color: var(--muted); }
     .tl-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 400; margin-bottom: 0.3rem; }
-    .tl-body { font-size: 0.82rem; color: var(--ink3); line-height: 1.7; }
+    .tl-body { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
 
-    /* ── EXP ITEM STYLE ── */
+    /* ── EXP ITEM STYLE (mirrors your site) ── */
     .exp-item {
       display: grid; grid-template-columns: 170px 1fr; gap: 2rem;
       padding: 2.2rem 0; border-bottom: 1px solid var(--rule);
@@ -348,13 +330,13 @@
       transition: opacity 0.55s, transform 0.55s, border-color 0.4s;
     }
     .exp-item.visible { opacity: 1; transform: translateY(0); }
-    .exp-date { font-size: 0.75rem; color: var(--ink3); letter-spacing: 0.04em; padding-top: 0.2rem; line-height: 1.5; }
+    .exp-date { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.04em; padding-top: 0.2rem; line-height: 1.5; }
     .exp-org { font-size: 0.68rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--india); margin-bottom: 0.25rem; }
     .exp-org.china { color: var(--china); }
-    .exp-org.neutral { color: var(--ink3); }
+    .exp-org.neutral { color: var(--muted); }
     .exp-role { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; margin-bottom: 0.7rem; }
     .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
-    .exp-bullets li { font-size: 0.85rem; color: var(--ink3); padding-left: 1rem; position: relative; }
+    .exp-bullets li { font-size: 0.85rem; color: var(--muted); padding-left: 1rem; position: relative; }
     .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--rule); }
 
     /* ── CALLOUT / PULL QUOTE ── */
@@ -366,11 +348,11 @@
       transition: background 0.4s;
     }
     .callout.china { border-left-color: var(--china); background: var(--china-light); }
-    .callout.neutral { border-left-color: var(--ink3); background: transparent; }
-    .callout p { font-size: 0.88rem; color: var(--ink3); line-height: 1.8; }
+    .callout.neutral { border-left-color: var(--muted); background: transparent; }
+    .callout p { font-size: 0.88rem; color: var(--muted); line-height: 1.8; }
     .callout p strong { color: var(--ink); font-weight: 500; }
 
-    /* ── PULL QUOTE ── */
+    /* ── PULL QUOTE (big serif) ── */
     .pull-quote {
       font-family: var(--serif);
       font-size: clamp(1.3rem, 2.5vw, 2rem);
@@ -393,10 +375,10 @@
     thead th {
       font-size: 0.66rem; letter-spacing: 0.13em; text-transform: uppercase;
       padding: 0.8rem 1rem; border-bottom: 2px solid var(--ink);
-      text-align: left; color: var(--ink3); background: transparent;
+      text-align: left; color: var(--muted); background: transparent;
       transition: border-color 0.4s;
     }
-    tbody td { padding: 0.8rem 1rem; border-bottom: 1px solid var(--rule); color: var(--ink3); transition: border-color 0.4s; }
+    tbody td { padding: 0.8rem 1rem; border-bottom: 1px solid var(--rule); color: var(--muted); transition: border-color 0.4s; }
     tbody td strong { color: var(--ink); font-weight: 500; }
     tbody tr:hover td { color: var(--ink); }
     .tag {
@@ -405,14 +387,14 @@
       border: 1px solid currentColor; border-radius: 1px;
     }
 
-    /* ── SKILL BLOCKS ── */
+    /* ── SKILL BLOCKS (mirrors your site) ── */
     .skill-block-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
     .skill-block { padding: 2rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); transition: border-color 0.4s; }
     .skill-block:nth-child(3n) { border-right: none; }
     .skill-block:nth-last-child(-n+3) { border-bottom: none; }
     .skill-block-title { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--india); margin-bottom: 0.9rem; }
     .skill-block ul { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
-    .skill-block ul li { font-size: 0.83rem; color: var(--ink3); }
+    .skill-block ul li { font-size: 0.83rem; color: var(--muted); }
     .skill-block ul li strong { color: var(--ink); font-weight: 500; }
 
     /* ── FOOTER ── */
@@ -422,8 +404,8 @@
       display: flex; justify-content: space-between; align-items: center;
       transition: border-color 0.4s;
     }
-    footer p { font-size: 0.73rem; color: var(--ink3); letter-spacing: 0.04em; }
-    footer a { color: var(--ink3); text-decoration: none; }
+    footer p { font-size: 0.73rem; color: var(--muted); letter-spacing: 0.04em; }
+    footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--ink); }
 
     /* ── ANIMATIONS ── */
@@ -450,9 +432,11 @@
       .stat-cell:last-child { border-bottom: none; }
     }
     @media (max-width: 640px) {
-      .header-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .top-bar, nav { padding-left: 1.5rem; padding-right: 1.5rem; }
       #hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .header-nav { display: none; }
+      nav { top: 36px; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.4rem; }
+      .nav-links { display: none; }
       .bar-row { grid-template-columns: 80px 1fr 50px; }
       .bar-name { font-size: 0.66rem; }
       footer { flex-direction: column; gap: 0.4rem; text-align: center; }
@@ -461,23 +445,34 @@
 </head>
 <body>
 
-  <!-- NEW HEADER with Subscribe Button -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="/" class="logo">Matter That <em>Thinks</em></a>
-      <ul class="header-nav">
-        <li><a href="/">Essays</a></li>
-        <li><a href="/#archive">Archive</a></li>
-        <li><a href="/#about">About</a></li>
-      </ul>
-      <div class="header-right">
-        <a href="https://matterthathinks.substack.com" target="_blank" class="substack-btn">Subscribe</a>
-        <button class="theme-toggle" id="themeBtn" aria-label="Toggle dark mode">
-          <svg id="themeIcon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <span class="top-bar-left">
+      <a href="https://nayakashutosh.github.io">← Ashutosh Nayak</a>
+      &nbsp;/&nbsp; India vs China
+    </span>
+    <div class="top-bar-right">
+      <span class="mode-label" id="modeLabel">Light</span>
+      <div class="toggle-track" id="darkToggle" title="Toggle dark mode">
+        <div class="toggle-thumb"></div>
       </div>
     </div>
-  </header>
+  </div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo">The Development Divergence</a>
+    <ul class="nav-links">
+      <li><a href="#gdp">GDP</a></li>
+      <li><a href="#state">State Capacity</a></li>
+      <li><a href="#programs">Programmes</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#industry">Industry</a></li>
+      <li><a href="#infrastructure">Infrastructure</a></li>
+      <li><a href="#missed">What India Missed</a></li>
+      <li><a href="#sources">Sources</a></li>
+    </ul>
+  </nav>
 
   <!-- ══════════════ HERO ══════════════ -->
   <section id="hero" style="padding-top: 120px; border: none;">
@@ -494,8 +489,6 @@
       <a href="#sources" class="btn">Sources →</a>
     </div>
   </section>
-
-  <!-- [PASTE ALL YOUR CONTENT SECTIONS HERE - from 01 GDP through 08 SOURCES] -->
 
   <!-- ══════════════ 01 · GDP STORY ══════════════ -->
   <section id="gdp">
@@ -1274,9 +1267,6 @@
     </div>
   </section>
 
-
-
-  
   <!-- FOOTER -->
   <footer>
     <p>© 2026 <a href="https://nayakashutosh.github.io">Ashutosh Nayak</a></p>
@@ -1284,31 +1274,22 @@
   </footer>
 
   <script>
-    // ── THEME TOGGLE (Matter That Thinks Style) ──
-    var btn  = document.getElementById('themeBtn');
-    var icon = document.getElementById('themeIcon');
-    var html = document.documentElement;
-    var SUN  = 'M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M12 5a7 7 0 1 0 0 14A7 7 0 0 0 12 5z';
-    var MOON = 'M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z';
-
-    function applyTheme(dark) {
-      html.setAttribute('data-theme', dark ? 'dark' : 'light');
-      icon.innerHTML = '<path d="' + (dark ? SUN : MOON) + '"/>';
-      try { localStorage.setItem('ivc-theme', dark ? 'dark' : 'light'); } catch(e){}
-      drawAll();
-    }
-
-    (function() {
-      var saved = null;
-      try { saved = localStorage.getItem('ivc-theme'); } catch(e){}
-      applyTheme(saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
-    })();
-
-    btn.addEventListener('click', function() {
-      applyTheme(html.getAttribute('data-theme') === 'light');
+    // ── Dark mode toggle ──
+    const toggle = document.getElementById('darkToggle');
+    const modeLabel = document.getElementById('modeLabel');
+    toggle.addEventListener('click', () => {
+      const isDark = document.body.classList.toggle('dark');
+      modeLabel.textContent = isDark ? 'Dark' : 'Light';
+      drawAll(); // redraw charts with updated colors
     });
 
-    // ── SCROLL REVEAL ──
+    // ── Nav scroll effect ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // ── Scroll reveal ──
     const revealObs = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
         if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 70);
@@ -1316,7 +1297,7 @@
     }, { threshold: 0.08 });
     document.querySelectorAll('.exp-item, .tl-item').forEach(el => revealObs.observe(el));
 
-    // ── CHART HELPERS ──
+    // ── Chart helpers ──
     function getCSSVar(name) {
       return getComputedStyle(document.body).getPropertyValue(name).trim();
     }
@@ -1349,7 +1330,7 @@
       const mapY = v => pt + ch - (v / maxY) * ch;
 
       const mutedColor = 'rgba(122,117,110,0.25)';
-      const textColor = getCSSVar('--ink3');
+      const textColor = getCSSVar('--muted');
 
       // grid
       ctx.strokeStyle = mutedColor; ctx.lineWidth = 1;
@@ -1405,7 +1386,7 @@
       });
     }
 
-    // ── DATA ──
+    // ── Data ──
     const years = [1980, 1985, 1990, 1995, 2000, 2005, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024];
     const gdpDatasets = [
       { label: 'China',     color: '#8B1A1A', data: [0.31,0.56,1.12,1.94,3.68,7.27,10.5,13.5,17.1,20.7,23.2,27.1,27.8,33.0,35.3] },
