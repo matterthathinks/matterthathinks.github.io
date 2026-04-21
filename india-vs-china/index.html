@@ -497,6 +497,786 @@
 
   <!-- [PASTE ALL YOUR CONTENT SECTIONS HERE - from 01 GDP through 08 SOURCES] -->
 
+  <!-- ══════════════ 01 · GDP STORY ══════════════ -->
+  <section id="gdp">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2>The GDP Divergence</h2>
+    </div>
+    <p class="section-lead">
+      China and India started from near-identical economic positions at independence. 
+      The gap that opened between them is not a story of luck — it is a story of choices, 
+      institutions, and the capacity to execute.
+    </p>
+
+    <div class="stat-strip">
+      <div class="stat-cell">
+        <div class="stat-num" style="color:var(--china);">$35T</div>
+        <div class="stat-label">China GDP PPP 2024</div>
+        <div class="stat-sub">World's largest by PPP</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num" style="color:var(--india);">$15T</div>
+        <div class="stat-label">India GDP PPP 2024</div>
+        <div class="stat-sub">3rd largest by PPP</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">5×</div>
+        <div class="stat-label">Per-capita gap</div>
+        <div class="stat-sub">From near-parity in 1990</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num" style="color:var(--china);">22</div>
+        <div class="stat-label">Years China grew 10%+</div>
+        <div class="stat-sub">India: zero such years</div>
+      </div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-label">GDP PPP — Trillions USD · 1980 to 2024</div>
+      <div class="legend-row" id="gdp-leg"></div>
+      <canvas id="gdpChart" height="340"></canvas>
+      <p class="chart-source">Sources: IMF World Economic Outlook April 2026; World Bank WDI. In 1980, India's GDP (PPP) $383B actually exceeded China's $306B.</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-label">GDP Per Capita PPP — USD · 1980 to 2024</div>
+      <div class="legend-row" id="pcap-leg"></div>
+      <canvas id="pcapChart" height="300"></canvas>
+      <p class="chart-source">Sources: IMF WEO April 2026. Both India and China were within $100 of each other per capita in 1980. Singapore's trajectory shows what is possible with the right institutions.</p>
+    </div>
+
+    <div class="pull-quote">
+      "Both India and China were near-identical in per-capita income in 1980. <span>The difference was not resources — it was the capacity and will to deploy them systematically.</span>"
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <h3 style="font-family:var(--serif);font-size:1.4rem;font-weight:400;margin-bottom:1.2rem;">India's path</h3>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot key"></div>
+            <div class="tl-yr">1947</div>
+            <div class="tl-title">Independence with colonial institutions</div>
+            <div class="tl-body">Inherited civil service, legal system, some railways. But also inherited deep underdevelopment, low literacy, and weak state manufacturing capacity.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot key"></div>
+            <div class="tl-yr">1950s–70s</div>
+            <div class="tl-title">Nehruvian socialism — heavy industry focus</div>
+            <div class="tl-body">PSUs, IITs, steel plants. "Commanding heights" model. License Raj constrains private enterprise. Manufacturing stagnates despite intent.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot key"></div>
+            <div class="tl-yr">1991</div>
+            <div class="tl-title">Liberalisation — 13 years after China</div>
+            <div class="tl-body">Balance-of-payments crisis forces opening. IT services boom emerges — unplanned, but leveraging India's English and IIT advantages. Services replace manufacturing as growth engine.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot key"></div>
+            <div class="tl-yr">2000s–present</div>
+            <div class="tl-title">Services-led, job-light growth</div>
+            <div class="tl-body">Strong GDP growth, but manufacturing share stagnant. Millions enter working age with insufficient formal employment. Informality stays above 80%.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family:var(--serif);font-size:1.4rem;font-weight:400;margin-bottom:1.2rem;">China's path</h3>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot china"></div>
+            <div class="tl-yr china">1949</div>
+            <div class="tl-title">Revolution — single-party state capacity</div>
+            <div class="tl-body">Mao's literacy campaigns begin immediately. Local party officials' careers tied to literacy metrics. State can coerce compliance at scale. India lacked this mechanism entirely.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot china"></div>
+            <div class="tl-yr china">1966–76</div>
+            <div class="tl-title">Cultural Revolution — a genuine setback</div>
+            <div class="tl-body">Universities closed. Intellectuals persecuted. A devastating 10-year interruption to education and research. Yet the mass literacy base built in the 1950s survived.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot china"></div>
+            <div class="tl-yr china">1978</div>
+            <div class="tl-title">Deng Xiaoping — Four Modernizations</div>
+            <div class="tl-body">Science, technology, industry, and defence as four pillars. Gaokao restored. Economy opens. Crucially: a literate, increasingly educated workforce is already waiting.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot china"></div>
+            <div class="tl-yr china">1980s–2000s</div>
+            <div class="tl-title">Export manufacturing boom</div>
+            <div class="tl-body">SEZs, factory infrastructure, global supply chain integration. 800 million lifted out of poverty. Manufacturing share of GDP surges to 30%+.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ 02 · STATE CAPACITY ══════════════ -->
+  <section id="state">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2>The Foundational Argument:<br>State Capacity</h2>
+    </div>
+    <p class="section-lead">
+      Most comparisons focus on what India and China chose to do differently. 
+      The deeper question is what each country was <em>capable</em> of doing. 
+      State capacity — the ability to design, fund, and enforce policy at scale — 
+      is the precondition that made China's programmes possible. It is where the real divergence begins.
+    </p>
+
+    <div class="pull-quote">
+      "India in 1947 lacked the state capacity to run a mass literacy campaign. <span>China had a single-party apparatus willing to coerce compliance.</span> The real comparison is not just policy preference — it is state capacity as a precondition for policy execution."
+    </div>
+
+    <div class="grid-3">
+      <div class="grid-3-cell">
+        <div class="cell-tag china">China's mechanism</div>
+        <div class="cell-title">Political incentives, not ideology</div>
+        <div class="cell-body">What drove China's mass education was not communist ideology alone — it was <strong>fiscal decentralization combined with political accountability</strong>. Under Mao, local party officials' careers literally depended on literacy metrics. Under Deng, the 1986 Compulsory Education Law made local governments financially responsible for 9-year schooling. The incentive structure aligned bureaucratic ambition with education outcomes.</div>
+      </div>
+      <div class="grid-3-cell">
+        <div class="cell-tag">India's constraint</div>
+        <div class="cell-title">Democracy and state fragmentation</div>
+        <div class="cell-body">India's federal, democratic structure — a genuine strength in many ways — made large-scale coercive mobilisation impossible. Centre-state tensions, political competition, and patronage networks meant education policy was inconsistently enforced. The Right to Education Act came in <strong>2009</strong> — 60 years after China's initial literacy drives. Near-universal enrollment was achieved only around 2000, where China reached it by the mid-1980s.</div>
+      </div>
+      <div class="grid-3-cell">
+        <div class="cell-tag neutral">The lesson</div>
+        <div class="cell-title">Execution, not just design</div>
+        <div class="cell-body">India designed good policies — Sarva Shiksha Abhiyan, mid-day meal schemes, RTE. The failure was <strong>delivery</strong>. Teacher absenteeism, infrastructure gaps, and urban-rural quality divides meant enrollment didn't translate to learning. ASER reports consistently show that 50%+ of Class V students cannot read a Class II text. The problem is not intent — it is the pipeline from policy to classroom.</div>
+      </div>
+      <div class="grid-3-cell">
+        <div class="cell-tag china">China's enforcement</div>
+        <div class="cell-title">The 1986 Compulsory Education Law</div>
+        <div class="cell-body">After Deng's 1978 reforms, China enacted the <strong>Compulsory Education Law in 1986</strong>, mandating 9 years of schooling for all children and giving local governments financial responsibility. This combined national mandate with local accountability. Central government could monitor, local officials were responsible, parents had legal standing. The mechanism worked.</div>
+      </div>
+      <div class="grid-3-cell">
+        <div class="cell-tag">India's trajectory</div>
+        <div class="cell-title">Late, uneven progress</div>
+        <div class="cell-body">India's primary enrollment rate in 1950 was ~43%. China's was similar — but China made universal basic education a state mobilization goal from 1949. By 1978, when China opened its economy, it had a <strong>literate, trainable workforce</strong> ready to staff factories. India was still catching up in basic literacy when its own economic opening arrived in 1991. The workforce wasn't ready the same way.</div>
+      </div>
+      <div class="grid-3-cell">
+        <div class="cell-tag neutral">The nuance</div>
+        <div class="cell-title">Neither model is simply "better"</div>
+        <div class="cell-body">China's authoritarian capacity enabled rapid execution but also produced disasters (Great Leap Forward, Cultural Revolution). India's democracy is slower but more resilient and corrective. The question is whether India can find <strong>democratic mechanisms for high-execution governance</strong> — as South Korea and Taiwan eventually did within their own political trajectories.</div>
+      </div>
+    </div>
+
+    <div class="callout neutral">
+      <p><strong>The sharpest question:</strong> Was India's choice really a choice, or a constraint? India in 1947 lacked the state capacity to run a mass literacy campaign. China had a single-party apparatus. The real comparison is not just policy preference — it's state capacity as a precondition for policy execution. Critiquing India's choices without acknowledging this asymmetry is unfair. Ignoring it is also misleading.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ 03 · PROGRAMMES ══════════════ -->
+  <section id="programs">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2>Programmes, Policies<br>and Deliberate Bets</h2>
+    </div>
+    <p class="section-lead">
+      From the 1950s onward, China made a series of sequenced, compounding investments in science, technology, and industry. 
+      India made some good bets (IITs, ISRO, DAE) but missed the connective tissue between them — 
+      the programmes that link research to commercialisation, and education to employment.
+    </p>
+
+    <div class="exp-item">
+      <span class="exp-date">China · 1956</span>
+      <div>
+        <p class="exp-org china">12-Year Science & Technology Plan</p>
+        <p class="exp-role">The first strategic S&T roadmap</p>
+        <ul class="exp-bullets">
+          <li>China's first national S&T plan identified 57 key tasks including atomic energy, electronics, and jet propulsion — 8 years before India had an equivalent framework.</li>
+          <li>Crucially, it framed scientific development as a <em>state security and development priority</em>, not merely an academic exercise.</li>
+          <li>India had the 1958 Science Policy Resolution (Nehru) but lacked comparable institutional follow-through and execution machinery.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <span class="exp-date">China · March 1986</span>
+      <div>
+        <p class="exp-org china">Programme 863 — State High-Tech R&D Plan</p>
+        <p class="exp-role">Seven fields, one letter, a transformed nation</p>
+        <ul class="exp-bullets">
+          <li>Four scientists wrote to Deng Xiaoping warning that China was falling behind the global tech revolution. Deng approved the programme within 48 hours. Named for its date: March (3rd month) 1986.</li>
+          <li>Targeted 7 fields: biology, aerospace, information technology, lasers, automation, energy, new materials. Marine technology added 1996. Initial fund: 10 billion RMB — 5% of all government spending that year.</li>
+          <li>Inspired by Reagan's Strategic Defense Initiative. Over 20 years: 120,000+ research papers, 8,000+ patents, 1,800+ national industry standards.</li>
+          <li>India had no equivalent systematic high-tech R&D programme at this scale in this period.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <span class="exp-date">China · August 1988</span>
+      <div>
+        <p class="exp-org china">Programme TORCH — Industrialisation & Incubation</p>
+        <p class="exp-role">The programme that built China's startup infrastructure</p>
+        <ul class="exp-bullets">
+          <li>Approved by State Council to bridge lab and market: created Science and Technology Industrial Parks (STIPs), Technology Business Incubators (TBIs), Innofund seed capital, and a Venture Guiding Fund.</li>
+          <li>The first incubator was built in Wuhan (1987), Shanghai followed (1988). The idea: <em>artificially create clustering</em> by concentrating resources, talent, and capital to a critical threshold.</li>
+          <li>Result: China now has 11,000+ incubators and accelerators. India has ~950 (2023). India's Startup India programme — the closest equivalent — came in <strong>2016, 28 years later</strong>.</li>
+          <li>Israel, Singapore and China are cited as the only three countries to successfully create innovation clusters by deliberate government design.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <span class="exp-date">China · 1995 / 1998</span>
+      <div>
+        <p class="exp-org china">Project 211 & Project 985 — World-Class Universities</p>
+        <p class="exp-role">Building the top of the pyramid, deliberately</p>
+        <ul class="exp-bullets">
+          <li><strong>Project 211 (1995)</strong>: Named for the 21st century and 100 institutions. Made research universities compete for major government grants, forcing them to build faculty, labs, and infrastructure. 112 universities ultimately included.</li>
+          <li><strong>Project 985 (1998)</strong>: Jiang Zemin declared China must have "world-class universities." Started with 9 (C9 League = China's Ivy League), expanded to 39. Billions poured into faculty, international hiring, and research infrastructure.</li>
+          <li>Then <strong>Double First Class (2015–17)</strong>: 140 universities targeted to become world-class by 2050. China overtook the USA in Nature Index natural-sciences output in 2022.</li>
+          <li>Crucially: China did this <em>while maintaining mass primary education</em>. India built IITs but without the same simultaneous investment in the layer beneath them.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <span class="exp-date">China · 2015</span>
+      <div>
+        <p class="exp-org china">Made in China 2025</p>
+        <p class="exp-role">Industrial upgrading for the next century</p>
+        <ul class="exp-bullets">
+          <li>Targeted 10 strategic sectors: AI, electric vehicles, semiconductors, biotechnology, aerospace, advanced materials, robotics, maritime engineering, rail equipment, agricultural machinery.</li>
+          <li>Explicit goal: move from "factory of the world" to "innovator for the world." Reduce dependence on foreign technology in critical sectors.</li>
+          <li>India's equivalent — National Manufacturing Policy (2011), PLI schemes (2020+) — is more recent and less integrated with a broader innovation ecosystem.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <span class="exp-date">India · 1951–2016</span>
+      <div>
+        <p class="exp-org">India's IIT / IIM / AIIMS programme</p>
+        <p class="exp-role">Building the top — without the full pyramid</p>
+        <ul class="exp-bullets">
+          <li>India's strategy was elite-first: IIT Kharagpur (1951), IIM Calcutta (1961), AIIMS Delhi (1956). By 2000: only 7 IITs, 6 IIMs, 1 AIIMS — a deliberately scarce tier.</li>
+          <li>These institutions created India's global tech reputation, IT sector, and diaspora presence. They were a <em>good bet</em> — not the problem.</li>
+          <li>The failure: India built islands of excellence without simultaneously building the vocational layer, the research-to-market pipeline, or the primary education quality beneath them.</li>
+          <li>Nehru called IIT Kharagpur "a symbol of India, a fine monument of what free India is building." The trickle-down theory of human capital — that elite engineers would lift all boats — was the implicit, ultimately incomplete, assumption.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p><strong>What India's programme list is missing:</strong> A TORCH equivalent (incubators, STIPs, commercialisation pipeline). A Project 211 equivalent (systematic funding of 100+ universities). A vocational education strategy tied to industrial demand. These are not gaps in elite education — they are gaps in the <em>ecosystem around</em> elite education.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ 04 · EDUCATION & HUMAN CAPITAL ══════════════ -->
+  <section id="education">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2>Education &amp; Human Capital:<br>The Full Pyramid</h2>
+    </div>
+    <p class="section-lead">
+      Development economists think of human capital as a pyramid: a broad base of basic literacy, 
+      a middle tier of vocational and technical skills, and a narrow top of elite researchers and innovators. 
+      India built a strong top. China built the entire pyramid — 
+      and sequenced it bottom-up.
+    </p>
+
+    <div class="pull-quote">
+      "India built <span>islands of excellence in a sea of mediocrity.</span> China built an entire continent."
+    </div>
+
+    <!-- Literacy / basic education -->
+    <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:1rem;">The base: literacy and primary education</h3>
+    <div class="chart-wrap">
+      <div class="chart-label">Youth Literacy Rate (%) — India vs China</div>
+      <div class="bar-list">
+        <div class="bar-row">
+          <div class="bar-name">China (2024)</div>
+          <div class="bar-track"><div class="bar-fill" style="width:99%;background:var(--china);color:#f5f2ed;">~99%</div></div>
+          <div class="bar-unit">youth lit.</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">India (2024)</div>
+          <div class="bar-track"><div class="bar-fill" style="width:76%;background:var(--india);color:#f5f2ed;">~76%</div></div>
+          <div class="bar-unit">youth lit.</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">China — univ. enrollment (1985)</div>
+          <div class="bar-track"><div class="bar-fill" style="width:90%;background:var(--china);color:#f5f2ed;">Near-universal primary</div></div>
+          <div class="bar-unit">primary</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">India — univ. enrollment (2000)</div>
+          <div class="bar-track"><div class="bar-fill" style="width:90%;background:var(--india);color:#f5f2ed;">Near-universal primary</div></div>
+          <div class="bar-unit">primary</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">China — pupil:teacher</div>
+          <div class="bar-track"><div class="bar-fill" style="width:20%;background:var(--china);color:#f5f2ed;">~17:1</div></div>
+          <div class="bar-unit">primary</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">India — pupil:teacher</div>
+          <div class="bar-track"><div class="bar-fill" style="width:52%;background:var(--india);color:#f5f2ed;">~40:1</div></div>
+          <div class="bar-unit">primary</div>
+        </div>
+      </div>
+      <p class="chart-source">Sources: NationMaster, UNESCO UIS, World Bank. China achieved near-universal primary enrollment by ~1985; India by ~2000. A 15-year gap with compounding consequences for the manufacturing-ready workforce.</p>
+    </div>
+
+    <div class="callout neutral">
+      <p><strong>The ASER problem:</strong> India achieved near-universal <em>enrollment</em> — but not learning. Annual Status of Education Reports (ASER) consistently show that 50%+ of Class V students cannot read a Class II text. Enrollment is a necessary but insufficient condition. China, through centralized standards and political accountability mechanisms, ensured that enrollment translated to actual learning at far higher rates.</p>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- Vocational -->
+    <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:1rem;margin-top:2.5rem;">The missing middle: vocational training</h3>
+    <p style="color:var(--muted);font-size:0.88rem;max-width:650px;margin-bottom:2rem;line-height:1.8;">Manufacturing doesn't need IIT engineers — it needs millions of semi-skilled workers. This is the layer China built systematically and India almost entirely neglected. It is arguably the single most important structural difference.</p>
+
+    <div class="chart-wrap">
+      <div class="chart-label">Vocational Education Enrollment (% of upper secondary students)</div>
+      <div class="bar-list">
+        <div class="bar-row">
+          <div class="bar-name">China</div>
+          <div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--china);color:#f5f2ed;">~25%</div></div>
+          <div class="bar-unit">voc. track</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">Germany</div>
+          <div class="bar-track"><div class="bar-fill" style="width:96%;background:var(--germany);color:#f5f2ed;">~48% (dual system)</div></div>
+          <div class="bar-unit">voc. track</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">South Korea</div>
+          <div class="bar-track"><div class="bar-fill" style="width:48%;background:var(--korea);color:#f5f2ed;">~22%</div></div>
+          <div class="bar-unit">voc. track</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">India</div>
+          <div class="bar-track"><div class="bar-fill" style="width:8%;background:var(--india);color:#f5f2ed;">~2%</div></div>
+          <div class="bar-unit">voc. track</div>
+        </div>
+      </div>
+      <p class="chart-source">Sources: UNESCO, OECD, IJCRT. Germany's Dual System (Duales Ausbildungssystem) is the global benchmark — apprenticeships tied directly to industry. China's vocational schools were linked to factories under the "part work, part study" model (gong nong bingju) from the 1950s onward.</p>
+    </div>
+
+    <div class="callout china">
+      <p><strong>China's vocational schools were linked to factories.</strong> Under Mao's "part work, part study" system, schools were literally integrated with production. Under Deng, vocational schools trained workers specifically for the sectors SEZs needed to fill. India's ITIs (Industrial Training Institutes) exist but were never scaled or integrated with industry demand in the same way. The result: India produces 850,000 engineering undergraduates and 2,500 ITI graduates for every factory-floor technician role. The ratios are inverted.</p>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- R&D & researchers -->
+    <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:1rem;margin-top:2.5rem;">The top: R&D investment and researchers</h3>
+
+    <div class="chart-wrap">
+      <div class="chart-label">R&D Expenditure as % of GDP — 2023 or latest</div>
+      <div class="bar-list">
+        <div class="bar-row"><div class="bar-name">South Korea</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--korea);color:#f5f2ed;">4.96%</div></div><div class="bar-unit">of GDP</div></div>
+        <div class="bar-row"><div class="bar-name">USA</div><div class="bar-track"><div class="bar-fill" style="width:70%;background:var(--usa);color:#f5f2ed;">3.45%</div></div><div class="bar-unit">of GDP</div></div>
+        <div class="bar-row"><div class="bar-name">Japan</div><div class="bar-track"><div class="bar-fill" style="width:69%;background:var(--japan);color:#f5f2ed;">3.44%</div></div><div class="bar-unit">of GDP</div></div>
+        <div class="bar-row"><div class="bar-name">Germany</div><div class="bar-track"><div class="bar-fill" style="width:63%;background:var(--germany);color:#f5f2ed;">3.13%</div></div><div class="bar-unit">of GDP</div></div>
+        <div class="bar-row"><div class="bar-name">China</div><div class="bar-track"><div class="bar-fill" style="width:52%;background:var(--china);color:#f5f2ed;">2.58%</div></div><div class="bar-unit">of GDP</div></div>
+        <div class="bar-row"><div class="bar-name">Singapore</div><div class="bar-track"><div class="bar-fill" style="width:44%;background:var(--singapore);color:#f5f2ed;">2.20%</div></div><div class="bar-unit">of GDP</div></div>
+        <div class="bar-row"><div class="bar-name">UK</div><div class="bar-track"><div class="bar-fill" style="width:34%;background:var(--uk);color:#f5f2ed;">1.70%</div></div><div class="bar-unit">of GDP</div></div>
+        <div class="bar-row"><div class="bar-name">India</div><div class="bar-track"><div class="bar-fill" style="width:13%;background:var(--india);color:#f5f2ed;">0.65%</div></div><div class="bar-unit">of GDP</div></div>
+      </div>
+      <p class="chart-source">Sources: OECD, World Bank, UNESCO UIS. China grew R&D from 0.9% (2000) to 2.58% (2023). India has barely moved from 0.6–0.7% in the same period. Critically, India's private sector funds only 37% of R&D; China's: 76%, Japan: 79%, South Korea: 80%.</p>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-label">Researchers per Million Population — Latest available</div>
+      <div class="bar-list">
+        <div class="bar-row"><div class="bar-name">South Korea</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--korea);color:#f5f2ed;">8,714</div></div><div class="bar-unit">per million</div></div>
+        <div class="bar-row"><div class="bar-name">Japan</div><div class="bar-track"><div class="bar-fill" style="width:64%;background:var(--japan);color:#f5f2ed;">5,600</div></div><div class="bar-unit">per million</div></div>
+        <div class="bar-row"><div class="bar-name">Germany</div><div class="bar-track"><div class="bar-fill" style="width:61%;background:var(--germany);color:#f5f2ed;">5,300</div></div><div class="bar-unit">per million</div></div>
+        <div class="bar-row"><div class="bar-name">USA</div><div class="bar-track"><div class="bar-fill" style="width:51%;background:var(--usa);color:#f5f2ed;">4,412</div></div><div class="bar-unit">per million</div></div>
+        <div class="bar-row"><div class="bar-name">France</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--uk);color:#f5f2ed;">4,354</div></div><div class="bar-unit">per million</div></div>
+        <div class="bar-row"><div class="bar-name">Russia</div><div class="bar-track"><div class="bar-fill" style="width:34%;background:#6A3A6A;color:#f5f2ed;">2,963</div></div><div class="bar-unit">per million</div></div>
+        <div class="bar-row"><div class="bar-name">China</div><div class="bar-track"><div class="bar-fill" style="width:18%;background:var(--china);color:#f5f2ed;">1,600</div></div><div class="bar-unit">per million</div></div>
+        <div class="bar-row"><div class="bar-name">India</div><div class="bar-track"><div class="bar-fill" style="width:3%;background:var(--india);color:#f5f2ed;">253</div></div><div class="bar-unit">per million</div></div>
+      </div>
+      <p class="chart-source">Sources: UNESCO UIS via World Bank SP.POP.SCIE.RD.P6. The UNESCO plot of Researchers/Million vs GDP per capita shows a near-linear relationship. India sits in the bottom-left quadrant — to move up the income axis, it must first move right on the researchers axis.</p>
+    </div>
+
+    <!-- Graduates and PhDs -->
+    <div class="table-wrap" style="margin-top:2.5rem;">
+      <h3 style="font-family:var(--serif);font-size:1.4rem;font-weight:400;margin-bottom:1rem;">Annual S&amp;E Graduates by Level — 2024 estimates</h3>
+      <table>
+        <thead><tr><th>Country</th><th>Bachelor's</th><th>Master's</th><th>PhD</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td><strong>China</strong></td><td style="color:var(--china);">1,500,000</td><td style="color:var(--china);">400,000</td><td style="color:var(--china);">60,000</td><td>More engineers than USA+India+Japan+Europe combined</td></tr>
+          <tr><td><strong>India</strong></td><td style="color:var(--india);">850,000–2.5M*</td><td style="color:var(--india);">60,000</td><td style="color:var(--india);">17,000</td><td>*Definitional variation. PhD output 3.5× below China.</td></tr>
+          <tr><td>USA</td><td>140,000</td><td>50,000</td><td>41,000</td><td>37% of PhDs are international students (Chinese + Indian)</td></tr>
+          <tr><td>Germany</td><td>90,000</td><td>40,000</td><td>15,000</td><td>Strong vocational integration</td></tr>
+          <tr><td>South Korea</td><td>75,000</td><td>30,000</td><td>12,000</td><td>~5% of GDP on education</td></tr>
+        </tbody>
+      </table>
+      <p class="chart-source">*India's total S&E graduates include broad engineering categories. China PhD data: UNESCO / Menlo Ventures 2025. NSF NCSES 2023.</p>
+    </div>
+
+    <!-- Research output -->
+    <div class="chart-wrap" style="margin-top:2.5rem;">
+      <div class="chart-label">Research Publications (thousands of citable documents) — SCOPUS</div>
+      <div class="legend-row" id="pub-leg"></div>
+      <canvas id="pubChart" height="300"></canvas>
+      <p class="chart-source">Sources: SCImago Journal & Country Rank (Elsevier SCOPUS). India's output increased 6-fold in 15 years (34,000 in 2010 → 195,000 in 2024), now ranked 3rd globally. China overtook USA in Web of Science papers in 2024 by 75%. India's citations per document (~16.9) actually exceed China's (~13.1) — quality is there, volume is catching up.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ 05 · INDUSTRY ══════════════ -->
+  <section id="industry">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2>Industrial Policy &amp;<br>The Manufacturing Question</h2>
+    </div>
+    <p class="section-lead">
+      Education creates human capital. But human capital needs an industrial ecosystem to deploy into. 
+      China built that ecosystem deliberately — SEZs, export policy, supply chain integration. 
+      India didn't. The question of why India became service-led (rather than manufacturing-led) 
+      is not just about education. It is about industrial policy.
+    </p>
+
+    <div class="pull-quote">
+      "Manufacturing success requires <span>basic education, industrial policy, and state-led coordination</span> — not just one of the three. China did all three. India did one."
+    </div>
+
+    <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:1.2rem;">China's SEZ model</h3>
+    <div class="grid-2">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot china"></div>
+          <div class="tl-yr china">1979</div>
+          <div class="tl-title">First Special Economic Zones</div>
+          <div class="tl-body">Shenzhen, Zhuhai, Shantou, Xiamen. Land, labour, and tax advantages concentrated in specific geographies. Export-oriented manufacturing given preferential treatment. Shenzhen had a population of 30,000 in 1979; today it has 17 million and houses global electronics supply chains.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot china"></div>
+          <div class="tl-yr china">1984</div>
+          <div class="tl-title">14 coastal cities opened</div>
+          <div class="tl-body">Foreign investment actively courted. Joint ventures required technology transfer. China was simultaneously building market access and absorbing foreign expertise.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot china"></div>
+          <div class="tl-yr china">2001</div>
+          <div class="tl-title">WTO Accession</div>
+          <div class="tl-body">China's entry into the WTO at this moment — after two decades of SEZ experience, workforce training, and export infrastructure — was decisive. India's WTO integration was more gradual and without the same manufacturing base to leverage it.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot china"></div>
+          <div class="tl-yr china">2010s</div>
+          <div class="tl-title">Moving up the value chain</div>
+          <div class="tl-body">From low-cost assembly to high-tech manufacturing. Huawei, BYD, DJI, CATL emerge. China begins competing in sectors previously dominated only by USA, Japan, and Germany.</div>
+        </div>
+      </div>
+      <div>
+        <div class="callout china">
+          <p><strong>Why SEZs worked in China but struggle in India:</strong><br><br>
+          China's SEZs worked because of the full stack: cheap literate labour (mass education), political will to acquire land and relocate people, state-built infrastructure, and global supply chain relationships built over decades. India's SEZs, introduced in 2005, faced land acquisition disputes, regulatory complexity, and a workforce not trained for factory-floor roles at scale. The instrument was copied; the preconditions were not.</p>
+        </div>
+        <div class="callout neutral" style="margin-top:1.5rem;">
+          <p><strong>Vietnam's lesson (very relevant):</strong> Vietnam entered global manufacturing supply chains by offering what China could no longer offer cheaply — low costs, political stability, and a compliant, basic-literate workforce. India has the population but not the <em>configured</em> workforce. Vietnam optimized for factories; India optimized for software engineers. Both are valid choices, but India's choice has lower employment multipliers.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider"/>
+
+    <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:1.2rem;margin-top:2.5rem;">Why India became service-led — and whether that was a choice</h3>
+    <p style="color:var(--muted);font-size:0.88rem;max-width:660px;margin-bottom:2rem;line-height:1.8;">India did not consciously decide to become a services economy. It became one because that is where its inherited advantages (English, IITs, mathematics) met global demand (Y2K, outsourcing wave). After 1991 liberalisation, services had lower barriers to entry than manufacturing in India's regulatory environment. The path of least resistance led to Bengaluru, not to a factory floor.</p>
+
+    <div class="grid-3">
+      <div class="grid-3-cell">
+        <div class="cell-tag">India's accidental strength</div>
+        <div class="cell-title">The IT sector boom</div>
+        <div class="cell-body">The Y2K crisis and subsequent outsourcing wave created demand that exactly matched India's supply of English-speaking, technically trained graduates. Without planning it, India became the world's back office. This is worth ~$250B in IT-BPO exports today. A genuine success — but with low employment multipliers relative to manufacturing.</div>
+      </div>
+      <div class="grid-3-cell">
+        <div class="cell-tag neutral">The structural trap</div>
+        <div class="cell-title">Services don't absorb mass labour</div>
+        <div class="cell-body">India adds ~12 million people to its working-age population every year. IT services employs 5 million total after 30 years of growth. Manufacturing, by contrast, can absorb semi-skilled workers at scale — as China demonstrated by employing 150+ million factory workers by the 2000s. India's growth model is structurally unable to absorb its demographic dividend.</div>
+      </div>
+      <div class="grid-3-cell">
+        <div class="cell-tag china">China's counterfactual lesson</div>
+        <div class="cell-title">Both is possible</div>
+        <div class="cell-body">China built mass manufacturing <em>and</em> elite universities (Projects 211 and 985). The dichotomy between "elite education" and "mass manufacturing" is false — it requires the right sequencing and institutional capacity to pursue both simultaneously. South Korea and Taiwan also demonstrate this: strong manufacturing and strong universities, built in parallel.</div>
+      </div>
+    </div>
+
+    <!-- Incubators -->
+    <div class="chart-wrap" style="margin-top:3rem;">
+      <div class="chart-label">Technology Incubators & Accelerators — Country Comparison</div>
+      <div class="bar-list">
+        <div class="bar-row"><div class="bar-name">China</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--china);color:#f5f2ed;">11,000+</div></div><div class="bar-unit">incubators</div></div>
+        <div class="bar-row"><div class="bar-name">USA</div><div class="bar-track"><div class="bar-fill" style="width:21%;background:var(--usa);color:#f5f2ed;">2,300</div></div><div class="bar-unit">incubators</div></div>
+        <div class="bar-row"><div class="bar-name">India</div><div class="bar-track"><div class="bar-fill" style="width:9%;background:var(--india);color:#f5f2ed;">~950 (2023)</div></div><div class="bar-unit">incubators</div></div>
+      </div>
+      <p class="chart-source">Sources: ScienceDirect 2024 (citing YNOS 2023); China Banking News 2019; Tracxn 2022. China's incubators supported 620,000+ startups in 2018 alone. India's entire registered startup count was ~120,000 in 2023. The gap is 11:1 in incubators; the gap in deep-tech startup output is even wider.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ 06 · INFRASTRUCTURE ══════════════ -->
+  <section id="infrastructure">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2>Infrastructure, Investment<br>&amp; State Coordination</h2>
+    </div>
+    <p class="section-lead">
+      Even with the right education and industrial policy, manufacturing requires physical infrastructure — 
+      ports, roads, power, and logistics. China invested at a scale and speed that India has not matched. 
+      Investment rates, infrastructure quality, and the state's ability to coordinate land, labour, 
+      and capital are the final piece of the puzzle.
+    </p>
+
+    <div class="stat-strip">
+      <div class="stat-cell">
+        <div class="stat-num" style="color:var(--china);">~50%</div>
+        <div class="stat-label">China's investment rate</div>
+        <div class="stat-sub">% of GDP (peak years)</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num" style="color:var(--india);">~30%</div>
+        <div class="stat-label">India's investment rate</div>
+        <div class="stat-sub">% of GDP</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num" style="color:var(--china);">$496B</div>
+        <div class="stat-label">China R&D spend 2024</div>
+        <div class="stat-sub">2.58% of GDP</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num" style="color:var(--india);">$23B</div>
+        <div class="stat-label">India R&D spend 2024</div>
+        <div class="stat-sub">0.65% of GDP</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <h3 style="font-family:var(--serif);font-size:1.4rem;font-weight:400;margin-bottom:1.2rem;">What China built (1980–2010)</h3>
+        <div class="skill-block-grid" style="border:1px solid var(--rule);transition:border-color 0.4s;">
+          <div class="skill-block">
+            <p class="skill-block-title">Ports & Logistics</p>
+            <ul>
+              <li>7 of world's 10 busiest ports are Chinese</li>
+              <li>Container throughput 10× India's</li>
+              <li>Inland logistics networks linked SEZs to ports</li>
+              <li>Average container dwell time 1–2 days</li>
+            </ul>
+          </div>
+          <div class="skill-block" style="border-right:none;">
+            <p class="skill-block-title">Power & Energy</p>
+            <ul>
+              <li>Total installed capacity: 3,348 GW</li>
+              <li>India: 453 GW (7× smaller)</li>
+              <li>Reliable 24/7 industrial power essential for manufacturing competitiveness</li>
+            </ul>
+          </div>
+          <div class="skill-block" style="border-bottom:none;">
+            <p class="skill-block-title">Land & SEZ Execution</p>
+            <ul>
+              <li>Single-party state enables land acquisition at scale</li>
+              <li>Industrial parks built in 12–18 months</li>
+              <li>India: land acquisition legally contested, multi-year delays</li>
+            </ul>
+          </div>
+          <div class="skill-block" style="border-right:none;border-bottom:none;">
+            <p class="skill-block-title">Rail & Roads</p>
+            <ul>
+              <li>High-speed rail: 42,000 km (world's largest)</li>
+              <li>National expressway: 177,000 km</li>
+              <li>India: 99 km HSR (Ahmedabad-Mumbai, in progress)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family:var(--serif);font-size:1.4rem;font-weight:400;margin-bottom:1.2rem;">India's constraints</h3>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot key"></div>
+            <div class="tl-yr">Land acquisition</div>
+            <div class="tl-title">The single biggest bottleneck</div>
+            <div class="tl-body">India's Land Acquisition Act requires consent from affected communities, environmental impact assessments, and compensation at market rates. Legitimate democratic safeguards — but they make building industrial corridors and SEZs far slower than China's model.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot key"></div>
+            <div class="tl-yr">Labour laws</div>
+            <div class="tl-title">Complex regulation → small firms</div>
+            <div class="tl-body">India's labour laws historically encouraged firms to stay small (under 100 workers) to avoid compliance requirements. Result: 80%+ of workforce in informal economy, no large-scale factory employment. Firms prefer Vietnam (and increasingly Bangladesh) for scalable low-cost manufacturing.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot key"></div>
+            <div class="tl-yr">Power reliability</div>
+            <div class="tl-title">24/7 industrial power only recently achieved</div>
+            <div class="tl-body">Reliable electricity is a prerequisite for competitive manufacturing. India's power infrastructure has improved dramatically but still has regional gaps. Manufacturing firms bear higher backup generator costs than Chinese counterparts.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot key"></div>
+            <div class="tl-yr">PLI schemes (2020+)</div>
+            <div class="tl-title">India's belated industrial policy response</div>
+            <div class="tl-body">Production-Linked Incentive schemes across 14 sectors are India's most serious industrial policy in decades. Early results are mixed — some sectors (mobile phones, APIs) are working; others face approval delays. The direction is right; execution is still being tested.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout neutral">
+      <p><strong>The investment rate gap matters enormously:</strong> China invests ~50% of GDP; India ~30%. This difference — compounded over 40 years — explains physical infrastructure gaps more than any single policy decision. Manufacturing requires upfront capital (factories, logistics, power). Countries that invest more simply build more. India's investment rate needs to rise significantly and be directed toward the right sectors.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ 07 · WHAT INDIA MISSED ══════════════ -->
+  <section id="missed">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2>What India Missed —<br>and What It Can Still Do</h2>
+    </div>
+    <p class="section-lead">
+      This is not a story of India failing. India's IT sector, pharmaceutical industry, space programme, 
+      and democratic institutions are genuine achievements. But the honest accounting of what was missed — 
+      and what can still be built — is important. The demographic window is still open.
+    </p>
+
+    <div class="pull-quote">
+      "India didn't fail because it built IITs. <span>It failed to build the rest of the system around them.</span>"
+    </div>
+
+    <div class="grid-3">
+      <div class="grid-3-cell">
+        <div class="cell-tag">Missed · 1960s–1990s</div>
+        <div class="cell-title">Mass primary education quality</div>
+        <div class="cell-body">Enrollment expanded but quality did not keep pace. No equivalent of China's political accountability mechanism for learning outcomes. ASER reports document the learning crisis 60 years later. The consequence: a workforce that enrolled in school but did not acquire factory-floor or technical skills.</div>
+      </div>
+      <div class="grid-3-cell">
+        <div class="cell-tag">Missed · 1980s–2010s</div>
+        <div class="cell-title">Vocational ecosystem at scale</div>
+        <div class="cell-body">India's ITIs exist but were never tied to industry demand the way China's vocational schools were to its factories. Only ~2% of upper secondary students in vocational tracks vs 25% in China. The missing middle: tens of millions of technicians, CNC operators, quality inspectors, and logistics coordinators that a manufacturing economy needs.</div>
+      </div>
+      <div class="grid-3-cell">
+        <div class="cell-tag">Missed · 1988–2016</div>
+        <div class="cell-title">A TORCH equivalent</div>
+        <div class="cell-body">No national programme to systematically build incubators, science parks, and lab-to-market pipelines until Startup India (2016). China's Torch programme (1988) gave it a 28-year head start in building the infrastructure for innovation commercialisation.</div>
+      </div>
+      <div class="grid-3-cell">
+        <div class="cell-tag">Persistent · Today</div>
+        <div class="cell-title">R&D at 0.65% of GDP</div>
+        <div class="cell-body">India's GERD has barely moved from 0.6–0.7% for 20+ years while China reached 2.58%. India's private sector funds only 37% of R&D (vs China's 76%). The government is simultaneously funder and user — breaking the industry-academia innovation loop that drives private R&D growth.</div>
+      </div>
+      <div class="grid-3-cell">
+        <div class="cell-tag">Persistent · Today</div>
+        <div class="cell-title">Brain drain without retention</div>
+        <div class="cell-body">~36% of top JEE rankers migrate abroad. 37% of US S&E doctorates go to foreign students (largely Chinese and Indian), most staying in the US. India trains talent for the world without building the domestic research environments, salaries, and infrastructure to retain them.</div>
+      </div>
+      <div class="grid-3-cell">
+        <div class="cell-tag">Structural · Deep</div>
+        <div class="cell-title">The services-manufacturing duality</div>
+        <div class="cell-body">India's growth model generates GDP but insufficient employment. 12 million enter the workforce annually; formal manufacturing absorbs a fraction. The informal economy (80%+ of workers) is a symptom of the missing manufacturing base. Reversing this requires industrial policy, infrastructure, and vocational training working together.</div>
+      </div>
+    </div>
+
+    <hr class="divider" style="margin-top:3rem;"/>
+
+    <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:1.2rem;margin-top:2.5rem;">What India can still do — and where it has genuine strengths</h3>
+
+    <div class="grid-2">
+      <div>
+        <div class="exp-item" style="padding-top:1.2rem;">
+          <span class="exp-date">Strength · Use it</span>
+          <div>
+            <p class="exp-org">English + Digital + Young demographics</p>
+            <p class="exp-role">The demographic dividend window is open</p>
+            <ul class="exp-bullets">
+              <li>India's median age is 28; China's is 39 and rising. The manufacturing workforce advantage belongs to India now, not China.</li>
+              <li>English-language proficiency is a structural advantage in the global knowledge economy that China does not have and cannot easily replicate.</li>
+              <li>India's digital public infrastructure (UPI, Aadhaar, ONDC) shows that state-led platform-building at scale is possible in a democracy.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="exp-item">
+          <span class="exp-date">Strength · Build on it</span>
+          <div>
+            <p class="exp-org">Pharma, Space, IT</p>
+            <p class="exp-role">Proven sectors with scalable templates</p>
+            <ul class="exp-bullets">
+              <li>India supplies 20% of global generic medicines — manufacturing at scale, with IP protection, quality standards, and global markets. A template for other sectors.</li>
+              <li>ISRO's cost efficiency (Chandrayaan at &lt;$100M vs NASA equivalents at $1B+) shows what focused state institutions can achieve.</li>
+              <li>These sectors demonstrate that India <em>can</em> build world-class manufacturing when the policy, talent, and regulatory environment align.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="exp-item" style="padding-top:1.2rem;">
+          <span class="exp-date">Priority · Most urgent</span>
+          <div>
+            <p class="exp-org">NEP 2020 + Vocational scaling</p>
+            <p class="exp-role">Fix the middle of the pyramid</p>
+            <ul class="exp-bullets">
+              <li>National Education Policy 2020 emphasizes vocational integration from Class 6 onward. Implementation is the test — not policy design.</li>
+              <li>Target: 25–30% of upper secondary students in vocational tracks (from 2% today). Requires industry partnerships, not just government ITIs.</li>
+              <li>The Germany Dual System model — apprenticeships co-funded and co-designed by firms — is the benchmark.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="exp-item">
+          <span class="exp-date">Priority · Systemic</span>
+          <div>
+            <p class="exp-org">R&D at 2% of GDP</p>
+            <p class="exp-role">The private sector must lead</p>
+            <ul class="exp-bullets">
+              <li>India's long-term goal of 2% GERD requires private sector R&D to grow from 37% to 60%+ of total. This requires tax incentives, procurement policies, and deep-tech park infrastructure.</li>
+              <li>PLI schemes are a start — but linking them to R&D investment requirements (as South Korea's chaebol model did) would compound the effect.</li>
+              <li>More IISERs, more research-intensive universities, more post-doctoral opportunities with competitive salaries to retain PhDs in India.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p><strong>The honest synthesis:</strong> India's problem is not that it built IITs. It is that it didn't build the vocational layer, the incubation infrastructure, the industrial policy, and the primary education quality simultaneously. The IITs were a good strategic bet that paid off in IT and services. The failure was the missing middle — tens of millions of technicians, operators, and skilled workers that a manufacturing economy requires. That pipeline can still be built. The demographic window to do it closes by roughly 2040.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ 08 · SOURCES ══════════════ -->
+  <section id="sources">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2>Sources &amp; Further Reading</h2>
+    </div>
+    <p class="section-lead">Data and arguments on this page draw from the following. I will keep updating this as I learn more.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Source</th><th>Used for</th><th>URL / Reference</th></tr></thead>
+        <tbody>
+          <tr><td><strong>IMF World Economic Outlook</strong> (April 2026)</td><td>GDP, GDP PPP, per-capita trends</td><td>imf.org/en/Publications/WEO</td></tr>
+          <tr><td><strong>World Bank WDI</strong></td><td>GDP, R&D, researchers, education</td><td>data.worldbank.org</td></tr>
+          <tr><td><strong>UNESCO UIS</strong> via World Bank</td><td>Researchers/million, vocational enrollment</td><td>SP.POP.SCIE.RD.P6</td></tr>
+          <tr><td><strong>NSF NCSES S&E Indicators</strong></td><td>S&E graduates, PhD data, publications</td><td>ncses.nsf.gov/pubs/nsb202332</td></tr>
+          <tr><td><strong>SCImago / SCOPUS</strong></td><td>Research publications, citations per document</td><td>scimagojr.com</td></tr>
+          <tr><td><strong>OECD</strong></td><td>R&D spending (GERD), vocational education</td><td>stats.oecd.org</td></tr>
+          <tr><td><strong>ASER Reports</strong> (Pratham)</td><td>India's learning outcomes crisis</td><td>asercentre.org</td></tr>
+          <tr><td><strong>Steve Blank</strong> — China's Torch Program</td><td>Torch programme mechanics</td><td>steveblank.com (2013)</td></tr>
+          <tr><td><strong>MacroPolo</strong> — Torch program analysis</td><td>Innovation cluster effects</td><td>archivemacropolo.org</td></tr>
+          <tr><td><strong>Clarivate G20 Research Scorecard</strong> 2025</td><td>India's publication growth, citation impact</td><td>clarivate.com</td></tr>
+          <tr><td><strong>IEA / IRENA</strong></td><td>Energy capacity data</td><td>iea.org; irena.org</td></tr>
+          <tr><td><strong>"An Uncertain Glory"</strong> — Sen &amp; Drèze</td><td>India's education and development failures</td><td>Book, 2013</td></tr>
+          <tr><td><strong>Panagariya (2007)</strong> — India vs China growth</td><td>Industrial performance comparison</td><td>IDEAS/RePEc</td></tr>
+          <tr><td><strong>Cambridge BJHS Themes</strong> — Planning for S&T in China and India</td><td>S&T planning history comparison</td><td>cambridge.org/core</td></tr>
+          <tr><td><strong>Brookings</strong> — India's tech competition with China</td><td>Current policy analysis</td><td>brookings.edu (2023)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout neutral" style="margin-top:2rem;">
+      <p><strong>This is a living document.</strong> I am a physics student at NISER who finds development economics genuinely fascinating — especially the questions that sit at the intersection of institutions, incentives, and human capital. If you have corrections, better data, or arguments I've missed, I'd genuinely like to hear them. <a href="mailto:heyashunayak@gmail.com" style="color:var(--india);text-decoration:none;">heyashunayak@gmail.com</a></p>
+    </div>
+  </section>
+
+
+
+  
   <!-- FOOTER -->
   <footer>
     <p>© 2026 <a href="https://nayakashutosh.github.io">Ashutosh Nayak</a></p>
