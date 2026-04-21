@@ -1,0 +1,33 @@
+<div class="top-bar">
+  <span class="top-bar-left">
+    <a href="https://matterthathinks.github.io">← Matter That Thinks</a>
+    &nbsp;/&nbsp; India vs China
+  </span>
+  </div>
+
+<script>
+  const html = document.documentElement;
+  
+  function syncTheme() {
+    try {
+      const saved = localStorage.getItem('mtt-theme'); // Matches your index.html key
+      if (saved) {
+        html.setAttribute('data-theme', saved);
+        document.body.classList.toggle('dark', saved === 'dark');
+      }
+    } catch(e) {}
+    drawAll(); 
+  }
+
+  // Listen for storage changes from other tabs
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'mtt-theme') syncTheme();
+  });
+
+  window.addEventListener('load', () => {
+    syncTheme();
+    setTimeout(drawAll, 100);
+  });
+  
+  // ... rest of your drawLines and drawAll functions ...
+</script>
