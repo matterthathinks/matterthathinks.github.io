@@ -1,1426 +1,1615 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Why China Succeeded — and What India Can Learn · Ashutosh Nayak</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Development Divergence — Matter That Thinks</title>
+<meta name="description" content="India and China started at near-identical economic positions. Today China's GDP per capita is ~5× higher. What happened — and what can India learn? Based on V.S. Ramamurthy's lecture.">
+<meta property="og:title" content="The Development Divergence — Matter That Thinks">
+<meta property="og:description" content="India and China started at near-identical economic positions. Today China's GDP per capita is ~5× higher. What happened?">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════
+   DESIGN TOKENS — inherited from MTT index
+══════════════════════════════════════════ */
+:root {
+  --bg:       #f7f4ef;
+  --bg2:      #ede9e1;
+  --bg3:      #e3ddd2;
+  --ink:      #18160f;
+  --ink2:     #3a3628;
+  --ink3:     #7a7264;
+  --rule:     #d0c9bc;
+  --accent:   #2c4a3e;
+  --accent2:  #4a7c66;
+  --gold:     #a07828;
+  --serif:    'Cormorant Garamond', Georgia, serif;
+  --sans:     'DM Sans', system-ui, sans-serif;
+  --mono:     'DM Mono', monospace;
+  --t:        0.2s ease;
+  /* article-specific palette */
+  --india:    #c0522a;
+  --china:    #b02030;
+  --usa:      #2a6090;
+  --japan:    #8a3060;
+  --uk:       #4a52a0;
+  --france:   #3a90b0;
+  --russia:   #6a3a90;
+  --singapore:#2a8040;
+  --korea:    #a07010;
+  --germany:  #a05020;
+}
+[data-theme="dark"] {
+  --bg:       #111009;
+  --bg2:      #1a1812;
+  --bg3:      #242018;
+  --ink:      #f0ece2;
+  --ink2:     #c8c2b0;
+  --ink3:     #7a7264;
+  --rule:     #2e2b22;
+  --accent:   #5a9e80;
+  --accent2:  #7bbda0;
+  --gold:     #c09848;
+  --india:    #e07040;
+  --china:    #d04050;
+  --usa:      #5090c0;
+  --japan:    #c060a0;
+  --uk:       #7070d0;
+  --france:   #50b0d0;
+  --russia:   #9060c0;
+  --singapore:#50c070;
+  --korea:    #d0a030;
+  --germany:  #d07030;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--sans); font-weight: 300; line-height: 1.6;
+  transition: background var(--t), color var(--t);
+}
+a { color: inherit; text-decoration: none; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 2px; }
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── HEADER (exact MTT) ── */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg); border-bottom: 1px solid var(--rule);
+  transition: background var(--t), border-color var(--t);
+}
+.header-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+  height: 56px; display: flex; align-items: center;
+  justify-content: space-between; gap: 2rem;
+}
+.logo {
+  font-family: var(--serif); font-size: 1.15rem; font-weight: 500;
+  color: var(--ink); white-space: nowrap; letter-spacing: 0.01em;
+}
+.logo em { font-style: italic; font-weight: 300; color: var(--accent2); }
+.header-nav { display: flex; align-items: center; gap: 0.15rem; }
+.header-nav a {
+  font-family: var(--mono); font-size: 0.59rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink3);
+  padding: 0.4rem 0.7rem; border-radius: 4px;
+  transition: background var(--t), color var(--t);
+}
+.header-nav a:hover { background: var(--bg2); color: var(--ink); }
+.header-right { display: flex; align-items: center; gap: 0.75rem; }
+.substack-btn {
+  font-family: var(--mono); font-size: 0.59rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--bg); background: var(--accent);
+  padding: 0.4rem 1rem; border-radius: 4px; white-space: nowrap;
+  transition: opacity var(--t);
+}
+.substack-btn:hover { opacity: 0.8; }
+.theme-toggle {
+  width: 34px; height: 34px; border: 1px solid var(--rule);
+  border-radius: 6px; background: transparent; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--t); flex-shrink: 0;
+}
+.theme-toggle:hover { background: var(--bg2); }
+.theme-toggle svg { width: 15px; height: 15px; fill: var(--ink3); transition: fill var(--t); }
 
-    /* ── THEME VARIABLES ── */
-    :root {
-      --cream:   #f5f2ed;
-      --ink:     #1a1814;
-      --muted:   #7a756e;
-      --rule:    #dedad4;
-      --surface: #f0ece5;
-      --serif:   'Cormorant Garamond', Georgia, serif;
-      --sans:    'DM Sans', sans-serif;
+/* ── ARTICLE MASTHEAD ── */
+.article-masthead {
+  border-bottom: 1px solid var(--rule);
+  padding: 5rem 2rem 4rem;
+  text-align: center;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.55s 0.05s both;
+}
+.article-masthead::before {
+  content: '';
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 40px; background: var(--rule);
+}
+.masthead-eyebrow {
+  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--ink3);
+  margin-bottom: 1.5rem; display: flex;
+  align-items: center; justify-content: center; gap: 1.5rem;
+}
+.masthead-eyebrow::before, .masthead-eyebrow::after {
+  content: ''; width: 48px; height: 1px; background: var(--rule);
+}
+.article-number {
+  font-family: var(--mono); font-size: 0.57rem; color: var(--rule);
+  letter-spacing: 0.1em; margin-bottom: 0.75rem;
+}
+.article-cat {
+  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem;
+}
+.article-title {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  font-weight: 400; line-height: 1.05; letter-spacing: -0.02em;
+  color: var(--ink); margin-bottom: 1.25rem; max-width: 900px;
+  margin-left: auto; margin-right: auto;
+}
+.article-title em { font-style: italic; font-weight: 300; color: var(--ink2); }
+.article-dek {
+  font-family: var(--serif); font-style: italic; font-size: 1.15rem;
+  font-weight: 300; color: var(--ink3); letter-spacing: 0.01em;
+  max-width: 600px; margin: 0 auto 2rem; line-height: 1.7;
+}
+.article-meta {
+  display: flex; align-items: center; justify-content: center;
+  gap: 2rem; flex-wrap: wrap;
+}
+.meta-item {
+  font-family: var(--mono); font-size: 0.57rem;
+  letter-spacing: 0.1em; color: var(--ink3);
+}
+.meta-item span { color: var(--ink2); }
 
-      /* Country accents — muted, ink-on-paper register */
-      --india:   #8B3A2A;
-      --china:   #8B1A1A;
-      --usa:     #2B4A6F;
-      --japan:   #5A2A3E;
-      --uk:      #2D3A5A;
-      --korea:   #4A3A1A;
-      --germany: #3A3A2A;
-      --singapore: #2d4a3e;
+/* ── NAV BAR (section tabs) ── */
+.section-nav {
+  position: sticky; top: 56px; z-index: 90;
+  background: var(--bg2); border-bottom: 1px solid var(--rule);
+  transition: background var(--t), border-color var(--t);
+}
+.section-nav-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+  display: flex; align-items: center;
+  overflow-x: auto; scrollbar-width: none; gap: 0;
+}
+.section-nav-inner::-webkit-scrollbar { display: none; }
+.snav-tab {
+  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink3);
+  padding: 0.65rem 1.1rem; white-space: nowrap;
+  border-right: 1px solid var(--rule); cursor: pointer;
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+  background: none; border-left: none; border-top: none;
+  transition: background var(--t), color var(--t);
+  user-select: none;
+}
+.snav-tab:first-child { border-left: 1px solid var(--rule); }
+.snav-tab:hover { color: var(--ink); background: var(--bg3); }
+.snav-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
 
-      --india-light:   rgba(139,58,42,0.07);
-      --china-light:   rgba(139,26,26,0.07);
-    }
+/* ── MAIN LAYOUT ── */
+.article-wrap {
+  max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+}
 
-    /* ── DARK MODE ── */
-    body.dark {
-      --cream:   #1a1814;
-      --ink:     #f0ece5;
-      --muted:   #8a857e;
-      --rule:    #2e2b26;
-      --surface: #201e1a;
+/* ── SECTIONS ── */
+.article-section {
+  display: none;
+  padding: 4rem 0 5rem;
+  border-bottom: 1px solid var(--rule);
+  animation: fadeUp 0.4s ease both;
+}
+.article-section.active { display: block; }
+.article-section:last-child { border-bottom: none; }
 
-      --india-light:   rgba(160,80,60,0.1);
-      --china-light:   rgba(160,40,40,0.1);
-    }
+.sec-eyebrow {
+  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--accent2);
+  margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.75rem;
+}
+.sec-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--rule); max-width: 60px; }
 
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--cream);
-      color: var(--ink);
-      font-family: var(--sans);
-      font-weight: 300;
-      font-size: 15px;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-      transition: background 0.4s, color 0.4s;
-    }
+.sec-title {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3.8vw, 3rem);
+  font-weight: 400; line-height: 1.15; letter-spacing: -0.01em;
+  color: var(--ink); margin-bottom: 1rem;
+}
+.sec-title em { font-style: italic; font-weight: 300; color: var(--ink2); }
 
-    /* ── TOP BAR (dark mode toggle) ── */
-    .top-bar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 200;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.6rem 4rem;
-      background: var(--cream);
-      border-bottom: 1px solid var(--rule);
-      transition: background 0.4s, border-color 0.4s;
-    }
-    .top-bar-left {
-      font-size: 0.68rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .top-bar-left a {
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .top-bar-left a:hover { color: var(--ink); }
-    .top-bar-right {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .mode-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .toggle-track {
-      width: 48px; height: 24px;
-      background: var(--ink);
-      border-radius: 12px;
-      position: relative;
-      cursor: pointer;
-      transition: background 0.4s;
-      flex-shrink: 0;
-    }
-    .toggle-thumb {
-      width: 18px; height: 18px;
-      background: var(--cream);
-      border-radius: 50%;
-      position: absolute;
-      top: 3px; left: 3px;
-      transition: left 0.3s, background 0.4s;
-    }
-    body.dark .toggle-thumb { left: 27px; }
+.sec-desc {
+  font-family: var(--serif); font-size: 1.06rem; font-weight: 300;
+  font-style: italic; color: var(--ink2); line-height: 1.75;
+  margin-bottom: 3rem; max-width: 680px;
+}
 
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 38px; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 4rem;
-      background: rgba(245,242,237,0.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.3s, background 0.4s;
-    }
-    body.dark nav {
-      background: rgba(26,24,20,0.94);
-    }
-    nav.scrolled { border-color: var(--rule); }
-    .nav-logo {
-      font-family: var(--serif);
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--ink);
-      text-decoration: none;
-      letter-spacing: 0.01em;
-      transition: color 0.4s;
-    }
-    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-      white-space: nowrap;
-    }
-    .nav-links a:hover { color: var(--ink); }
+/* ── HERO SECTION ── */
+#sec-hero {
+  padding-top: 4rem; padding-bottom: 4rem;
+}
+.hero-thesis {
+  display: grid; grid-template-columns: 1fr 1px 380px; gap: 0 4rem;
+  align-items: start; padding-bottom: 3rem; border-bottom: 1px solid var(--rule);
+  margin-bottom: 3rem;
+}
+.hero-divider-v { background: var(--rule); align-self: stretch; }
+.thesis-main .sec-title { font-size: clamp(2rem, 4.5vw, 3.5rem); }
+.thesis-box {
+  background: var(--bg2); border-left: 3px solid var(--accent);
+  padding: 1.5rem 1.75rem; margin-top: 2rem;
+  font-family: var(--serif); font-size: 1rem; line-height: 1.85;
+  color: var(--ink2); font-weight: 300;
+}
+.thesis-box strong { font-weight: 500; color: var(--ink); font-style: normal; }
+.hero-sidebar-h { padding-top: 0.25rem; }
+.sidebar-label-h {
+  font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink3);
+  margin-bottom: 1.25rem; padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+.key-figure {
+  padding: 1.25rem 0; border-bottom: 1px solid var(--rule);
+}
+.key-figure:last-child { border-bottom: none; }
+.kf-num {
+  font-family: var(--serif); font-size: 2.4rem; font-weight: 400;
+  line-height: 1; color: var(--accent); margin-bottom: 0.3rem;
+}
+.kf-label {
+  font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink3);
+}
+.kf-sub { font-size: 0.78rem; color: var(--ink3); margin-top: 0.2rem; }
 
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 4rem 5rem;
-      margin-top: 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-bg-text {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      font-family: var(--serif);
-      font-size: clamp(80px, 14vw, 180px);
-      font-weight: 300;
-      color: rgba(26,24,20,0.03);
-      white-space: nowrap;
-      pointer-events: none;
-      user-select: none;
-      letter-spacing: -0.02em;
-    }
-    body.dark .hero-bg-text { color: rgba(240,236,229,0.04); }
-    .hero-eyebrow {
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--india);
-      margin-bottom: 1.4rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.2s forwards;
-    }
-    h1 {
-      font-family: var(--serif);
-      font-size: clamp(3rem, 7.5vw, 6.5rem);
-      font-weight: 300;
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.8rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.4s forwards;
-    }
-    h1 em { font-style: italic; color: var(--india); }
-    .hero-desc {
-      max-width: 540px;
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.85;
-      margin-bottom: 2rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.6s forwards;
-    }
-    .hero-links {
-      display: flex; gap: 1rem; align-items: center;
-      opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
-    }
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      padding: 0.65rem 1.5rem;
-      font-family: var(--sans); font-size: 0.72rem;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      text-decoration: none; border: 1px solid var(--ink);
-      color: var(--ink); background: transparent;
-      transition: all 0.25s; cursor: pointer;
-    }
-    .btn:hover { background: var(--ink); color: var(--cream); }
-    .btn.solid { background: var(--india); border-color: var(--india); color: #f5f2ed; }
-    .btn.solid:hover { background: var(--ink); border-color: var(--ink); }
+/* ── STAT CARDS ── */
+.stat-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--rule); border: 1px solid var(--rule);
+  margin-bottom: 3rem;
+}
+.stat-card {
+  background: var(--bg); padding: 1.75rem 1.5rem;
+  transition: background var(--t);
+}
+.stat-card:hover { background: var(--bg2); }
+.stat-num {
+  font-family: var(--serif); font-size: 2.8rem; font-weight: 400;
+  line-height: 1; margin-bottom: 0.5rem;
+}
+.stat-label {
+  font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.14em;
+  text-transform: uppercase; margin-bottom: 0.3rem;
+}
+.stat-sub { font-size: 0.75rem; color: var(--ink3); font-weight: 300; }
+.stat-card.india .stat-num, .stat-card.india .stat-label { color: var(--india); }
+.stat-card.china .stat-num, .stat-card.china .stat-label { color: var(--china); }
+.stat-card.neutral .stat-num { color: var(--accent); }
+.stat-card.neutral .stat-label { color: var(--ink3); }
 
-    /* ── SECTIONS ── */
-    section { padding: 6rem 4rem; border-top: 1px solid var(--rule); transition: border-color 0.4s; }
-    .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 3.5rem; }
-    .section-num { font-size: 0.68rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
-    h2 {
-      font-family: var(--serif);
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 300; letter-spacing: -0.01em;
-    }
-    .section-lead {
-      max-width: 660px;
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.85;
-      margin-bottom: 3rem;
-    }
+/* ── SUBTABS ── */
+.subtabs {
+  display: flex; border-bottom: 1px solid var(--rule); margin-bottom: 2rem;
+  overflow-x: auto; scrollbar-width: none;
+}
+.subtabs::-webkit-scrollbar { display: none; }
+.stab {
+  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink3);
+  padding: 0.65rem 1.1rem; white-space: nowrap; cursor: pointer;
+  background: none; border: none; border-bottom: 2px solid transparent;
+  margin-bottom: -1px; transition: color var(--t);
+}
+.stab:hover { color: var(--ink); }
+.stab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.spanel { display: none; }
+.spanel.active { display: block; }
 
-    /* ── GDP CHART AREA ── */
-    .chart-wrap {
-      background: var(--surface);
-      border: 1px solid var(--rule);
-      padding: 2rem;
-      margin-bottom: 2rem;
-      transition: background 0.4s, border-color 0.4s;
-    }
-    .chart-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1.2rem;
-    }
-    canvas { display: block; max-width: 100%; }
-    .chart-source { font-size: 0.72rem; color: var(--muted); margin-top: 0.75rem; font-style: italic; }
+/* ── CHART WRAPPER ── */
+.chart-wrap {
+  background: var(--bg2); border: 1px solid var(--rule);
+  padding: 1.5rem; margin-bottom: 2rem;
+  transition: background var(--t), border-color var(--t);
+}
+.chart-label {
+  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink3); margin-bottom: 1rem;
+}
+canvas { display: block; max-width: 100%; }
+.chart-source {
+  font-family: var(--mono); font-size: 0.52rem; color: var(--ink3);
+  margin-top: 0.75rem; line-height: 1.6;
+}
 
-    /* ── LEGEND PILLS ── */
-    .legend-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
-    .leg {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--muted);
-      border: 1px solid var(--rule);
-      padding: 0.2rem 0.7rem;
-      transition: border-color 0.2s, color 0.2s, background 0.4s;
-    }
-    .leg-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+/* ── CALLOUT ── */
+.callout {
+  background: var(--bg2); border-left: 3px solid var(--accent);
+  padding: 1.25rem 1.5rem; margin: 2rem 0;
+  font-family: var(--serif); font-size: 1rem; line-height: 1.85;
+  color: var(--ink2); font-weight: 300;
+  transition: background var(--t);
+}
+.callout strong { font-weight: 500; color: var(--ink); }
+.callout em { font-style: italic; }
+.callout.india { border-left-color: var(--india); }
+.callout.china { border-left-color: var(--china); }
 
-    /* ── STAT STRIP ── */
-    .stat-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0; border: 1px solid var(--rule); margin-bottom: 3rem; transition: border-color 0.4s; }
-    .stat-cell {
-      padding: 1.8rem 1.6rem;
-      border-right: 1px solid var(--rule);
-      transition: border-color 0.4s;
-    }
-    .stat-cell:last-child { border-right: none; }
-    .stat-num { font-family: var(--serif); font-size: 2.8rem; font-weight: 300; line-height: 1; }
-    .stat-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; }
-    .stat-sub { font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem; }
+/* ── BAR CHART (CSS) ── */
+.bar-chart { max-width: 680px; }
+.bar-row {
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;
+}
+.bar-name {
+  font-family: var(--mono); font-size: 0.57rem; width: 90px;
+  flex-shrink: 0; color: var(--ink3); text-align: right;
+}
+.bar-track {
+  flex: 1; height: 24px; background: var(--bg3); position: relative;
+}
+.bar-fill {
+  height: 100%; display: flex; align-items: center; padding-left: 8px;
+  font-family: var(--mono); font-size: 0.57rem; font-weight: 400;
+  white-space: nowrap; color: var(--bg);
+  transition: width 0.7s cubic-bezier(.4,0,.2,1);
+}
+[data-theme="dark"] .bar-fill { color: var(--ink); }
 
-    /* ── BAR ROWS ── */
-    .bar-list { display: flex; flex-direction: column; gap: 0; }
-    .bar-row { display: grid; grid-template-columns: 150px 1fr 80px; gap: 1rem; align-items: center; padding: 0.55rem 0; border-bottom: 1px solid var(--rule); transition: border-color 0.4s; }
-    .bar-name { font-size: 0.75rem; color: var(--muted); text-align: right; }
-    .bar-track { height: 20px; background: var(--surface); position: relative; overflow: hidden; transition: background 0.4s; }
-    .bar-fill { height: 100%; display: flex; align-items: center; padding-left: 8px; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.04em; white-space: nowrap; }
-    .bar-unit { font-size: 0.7rem; color: var(--muted); }
+/* ── PROGRAMME CARDS ── */
+.prog-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+  margin-bottom: 2.5rem;
+}
+.prog-card {
+  background: var(--bg); padding: 2rem 1.75rem;
+  position: relative; overflow: hidden;
+  transition: background var(--t);
+}
+.prog-card:hover { background: var(--bg2); }
+.prog-card::after {
+  content: attr(data-year);
+  position: absolute; right: 1rem; top: 0.75rem;
+  font-family: var(--serif); font-size: 4rem; font-weight: 400;
+  color: var(--rule); line-height: 1; pointer-events: none;
+  transition: color var(--t);
+}
+.prog-year {
+  font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;
+}
+.prog-name {
+  font-family: var(--serif); font-size: 1.3rem; font-weight: 400;
+  color: var(--ink); margin-bottom: 0.75rem; line-height: 1.3;
+}
+.prog-desc {
+  font-size: 0.85rem; color: var(--ink3); line-height: 1.7; margin-bottom: 1rem;
+}
+.prog-result {
+  padding-top: 0.9rem; border-top: 1px solid var(--rule);
+  font-size: 0.82rem; color: var(--accent2); line-height: 1.65;
+}
+.prog-result::before { content: '→ '; color: var(--gold); }
 
-    /* ── GRID LAYOUTS ── */
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border: 1px solid var(--rule); transition: border-color 0.4s; }
-    .grid-3-cell {
-      padding: 2rem;
-      border-right: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-      transition: border-color 0.4s;
-    }
-    .grid-3-cell:nth-child(3n) { border-right: none; }
-    .grid-3-cell:nth-last-child(-n+3) { border-bottom: none; }
-    .cell-tag { font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--india); margin-bottom: 0.6rem; }
-    .cell-tag.china { color: var(--china); }
-    .cell-tag.neutral { color: var(--muted); }
-    .cell-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; margin-bottom: 0.6rem; line-height: 1.3; }
-    .cell-body { font-size: 0.82rem; color: var(--muted); line-height: 1.75; }
+/* ── TIMELINE ── */
+.timeline-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.tl-wrap { position: relative; padding-left: 1.5rem; }
+.tl-wrap::before {
+  content: ''; position: absolute; left: 5px; top: 0; bottom: 0;
+  width: 1px; background: var(--rule);
+}
+.tl-item { position: relative; margin-bottom: 1.5rem; }
+.tl-dot {
+  position: absolute; left: -19px; top: 4px; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--bg2); border: 1px solid var(--rule);
+  transition: background var(--t);
+}
+.tl-dot.hot { background: var(--gold); border-color: var(--gold); }
+.tl-yr {
+  font-family: var(--mono); font-size: 0.57rem; color: var(--gold);
+  letter-spacing: 0.08em; margin-bottom: 0.2rem;
+}
+.tl-txt { font-size: 0.85rem; color: var(--ink3); line-height: 1.65; }
+.tl-txt strong { color: var(--ink2); font-weight: 500; }
 
-    /* ── TIMELINE ── */
-    .timeline { position: relative; padding-left: 1.4rem; }
-    .timeline::before { content: ''; position: absolute; left: 5px; top: 0; bottom: 0; width: 1px; background: var(--rule); transition: background 0.4s; }
-    .tl-item { position: relative; margin-bottom: 1.8rem; opacity: 0; transform: translateY(14px); transition: opacity 0.5s, transform 0.5s; }
-    .tl-item.visible { opacity: 1; transform: translateY(0); }
-    .tl-dot { position: absolute; left: -1.1rem; top: 5px; width: 8px; height: 8px; border-radius: 50%; background: var(--surface); border: 1px solid var(--muted); transition: background 0.4s; }
-    .tl-dot.key { background: var(--india); border-color: var(--india); }
-    .tl-dot.china { background: var(--china); border-color: var(--china); }
-    .tl-yr { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--india); margin-bottom: 0.2rem; }
-    .tl-yr.china { color: var(--china); }
-    .tl-yr.neutral { color: var(--muted); }
-    .tl-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 400; margin-bottom: 0.3rem; }
-    .tl-body { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+/* ── TABLE ── */
+.table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+thead th {
+  font-family: var(--mono); font-size: 0.52rem; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 0.7rem 0.85rem;
+  background: var(--bg3); color: var(--ink3); text-align: left;
+  border-bottom: 1px solid var(--rule);
+  transition: background var(--t);
+}
+tbody td {
+  padding: 0.65rem 0.85rem; border-bottom: 1px solid var(--rule);
+  color: var(--ink2); vertical-align: top;
+}
+tbody tr:hover td { background: var(--bg2); }
+tbody tr:last-child td { border-bottom: none; }
+.flag { font-size: 1rem; margin-right: 0.35rem; }
+.tag {
+  display: inline-block; padding: 0.1rem 0.45rem;
+  font-family: var(--mono); font-size: 0.52rem; letter-spacing: 0.06em;
+  border: 1px solid currentColor; border-radius: 2px;
+}
 
-    /* ── EXP ITEM STYLE (mirrors your site) ── */
-    .exp-item {
-      display: grid; grid-template-columns: 170px 1fr; gap: 2rem;
-      padding: 2.2rem 0; border-bottom: 1px solid var(--rule);
-      opacity: 0; transform: translateY(18px);
-      transition: opacity 0.55s, transform 0.55s, border-color 0.4s;
-    }
-    .exp-item.visible { opacity: 1; transform: translateY(0); }
-    .exp-date { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.04em; padding-top: 0.2rem; line-height: 1.5; }
-    .exp-org { font-size: 0.68rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--india); margin-bottom: 0.25rem; }
-    .exp-org.china { color: var(--china); }
-    .exp-org.neutral { color: var(--muted); }
-    .exp-role { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; margin-bottom: 0.7rem; }
-    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
-    .exp-bullets li { font-size: 0.85rem; color: var(--muted); padding-left: 1rem; position: relative; }
-    .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--rule); }
+/* ── MISSING/GAPS GRID ── */
+.miss-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+  margin-bottom: 2.5rem;
+}
+.miss-card {
+  background: var(--bg); padding: 1.75rem; border-top: 2px solid var(--china);
+  transition: background var(--t);
+}
+.miss-card:hover { background: var(--bg2); }
+.miss-title {
+  font-family: var(--serif); font-size: 1.1rem; font-weight: 400;
+  color: var(--ink); margin-bottom: 0.6rem;
+}
+.miss-desc { font-size: 0.82rem; color: var(--ink3); line-height: 1.7; }
+.miss-example {
+  font-family: var(--mono); font-size: 0.55rem; color: var(--gold);
+  margin-top: 0.65rem; letter-spacing: 0.06em;
+}
 
-    /* ── CALLOUT / PULL QUOTE ── */
-    .callout {
-      border-left: 2px solid var(--india);
-      padding: 1.2rem 1.8rem;
-      margin: 2.5rem 0;
-      background: var(--india-light);
-      transition: background 0.4s;
-    }
-    .callout.china { border-left-color: var(--china); background: var(--china-light); }
-    .callout.neutral { border-left-color: var(--muted); background: transparent; }
-    .callout p { font-size: 0.88rem; color: var(--muted); line-height: 1.8; }
-    .callout p strong { color: var(--ink); font-weight: 500; }
+/* ── PRESCRIPTION LIST ── */
+.prescription {
+  background: var(--bg2); border: 1px solid var(--rule);
+  border-left: 3px solid var(--india); padding: 2rem 2rem;
+  margin: 2.5rem 0;
+  transition: background var(--t);
+}
+.prescription-title {
+  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--india); margin-bottom: 1rem;
+}
+.prescription ol {
+  padding-left: 1.5rem;
+  font-family: var(--serif); font-size: 1.02rem; font-weight: 300;
+  line-height: 1.85; color: var(--ink2);
+}
+.prescription ol li { margin-bottom: 0.5rem; }
+.prescription ol li strong { font-weight: 500; color: var(--ink); }
 
-    /* ── PULL QUOTE (big serif) ── */
-    .pull-quote {
-      font-family: var(--serif);
-      font-size: clamp(1.3rem, 2.5vw, 2rem);
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.4;
-      color: var(--ink);
-      border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-      padding: 2rem 0;
-      margin: 3rem 0;
-      max-width: 700px;
-      transition: border-color 0.4s, color 0.4s;
-    }
-    .pull-quote span { color: var(--india); }
+/* ── SOURCES ── */
+.further-reading {
+  background: var(--bg2); border: 1px solid var(--rule);
+  padding: 1.75rem; margin-top: 2rem;
+  transition: background var(--t);
+}
+.fr-title {
+  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink3); margin-bottom: 1rem;
+}
+.fr-list {
+  list-style: none; padding: 0;
+  font-size: 0.82rem; color: var(--ink3); line-height: 2;
+}
+.fr-list li::before { content: '— '; color: var(--rule); }
 
-    /* ── TABLE ── */
-    .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
-    thead th {
-      font-size: 0.66rem; letter-spacing: 0.13em; text-transform: uppercase;
-      padding: 0.8rem 1rem; border-bottom: 2px solid var(--ink);
-      text-align: left; color: var(--muted); background: transparent;
-      transition: border-color 0.4s;
-    }
-    tbody td { padding: 0.8rem 1rem; border-bottom: 1px solid var(--rule); color: var(--muted); transition: border-color 0.4s; }
-    tbody td strong { color: var(--ink); font-weight: 500; }
-    tbody tr:hover td { color: var(--ink); }
-    .tag {
-      display: inline-block; padding: 0.15rem 0.55rem;
-      font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
-      border: 1px solid currentColor; border-radius: 1px;
-    }
+/* ── PULL QUOTE ── */
+.pull-quote {
+  border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink);
+  padding: 3rem 0; margin: 3rem 0; text-align: center;
+  background: var(--bg2); transition: background var(--t), border-color var(--t);
+}
+.pull-quote blockquote {
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(1.2rem, 2.4vw, 1.75rem); font-weight: 300;
+  line-height: 1.5; color: var(--ink2);
+  max-width: 700px; margin: 0 auto 1rem; padding: 0 2rem;
+}
+.pull-quote cite {
+  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--ink3); font-style: normal;
+}
 
-    /* ── SKILL BLOCKS (mirrors your site) ── */
-    .skill-block-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
-    .skill-block { padding: 2rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); transition: border-color 0.4s; }
-    .skill-block:nth-child(3n) { border-right: none; }
-    .skill-block:nth-last-child(-n+3) { border-bottom: none; }
-    .skill-block-title { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--india); margin-bottom: 0.9rem; }
-    .skill-block ul { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
-    .skill-block ul li { font-size: 0.83rem; color: var(--muted); }
-    .skill-block ul li strong { color: var(--ink); font-weight: 500; }
+/* ── SUBSCRIBE BAND ── */
+.subscribe-band {
+  background: var(--accent); padding: 3rem 2rem; text-align: center;
+  transition: background var(--t);
+}
+.subscribe-band h3 {
+  font-family: var(--serif); font-size: 1.6rem; font-style: italic;
+  font-weight: 300; color: #fff; margin-bottom: 0.5rem;
+}
+.subscribe-band p { font-size: 0.82rem; color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; }
+.subscribe-cta {
+  display: inline-block; font-family: var(--mono); font-size: 0.62rem;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+  background: #fff; padding: 0.7rem 1.75rem; border-radius: 4px;
+  transition: opacity var(--t);
+}
+.subscribe-cta:hover { opacity: 0.85; }
 
-    /* ── FOOTER ── */
-    footer {
-      padding: 1.8rem 4rem;
-      border-top: 1px solid var(--rule);
-      display: flex; justify-content: space-between; align-items: center;
-      transition: border-color 0.4s;
-    }
-    footer p { font-size: 0.73rem; color: var(--muted); letter-spacing: 0.04em; }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--ink); }
+/* ── FOOTER ── */
+footer {
+  background: var(--bg2); border-top: 1px solid var(--rule);
+  padding: 1.5rem 2rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  transition: background var(--t), border-color var(--t);
+}
+.footer-logo { font-family: var(--serif); font-style: italic; font-size: 0.9rem; color: var(--ink3); }
+.footer-mono {
+  font-family: var(--mono); font-size: 0.53rem;
+  letter-spacing: 0.1em; color: var(--ink3); text-transform: uppercase;
+}
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+/* ── BACK TO TOP ── */
+.back-top {
+  position: fixed; bottom: 1.5rem; right: 1.5rem;
+  background: var(--bg); border: 1px solid var(--rule);
+  padding: 0.6rem 0.85rem;
+  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink3); cursor: pointer;
+  z-index: 50; border-radius: 4px; transition: background var(--t), opacity var(--t);
+  opacity: 0;
+}
+.back-top.visible { opacity: 1; }
+.back-top:hover { background: var(--bg2); }
 
-    /* ── DIVIDER ── */
-    .divider { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; transition: border-color 0.4s; }
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .grid-2 { grid-template-columns: 1fr; gap: 2rem; }
-      .grid-3 { grid-template-columns: 1fr; }
-      .grid-3-cell { border-right: none; }
-      .skill-block-grid { grid-template-columns: 1fr; }
-      .skill-block { border-right: none; }
-      .skill-block:nth-last-child(-n+3) { border-bottom: 1px solid var(--rule); }
-      .skill-block:last-child { border-bottom: none; }
-      .bar-row { grid-template-columns: 110px 1fr 60px; }
-      .stat-strip { grid-template-columns: repeat(2, 1fr); }
-      .stat-cell { border-right: none; border-bottom: 1px solid var(--rule); }
-      .stat-cell:last-child { border-bottom: none; }
-    }
-    @media (max-width: 640px) {
-      .top-bar, nav { padding-left: 1.5rem; padding-right: 1.5rem; }
-      #hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
-      nav { top: 36px; }
-      .exp-item { grid-template-columns: 1fr; gap: 0.4rem; }
-      .nav-links { display: none; }
-      .bar-row { grid-template-columns: 80px 1fr 50px; }
-      .bar-name { font-size: 0.66rem; }
-      footer { flex-direction: column; gap: 0.4rem; text-align: center; }
-    }
-  </style>
+/* ── RESPONSIVE ── */
+@media (max-width: 920px) {
+  .hero-thesis { grid-template-columns: 1fr; gap: 2.5rem 0; }
+  .hero-divider-v { display: none; }
+  .prog-grid { grid-template-columns: 1fr; }
+  .timeline-cols { grid-template-columns: 1fr; gap: 0; }
+  .miss-grid { grid-template-columns: 1fr; }
+  .stat-row { grid-template-columns: 1fr; }
+  .header-nav { display: none; }
+}
+@media (max-width: 600px) {
+  .header-inner { padding: 0 1.25rem; }
+  .article-masthead { padding: 3.5rem 1.25rem 3rem; }
+  .article-wrap { padding: 0 1.25rem; }
+  .bar-name { width: 70px; font-size: 0.52rem; }
+  footer { flex-direction: column; text-align: center; padding: 1.5rem 1.25rem; }
+  .subscribe-band { padding: 2.5rem 1.25rem; }
+}
+</style>
 </head>
 <body>
 
-  <!-- TOP BAR -->
-  <div class="top-bar">
-    <span class="top-bar-left">
-      <a href="https://mattterthathinks.github.io">← Matter That Thinks</a>
-      &nbsp;/&nbsp; India vs China
-    </span>
-    <div class="top-bar-right">
-      <span class="mode-label" id="modeLabel">Light</span>
-      <div class="toggle-track" id="darkToggle" title="Toggle dark mode">
-        <div class="toggle-thumb"></div>
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="https://matterthathinks.github.io" class="logo">Matter That <em>Thinks</em></a>
+    <nav class="header-nav">
+      <a href="https://matterthathinks.github.io#essays">Essays</a>
+      <a href="https://matterthathinks.github.io#archive">Archive</a>
+      <a href="https://matterthathinks.github.io#about">About</a>
+    </nav>
+    <div class="header-right">
+      <a href="https://matterthathinks.substack.com" target="_blank" class="substack-btn">Subscribe</a>
+      <button class="theme-toggle" id="themeBtn" aria-label="Toggle dark mode">
+        <svg id="themeIcon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ARTICLE MASTHEAD -->
+<div class="article-masthead">
+  <div class="masthead-eyebrow">Ashutosh Nayak &nbsp;·&nbsp; Economics &amp; Policy</div>
+  <div class="article-number">006</div>
+  <div class="article-cat">Development &amp; Science Policy</div>
+  <h1 class="article-title">The <em>Development</em> Divergence</h1>
+  <p class="article-dek">India and China started at near-identical economic positions. Today China's GDP per capita is 5× higher. What happened — and what can India still do? Based on Prof. V.S. Ramamurthy's lecture.</p>
+  <div class="article-meta">
+    <span class="meta-item">By <span>Ashutosh Nayak</span></span>
+    <span class="meta-item">April 2026</span>
+    <span class="meta-item">Reading Notes &amp; Data</span>
+  </div>
+</div>
+
+<!-- SECTION NAV -->
+<nav class="section-nav">
+  <div class="section-nav-inner">
+    <button class="snav-tab active" data-sec="hero">Overview</button>
+    <button class="snav-tab" data-sec="gdp">GDP Story</button>
+    <button class="snav-tab" data-sec="programs">China's Playbook</button>
+    <button class="snav-tab" data-sec="rd">R&amp;D</button>
+    <button class="snav-tab" data-sec="output">Publications</button>
+    <button class="snav-tab" data-sec="grads">Graduates</button>
+    <button class="snav-tab" data-sec="energy">Energy</button>
+    <button class="snav-tab" data-sec="institutions">Institutions</button>
+    <button class="snav-tab" data-sec="missing">What India Missed</button>
+    <button class="snav-tab" data-sec="sources">Sources</button>
+  </div>
+</nav>
+
+<!-- ═══ CONTENT ═══ -->
+<div class="article-wrap">
+
+  <!-- ═══ HERO / OVERVIEW ═══ -->
+  <div id="sec-hero" class="article-section active">
+    <div class="hero-thesis">
+      <div class="thesis-main">
+        <div class="sec-eyebrow">The Core Thesis</div>
+        <h2 class="sec-title">From parity <em>to a 5× gap</em> in fifty years</h2>
+        <p class="sec-desc">In 1947–49, India and China reset together — same colonial shadows, same broken economies, near-identical GDP per capita. By 2024, China is the world's largest economy by PPP. India is third. The gap between them in per-capita terms is roughly 2.5×. This divergence was not inevitable.</p>
+        <div class="thesis-box">
+          <strong>The Core Thesis:</strong> China made a series of deliberate, sequenced interventions — Programme 863, TORCH, Project 211, Project 985, Double First Class — building institutions, R&amp;D infrastructure, and innovation ecosystems across four decades. India, despite producing world-class engineers and scientists, underinvested in the <em>system</em> around talent: incubators, research funding, elite institutions, and science-industry linkages.
+          <br><br>
+          This is not a failure of talent. India has produced Nobel laureates, Turing Award winners, and the CEOs of most of the world's largest tech companies. It is a failure of <em>institution-building</em> — of creating the scaffolding that turns individual brilliance into collective capability.
+        </div>
+      </div>
+
+      <div class="hero-divider-v"></div>
+
+      <aside class="hero-sidebar-h">
+        <div class="sidebar-label-h">Key numbers</div>
+        <div class="key-figure">
+          <div class="kf-num">5×</div>
+          <div class="kf-label">China–India GDP per capita gap</div>
+          <div class="kf-sub">from near-parity in 1990</div>
+        </div>
+        <div class="key-figure">
+          <div class="kf-num">2.6%</div>
+          <div class="kf-label">China R&amp;D as % of GDP (2023)</div>
+          <div class="kf-sub">India: 0.65% — unchanged for 20 yrs</div>
+        </div>
+        <div class="key-figure">
+          <div class="kf-num">11,000</div>
+          <div class="kf-label">China's technology incubators</div>
+          <div class="kf-sub">India: ~950 incubators</div>
+        </div>
+        <div class="key-figure">
+          <div class="kf-num">253</div>
+          <div class="kf-label">India's researchers per million</div>
+          <div class="kf-sub">China: 1,600 · Korea: 8,714</div>
+        </div>
+        <div class="key-figure">
+          <div class="kf-num">1980</div>
+          <div class="kf-label">India's GDP (PPP) was larger than China's</div>
+          <div class="kf-sub">$383B vs $306B — India was ahead</div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="pull-quote">
+      <blockquote>"The problem India faces is not the absence of talent. It is the absence of systems that retain, scale, and leverage that talent inside India's borders."</blockquote>
+      <cite>— Paraphrase of V.S. Ramamurthy's core argument</cite>
+    </div>
+
+    <p style="font-family:var(--serif);font-size:1.05rem;line-height:1.85;color:var(--ink2);max-width:740px;font-weight:300;">Use the navigation bar above to explore each dimension — GDP, China's programmatic interventions, R&amp;D investment, research output, human capital, energy, institutions, and the lessons India can still act on. Every chart is grounded in publicly available data from IMF, World Bank, OECD, UNESCO, and NSF.</p>
+  </div>
+
+  <!-- ═══ GDP ═══ -->
+  <div id="sec-gdp" class="article-section">
+    <div class="sec-eyebrow">Chapter 01 — Economy</div>
+    <h2 class="sec-title">From parity to a <em>5× gap:</em><br>The GDP divergence</h2>
+    <p class="sec-desc">In 1980, India's GDP (PPP) was actually larger than China's. By 2024, China's economy is roughly 5× bigger in PPP terms and 2.5× larger per capita. Prof. Ramamurthy opened his lecture with this single fact.</p>
+
+    <div class="stat-row">
+      <div class="stat-card china">
+        <div class="stat-num">$35T</div>
+        <div class="stat-label">China GDP PPP 2024</div>
+        <div class="stat-sub">World's largest economy by PPP</div>
+      </div>
+      <div class="stat-card india">
+        <div class="stat-num">$15T</div>
+        <div class="stat-label">India GDP PPP 2024</div>
+        <div class="stat-sub">3rd largest economy by PPP</div>
+      </div>
+      <div class="stat-card neutral">
+        <div class="stat-num">5×</div>
+        <div class="stat-label">China/India GDP per capita gap</div>
+        <div class="stat-sub">from near-parity in 1990</div>
+      </div>
+    </div>
+
+    <div class="subtabs">
+      <button class="stab active" onclick="showSub('gdp','nominal',this)">GDP PPP (Total)</button>
+      <button class="stab" onclick="showSub('gdp','percap',this)">GDP Per Capita</button>
+      <button class="stab" onclick="showSub('gdp','growth',this)">Growth Rate</button>
+    </div>
+
+    <div id="gdp-nominal" class="spanel active">
+      <div class="chart-wrap">
+        <div class="chart-label">GDP PPP, current international $ (Trillions) — 1980 to 2024</div>
+        <canvas id="gdpChart" height="360"></canvas>
+        <div class="chart-source">Sources: IMF World Economic Outlook (April 2026), World Bank WDI. China and India were at rough parity in PPP terms around 1980.</div>
+      </div>
+      <div class="callout">In 1980, <strong>India's GDP (PPP) was $383B vs China's $306B</strong>. India was ahead. China's post-1978 reforms and WTO accession in 2001 created the enormous gap we see today. India's liberalization came in 1991 — 13 years later.</div>
+    </div>
+
+    <div id="gdp-percap" class="spanel">
+      <div class="chart-wrap">
+        <div class="chart-label">GDP Per Capita, PPP (USD) — Key countries, 1980–2024</div>
+        <canvas id="pcapChart" height="360"></canvas>
+        <div class="chart-source">Sources: IMF WEO April 2026, World Bank. Both India and China were near $300–490 PPP per capita in 1980.</div>
+      </div>
+      <div class="callout"><strong>The inflection point:</strong> China and India were within $100 of each other per capita until ~1991. China's per-capita then grew 10× faster. Singapore went from developing-nation income to $130,000+ PPP per capita — the most dramatic transformation story of all.</div>
+    </div>
+
+    <div id="gdp-growth" class="spanel">
+      <div class="chart-wrap">
+        <div class="chart-label">Average Annual GDP Growth Rate (%) — Decade by Decade</div>
+        <canvas id="growthChart" height="340"></canvas>
+        <div class="chart-source">Source: World Bank WDI. China grew 10%+ in 22 of 63 years since 1961; India never once crossed 10%.</div>
       </div>
     </div>
   </div>
 
-  <!-- NAV -->
-  <nav id="nav">
-    <a href="#hero" class="nav-logo">The Development Divergence</a>
-    <ul class="nav-links">
-      <li><a href="#gdp">GDP</a></li>
-      <li><a href="#state">State Capacity</a></li>
-      <li><a href="#programs">Programmes</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#industry">Industry</a></li>
-      <li><a href="#infrastructure">Infrastructure</a></li>
-      <li><a href="#missed">What India Missed</a></li>
-      <li><a href="#sources">Sources</a></li>
-    </ul>
-  </nav>
+  <!-- ═══ PROGRAMS ═══ -->
+  <div id="sec-programs" class="article-section">
+    <div class="sec-eyebrow">Chapter 02 — China's Playbook</div>
+    <h2 class="sec-title">Four critical interventions <em>that changed everything</em></h2>
+    <p class="sec-desc">Prof. Ramamurthy highlighted four landmark programmes. Each one targeted a different link in the innovation chain — from basic R&amp;D, to commercialization, to elite universities, to world-class institutions. India had no comparable systematic response.</p>
 
-  <!-- ══════════════ HERO ══════════════ -->
-  <section id="hero" style="padding-top: 120px; border: none;">
-    <div class="hero-bg-text">Divergence</div>
-    <p class="hero-eyebrow">India · China · Development Economics</p>
-    <h1>Why China<br><em>Succeeded</em><br>and what<br>India can learn</h1>
-    <p class="hero-desc">
-      In 1980, India's economy (PPP) was larger than China's. By 2024, China's GDP is 5× bigger. 
-      This is a comprehensive, data-driven attempt to understand why — 
-      and what India can still do about it.
-    </p>
-    <div class="hero-links">
-      <a href="#state" class="btn solid">Start Reading</a>
-      <a href="#sources" class="btn">Sources →</a>
-    </div>
-  </section>
-
-  <!-- ══════════════ 01 · GDP STORY ══════════════ -->
-  <section id="gdp">
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <h2>The GDP Divergence</h2>
-    </div>
-    <p class="section-lead">
-      China and India started from near-identical economic positions at independence. 
-      The gap that opened between them is not a story of luck — it is a story of choices, 
-      institutions, and the capacity to execute.
-    </p>
-
-    <div class="stat-strip">
-      <div class="stat-cell">
-        <div class="stat-num" style="color:var(--china);">$35T</div>
-        <div class="stat-label">China GDP PPP 2024</div>
-        <div class="stat-sub">World's largest by PPP</div>
+    <div class="prog-grid">
+      <div class="prog-card" data-year="863">
+        <div class="prog-year">Programme 863 · March 1986</div>
+        <div class="prog-name">State High-Tech R&amp;D Plan</div>
+        <div class="prog-desc">Four scientists — Wang Daheng, Wang Ganchang, Yang Jiachi, Chen Fangyun — wrote to Deng Xiaoping warning that China was falling behind the global tech revolution. Deng approved it within 48 hours. The programme targeted 7 fields: biology, aerospace, IT, lasers, automation, energy, new materials. Initial government fund: 10 billion RMB (5% of all government spending in 1986). Inspired by Reagan's Strategic Defense Initiative.</div>
+        <div class="prog-result">120,000+ research papers, 8,000+ patents, 1,800+ national industry standards over 20 years. Provided the R&amp;D backbone for China's later tech industries. Merged into National Key R&amp;D Program in 2016.</div>
       </div>
-      <div class="stat-cell">
-        <div class="stat-num" style="color:var(--india);">$15T</div>
-        <div class="stat-label">India GDP PPP 2024</div>
-        <div class="stat-sub">3rd largest by PPP</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num">5×</div>
-        <div class="stat-label">Per-capita gap</div>
-        <div class="stat-sub">From near-parity in 1990</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num" style="color:var(--china);">22</div>
-        <div class="stat-label">Years China grew 10%+</div>
-        <div class="stat-sub">India: zero such years</div>
-      </div>
-    </div>
 
-    <div class="chart-wrap">
-      <div class="chart-label">GDP PPP — Trillions USD · 1980 to 2024</div>
-      <div class="legend-row" id="gdp-leg"></div>
-      <canvas id="gdpChart" height="340"></canvas>
-      <p class="chart-source">Sources: IMF World Economic Outlook April 2026; World Bank WDI. In 1980, India's GDP (PPP) $383B actually exceeded China's $306B.</p>
-    </div>
-
-    <div class="chart-wrap">
-      <div class="chart-label">GDP Per Capita PPP — USD · 1980 to 2024</div>
-      <div class="legend-row" id="pcap-leg"></div>
-      <canvas id="pcapChart" height="300"></canvas>
-      <p class="chart-source">Sources: IMF WEO April 2026. Both India and China were within $100 of each other per capita in 1980. Singapore's trajectory shows what is possible with the right institutions.</p>
-    </div>
-
-    <div class="pull-quote">
-      "Both India and China were near-identical in per-capita income in 1980. <span>The difference was not resources — it was the capacity and will to deploy them systematically.</span>"
-    </div>
-
-    <div class="grid-2">
-      <div>
-        <h3 style="font-family:var(--serif);font-size:1.4rem;font-weight:400;margin-bottom:1.2rem;">India's path</h3>
-        <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-dot key"></div>
-            <div class="tl-yr">1947</div>
-            <div class="tl-title">Independence with colonial institutions</div>
-            <div class="tl-body">Inherited civil service, legal system, some railways. But also inherited deep underdevelopment, low literacy, and weak state manufacturing capacity.</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot key"></div>
-            <div class="tl-yr">1950s–70s</div>
-            <div class="tl-title">Nehruvian socialism — heavy industry focus</div>
-            <div class="tl-body">PSUs, IITs, steel plants. "Commanding heights" model. License Raj constrains private enterprise. Manufacturing stagnates despite intent.</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot key"></div>
-            <div class="tl-yr">1991</div>
-            <div class="tl-title">Liberalisation — 13 years after China</div>
-            <div class="tl-body">Balance-of-payments crisis forces opening. IT services boom emerges — unplanned, but leveraging India's English and IIT advantages. Services replace manufacturing as growth engine.</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot key"></div>
-            <div class="tl-yr">2000s–present</div>
-            <div class="tl-title">Services-led, job-light growth</div>
-            <div class="tl-body">Strong GDP growth, but manufacturing share stagnant. Millions enter working age with insufficient formal employment. Informality stays above 80%.</div>
-          </div>
-        </div>
+      <div class="prog-card" data-year="88">
+        <div class="prog-year">Programme TORCH · August 1988</div>
+        <div class="prog-name">High-Tech Industrialization &amp; Incubation</div>
+        <div class="prog-desc">Approved by State Council to bridge the gap between lab and market. Created Science and Technology Industrial Parks (STIPs), Technology Business Incubators (TBIs), the Innofund seed-funding scheme, and a Venture Guiding Fund. The first incubator was built in Wuhan in 1987; Shanghai followed in 1988. The programme artificially created clustering — concentrating resources, talent, and capital to a critical threshold. Israel, Singapore and China are cited as the only three nations to successfully create innovation clusters by government design.</div>
+        <div class="prog-result">China now has 11,000–11,800 incubators &amp; accelerators. India has ~950 (2023). China's incubators supported 620,000+ startups in 2018 alone. Created the infrastructure for the Alibaba, Baidu, Tencent era.</div>
       </div>
-      <div>
-        <h3 style="font-family:var(--serif);font-size:1.4rem;font-weight:400;margin-bottom:1.2rem;">China's path</h3>
-        <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-dot china"></div>
-            <div class="tl-yr china">1949</div>
-            <div class="tl-title">Revolution — single-party state capacity</div>
-            <div class="tl-body">Mao's literacy campaigns begin immediately. Local party officials' careers tied to literacy metrics. State can coerce compliance at scale. India lacked this mechanism entirely.</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot china"></div>
-            <div class="tl-yr china">1966–76</div>
-            <div class="tl-title">Cultural Revolution — a genuine setback</div>
-            <div class="tl-body">Universities closed. Intellectuals persecuted. A devastating 10-year interruption to education and research. Yet the mass literacy base built in the 1950s survived.</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot china"></div>
-            <div class="tl-yr china">1978</div>
-            <div class="tl-title">Deng Xiaoping — Four Modernizations</div>
-            <div class="tl-body">Science, technology, industry, and defence as four pillars. Gaokao restored. Economy opens. Crucially: a literate, increasingly educated workforce is already waiting.</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot china"></div>
-            <div class="tl-yr china">1980s–2000s</div>
-            <div class="tl-title">Export manufacturing boom</div>
-            <div class="tl-body">SEZs, factory infrastructure, global supply chain integration. 800 million lifted out of poverty. Manufacturing share of GDP surges to 30%+.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ══════════════ 02 · STATE CAPACITY ══════════════ -->
-  <section id="state">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <h2>The Foundational Argument:<br>State Capacity</h2>
-    </div>
-    <p class="section-lead">
-      Most comparisons focus on what India and China chose to do differently. 
-      The deeper question is what each country was <em>capable</em> of doing. 
-      State capacity — the ability to design, fund, and enforce policy at scale — 
-      is the precondition that made China's programmes possible. It is where the real divergence begins.
-    </p>
+      <div class="prog-card" data-year="211">
+        <div class="prog-year">Project 211 · 1995</div>
+        <div class="prog-name">Strengthen 100 Key Universities</div>
+        <div class="prog-desc">Named for the 21st century and 100 institutions. Goal: "strengthen approximately 100 institutions of higher education and key disciplinary areas as a national priority." Made research universities compete for major government grants, forcing them to build faculty, labs, and infrastructure. Every top Chinese research university of today was shaped by this programme. 112 universities were ultimately included.</div>
+        <div class="prog-result">Completely transformed Chinese higher education quality. Created the pipeline of researchers that produced China's publication explosion in the 2000s–2010s. India had no comparable programme — its IITs received good funding but the ecosystem around them was thin.</div>
+      </div>
 
-    <div class="pull-quote">
-      "India in 1947 lacked the state capacity to run a mass literacy campaign. <span>China had a single-party apparatus willing to coerce compliance.</span> The real comparison is not just policy preference — it is state capacity as a precondition for policy execution."
-    </div>
-
-    <div class="grid-3">
-      <div class="grid-3-cell">
-        <div class="cell-tag china">China's mechanism</div>
-        <div class="cell-title">Political incentives, not ideology</div>
-        <div class="cell-body">What drove China's mass education was not communist ideology alone — it was <strong>fiscal decentralization combined with political accountability</strong>. Under Mao, local party officials' careers literally depended on literacy metrics. Under Deng, the 1986 Compulsory Education Law made local governments financially responsible for 9-year schooling. The incentive structure aligned bureaucratic ambition with education outcomes.</div>
-      </div>
-      <div class="grid-3-cell">
-        <div class="cell-tag">India's constraint</div>
-        <div class="cell-title">Democracy and state fragmentation</div>
-        <div class="cell-body">India's federal, democratic structure — a genuine strength in many ways — made large-scale coercive mobilisation impossible. Centre-state tensions, political competition, and patronage networks meant education policy was inconsistently enforced. The Right to Education Act came in <strong>2009</strong> — 60 years after China's initial literacy drives. Near-universal enrollment was achieved only around 2000, where China reached it by the mid-1980s.</div>
-      </div>
-      <div class="grid-3-cell">
-        <div class="cell-tag neutral">The lesson</div>
-        <div class="cell-title">Execution, not just design</div>
-        <div class="cell-body">India designed good policies — Sarva Shiksha Abhiyan, mid-day meal schemes, RTE. The failure was <strong>delivery</strong>. Teacher absenteeism, infrastructure gaps, and urban-rural quality divides meant enrollment didn't translate to learning. ASER reports consistently show that 50%+ of Class V students cannot read a Class II text. The problem is not intent — it is the pipeline from policy to classroom.</div>
-      </div>
-      <div class="grid-3-cell">
-        <div class="cell-tag china">China's enforcement</div>
-        <div class="cell-title">The 1986 Compulsory Education Law</div>
-        <div class="cell-body">After Deng's 1978 reforms, China enacted the <strong>Compulsory Education Law in 1986</strong>, mandating 9 years of schooling for all children and giving local governments financial responsibility. This combined national mandate with local accountability. Central government could monitor, local officials were responsible, parents had legal standing. The mechanism worked.</div>
-      </div>
-      <div class="grid-3-cell">
-        <div class="cell-tag">India's trajectory</div>
-        <div class="cell-title">Late, uneven progress</div>
-        <div class="cell-body">India's primary enrollment rate in 1950 was ~43%. China's was similar — but China made universal basic education a state mobilization goal from 1949. By 1978, when China opened its economy, it had a <strong>literate, trainable workforce</strong> ready to staff factories. India was still catching up in basic literacy when its own economic opening arrived in 1991. The workforce wasn't ready the same way.</div>
-      </div>
-      <div class="grid-3-cell">
-        <div class="cell-tag neutral">The nuance</div>
-        <div class="cell-title">Neither model is simply "better"</div>
-        <div class="cell-body">China's authoritarian capacity enabled rapid execution but also produced disasters (Great Leap Forward, Cultural Revolution). India's democracy is slower but more resilient and corrective. The question is whether India can find <strong>democratic mechanisms for high-execution governance</strong> — as South Korea and Taiwan eventually did within their own political trajectories.</div>
-      </div>
-    </div>
-
-    <div class="callout neutral">
-      <p><strong>The sharpest question:</strong> Was India's choice really a choice, or a constraint? India in 1947 lacked the state capacity to run a mass literacy campaign. China had a single-party apparatus. The real comparison is not just policy preference — it's state capacity as a precondition for policy execution. Critiquing India's choices without acknowledging this asymmetry is unfair. Ignoring it is also misleading.</p>
-    </div>
-  </section>
-
-  <!-- ══════════════ 03 · PROGRAMMES ══════════════ -->
-  <section id="programs">
-    <div class="section-header">
-      <span class="section-num">03</span>
-      <h2>Programmes, Policies<br>and Deliberate Bets</h2>
-    </div>
-    <p class="section-lead">
-      From the 1950s onward, China made a series of sequenced, compounding investments in science, technology, and industry. 
-      India made some good bets (IITs, ISRO, DAE) but missed the connective tissue between them — 
-      the programmes that link research to commercialisation, and education to employment.
-    </p>
-
-    <div class="exp-item">
-      <span class="exp-date">China · 1956</span>
-      <div>
-        <p class="exp-org china">12-Year Science & Technology Plan</p>
-        <p class="exp-role">The first strategic S&T roadmap</p>
-        <ul class="exp-bullets">
-          <li>China's first national S&T plan identified 57 key tasks including atomic energy, electronics, and jet propulsion — 8 years before India had an equivalent framework.</li>
-          <li>Crucially, it framed scientific development as a <em>state security and development priority</em>, not merely an academic exercise.</li>
-          <li>India had the 1958 Science Policy Resolution (Nehru) but lacked comparable institutional follow-through and execution machinery.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="exp-item">
-      <span class="exp-date">China · March 1986</span>
-      <div>
-        <p class="exp-org china">Programme 863 — State High-Tech R&D Plan</p>
-        <p class="exp-role">Seven fields, one letter, a transformed nation</p>
-        <ul class="exp-bullets">
-          <li>Four scientists wrote to Deng Xiaoping warning that China was falling behind the global tech revolution. Deng approved the programme within 48 hours. Named for its date: March (3rd month) 1986.</li>
-          <li>Targeted 7 fields: biology, aerospace, information technology, lasers, automation, energy, new materials. Marine technology added 1996. Initial fund: 10 billion RMB — 5% of all government spending that year.</li>
-          <li>Inspired by Reagan's Strategic Defense Initiative. Over 20 years: 120,000+ research papers, 8,000+ patents, 1,800+ national industry standards.</li>
-          <li>India had no equivalent systematic high-tech R&D programme at this scale in this period.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="exp-item">
-      <span class="exp-date">China · August 1988</span>
-      <div>
-        <p class="exp-org china">Programme TORCH — Industrialisation & Incubation</p>
-        <p class="exp-role">The programme that built China's startup infrastructure</p>
-        <ul class="exp-bullets">
-          <li>Approved by State Council to bridge lab and market: created Science and Technology Industrial Parks (STIPs), Technology Business Incubators (TBIs), Innofund seed capital, and a Venture Guiding Fund.</li>
-          <li>The first incubator was built in Wuhan (1987), Shanghai followed (1988). The idea: <em>artificially create clustering</em> by concentrating resources, talent, and capital to a critical threshold.</li>
-          <li>Result: China now has 11,000+ incubators and accelerators. India has ~950 (2023). India's Startup India programme — the closest equivalent — came in <strong>2016, 28 years later</strong>.</li>
-          <li>Israel, Singapore and China are cited as the only three countries to successfully create innovation clusters by deliberate government design.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="exp-item">
-      <span class="exp-date">China · 1995 / 1998</span>
-      <div>
-        <p class="exp-org china">Project 211 & Project 985 — World-Class Universities</p>
-        <p class="exp-role">Building the top of the pyramid, deliberately</p>
-        <ul class="exp-bullets">
-          <li><strong>Project 211 (1995)</strong>: Named for the 21st century and 100 institutions. Made research universities compete for major government grants, forcing them to build faculty, labs, and infrastructure. 112 universities ultimately included.</li>
-          <li><strong>Project 985 (1998)</strong>: Jiang Zemin declared China must have "world-class universities." Started with 9 (C9 League = China's Ivy League), expanded to 39. Billions poured into faculty, international hiring, and research infrastructure.</li>
-          <li>Then <strong>Double First Class (2015–17)</strong>: 140 universities targeted to become world-class by 2050. China overtook the USA in Nature Index natural-sciences output in 2022.</li>
-          <li>Crucially: China did this <em>while maintaining mass primary education</em>. India built IITs but without the same simultaneous investment in the layer beneath them.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="exp-item">
-      <span class="exp-date">China · 2015</span>
-      <div>
-        <p class="exp-org china">Made in China 2025</p>
-        <p class="exp-role">Industrial upgrading for the next century</p>
-        <ul class="exp-bullets">
-          <li>Targeted 10 strategic sectors: AI, electric vehicles, semiconductors, biotechnology, aerospace, advanced materials, robotics, maritime engineering, rail equipment, agricultural machinery.</li>
-          <li>Explicit goal: move from "factory of the world" to "innovator for the world." Reduce dependence on foreign technology in critical sectors.</li>
-          <li>India's equivalent — National Manufacturing Policy (2011), PLI schemes (2020+) — is more recent and less integrated with a broader innovation ecosystem.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="exp-item">
-      <span class="exp-date">India · 1951–2016</span>
-      <div>
-        <p class="exp-org">India's IIT / IIM / AIIMS programme</p>
-        <p class="exp-role">Building the top — without the full pyramid</p>
-        <ul class="exp-bullets">
-          <li>India's strategy was elite-first: IIT Kharagpur (1951), IIM Calcutta (1961), AIIMS Delhi (1956). By 2000: only 7 IITs, 6 IIMs, 1 AIIMS — a deliberately scarce tier.</li>
-          <li>These institutions created India's global tech reputation, IT sector, and diaspora presence. They were a <em>good bet</em> — not the problem.</li>
-          <li>The failure: India built islands of excellence without simultaneously building the vocational layer, the research-to-market pipeline, or the primary education quality beneath them.</li>
-          <li>Nehru called IIT Kharagpur "a symbol of India, a fine monument of what free India is building." The trickle-down theory of human capital — that elite engineers would lift all boats — was the implicit, ultimately incomplete, assumption.</li>
-        </ul>
+      <div class="prog-card" data-year="985">
+        <div class="prog-year">Project 985 · 1998 → Double First Class · 2015</div>
+        <div class="prog-name">World-Class Universities</div>
+        <div class="prog-desc">Jiang Zemin declared China must have "a number of first-rate universities of international advanced level." 9 universities initially (C9 League = China's Ivy League), expanding to 39. Then Double First Class (2015/2017): 140 universities targeted to become world-class by 2050. Billions poured into faculty, labs, international hiring, and research infrastructure.</div>
+        <div class="prog-result">Peking &amp; Tsinghua now rank in global top 15–25. China has 244/1,000 in ARWU 2025 (vs US: 200). China overtook USA in total Nature Index natural-sciences output in 2022.</div>
       </div>
     </div>
 
     <div class="callout">
-      <p><strong>What India's programme list is missing:</strong> A TORCH equivalent (incubators, STIPs, commercialisation pipeline). A Project 211 equivalent (systematic funding of 100+ universities). A vocational education strategy tied to industrial demand. These are not gaps in elite education — they are gaps in the <em>ecosystem around</em> elite education.</p>
-    </div>
-  </section>
-
-  <!-- ══════════════ 04 · EDUCATION & HUMAN CAPITAL ══════════════ -->
-  <section id="education">
-    <div class="section-header">
-      <span class="section-num">04</span>
-      <h2>Education &amp; Human Capital:<br>The Full Pyramid</h2>
-    </div>
-    <p class="section-lead">
-      Development economists think of human capital as a pyramid: a broad base of basic literacy, 
-      a middle tier of vocational and technical skills, and a narrow top of elite researchers and innovators. 
-      India built a strong top. China built the entire pyramid — 
-      and sequenced it bottom-up.
-    </p>
-
-    <div class="pull-quote">
-      "India built <span>islands of excellence in a sea of mediocrity.</span> China built an entire continent."
+      <strong>What India did instead:</strong> India built excellent but scarce institutions (7 IITs by 2000 vs 112 Chinese universities under Project 211). India had no TORCH equivalent — the startup/incubation infrastructure was largely absent until Startup India (2016). India's GERD stayed at 0.6–0.7% of GDP; China's crossed 2.6% by 2023. The key asymmetry was not talent — India produced abundant talent — but the <em>ecosystem to retain and leverage</em> that talent domestically.
     </div>
 
-    <!-- Literacy / basic education -->
-    <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:1rem;">The base: literacy and primary education</h3>
-    <div class="chart-wrap">
-      <div class="chart-label">Youth Literacy Rate (%) — India vs China</div>
-      <div class="bar-list">
-        <div class="bar-row">
-          <div class="bar-name">China (2024)</div>
-          <div class="bar-track"><div class="bar-fill" style="width:99%;background:var(--china);color:#f5f2ed;">~99%</div></div>
-          <div class="bar-unit">youth lit.</div>
+    <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;margin:3rem 0 1.5rem;color:var(--ink);">China's full strategic timeline</h3>
+    <div class="timeline-cols">
+      <div class="tl-wrap">
+        <div class="tl-item">
+          <div class="tl-dot hot"></div>
+          <div class="tl-yr">1956</div>
+          <div class="tl-txt"><strong>12-Year Science &amp; Technology Plan</strong> — China's first strategic S&amp;T plan, identifying 57 key tasks including atomic energy, electronics, jet propulsion.</div>
         </div>
-        <div class="bar-row">
-          <div class="bar-name">India (2024)</div>
-          <div class="bar-track"><div class="bar-fill" style="width:76%;background:var(--india);color:#f5f2ed;">~76%</div></div>
-          <div class="bar-unit">youth lit.</div>
+        <div class="tl-item">
+          <div class="tl-dot hot"></div>
+          <div class="tl-yr">1978</div>
+          <div class="tl-txt"><strong>Deng Xiaoping's "Four Modernizations"</strong> — Science &amp; technology made one of four pillars of national renewal alongside industry, agriculture, and defense. Gaokao restored; universities reopened.</div>
         </div>
-        <div class="bar-row">
-          <div class="bar-name">China — univ. enrollment (1985)</div>
-          <div class="bar-track"><div class="bar-fill" style="width:90%;background:var(--china);color:#f5f2ed;">Near-universal primary</div></div>
-          <div class="bar-unit">primary</div>
+        <div class="tl-item">
+          <div class="tl-dot hot"></div>
+          <div class="tl-yr">1986</div>
+          <div class="tl-txt"><strong>Programme 863</strong> — State High-Tech R&amp;D, 7 strategic fields.</div>
         </div>
-        <div class="bar-row">
-          <div class="bar-name">India — univ. enrollment (2000)</div>
-          <div class="bar-track"><div class="bar-fill" style="width:90%;background:var(--india);color:#f5f2ed;">Near-universal primary</div></div>
-          <div class="bar-unit">primary</div>
+        <div class="tl-item">
+          <div class="tl-dot hot"></div>
+          <div class="tl-yr">1988</div>
+          <div class="tl-txt"><strong>TORCH Programme</strong> — Incubation, commercialization, STIPs. The most consequential programme India never replicated.</div>
         </div>
-        <div class="bar-row">
-          <div class="bar-name">China — pupil:teacher</div>
-          <div class="bar-track"><div class="bar-fill" style="width:20%;background:var(--china);color:#f5f2ed;">~17:1</div></div>
-          <div class="bar-unit">primary</div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-name">India — pupil:teacher</div>
-          <div class="bar-track"><div class="bar-fill" style="width:52%;background:var(--india);color:#f5f2ed;">~40:1</div></div>
-          <div class="bar-unit">primary</div>
+        <div class="tl-item">
+          <div class="tl-dot hot"></div>
+          <div class="tl-yr">1991</div>
+          <div class="tl-txt"><strong>Programme 973</strong> — Basic research strengthening (complementing 863's applied focus). Later merged into National Key R&amp;D Program.</div>
         </div>
       </div>
-      <p class="chart-source">Sources: NationMaster, UNESCO UIS, World Bank. China achieved near-universal primary enrollment by ~1985; India by ~2000. A 15-year gap with compounding consequences for the manufacturing-ready workforce.</p>
-    </div>
-
-    <div class="callout neutral">
-      <p><strong>The ASER problem:</strong> India achieved near-universal <em>enrollment</em> — but not learning. Annual Status of Education Reports (ASER) consistently show that 50%+ of Class V students cannot read a Class II text. Enrollment is a necessary but insufficient condition. China, through centralized standards and political accountability mechanisms, ensured that enrollment translated to actual learning at far higher rates.</p>
-    </div>
-
-    <hr class="divider"/>
-
-    <!-- Vocational -->
-    <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:1rem;margin-top:2.5rem;">The missing middle: vocational training</h3>
-    <p style="color:var(--muted);font-size:0.88rem;max-width:650px;margin-bottom:2rem;line-height:1.8;">Manufacturing doesn't need IIT engineers — it needs millions of semi-skilled workers. This is the layer China built systematically and India almost entirely neglected. It is arguably the single most important structural difference.</p>
-
-    <div class="chart-wrap">
-      <div class="chart-label">Vocational Education Enrollment (% of upper secondary students)</div>
-      <div class="bar-list">
-        <div class="bar-row">
-          <div class="bar-name">China</div>
-          <div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--china);color:#f5f2ed;">~25%</div></div>
-          <div class="bar-unit">voc. track</div>
+      <div class="tl-wrap">
+        <div class="tl-item">
+          <div class="tl-dot hot"></div>
+          <div class="tl-yr">1995</div>
+          <div class="tl-txt"><strong>Project 211</strong> — 112 elite universities in reform pipeline.</div>
         </div>
-        <div class="bar-row">
-          <div class="bar-name">Germany</div>
-          <div class="bar-track"><div class="bar-fill" style="width:96%;background:var(--germany);color:#f5f2ed;">~48% (dual system)</div></div>
-          <div class="bar-unit">voc. track</div>
+        <div class="tl-item">
+          <div class="tl-dot hot"></div>
+          <div class="tl-yr">1998</div>
+          <div class="tl-txt"><strong>Project 985</strong> — World-class universities, C9 League. Peking and Tsinghua became global institutions.</div>
         </div>
-        <div class="bar-row">
-          <div class="bar-name">South Korea</div>
-          <div class="bar-track"><div class="bar-fill" style="width:48%;background:var(--korea);color:#f5f2ed;">~22%</div></div>
-          <div class="bar-unit">voc. track</div>
+        <div class="tl-item">
+          <div class="tl-dot hot"></div>
+          <div class="tl-yr">2001</div>
+          <div class="tl-txt"><strong>WTO Accession</strong> — Forced quality upgrades; China integrated into global supply chains at scale. India's WTO integration was more gradual.</div>
         </div>
-        <div class="bar-row">
-          <div class="bar-name">India</div>
-          <div class="bar-track"><div class="bar-fill" style="width:8%;background:var(--india);color:#f5f2ed;">~2%</div></div>
-          <div class="bar-unit">voc. track</div>
+        <div class="tl-item">
+          <div class="tl-dot hot"></div>
+          <div class="tl-yr">2015–17</div>
+          <div class="tl-txt"><strong>Double First Class + Made in China 2025</strong> — 140 world-class universities; industrial upgrading in 10 key sectors (AI, EVs, semiconductors, biotech, aerospace).</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-yr">2024</div>
+          <div class="tl-txt"><strong>R&amp;D spend reaches $496B</strong> — 2.6% of GDP. India's: ~$23B (~0.65% of GDP). China's business sector funds 76% of R&amp;D; India's: only 37%.</div>
         </div>
       </div>
-      <p class="chart-source">Sources: UNESCO, OECD, IJCRT. Germany's Dual System (Duales Ausbildungssystem) is the global benchmark — apprenticeships tied directly to industry. China's vocational schools were linked to factories under the "part work, part study" model (gong nong bingju) from the 1950s onward.</p>
     </div>
+  </div>
 
-    <div class="callout china">
-      <p><strong>China's vocational schools were linked to factories.</strong> Under Mao's "part work, part study" system, schools were literally integrated with production. Under Deng, vocational schools trained workers specifically for the sectors SEZs needed to fill. India's ITIs (Industrial Training Institutes) exist but were never scaled or integrated with industry demand in the same way. The result: India produces 850,000 engineering undergraduates and 2,500 ITI graduates for every factory-floor technician role. The ratios are inverted.</p>
-    </div>
-
-    <hr class="divider"/>
-
-    <!-- R&D & researchers -->
-    <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:1rem;margin-top:2.5rem;">The top: R&D investment and researchers</h3>
+  <!-- ═══ R&D ═══ -->
+  <div id="sec-rd" class="article-section">
+    <div class="sec-eyebrow">Chapter 03 — R&amp;D Investment</div>
+    <h2 class="sec-title">The research <em>investment gap</em></h2>
+    <p class="sec-desc">R&amp;D spending as % of GDP is a critical metric of national ambition. South Korea leads at ~5%, Israel at 6.35%. India languishes at 0.65% — lower than China (2.6%), USA (3.5%), Japan (3.4%), and even Turkey and Brazil.</p>
 
     <div class="chart-wrap">
-      <div class="chart-label">R&D Expenditure as % of GDP — 2023 or latest</div>
-      <div class="bar-list">
-        <div class="bar-row"><div class="bar-name">South Korea</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--korea);color:#f5f2ed;">4.96%</div></div><div class="bar-unit">of GDP</div></div>
-        <div class="bar-row"><div class="bar-name">USA</div><div class="bar-track"><div class="bar-fill" style="width:70%;background:var(--usa);color:#f5f2ed;">3.45%</div></div><div class="bar-unit">of GDP</div></div>
-        <div class="bar-row"><div class="bar-name">Japan</div><div class="bar-track"><div class="bar-fill" style="width:69%;background:var(--japan);color:#f5f2ed;">3.44%</div></div><div class="bar-unit">of GDP</div></div>
-        <div class="bar-row"><div class="bar-name">Germany</div><div class="bar-track"><div class="bar-fill" style="width:63%;background:var(--germany);color:#f5f2ed;">3.13%</div></div><div class="bar-unit">of GDP</div></div>
-        <div class="bar-row"><div class="bar-name">China</div><div class="bar-track"><div class="bar-fill" style="width:52%;background:var(--china);color:#f5f2ed;">2.58%</div></div><div class="bar-unit">of GDP</div></div>
-        <div class="bar-row"><div class="bar-name">Singapore</div><div class="bar-track"><div class="bar-fill" style="width:44%;background:var(--singapore);color:#f5f2ed;">2.20%</div></div><div class="bar-unit">of GDP</div></div>
-        <div class="bar-row"><div class="bar-name">UK</div><div class="bar-track"><div class="bar-fill" style="width:34%;background:var(--uk);color:#f5f2ed;">1.70%</div></div><div class="bar-unit">of GDP</div></div>
-        <div class="bar-row"><div class="bar-name">India</div><div class="bar-track"><div class="bar-fill" style="width:13%;background:var(--india);color:#f5f2ed;">0.65%</div></div><div class="bar-unit">of GDP</div></div>
+      <div class="chart-label">R&amp;D Spending as % of GDP — Selected Countries (2022–2024)</div>
+      <div class="bar-chart">
+        <div class="bar-row"><div class="bar-name">Israel</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#c09010;color:#fff;">6.35%</div></div></div>
+        <div class="bar-row"><div class="bar-name">South Korea</div><div class="bar-track"><div class="bar-fill" style="width:78%;background:var(--korea);">4.96%</div></div></div>
+        <div class="bar-row"><div class="bar-name">USA</div><div class="bar-track"><div class="bar-fill" style="width:55%;background:var(--usa);">3.45%</div></div></div>
+        <div class="bar-row"><div class="bar-name">Japan</div><div class="bar-track"><div class="bar-fill" style="width:54%;background:var(--japan);">3.44%</div></div></div>
+        <div class="bar-row"><div class="bar-name">Germany</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--germany);">3.13%</div></div></div>
+        <div class="bar-row"><div class="bar-name">China</div><div class="bar-track"><div class="bar-fill" style="width:41%;background:var(--china);">2.58%</div></div></div>
+        <div class="bar-row"><div class="bar-name">France</div><div class="bar-track"><div class="bar-fill" style="width:35%;background:var(--france);">2.21%</div></div></div>
+        <div class="bar-row"><div class="bar-name">Singapore</div><div class="bar-track"><div class="bar-fill" style="width:35%;background:var(--singapore);">2.20%</div></div></div>
+        <div class="bar-row"><div class="bar-name">UK</div><div class="bar-track"><div class="bar-fill" style="width:27%;background:var(--uk);">1.70%</div></div></div>
+        <div class="bar-row"><div class="bar-name">Russia</div><div class="bar-track"><div class="bar-fill" style="width:14%;background:var(--russia);">0.90%</div></div></div>
+        <div class="bar-row"><div class="bar-name">India</div><div class="bar-track"><div class="bar-fill" style="width:10%;background:var(--india);">0.65%</div></div></div>
+        <div class="bar-row"><div class="bar-name">Pakistan</div><div class="bar-track"><div class="bar-fill" style="width:3%;background:#888;">0.19%</div></div></div>
       </div>
-      <p class="chart-source">Sources: OECD, World Bank, UNESCO UIS. China grew R&D from 0.9% (2000) to 2.58% (2023). India has barely moved from 0.6–0.7% in the same period. Critically, India's private sector funds only 37% of R&D; China's: 76%, Japan: 79%, South Korea: 80%.</p>
+      <div class="chart-source">Sources: OECD, World Bank, UNESCO UIS. Data from 2022–2024 depending on country.</div>
     </div>
 
     <div class="chart-wrap">
-      <div class="chart-label">Researchers per Million Population — Latest available</div>
-      <div class="bar-list">
-        <div class="bar-row"><div class="bar-name">South Korea</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--korea);color:#f5f2ed;">8,714</div></div><div class="bar-unit">per million</div></div>
-        <div class="bar-row"><div class="bar-name">Japan</div><div class="bar-track"><div class="bar-fill" style="width:64%;background:var(--japan);color:#f5f2ed;">5,600</div></div><div class="bar-unit">per million</div></div>
-        <div class="bar-row"><div class="bar-name">Germany</div><div class="bar-track"><div class="bar-fill" style="width:61%;background:var(--germany);color:#f5f2ed;">5,300</div></div><div class="bar-unit">per million</div></div>
-        <div class="bar-row"><div class="bar-name">USA</div><div class="bar-track"><div class="bar-fill" style="width:51%;background:var(--usa);color:#f5f2ed;">4,412</div></div><div class="bar-unit">per million</div></div>
-        <div class="bar-row"><div class="bar-name">France</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--uk);color:#f5f2ed;">4,354</div></div><div class="bar-unit">per million</div></div>
-        <div class="bar-row"><div class="bar-name">Russia</div><div class="bar-track"><div class="bar-fill" style="width:34%;background:#6A3A6A;color:#f5f2ed;">2,963</div></div><div class="bar-unit">per million</div></div>
-        <div class="bar-row"><div class="bar-name">China</div><div class="bar-track"><div class="bar-fill" style="width:18%;background:var(--china);color:#f5f2ed;">1,600</div></div><div class="bar-unit">per million</div></div>
-        <div class="bar-row"><div class="bar-name">India</div><div class="bar-track"><div class="bar-fill" style="width:3%;background:var(--india);color:#f5f2ed;">253</div></div><div class="bar-unit">per million</div></div>
+      <div class="chart-label">Researchers per Million Population — 2018 or latest available</div>
+      <div class="bar-chart">
+        <div class="bar-row"><div class="bar-name">South Korea</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--korea);">8,714</div></div></div>
+        <div class="bar-row"><div class="bar-name">Singapore</div><div class="bar-track"><div class="bar-fill" style="width:87%;background:var(--singapore);">7,600</div></div></div>
+        <div class="bar-row"><div class="bar-name">Japan</div><div class="bar-track"><div class="bar-fill" style="width:64%;background:var(--japan);">5,600</div></div></div>
+        <div class="bar-row"><div class="bar-name">Germany</div><div class="bar-track"><div class="bar-fill" style="width:61%;background:var(--germany);">5,300</div></div></div>
+        <div class="bar-row"><div class="bar-name">USA</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--usa);">4,412</div></div></div>
+        <div class="bar-row"><div class="bar-name">France</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--france);">4,354</div></div></div>
+        <div class="bar-row"><div class="bar-name">UK</div><div class="bar-track"><div class="bar-fill" style="width:47%;background:var(--uk);">4,100</div></div></div>
+        <div class="bar-row"><div class="bar-name">Russia</div><div class="bar-track"><div class="bar-fill" style="width:34%;background:var(--russia);">2,963</div></div></div>
+        <div class="bar-row"><div class="bar-name">China</div><div class="bar-track"><div class="bar-fill" style="width:18%;background:var(--china);">1,600</div></div></div>
+        <div class="bar-row"><div class="bar-name">India</div><div class="bar-track"><div class="bar-fill" style="width:3%;background:var(--india);">253</div></div></div>
       </div>
-      <p class="chart-source">Sources: UNESCO UIS via World Bank SP.POP.SCIE.RD.P6. The UNESCO plot of Researchers/Million vs GDP per capita shows a near-linear relationship. India sits in the bottom-left quadrant — to move up the income axis, it must first move right on the researchers axis.</p>
+      <div class="chart-source">Sources: UNESCO UIS, World Bank SP.POP.SCIE.RD.P6. India's 253/million is critically low — China is 6× higher despite a similar population base.</div>
     </div>
 
-    <!-- Graduates and PhDs -->
-    <div class="table-wrap" style="margin-top:2.5rem;">
-      <h3 style="font-family:var(--serif);font-size:1.4rem;font-weight:400;margin-bottom:1rem;">Annual S&amp;E Graduates by Level — 2024 estimates</h3>
-      <table>
-        <thead><tr><th>Country</th><th>Bachelor's</th><th>Master's</th><th>PhD</th><th>Note</th></tr></thead>
-        <tbody>
-          <tr><td><strong>China</strong></td><td style="color:var(--china);">1,500,000</td><td style="color:var(--china);">400,000</td><td style="color:var(--china);">60,000</td><td>More engineers than USA+India+Japan+Europe combined</td></tr>
-          <tr><td><strong>India</strong></td><td style="color:var(--india);">850,000–2.5M*</td><td style="color:var(--india);">60,000</td><td style="color:var(--india);">17,000</td><td>*Definitional variation. PhD output 3.5× below China.</td></tr>
-          <tr><td>USA</td><td>140,000</td><td>50,000</td><td>41,000</td><td>37% of PhDs are international students (Chinese + Indian)</td></tr>
-          <tr><td>Germany</td><td>90,000</td><td>40,000</td><td>15,000</td><td>Strong vocational integration</td></tr>
-          <tr><td>South Korea</td><td>75,000</td><td>30,000</td><td>12,000</td><td>~5% of GDP on education</td></tr>
-        </tbody>
-      </table>
-      <p class="chart-source">*India's total S&E graduates include broad engineering categories. China PhD data: UNESCO / Menlo Ventures 2025. NSF NCSES 2023.</p>
-    </div>
+    <div class="callout">The <strong>UNESCO plot of Researchers/Million vs GDP per capita</strong> reveals a near-linear relationship: nations with more researchers per capita consistently have higher per-capita income. <strong>India sits in the bottom-left quadrant.</strong> The prescription is clear: to move up the GDP-per-capita axis, India must first move right on the researchers-per-million axis. China understood this in 1986 and began the journey systematically.</div>
 
-    <!-- Research output -->
-    <div class="chart-wrap" style="margin-top:2.5rem;">
-      <div class="chart-label">Research Publications (thousands of citable documents) — SCOPUS</div>
-      <div class="legend-row" id="pub-leg"></div>
-      <canvas id="pubChart" height="300"></canvas>
-      <p class="chart-source">Sources: SCImago Journal & Country Rank (Elsevier SCOPUS). India's output increased 6-fold in 15 years (34,000 in 2010 → 195,000 in 2024), now ranked 3rd globally. China overtook USA in Web of Science papers in 2024 by 75%. India's citations per document (~16.9) actually exceed China's (~13.1) — quality is there, volume is catching up.</p>
+    <div class="chart-wrap" style="margin-top:1.5rem;">
+      <div class="chart-label">R&amp;D Spending Trajectory (% of GDP) — 2000 to 2023</div>
+      <canvas id="rdTrendChart" height="300"></canvas>
+      <div class="chart-source">Source: Statista, OECD. China went from 0.9% (2000) to 2.58% (2023). India has barely moved from 0.6–0.7% over the same period.</div>
     </div>
-  </section>
+  </div>
 
-  <!-- ══════════════ 05 · INDUSTRY ══════════════ -->
-  <section id="industry">
-    <div class="section-header">
-      <span class="section-num">05</span>
-      <h2>Industrial Policy &amp;<br>The Manufacturing Question</h2>
-    </div>
-    <p class="section-lead">
-      Education creates human capital. But human capital needs an industrial ecosystem to deploy into. 
-      China built that ecosystem deliberately — SEZs, export policy, supply chain integration. 
-      India didn't. The question of why India became service-led (rather than manufacturing-led) 
-      is not just about education. It is about industrial policy.
-    </p>
+  <!-- ═══ OUTPUT ═══ -->
+  <div id="sec-output" class="article-section">
+    <div class="sec-eyebrow">Chapter 04 — Research Publications</div>
+    <h2 class="sec-title">Publications &amp; <em>citation quality</em></h2>
+    <p class="sec-desc">India has dramatically accelerated its publication output — now 3rd globally. But the quality gap (citations per document) remains. China overtook the USA in total Nature Index output in 2022.</p>
 
-    <div class="pull-quote">
-      "Manufacturing success requires <span>basic education, industrial policy, and state-led coordination</span> — not just one of the three. China did all three. India did one."
-    </div>
-
-    <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:1.2rem;">China's SEZ model</h3>
-    <div class="grid-2">
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-dot china"></div>
-          <div class="tl-yr china">1979</div>
-          <div class="tl-title">First Special Economic Zones</div>
-          <div class="tl-body">Shenzhen, Zhuhai, Shantou, Xiamen. Land, labour, and tax advantages concentrated in specific geographies. Export-oriented manufacturing given preferential treatment. Shenzhen had a population of 30,000 in 1979; today it has 17 million and houses global electronics supply chains.</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot china"></div>
-          <div class="tl-yr china">1984</div>
-          <div class="tl-title">14 coastal cities opened</div>
-          <div class="tl-body">Foreign investment actively courted. Joint ventures required technology transfer. China was simultaneously building market access and absorbing foreign expertise.</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot china"></div>
-          <div class="tl-yr china">2001</div>
-          <div class="tl-title">WTO Accession</div>
-          <div class="tl-body">China's entry into the WTO at this moment — after two decades of SEZ experience, workforce training, and export infrastructure — was decisive. India's WTO integration was more gradual and without the same manufacturing base to leverage it.</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot china"></div>
-          <div class="tl-yr china">2010s</div>
-          <div class="tl-title">Moving up the value chain</div>
-          <div class="tl-body">From low-cost assembly to high-tech manufacturing. Huawei, BYD, DJI, CATL emerge. China begins competing in sectors previously dominated only by USA, Japan, and Germany.</div>
-        </div>
+    <div class="stat-row">
+      <div class="stat-card china">
+        <div class="stat-num">#1</div>
+        <div class="stat-label">China: Nature Index rank</div>
+        <div class="stat-sub">Overtook USA in natural sciences 2022</div>
       </div>
-      <div>
-        <div class="callout china">
-          <p><strong>Why SEZs worked in China but struggle in India:</strong><br><br>
-          China's SEZs worked because of the full stack: cheap literate labour (mass education), political will to acquire land and relocate people, state-built infrastructure, and global supply chain relationships built over decades. India's SEZs, introduced in 2005, faced land acquisition disputes, regulatory complexity, and a workforce not trained for factory-floor roles at scale. The instrument was copied; the preconditions were not.</p>
-        </div>
-        <div class="callout neutral" style="margin-top:1.5rem;">
-          <p><strong>Vietnam's lesson (very relevant):</strong> Vietnam entered global manufacturing supply chains by offering what China could no longer offer cheaply — low costs, political stability, and a compliant, basic-literate workforce. India has the population but not the <em>configured</em> workforce. Vietnam optimized for factories; India optimized for software engineers. Both are valid choices, but India's choice has lower employment multipliers.</p>
-        </div>
+      <div class="stat-card india">
+        <div class="stat-num">#3</div>
+        <div class="stat-label">India: Global publication rank</div>
+        <div class="stat-sub">195,000 papers in 2024 (up from 34,000 in 2010)</div>
+      </div>
+      <div class="stat-card neutral">
+        <div class="stat-num">75%</div>
+        <div class="stat-label">China's edge over USA</div>
+        <div class="stat-sub">More Web of Science papers in 2024</div>
       </div>
     </div>
 
-    <hr class="divider"/>
-
-    <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:1.2rem;margin-top:2.5rem;">Why India became service-led — and whether that was a choice</h3>
-    <p style="color:var(--muted);font-size:0.88rem;max-width:660px;margin-bottom:2rem;line-height:1.8;">India did not consciously decide to become a services economy. It became one because that is where its inherited advantages (English, IITs, mathematics) met global demand (Y2K, outsourcing wave). After 1991 liberalisation, services had lower barriers to entry than manufacturing in India's regulatory environment. The path of least resistance led to Bengaluru, not to a factory floor.</p>
-
-    <div class="grid-3">
-      <div class="grid-3-cell">
-        <div class="cell-tag">India's accidental strength</div>
-        <div class="cell-title">The IT sector boom</div>
-        <div class="cell-body">The Y2K crisis and subsequent outsourcing wave created demand that exactly matched India's supply of English-speaking, technically trained graduates. Without planning it, India became the world's back office. This is worth ~$250B in IT-BPO exports today. A genuine success — but with low employment multipliers relative to manufacturing.</div>
-      </div>
-      <div class="grid-3-cell">
-        <div class="cell-tag neutral">The structural trap</div>
-        <div class="cell-title">Services don't absorb mass labour</div>
-        <div class="cell-body">India adds ~12 million people to its working-age population every year. IT services employs 5 million total after 30 years of growth. Manufacturing, by contrast, can absorb semi-skilled workers at scale — as China demonstrated by employing 150+ million factory workers by the 2000s. India's growth model is structurally unable to absorb its demographic dividend.</div>
-      </div>
-      <div class="grid-3-cell">
-        <div class="cell-tag china">China's counterfactual lesson</div>
-        <div class="cell-title">Both is possible</div>
-        <div class="cell-body">China built mass manufacturing <em>and</em> elite universities (Projects 211 and 985). The dichotomy between "elite education" and "mass manufacturing" is false — it requires the right sequencing and institutional capacity to pursue both simultaneously. South Korea and Taiwan also demonstrate this: strong manufacturing and strong universities, built in parallel.</div>
-      </div>
+    <div class="chart-wrap">
+      <div class="chart-label">Total Citable Documents (SCOPUS, thousands) — Key Countries</div>
+      <canvas id="pubChart" height="340"></canvas>
+      <div class="chart-source">Sources: SCImago Journal &amp; Country Rank (SCOPUS data), NSF NCSES. India's 6-fold growth in 15 years is remarkable — but started from a low base.</div>
     </div>
 
-    <!-- Incubators -->
-    <div class="chart-wrap" style="margin-top:3rem;">
-      <div class="chart-label">Technology Incubators & Accelerators — Country Comparison</div>
-      <div class="bar-list">
-        <div class="bar-row"><div class="bar-name">China</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--china);color:#f5f2ed;">11,000+</div></div><div class="bar-unit">incubators</div></div>
-        <div class="bar-row"><div class="bar-name">USA</div><div class="bar-track"><div class="bar-fill" style="width:21%;background:var(--usa);color:#f5f2ed;">2,300</div></div><div class="bar-unit">incubators</div></div>
-        <div class="bar-row"><div class="bar-name">India</div><div class="bar-track"><div class="bar-fill" style="width:9%;background:var(--india);color:#f5f2ed;">~950 (2023)</div></div><div class="bar-unit">incubators</div></div>
+    <div class="chart-wrap">
+      <div class="chart-label">Citations Per Document (Quality Indicator) — 2024 approximate</div>
+      <div class="bar-chart">
+        <div class="bar-row"><div class="bar-name">USA</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--usa);">25.8</div></div></div>
+        <div class="bar-row"><div class="bar-name">UK</div><div class="bar-track"><div class="bar-fill" style="width:92%;background:var(--uk);">23.7</div></div></div>
+        <div class="bar-row"><div class="bar-name">Germany</div><div class="bar-track"><div class="bar-fill" style="width:86%;background:var(--germany);">22.3</div></div></div>
+        <div class="bar-row"><div class="bar-name">France</div><div class="bar-track"><div class="bar-fill" style="width:83%;background:var(--france);">21.5</div></div></div>
+        <div class="bar-row"><div class="bar-name">Japan</div><div class="bar-track"><div class="bar-fill" style="width:70%;background:var(--japan);">18.1</div></div></div>
+        <div class="bar-row"><div class="bar-name">India</div><div class="bar-track"><div class="bar-fill" style="width:65%;background:var(--india);">16.9</div></div></div>
+        <div class="bar-row"><div class="bar-name">South Korea</div><div class="bar-track"><div class="bar-fill" style="width:62%;background:var(--korea);">16.0</div></div></div>
+        <div class="bar-row"><div class="bar-name">Russia</div><div class="bar-track"><div class="bar-fill" style="width:55%;background:var(--russia);">14.2</div></div></div>
+        <div class="bar-row"><div class="bar-name">China</div><div class="bar-track"><div class="bar-fill" style="width:51%;background:var(--china);">13.1</div></div></div>
       </div>
-      <p class="chart-source">Sources: ScienceDirect 2024 (citing YNOS 2023); China Banking News 2019; Tracxn 2022. China's incubators supported 620,000+ startups in 2018 alone. India's entire registered startup count was ~120,000 in 2023. The gap is 11:1 in incubators; the gap in deep-tech startup output is even wider.</p>
-    </div>
-  </section>
-
-  <!-- ══════════════ 06 · INFRASTRUCTURE ══════════════ -->
-  <section id="infrastructure">
-    <div class="section-header">
-      <span class="section-num">06</span>
-      <h2>Infrastructure, Investment<br>&amp; State Coordination</h2>
-    </div>
-    <p class="section-lead">
-      Even with the right education and industrial policy, manufacturing requires physical infrastructure — 
-      ports, roads, power, and logistics. China invested at a scale and speed that India has not matched. 
-      Investment rates, infrastructure quality, and the state's ability to coordinate land, labour, 
-      and capital are the final piece of the puzzle.
-    </p>
-
-    <div class="stat-strip">
-      <div class="stat-cell">
-        <div class="stat-num" style="color:var(--china);">~50%</div>
-        <div class="stat-label">China's investment rate</div>
-        <div class="stat-sub">% of GDP (peak years)</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num" style="color:var(--india);">~30%</div>
-        <div class="stat-label">India's investment rate</div>
-        <div class="stat-sub">% of GDP</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num" style="color:var(--china);">$496B</div>
-        <div class="stat-label">China R&D spend 2024</div>
-        <div class="stat-sub">2.58% of GDP</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num" style="color:var(--india);">$23B</div>
-        <div class="stat-label">India R&D spend 2024</div>
-        <div class="stat-sub">0.65% of GDP</div>
-      </div>
+      <div class="chart-source">Sources: SCImago. India's papers get more external citations per paper than China's — India's strength is quality; China's is volume.</div>
     </div>
 
-    <div class="grid-2">
-      <div>
-        <h3 style="font-family:var(--serif);font-size:1.4rem;font-weight:400;margin-bottom:1.2rem;">What China built (1980–2010)</h3>
-        <div class="skill-block-grid" style="border:1px solid var(--rule);transition:border-color 0.4s;">
-          <div class="skill-block">
-            <p class="skill-block-title">Ports & Logistics</p>
-            <ul>
-              <li>7 of world's 10 busiest ports are Chinese</li>
-              <li>Container throughput 10× India's</li>
-              <li>Inland logistics networks linked SEZs to ports</li>
-              <li>Average container dwell time 1–2 days</li>
-            </ul>
-          </div>
-          <div class="skill-block" style="border-right:none;">
-            <p class="skill-block-title">Power & Energy</p>
-            <ul>
-              <li>Total installed capacity: 3,348 GW</li>
-              <li>India: 453 GW (7× smaller)</li>
-              <li>Reliable 24/7 industrial power essential for manufacturing competitiveness</li>
-            </ul>
-          </div>
-          <div class="skill-block" style="border-bottom:none;">
-            <p class="skill-block-title">Land & SEZ Execution</p>
-            <ul>
-              <li>Single-party state enables land acquisition at scale</li>
-              <li>Industrial parks built in 12–18 months</li>
-              <li>India: land acquisition legally contested, multi-year delays</li>
-            </ul>
-          </div>
-          <div class="skill-block" style="border-right:none;border-bottom:none;">
-            <p class="skill-block-title">Rail & Roads</p>
-            <ul>
-              <li>High-speed rail: 42,000 km (world's largest)</li>
-              <li>National expressway: 177,000 km</li>
-              <li>India: 99 km HSR (Ahmedabad-Mumbai, in progress)</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h3 style="font-family:var(--serif);font-size:1.4rem;font-weight:400;margin-bottom:1.2rem;">India's constraints</h3>
-        <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-dot key"></div>
-            <div class="tl-yr">Land acquisition</div>
-            <div class="tl-title">The single biggest bottleneck</div>
-            <div class="tl-body">India's Land Acquisition Act requires consent from affected communities, environmental impact assessments, and compensation at market rates. Legitimate democratic safeguards — but they make building industrial corridors and SEZs far slower than China's model.</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot key"></div>
-            <div class="tl-yr">Labour laws</div>
-            <div class="tl-title">Complex regulation → small firms</div>
-            <div class="tl-body">India's labour laws historically encouraged firms to stay small (under 100 workers) to avoid compliance requirements. Result: 80%+ of workforce in informal economy, no large-scale factory employment. Firms prefer Vietnam (and increasingly Bangladesh) for scalable low-cost manufacturing.</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot key"></div>
-            <div class="tl-yr">Power reliability</div>
-            <div class="tl-title">24/7 industrial power only recently achieved</div>
-            <div class="tl-body">Reliable electricity is a prerequisite for competitive manufacturing. India's power infrastructure has improved dramatically but still has regional gaps. Manufacturing firms bear higher backup generator costs than Chinese counterparts.</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot key"></div>
-            <div class="tl-yr">PLI schemes (2020+)</div>
-            <div class="tl-title">India's belated industrial policy response</div>
-            <div class="tl-body">Production-Linked Incentive schemes across 14 sectors are India's most serious industrial policy in decades. Early results are mixed — some sectors (mobile phones, APIs) are working; others face approval delays. The direction is right; execution is still being tested.</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="callout"><strong>India's citation quality is actually better than China's</strong> — India averages ~16.9 external citations per document vs China's ~13.1. But India has a fraction of China's volume. The path forward: maintain quality while scaling volume — which requires more institutions, more researchers, more funding.</div>
+  </div>
 
-    <div class="callout neutral">
-      <p><strong>The investment rate gap matters enormously:</strong> China invests ~50% of GDP; India ~30%. This difference — compounded over 40 years — explains physical infrastructure gaps more than any single policy decision. Manufacturing requires upfront capital (factories, logistics, power). Countries that invest more simply build more. India's investment rate needs to rise significantly and be directed toward the right sectors.</p>
-    </div>
-  </section>
-
-  <!-- ══════════════ 07 · WHAT INDIA MISSED ══════════════ -->
-  <section id="missed">
-    <div class="section-header">
-      <span class="section-num">07</span>
-      <h2>What India Missed —<br>and What It Can Still Do</h2>
-    </div>
-    <p class="section-lead">
-      This is not a story of India failing. India's IT sector, pharmaceutical industry, space programme, 
-      and democratic institutions are genuine achievements. But the honest accounting of what was missed — 
-      and what can still be built — is important. The demographic window is still open.
-    </p>
-
-    <div class="pull-quote">
-      "India didn't fail because it built IITs. <span>It failed to build the rest of the system around them.</span>"
-    </div>
-
-    <div class="grid-3">
-      <div class="grid-3-cell">
-        <div class="cell-tag">Missed · 1960s–1990s</div>
-        <div class="cell-title">Mass primary education quality</div>
-        <div class="cell-body">Enrollment expanded but quality did not keep pace. No equivalent of China's political accountability mechanism for learning outcomes. ASER reports document the learning crisis 60 years later. The consequence: a workforce that enrolled in school but did not acquire factory-floor or technical skills.</div>
-      </div>
-      <div class="grid-3-cell">
-        <div class="cell-tag">Missed · 1980s–2010s</div>
-        <div class="cell-title">Vocational ecosystem at scale</div>
-        <div class="cell-body">India's ITIs exist but were never tied to industry demand the way China's vocational schools were to its factories. Only ~2% of upper secondary students in vocational tracks vs 25% in China. The missing middle: tens of millions of technicians, CNC operators, quality inspectors, and logistics coordinators that a manufacturing economy needs.</div>
-      </div>
-      <div class="grid-3-cell">
-        <div class="cell-tag">Missed · 1988–2016</div>
-        <div class="cell-title">A TORCH equivalent</div>
-        <div class="cell-body">No national programme to systematically build incubators, science parks, and lab-to-market pipelines until Startup India (2016). China's Torch programme (1988) gave it a 28-year head start in building the infrastructure for innovation commercialisation.</div>
-      </div>
-      <div class="grid-3-cell">
-        <div class="cell-tag">Persistent · Today</div>
-        <div class="cell-title">R&D at 0.65% of GDP</div>
-        <div class="cell-body">India's GERD has barely moved from 0.6–0.7% for 20+ years while China reached 2.58%. India's private sector funds only 37% of R&D (vs China's 76%). The government is simultaneously funder and user — breaking the industry-academia innovation loop that drives private R&D growth.</div>
-      </div>
-      <div class="grid-3-cell">
-        <div class="cell-tag">Persistent · Today</div>
-        <div class="cell-title">Brain drain without retention</div>
-        <div class="cell-body">~36% of top JEE rankers migrate abroad. 37% of US S&E doctorates go to foreign students (largely Chinese and Indian), most staying in the US. India trains talent for the world without building the domestic research environments, salaries, and infrastructure to retain them.</div>
-      </div>
-      <div class="grid-3-cell">
-        <div class="cell-tag">Structural · Deep</div>
-        <div class="cell-title">The services-manufacturing duality</div>
-        <div class="cell-body">India's growth model generates GDP but insufficient employment. 12 million enter the workforce annually; formal manufacturing absorbs a fraction. The informal economy (80%+ of workers) is a symptom of the missing manufacturing base. Reversing this requires industrial policy, infrastructure, and vocational training working together.</div>
-      </div>
-    </div>
-
-    <hr class="divider" style="margin-top:3rem;"/>
-
-    <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:1.2rem;margin-top:2.5rem;">What India can still do — and where it has genuine strengths</h3>
-
-    <div class="grid-2">
-      <div>
-        <div class="exp-item" style="padding-top:1.2rem;">
-          <span class="exp-date">Strength · Use it</span>
-          <div>
-            <p class="exp-org">English + Digital + Young demographics</p>
-            <p class="exp-role">The demographic dividend window is open</p>
-            <ul class="exp-bullets">
-              <li>India's median age is 28; China's is 39 and rising. The manufacturing workforce advantage belongs to India now, not China.</li>
-              <li>English-language proficiency is a structural advantage in the global knowledge economy that China does not have and cannot easily replicate.</li>
-              <li>India's digital public infrastructure (UPI, Aadhaar, ONDC) shows that state-led platform-building at scale is possible in a democracy.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="exp-item">
-          <span class="exp-date">Strength · Build on it</span>
-          <div>
-            <p class="exp-org">Pharma, Space, IT</p>
-            <p class="exp-role">Proven sectors with scalable templates</p>
-            <ul class="exp-bullets">
-              <li>India supplies 20% of global generic medicines — manufacturing at scale, with IP protection, quality standards, and global markets. A template for other sectors.</li>
-              <li>ISRO's cost efficiency (Chandrayaan at &lt;$100M vs NASA equivalents at $1B+) shows what focused state institutions can achieve.</li>
-              <li>These sectors demonstrate that India <em>can</em> build world-class manufacturing when the policy, talent, and regulatory environment align.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="exp-item" style="padding-top:1.2rem;">
-          <span class="exp-date">Priority · Most urgent</span>
-          <div>
-            <p class="exp-org">NEP 2020 + Vocational scaling</p>
-            <p class="exp-role">Fix the middle of the pyramid</p>
-            <ul class="exp-bullets">
-              <li>National Education Policy 2020 emphasizes vocational integration from Class 6 onward. Implementation is the test — not policy design.</li>
-              <li>Target: 25–30% of upper secondary students in vocational tracks (from 2% today). Requires industry partnerships, not just government ITIs.</li>
-              <li>The Germany Dual System model — apprenticeships co-funded and co-designed by firms — is the benchmark.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="exp-item">
-          <span class="exp-date">Priority · Systemic</span>
-          <div>
-            <p class="exp-org">R&D at 2% of GDP</p>
-            <p class="exp-role">The private sector must lead</p>
-            <ul class="exp-bullets">
-              <li>India's long-term goal of 2% GERD requires private sector R&D to grow from 37% to 60%+ of total. This requires tax incentives, procurement policies, and deep-tech park infrastructure.</li>
-              <li>PLI schemes are a start — but linking them to R&D investment requirements (as South Korea's chaebol model did) would compound the effect.</li>
-              <li>More IISERs, more research-intensive universities, more post-doctoral opportunities with competitive salaries to retain PhDs in India.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="callout">
-      <p><strong>The honest synthesis:</strong> India's problem is not that it built IITs. It is that it didn't build the vocational layer, the incubation infrastructure, the industrial policy, and the primary education quality simultaneously. The IITs were a good strategic bet that paid off in IT and services. The failure was the missing middle — tens of millions of technicians, operators, and skilled workers that a manufacturing economy requires. That pipeline can still be built. The demographic window to do it closes by roughly 2040.</p>
-    </div>
-  </section>
-
-  <!-- ══════════════ 08 · SOURCES ══════════════ -->
-  <section id="sources">
-    <div class="section-header">
-      <span class="section-num">08</span>
-      <h2>Sources &amp; Further Reading</h2>
-    </div>
-    <p class="section-lead">Data and arguments on this page draw from the following. I will keep updating this as I learn more.</p>
+  <!-- ═══ GRADUATES ═══ -->
+  <div id="sec-grads" class="article-section">
+    <div class="sec-eyebrow">Chapter 05 — Human Capital Pipeline</div>
+    <h2 class="sec-title">Science &amp; Engineering graduates <em>and the talent race</em></h2>
+    <p class="sec-desc">China produces more engineers annually than the US, India, Japan, South Korea, and Europe combined (UNESCO). India leads in first-degree S&amp;E graduates but has a huge deficit at the PhD and Master's level.</p>
 
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Source</th><th>Used for</th><th>URL / Reference</th></tr></thead>
+        <thead>
+          <tr><th>Country</th><th>Bachelor's / First Degree</th><th>Master's</th><th>PhD (Doctoral)</th><th>Total S&amp;E</th></tr>
+        </thead>
         <tbody>
-          <tr><td><strong>IMF World Economic Outlook</strong> (April 2026)</td><td>GDP, GDP PPP, per-capita trends</td><td>imf.org/en/Publications/WEO</td></tr>
-          <tr><td><strong>World Bank WDI</strong></td><td>GDP, R&D, researchers, education</td><td>data.worldbank.org</td></tr>
-          <tr><td><strong>UNESCO UIS</strong> via World Bank</td><td>Researchers/million, vocational enrollment</td><td>SP.POP.SCIE.RD.P6</td></tr>
-          <tr><td><strong>NSF NCSES S&E Indicators</strong></td><td>S&E graduates, PhD data, publications</td><td>ncses.nsf.gov/pubs/nsb202332</td></tr>
-          <tr><td><strong>SCImago / SCOPUS</strong></td><td>Research publications, citations per document</td><td>scimagojr.com</td></tr>
-          <tr><td><strong>OECD</strong></td><td>R&D spending (GERD), vocational education</td><td>stats.oecd.org</td></tr>
-          <tr><td><strong>ASER Reports</strong> (Pratham)</td><td>India's learning outcomes crisis</td><td>asercentre.org</td></tr>
-          <tr><td><strong>Steve Blank</strong> — China's Torch Program</td><td>Torch programme mechanics</td><td>steveblank.com (2013)</td></tr>
-          <tr><td><strong>MacroPolo</strong> — Torch program analysis</td><td>Innovation cluster effects</td><td>archivemacropolo.org</td></tr>
-          <tr><td><strong>Clarivate G20 Research Scorecard</strong> 2025</td><td>India's publication growth, citation impact</td><td>clarivate.com</td></tr>
-          <tr><td><strong>IEA / IRENA</strong></td><td>Energy capacity data</td><td>iea.org; irena.org</td></tr>
-          <tr><td><strong>"An Uncertain Glory"</strong> — Sen &amp; Drèze</td><td>India's education and development failures</td><td>Book, 2013</td></tr>
-          <tr><td><strong>Panagariya (2007)</strong> — India vs China growth</td><td>Industrial performance comparison</td><td>IDEAS/RePEc</td></tr>
-          <tr><td><strong>Cambridge BJHS Themes</strong> — Planning for S&T in China and India</td><td>S&T planning history comparison</td><td>cambridge.org/core</td></tr>
-          <tr><td><strong>Brookings</strong> — India's tech competition with China</td><td>Current policy analysis</td><td>brookings.edu (2023)</td></tr>
+          <tr><td><span class="flag">🇨🇳</span>China</td><td style="color:var(--china);">1,500,000</td><td style="color:var(--china);">400,000</td><td style="color:var(--china);">60,000</td><td style="color:var(--china);font-weight:500;">~2,000,000</td></tr>
+          <tr><td><span class="flag">🇮🇳</span>India</td><td style="color:var(--india);">850,000–2,500,000*</td><td style="color:var(--india);">60,000</td><td style="color:var(--india);">17,000</td><td style="color:var(--india);font-weight:500;">~2,500,000</td></tr>
+          <tr><td><span class="flag">🇺🇸</span>USA</td><td style="color:var(--usa);">140,000</td><td style="color:var(--usa);">50,000</td><td style="color:var(--usa);">41,000</td><td style="color:var(--usa);">~231,000</td></tr>
+          <tr><td><span class="flag">🇯🇵</span>Japan</td><td>95,000</td><td>28,000</td><td>8,000</td><td>131,000</td></tr>
+          <tr><td><span class="flag">🇩🇪</span>Germany</td><td>90,000</td><td>40,000</td><td>15,000</td><td>145,000</td></tr>
+          <tr><td><span class="flag">🇰🇷</span>South Korea</td><td>75,000</td><td>30,000</td><td>12,000</td><td>117,000</td></tr>
+          <tr><td><span class="flag">🇬🇧</span>UK</td><td>70,000</td><td>35,000</td><td>17,000</td><td>122,000</td></tr>
+        </tbody>
+      </table>
+      <div class="chart-source">*India's total S&amp;E graduates include broad engineering categories; NSF counts 2.5M S&amp;E first degrees in 2020. PhD data: NSF NCSES 2023. China PhD data: UNESCO / Menlo Ventures 2025. Definitional differences apply.</div>
+    </div>
+
+    <div class="callout"><strong>India's bottleneck is not bachelor's degrees, it's PhDs and Masters.</strong> China produces 60,000 engineering PhDs per year; India produces ~17,000 (with funding disruptions during COVID further reducing this). The USA's 41,000 PhDs include 37% international students — majority Chinese and Indian — effectively brain-draining both countries. India needs to produce ~3× more PhDs and retain them with competitive salaries and research facilities.</div>
+
+    <div class="chart-wrap">
+      <div class="chart-label">The Brain Drain — Who has China's and India's PhD holders?</div>
+      <div class="tl-wrap" style="max-width:620px;margin-top:0.5rem;">
+        <div class="tl-item">
+          <div class="tl-dot hot"></div>
+          <div class="tl-yr">2006–2015</div>
+          <div class="tl-txt"><strong>40,000 Chinese nationals</strong> received S&amp;E PhDs from US institutions. As of 2017, 87% were still residing in the USA.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot hot"></div>
+          <div class="tl-yr">2021</div>
+          <div class="tl-txt">US awarded 41,000 S&amp;E research doctorates. <strong>37% were temporary visa holders.</strong> China: single largest source (5,600). India: second largest.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-yr">2025</div>
+          <div class="tl-txt">Indians recently overtook Chinese as <strong>largest group of international graduate students</strong> in US CS and engineering programs. Both countries are effectively subsidizing US R&amp;D capacity.</div>
+        </div>
+      </div>
+      <div class="chart-source">Sources: NSF NCSES; NIH; Nature; Menlo Ventures 2025 China PhD Report.</div>
+    </div>
+
+    <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;margin:3rem 0 1.5rem;color:var(--ink);">Institutional comparison — 2024</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Metric</th><th>🇮🇳 India</th><th>🇨🇳 China</th><th>🇺🇸 USA</th><th>🇯🇵 Japan</th><th>🇰🇷 S. Korea</th><th>🇸🇬 Singapore</th></tr></thead>
+        <tbody>
+          <tr><td>Total Universities</td><td style="color:var(--india);">1,168</td><td style="color:var(--china);">3,012</td><td style="color:var(--usa);">3,900</td><td>800+</td><td>422</td><td>~35</td></tr>
+          <tr><td>Elite / Key Institutions</td><td style="color:var(--india);">66 (IIT+IIM+AIIMS)</td><td style="color:var(--china);">39 (985) / 147 (DFC)</td><td style="color:var(--usa);">216 R1 research</td><td>7 (RU11)</td><td>6 (SKY+KAIST+POSTECH)</td><td>2 (NUS, NTU)</td></tr>
+          <tr><td>Global Top-100 Univs</td><td style="color:var(--india);">2–3 (IISc, IITs)</td><td style="color:var(--china);">6–8</td><td style="color:var(--usa);">~40</td><td>3</td><td>3</td><td>2</td></tr>
+          <tr><td>Technology Incubators</td><td style="color:var(--india);">~950</td><td style="color:var(--china);">11,000+</td><td style="color:var(--usa);">2,300</td><td>600+</td><td>400+</td><td>200+</td></tr>
+          <tr><td>R&amp;D Workers</td><td style="color:var(--india);">0.9 million</td><td style="color:var(--china);">2.2 million</td><td style="color:var(--usa);">5.6 million*</td><td>0.9M</td><td>0.45M</td><td>0.06M</td></tr>
+          <tr><td>Patents Filed (2023)</td><td style="color:var(--india);">~66,000</td><td style="color:var(--china);">1,690,000</td><td style="color:var(--usa);">~650,000</td><td>~290,000</td><td>~220,000</td><td>~12,000</td></tr>
+        </tbody>
+      </table>
+      <div class="chart-source">*USA NCSES estimates based on FTE calculation. China patents: WIPO 2024. India incubators: ScienceDirect 2024 citing YNOS 2023 data.</div>
+    </div>
+
+    <div class="callout"><strong>The incubator gap is staggering:</strong> China has 11,000+ technology incubators; India has ~950 — an 11:1 ratio. China's incubators supported 620,000+ startups in 2018 alone. This infrastructure gap directly explains why China produces deep-tech companies at scale (BYD, DJI, CATL, Huawei) while India excels in services and consumer apps (Zomato, Paytm, Flipkart) — excellent, but lower technology intensity.</div>
+  </div>
+
+  <!-- ═══ ENERGY ═══ -->
+  <div id="sec-energy" class="article-section">
+    <div class="sec-eyebrow">Chapter 06 — Energy Capacity</div>
+    <h2 class="sec-title">World rankings in <em>clean energy</em> (2024–25)</h2>
+    <p class="sec-desc">Prof. Ramamurthy's lecture also covered energy as a proxy for state capacity. China dominates every renewable category by an extraordinary margin. India is rising rapidly but from a much smaller base.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Energy Type</th><th>🥇 World #1</th><th>Capacity (GW)</th><th>🇨🇳 China</th><th>🇮🇳 India</th><th>India Rank</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Solar Power</strong></td><td style="color:var(--china);">China</td><td style="color:var(--china);">1,200 GW</td><td style="color:var(--china);">1,200 GW</td><td style="color:var(--india);">108 GW</td><td><span class="tag" style="color:var(--india);">3rd</span></td></tr>
+          <tr><td><strong>Wind Power</strong></td><td style="color:var(--china);">China</td><td style="color:var(--china);">640 GW</td><td style="color:var(--china);">640 GW</td><td style="color:var(--india);">47 GW</td><td><span class="tag" style="color:var(--india);">4th</span></td></tr>
+          <tr><td><strong>Hydropower</strong></td><td style="color:var(--china);">China</td><td style="color:var(--china);">442 GW</td><td style="color:var(--china);">442 GW</td><td style="color:var(--india);">47 GW</td><td><span class="tag" style="color:var(--india);">5th</span></td></tr>
+          <tr><td><strong>Nuclear Power</strong></td><td style="color:var(--usa);">USA</td><td style="color:var(--usa);">95 GW</td><td style="color:var(--china);">61 GW (2nd)</td><td style="color:var(--india);">8.2 GW</td><td><span class="tag" style="color:var(--ink3);">~7th</span></td></tr>
+          <tr><td><strong>Total Renewables</strong></td><td style="color:var(--china);">China</td><td style="color:var(--china);">2,340 GW</td><td style="color:var(--china);">2,340 GW</td><td style="color:var(--india);">201 GW</td><td><span class="tag" style="color:var(--india);">3rd</span></td></tr>
+          <tr><td><strong>Total Power</strong></td><td style="color:var(--china);">China</td><td style="color:var(--china);">3,348 GW</td><td style="color:var(--china);">3,348 GW</td><td style="color:var(--india);">453 GW</td><td><span class="tag" style="color:var(--india);">4th</span></td></tr>
         </tbody>
       </table>
     </div>
 
-    <div class="callout neutral" style="margin-top:2rem;">
-      <p><strong>This is a living document.</strong> I am a physics student at NISER who finds development economics genuinely fascinating — especially the questions that sit at the intersection of institutions, incentives, and human capital. If you have corrections, better data, or arguments I've missed, I'd genuinely like to hear them. <a href="mailto:heyashunayak@gmail.com" style="color:var(--india);text-decoration:none;">heyashunayak@gmail.com</a></p>
+    <div class="callout"><strong>China's energy story is about state-directed scale:</strong> In 2024, China added 277 GW of solar in a single year — more than India's total installed solar capacity (~108 GW). This mirrors the institutional story: China's state capacity to build at scale has no parallel. India's 500 GW non-fossil target by 2030 is ambitious; China is expected to surpass that annually. India did hit its 50% non-fossil milestone in 2025 — five years ahead of its Paris target.</div>
+
+    <div class="chart-wrap">
+      <div class="chart-label">Total Installed Energy Capacity (GW) — 2024</div>
+      <div class="bar-chart">
+        <div class="bar-row"><div class="bar-name">China</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--china);">3,348 GW</div></div></div>
+        <div class="bar-row"><div class="bar-name">USA</div><div class="bar-track"><div class="bar-fill" style="width:36%;background:var(--usa);">1,200 GW</div></div></div>
+        <div class="bar-row"><div class="bar-name">India</div><div class="bar-track"><div class="bar-fill" style="width:13%;background:var(--india);">453 GW</div></div></div>
+        <div class="bar-row"><div class="bar-name">Germany</div><div class="bar-track"><div class="bar-fill" style="width:7%;background:var(--germany);">250 GW</div></div></div>
+        <div class="bar-row"><div class="bar-name">Japan</div><div class="bar-track"><div class="bar-fill" style="width:7%;background:var(--japan);">250 GW</div></div></div>
+        <div class="bar-row"><div class="bar-name">Russia</div><div class="bar-track"><div class="bar-fill" style="width:7%;background:var(--russia);">250 GW</div></div></div>
+      </div>
+      <div class="chart-source">Sources: IEA Renewables 2024, Wikipedia (Renewable energy in China, India), NEA China 2024.</div>
     </div>
-  </section>
+  </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 <a href="https://nayakashutosh.github.io">Ashutosh Nayak</a></p>
-    <p>NISER Bhubaneswar · <a href="https://matterthathinks.github.io">Matter That Thinks</a></p>
-  </footer>
+  <!-- ═══ INSTITUTIONS ═══ -->
+  <div id="sec-institutions" class="article-section">
+    <div class="sec-eyebrow">Chapter 07 — Institutions</div>
+    <h2 class="sec-title">Building the <em>minds of nations</em></h2>
+    <p class="sec-desc">This is where Prof. Ramamurthy's lecture converged — India underbuilt research and teaching institutions during the crucial 1980–2010 period when China was building 100+ world-class universities under Projects 211 and 985.</p>
 
-  <script>
-    // ── Dark mode toggle ──
-    const toggle = document.getElementById('darkToggle');
-    const modeLabel = document.getElementById('modeLabel');
-    toggle.addEventListener('click', () => {
-      const isDark = document.body.classList.toggle('dark');
-      modeLabel.textContent = isDark ? 'Dark' : 'Light';
-      drawAll(); // redraw charts with updated colors
+    <div class="chart-wrap">
+      <div class="chart-label">Cumulative Elite Institutions Growth — India vs China (1947–2024)</div>
+      <canvas id="instChart" height="320"></canvas>
+      <div class="chart-source">India: IITs + IIMs + AIIMS combined. China: 985-project + 211 project universities combined milestone timeline. Note: China's 211/985 universities were existing institutions upgraded/funded, not built from scratch.</div>
+    </div>
+
+    <div class="callout">The key pattern: India added elite institutions slowly — averaging roughly one new IIT, IIM, or AIIMS per 3–4 years from 1947 to 2000. China, after Project 211 in 1995, rapidly brought 112 institutions into a reform and funding pipeline. The pace difference was decisive for research output in the 2000s–2020s.</div>
+  </div>
+
+  <!-- ═══ MISSING ═══ -->
+  <div id="sec-missing" class="article-section">
+    <div class="sec-eyebrow">Chapter 08 — Lessons &amp; Path Forward</div>
+    <h2 class="sec-title">What India missed — <em>and what it can still do</em></h2>
+    <p class="sec-desc">Prof. Ramamurthy's core argument: India didn't build the institutions and ecosystems while China was building them (1980–2010). But India's demographic window is still open. What are the specific gaps — and what can India do about them?</p>
+
+    <div class="miss-grid">
+      <div class="miss-card">
+        <div class="miss-title">No "TORCH" Programme</div>
+        <div class="miss-desc">India had no equivalent of China's 1988 Torch Programme — no systematic national programme to create technology parks, incubators, and commercialization pathways for decades. Startup India (2016) came 28 years later.</div>
+        <div class="miss-example">China: 11,800 incubators. India: 950 incubators in 2023.</div>
+      </div>
+      <div class="miss-card">
+        <div class="miss-title">Too Few Elite Universities</div>
+        <div class="miss-desc">China funded 112 universities under Project 211 (1995) and 39 under 985 (1998). India's IITs only reached 16 by 2012 — 17 years after China's Project 211. The pipeline of researchers was simply too thin.</div>
+        <div class="miss-example">India: 7 IITs in 2000. China: 112 institutions in reform pipeline by 1995.</div>
+      </div>
+      <div class="miss-card">
+        <div class="miss-title">R&amp;D at 0.65% of GDP</div>
+        <div class="miss-desc">India's GERD has barely budged from 0.6–0.7% for 20+ years. China went from 0.9% (2000) to 2.58% (2023). Critically, India's private sector funds only 37% of R&amp;D; China's: 76%. Government is both funder AND user in India — breaking the industry-academia loop.</div>
+        <div class="miss-example">India R&amp;D 2024: ~$23B. China: $496B. USA: $950B+.</div>
+      </div>
+      <div class="miss-card">
+        <div class="miss-title">Late Liberalization</div>
+        <div class="miss-desc">China opened its economy in 1978 (Deng's reforms) and joined WTO in 2001. India liberalized only in 1991, and remained more inward-looking for longer. China's export-led growth funded the R&amp;D investment cycle.</div>
+        <div class="miss-example">In 1980, India's GDP (PPP) was larger than China's. By 2024, China is 5× bigger.</div>
+      </div>
+      <div class="miss-card">
+        <div class="miss-title">Brain Drain Unaddressed</div>
+        <div class="miss-desc">IIT graduates emigrate at high rates. 25,000 IIT graduates have settled in the US since 1953. 37% of US S&amp;E doctorates go to foreign students (largely Chinese and Indian), most staying in the US. India trains talent for the world without building systems to retain it.</div>
+        <div class="miss-example">India's researchers/million: 253. USA: 4,412. S. Korea: 8,714.</div>
+      </div>
+      <div class="miss-card">
+        <div class="miss-title">Weak Industry-Academia Links</div>
+        <div class="miss-desc">India's incubators remain tied to government academic institutions where private capital remains limited. China built Productivity Promotion Centers (1,000+) specifically to link research and business.</div>
+        <div class="miss-example">India's business R&amp;D share: 37%. China: 76%. Japan: 79%. S. Korea: 80%.</div>
+      </div>
+      <div class="miss-card">
+        <div class="miss-title">No Scale in PhD Pipeline</div>
+        <div class="miss-desc">China: 60,000 engineering PhDs/year. India: 17,000 total S&amp;E PhDs/year. The "raw material" for research-driven innovation — doctoral graduates — is critically short. IISER, NISER, and new IITs help, but the scale is still far behind.</div>
+        <div class="miss-example">India needs ~3× more PhD output to compete at China's level.</div>
+      </div>
+      <div class="miss-card">
+        <div class="miss-title">Deep-Tech vs Services Trap</div>
+        <div class="miss-desc">India's startup success is real but concentrated in consumer apps and IT services. China invested $12.3B in AI and semiconductor startups in 2024 alone. India lacks fabrication plants, testing centers, and deep-tech labs at scale.</div>
+        <div class="miss-example">China deep-tech: BYD, DJI, CATL, Huawei. India: Zomato, Paytm, BYJU's.</div>
+      </div>
+    </div>
+
+    <div class="prescription">
+      <div class="prescription-title">What India must do — Prof. Ramamurthy's prescription</div>
+      <ol>
+        <li><strong>Raise GERD to at least 2% of GDP by 2035</strong> — requires private sector involvement (currently only 37% vs China's 76%)</li>
+        <li><strong>Build 5,000+ quality incubators</strong> with private capital — not just government-academic institutions</li>
+        <li><strong>Scale PhD output to 50,000+/year</strong> with competitive fellowships and world-class labs</li>
+        <li><strong>Create "Innovation Zones"</strong> equivalent to China's STIPs — deliberately clustering talent, capital, and infrastructure</li>
+        <li><strong>Deploy returnee programs</strong> competitive enough to attract diaspora back (like China's Thousand Talents Programme)</li>
+        <li><strong>Build more IISERs, research universities, and technology institutes</strong> — especially in underserved states</li>
+        <li><strong>Strengthen the IISc + IIT research ecosystem</strong> with sustained long-term funding, not project-to-project grants</li>
+      </ol>
+    </div>
+
+    <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:400;margin:3rem 0 1.5rem;color:var(--ink);">India's strengths that China lacks (and can build on)</h3>
+    <div class="timeline-cols">
+      <div class="tl-wrap">
+        <div class="tl-item">
+          <div class="tl-dot hot"></div>
+          <div class="tl-yr">Democratic Institutions</div>
+          <div class="tl-txt"><strong>Rule of law, independent judiciary, IP protection</strong> — China's IPR enforcement is improving but India's has been stronger historically. This matters for attracting global R&amp;D centers.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot hot"></div>
+          <div class="tl-yr">English Proficiency</div>
+          <div class="tl-txt"><strong>Natural advantage in global knowledge economy.</strong> India's engineers and researchers publish in English, collaborate internationally, and access global knowledge networks without translation barriers.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot hot"></div>
+          <div class="tl-yr">Young Demographics</div>
+          <div class="tl-txt"><strong>India's median age is 28; China's is 39</strong> and rising fast due to the one-child policy aftermath. India's demographic window for a workforce dividend is still wide open.</div>
+        </div>
+      </div>
+      <div class="tl-wrap">
+        <div class="tl-item">
+          <div class="tl-dot hot"></div>
+          <div class="tl-yr">Software &amp; Services Base</div>
+          <div class="tl-txt"><strong>India's $250B+ IT services industry</strong> provides a platform to pivot toward product, AI, and deep-tech. Infosys, TCS, Wipro, and the startup ecosystem create talent density that can be redirected.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot hot"></div>
+          <div class="tl-yr">Space &amp; Defense</div>
+          <div class="tl-txt"><strong>ISRO's cost-efficient model</strong> (Chandrayaan at &lt;$100M vs NASA equivalents at $1B+) shows India can punch above its weight in high-tech with the right institutional design.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot hot"></div>
+          <div class="tl-yr">Pharma &amp; Biotech</div>
+          <div class="tl-txt"><strong>India is the pharmacy of the world</strong> — 20% of global generic medicine exports. This sector shows what Indian manufacturing can achieve with the right policies, scale, and IP environment.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SOURCES ═══ -->
+  <div id="sec-sources" class="article-section">
+    <div class="sec-eyebrow">Chapter 09 — Data &amp; References</div>
+    <h2 class="sec-title">Data sources &amp; <em>further reading</em></h2>
+    <p class="sec-desc">Every chart in this piece is grounded in publicly available data from reputable organizations. Here's a complete reference list for deeper research.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dataset</th><th>Source</th><th>URL / Database</th></tr></thead>
+        <tbody>
+          <tr><td>GDP, GDP PPP, GDP per capita</td><td>IMF World Economic Outlook (April 2026 edition)</td><td>imf.org/en/Publications/WEO</td></tr>
+          <tr><td>GDP historical (1980–2024)</td><td>World Bank WDI</td><td>data.worldbank.org</td></tr>
+          <tr><td>R&amp;D expenditure (GERD % GDP)</td><td>OECD, World Bank, UNESCO UIS</td><td>stats.oecd.org; data.worldbank.org</td></tr>
+          <tr><td>Researchers per million</td><td>UNESCO UIS via World Bank</td><td>data.worldbank.org/indicator/SP.POP.SCIE.RD.P6</td></tr>
+          <tr><td>S&amp;E Graduates &amp; PhDs</td><td>NSF NCSES Science &amp; Engineering Indicators</td><td>ncses.nsf.gov/pubs/nsb202332</td></tr>
+          <tr><td>Research Publications</td><td>Elsevier SCOPUS via SCImago; Web of Science (Clarivate)</td><td>scimagojr.com</td></tr>
+          <tr><td>Nature Index</td><td>Nature Portfolio</td><td>nature.com/nature-index</td></tr>
+          <tr><td>Energy capacity data</td><td>IEA, IRENA, NEA China, CEA India</td><td>iea.org; irena.org</td></tr>
+          <tr><td>China's Programmes (863, TORCH)</td><td>China MFA; Steve Blank; MacroPolo</td><td>steveblank.com; macropolo.org</td></tr>
+          <tr><td>India institutions data</td><td>Ministry of Education India, UGC</td><td>education.gov.in; ugc.ac.in</td></tr>
+          <tr><td>Technology Incubators</td><td>ScienceDirect (2024); YNOS 2023 data</td><td>sciencedirect.com</td></tr>
+          <tr><td>Innovation Index</td><td>WIPO Global Innovation Index 2024</td><td>wipo.int/global_innovation_index</td></tr>
+          <tr><td>V.S. Ramamurthy (lecture context)</td><td>Former Secretary, DST India; Former Director, NIAS; JNCASR</td><td>Lecture notes (transcribed from attendee)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="further-reading">
+      <div class="fr-title">Key papers &amp; articles for further reading</div>
+      <ul class="fr-list">
+        <li>Clarivate G20 Research Scorecard 2025 — clarivate.com</li>
+        <li>NSF Science &amp; Engineering Indicators 2024 — ncses.nsf.gov</li>
+        <li>UNESCO Science Report 2021 — en.unesco.org/unescosciencereport</li>
+        <li>"India and China: An Essay in Comparative Political Economy" — IMF / Panagariya</li>
+        <li>"China's Torch Program" — Steve Blank (steveblank.com, 2013)</li>
+        <li>Brookings: "India's Technology Competition with China" (2023)</li>
+        <li>NBER: "Explaining the Historical Rise of US Research Universities" (2021)</li>
+        <li>Springer Nature: "Global Research Pulse: India" (2024)</li>
+        <li>Menlo Ventures: China PhD Report (2025)</li>
+      </ul>
+    </div>
+  </div>
+
+</div><!-- .article-wrap -->
+
+<!-- SUBSCRIBE -->
+<div class="subscribe-band">
+  <h3>Essays by email, when they're ready</h3>
+  <p>No schedule, no noise. Just a note when something new is worth your time.</p>
+  <a href="https://matterthathinks.substack.com" target="_blank" class="subscribe-cta">Subscribe on Substack</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Matter That Thinks</span>
+  <span class="footer-mono">Bhubaneswar &nbsp;·&nbsp; Est. 2026 &nbsp;·&nbsp; Independent</span>
+  <span class="footer-mono" id="footerDate"></span>
+</footer>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+
+<script>
+/* ══════════════════════════════════
+   THEME
+══════════════════════════════════ */
+var btn  = document.getElementById('themeBtn');
+var icon = document.getElementById('themeIcon');
+var html = document.documentElement;
+var SUN  = 'M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M12 5a7 7 0 1 0 0 14A7 7 0 0 0 12 5z';
+var MOON = 'M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z';
+
+function applyTheme(dark) {
+  html.setAttribute('data-theme', dark ? 'dark' : 'light');
+  icon.innerHTML = '<path d="' + (dark ? SUN : MOON) + '"/>';
+  try { localStorage.setItem('mtt-theme', dark ? 'dark' : 'light'); } catch(e){}
+  // Redraw active charts
+  setTimeout(function(){ redrawActive(); }, 50);
+}
+(function() {
+  var saved = null;
+  try { saved = localStorage.getItem('mtt-theme'); } catch(e){}
+  applyTheme(saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
+})();
+btn.addEventListener('click', function() {
+  applyTheme(html.getAttribute('data-theme') === 'light');
+});
+
+/* ══════════════════════════════════
+   SECTION ROUTING
+══════════════════════════════════ */
+var currentSec = 'hero';
+document.querySelectorAll('.snav-tab').forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    var sec = this.dataset.sec;
+    document.querySelectorAll('.article-section').forEach(function(s){ s.classList.remove('active'); });
+    document.querySelectorAll('.snav-tab').forEach(function(t){ t.classList.remove('active'); });
+    var el = document.getElementById('sec-' + sec);
+    if(el) el.classList.add('active');
+    this.classList.add('active');
+    currentSec = sec;
+    window.scrollTo({top: document.querySelector('.section-nav').offsetTop - 2, behavior: 'smooth'});
+    setTimeout(function(){ drawSection(sec); }, 80);
+  });
+});
+
+function showSub(sec, name, tabEl) {
+  document.querySelectorAll('#sec-' + sec + ' .spanel').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('#sec-' + sec + ' .stab').forEach(function(b){ b.classList.remove('active'); });
+  var panel = document.getElementById(sec + '-' + name);
+  if(panel) panel.classList.add('active');
+  if(tabEl) tabEl.classList.add('active');
+  setTimeout(function(){ drawSection(sec); }, 30);
+}
+
+/* ══════════════════════════════════
+   BACK TO TOP
+══════════════════════════════════ */
+var backTop = document.getElementById('backTop');
+window.addEventListener('scroll', function() {
+  backTop.classList.toggle('visible', window.scrollY > 400);
+});
+
+/* ══════════════════════════════════
+   FOOTER DATE
+══════════════════════════════════ */
+document.getElementById('footerDate').textContent =
+  new Date().toLocaleDateString('en-GB', { year:'numeric', month:'long', day:'numeric' });
+
+/* ══════════════════════════════════
+   COLORS (theme-aware)
+══════════════════════════════════ */
+function getC() {
+  var s = getComputedStyle(document.documentElement);
+  return {
+    india:     s.getPropertyValue('--india').trim(),
+    china:     s.getPropertyValue('--china').trim(),
+    usa:       s.getPropertyValue('--usa').trim(),
+    japan:     s.getPropertyValue('--japan').trim(),
+    uk:        s.getPropertyValue('--uk').trim(),
+    france:    s.getPropertyValue('--france').trim(),
+    singapore: s.getPropertyValue('--singapore').trim(),
+    korea:     s.getPropertyValue('--korea').trim(),
+    germany:   s.getPropertyValue('--germany').trim(),
+    rule:      s.getPropertyValue('--rule').trim(),
+    ink3:      s.getPropertyValue('--ink3').trim(),
+    ink2:      s.getPropertyValue('--ink2').trim(),
+    bg2:       s.getPropertyValue('--bg2').trim()
+  };
+}
+
+/* ══════════════════════════════════
+   CANVAS ENGINE
+══════════════════════════════════ */
+function setupCanvas(id, H) {
+  var canvas = document.getElementById(id);
+  if(!canvas) return null;
+  var dpr = window.devicePixelRatio || 1;
+  var W = canvas.parentElement.offsetWidth - 48;
+  if(W <= 0) return null;
+  canvas.width  = W * dpr;
+  canvas.height = H * dpr;
+  canvas.style.width  = W + 'px';
+  canvas.style.height = H + 'px';
+  var ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  return {ctx: ctx, W: W, H: H};
+}
+
+function drawLines(canvasId, H, datasets, years, opts) {
+  opts = opts || {};
+  var r = setupCanvas(canvasId, H);
+  if(!r) return;
+  var ctx = r.ctx, W = r.W;
+  var C = getC();
+  var pl = opts.pl || 55, pr = opts.pr || 75, pt = opts.pt || 20, pb = opts.pb || 40;
+  var cw = W - pl - pr, ch = H - pt - pb;
+  var minX = years[0], maxX = years[years.length - 1];
+  var maxY = 0;
+  datasets.forEach(function(d){ if(d.visible !== false) d.data.forEach(function(v){ if(v > maxY) maxY = v; }); });
+  maxY = maxY * 1.12;
+  var mapX = function(v){ return pl + (v - minX) / (maxX - minX) * cw; };
+  var mapY = function(v){ return pt + ch - (v / maxY) * ch; };
+
+  // grid lines
+  ctx.strokeStyle = 'rgba(128,128,128,0.1)'; ctx.lineWidth = 1;
+  for(var i = 0; i <= 5; i++) {
+    var gy = pt + ch * i / 5;
+    ctx.beginPath(); ctx.moveTo(pl, gy); ctx.lineTo(pl + cw, gy); ctx.stroke();
+    var val = maxY * (1 - i / 5);
+    var lbl = val >= 1000 ? (val/1000).toFixed(0) + 'k' : val.toFixed(val < 10 ? 1 : 0);
+    ctx.fillStyle = C.ink3; ctx.font = '10px DM Mono, monospace'; ctx.textAlign = 'right';
+    ctx.fillText((opts.prefix||'') + lbl, pl - 6, gy + 4);
+  }
+  // x axis labels
+  var step = years.length > 12 ? 4 : 2;
+  years.filter(function(_,i){ return i % step === 0 || i === years.length - 1; }).forEach(function(yr) {
+    ctx.fillStyle = C.ink3; ctx.font = '10px DM Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText(yr, mapX(yr), H - pb + 16);
+  });
+  // axes
+  ctx.strokeStyle = 'rgba(128,128,128,0.15)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(pl, pt); ctx.lineTo(pl, pt + ch); ctx.lineTo(pl + cw, pt + ch); ctx.stroke();
+
+  // data lines
+  datasets.forEach(function(d) {
+    if(d.visible === false) return;
+    ctx.strokeStyle = d.color; ctx.lineWidth = 2.5; ctx.lineJoin = 'round';
+    ctx.beginPath();
+    years.forEach(function(yr, i) {
+      var x = mapX(yr), y = mapY(d.data[i]);
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
     });
-
-    // ── Nav scroll effect ──
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
+    ctx.stroke();
+    // dots
+    years.forEach(function(yr, i) {
+      ctx.beginPath(); ctx.arc(mapX(yr), mapY(d.data[i]), 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = d.color; ctx.fill();
     });
+    // end label
+    var lx = mapX(maxX), ly = mapY(d.data[d.data.length - 1]);
+    ctx.fillStyle = d.color; ctx.font = 'bold 10px DM Mono, monospace'; ctx.textAlign = 'left';
+    ctx.fillText(d.label, Math.min(lx + 6, W - 65), ly + 3);
+  });
+}
 
-    // ── Scroll reveal ──
-    const revealObs = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 70);
-      });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.exp-item, .tl-item').forEach(el => revealObs.observe(el));
+/* ══════════════════════════════════
+   DATA
+══════════════════════════════════ */
+var years = [1980,1985,1990,1995,2000,2005,2008,2010,2012,2014,2016,2018,2020,2022,2024];
 
-    // ── Chart helpers ──
-    function getCSSVar(name) {
-      return getComputedStyle(document.body).getPropertyValue(name).trim();
+var gdpPPP = {
+  china:    [0.31,0.56,1.12,1.94,3.68,7.27,10.5,13.5,17.1,20.7,23.2,27.1,27.8,33.0,35.3],
+  india:    [0.38,0.59,0.95,1.36,2.15,3.52,4.45,5.65,6.82,8.26,9.57,11.0,10.5,12.5,14.9],
+  usa:      [5.90,7.20,8.70,10.3,13.5,16.8,18.0,18.7,19.2,20.5,21.7,23.4,22.7,26.0,28.8],
+  japan:    [2.10,2.60,3.00,3.20,3.45,3.85,4.15,4.30,4.50,4.60,4.70,5.10,5.20,5.40,5.60],
+  uk:       [0.90,1.10,1.30,1.50,1.85,2.20,2.45,2.50,2.60,2.75,2.90,3.10,3.05,3.30,3.60],
+  singapore:[0.04,0.07,0.12,0.19,0.30,0.42,0.56,0.68,0.78,0.85,0.92,1.00,0.97,1.07,1.15]
+};
+var gdpPC = {
+  china:    [310,530,980,1600,2900,5520,7900,10000,12500,14900,16600,19100,19500,23300,24870],
+  india:    [490,620,800,1060,1480,2520,3150,3910,4560,5360,6200,7450,7100,8500,10100],
+  usa:      [25600,28000,32100,37000,44600,53000,55100,57800,60200,63300,65100,68900,65000,77000,82700],
+  japan:    [18000,22000,25000,28000,30000,34000,35500,36000,38000,39000,40000,42000,42000,44000,47000],
+  singapore:[9500,14000,20000,26000,39000,52000,62000,72000,82000,91000,98000,108000,95000,115000,130000],
+  uk:       [16000,19000,22000,27000,32000,39000,43000,43000,45000,47000,48000,52000,48000,55000,60000]
+};
+var pubYears = [2000,2002,2004,2006,2008,2010,2012,2014,2016,2018,2020,2022,2024];
+var pubData = {
+  china:   [50,80,120,180,250,330,450,560,700,900,1100,1400,1700],
+  usa:     [300,310,320,330,340,360,380,410,430,450,470,500,520],
+  india:   [25,30,38,48,60,80,100,130,150,175,190,200,195],
+  uk:      [75,80,85,90,95,100,105,110,115,120,125,130,130],
+  japan:   [90,92,95,95,95,95,90,85,80,78,76,75,72],
+  germany: [70,72,75,78,82,88,92,95,98,102,105,110,112]
+};
+var rdYears = [2000,2002,2004,2006,2008,2010,2012,2014,2016,2018,2020,2022,2023];
+var rdTrend = {
+  china: [0.90,1.07,1.23,1.39,1.47,1.71,1.98,2.05,2.11,2.14,2.40,2.55,2.58],
+  india: [0.77,0.72,0.69,0.69,0.65,0.65,0.68,0.63,0.62,0.65,0.65,0.65,0.65],
+  korea: [2.18,2.40,2.68,3.01,3.36,3.47,4.03,4.29,4.24,4.53,4.81,5.21,4.96],
+  usa:   [2.62,2.62,2.54,2.62,2.85,2.74,2.70,2.73,2.79,2.84,3.46,3.50,3.45],
+  japan: [3.04,3.12,3.17,3.41,3.47,3.25,3.35,3.40,3.16,3.28,3.27,3.44,3.44]
+};
+var instYears = [1947,1951,1956,1961,1963,1973,1984,1994,1996,2001,2006,2008,2009,2011,2012,2015,2016,2019,2022,2024];
+var indiaInst = [0,1,2,4,5,6,7,8,10,11,17,25,27,31,38,58,65,68,80,86];
+var chinaInst = [2,4,6,10,12,15,18,20,22,25,30,55,100,110,112,120,139,140,147,147];
+
+var growthCountries = ['India','China','USA','Japan','UK','S. Korea'];
+var growthDecades   = ['1960s','1970s','1980s','1990s','2000s','2010s','2020–24'];
+var growthRates = [
+  [3.5,3.6,5.9,5.4,6.9,7.7,6.4],
+  [5.2,7.5,9.8,9.9,10.3,7.7,5.1],
+  [4.3,3.2,3.1,3.2,1.8,2.3,2.6],
+  [9.8,5.3,4.5,1.1,0.5,1.4,0.3],
+  [3.1,2.0,2.5,2.7,1.8,2.1,3.5],
+  [5.9,9.3,9.6,7.1,5.0,3.2,2.5]
+];
+
+/* ══════════════════════════════════
+   CHART DRAW FUNCTIONS
+══════════════════════════════════ */
+function drawBarGroupChart(id, H) {
+  var r = setupCanvas(id, H);
+  if(!r) return;
+  var ctx = r.ctx, W = r.W;
+  var C = getC();
+  var grColors = [C.india, C.china, C.usa, C.japan, C.uk, C.korea];
+  var groups = growthDecades.length, series = growthCountries.length;
+  var pl=40, pr=20, pt=20, pb=60;
+  var cw = W-pl-pr, ch = H-pt-pb;
+  var groupW = cw / groups, barW = groupW / (series + 1), maxV = 12;
+  var mapY = function(v){ return pt + ch - (v / maxV) * ch; };
+
+  ctx.strokeStyle = 'rgba(128,128,128,0.08)'; ctx.lineWidth = 1;
+  [0,3,6,9,12].forEach(function(v){
+    var y = mapY(v);
+    ctx.beginPath(); ctx.moveTo(pl, y); ctx.lineTo(pl + cw, y); ctx.stroke();
+    ctx.fillStyle = C.ink3; ctx.font = '9px DM Mono,monospace'; ctx.textAlign = 'right';
+    ctx.fillText(v + '%', pl - 4, y + 3);
+  });
+
+  growthDecades.forEach(function(dec, gi) {
+    var gx = pl + gi * groupW + barW * 0.5;
+    growthCountries.forEach(function(_, si) {
+      var v = growthRates[si][gi];
+      var x = gx + si * barW;
+      var y = mapY(v), h = mapY(0) - y;
+      ctx.fillStyle = grColors[si] + 'cc';
+      ctx.fillRect(x, y, barW - 2, h);
+    });
+    ctx.fillStyle = C.ink3; ctx.font = '9px DM Mono,monospace'; ctx.textAlign = 'center';
+    ctx.fillText(dec, gx + (series * barW) / 2, H - pb + 14);
+  });
+
+  growthCountries.forEach(function(n, i) {
+    var lx = pl + i * 90;
+    ctx.fillStyle = grColors[i]; ctx.fillRect(lx, H - pb + 26, 10, 8);
+    ctx.fillStyle = C.ink3; ctx.font = '9px DM Mono,monospace'; ctx.textAlign = 'left';
+    ctx.fillText(n, lx + 14, H - pb + 34);
+  });
+}
+
+function drawInstChart() {
+  var r = setupCanvas('instChart', 320);
+  if(!r) return;
+  var ctx = r.ctx, W = r.W, H = r.H;
+  var C = getC();
+  var pl=50, pr=80, pt=20, pb=40;
+  var cw = W-pl-pr, ch = H-pt-pb;
+  var minX=1947, maxX=2024, maxY=160;
+  var mapX = function(v){ return pl + (v - minX) / (maxX - minX) * cw; };
+  var mapY = function(v){ return pt + ch - (v / maxY) * ch; };
+
+  ctx.strokeStyle = 'rgba(128,128,128,0.08)'; ctx.lineWidth = 1;
+  [0,25,50,75,100,125,150].forEach(function(v){
+    var y = mapY(v);
+    ctx.beginPath(); ctx.moveTo(pl, y); ctx.lineTo(pl + cw, y); ctx.stroke();
+    ctx.fillStyle = C.ink3; ctx.font = '10px DM Mono,monospace'; ctx.textAlign = 'right';
+    ctx.fillText(v, pl - 6, y + 4);
+  });
+  [1950,1960,1970,1980,1990,2000,2010,2020].forEach(function(yr){
+    ctx.fillStyle = C.ink3; ctx.font = '10px DM Mono,monospace'; ctx.textAlign = 'center';
+    ctx.fillText(yr, mapX(yr), H - pb + 16);
+  });
+  ctx.strokeStyle = 'rgba(128,128,128,0.15)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(pl, pt); ctx.lineTo(pl, pt + ch); ctx.lineTo(pl + cw, pt + ch); ctx.stroke();
+
+  // India area
+  ctx.beginPath();
+  instYears.forEach(function(yr, i){ i===0 ? ctx.moveTo(mapX(yr), mapY(indiaInst[i])) : ctx.lineTo(mapX(yr), mapY(indiaInst[i])); });
+  ctx.lineTo(mapX(instYears[instYears.length-1]), mapY(0)); ctx.lineTo(mapX(instYears[0]), mapY(0));
+  ctx.closePath(); ctx.fillStyle = C.india + '22'; ctx.fill();
+  ctx.strokeStyle = C.india; ctx.lineWidth = 2.5;
+  ctx.beginPath();
+  instYears.forEach(function(yr, i){ i===0 ? ctx.moveTo(mapX(yr), mapY(indiaInst[i])) : ctx.lineTo(mapX(yr), mapY(indiaInst[i])); });
+  ctx.stroke();
+
+  // China area
+  ctx.beginPath();
+  instYears.forEach(function(yr, i){ i===0 ? ctx.moveTo(mapX(yr), mapY(chinaInst[i])) : ctx.lineTo(mapX(yr), mapY(chinaInst[i])); });
+  ctx.lineTo(mapX(instYears[instYears.length-1]), mapY(0)); ctx.lineTo(mapX(instYears[0]), mapY(0));
+  ctx.closePath(); ctx.fillStyle = C.china + '18'; ctx.fill();
+  ctx.strokeStyle = C.china; ctx.lineWidth = 2.5;
+  ctx.beginPath();
+  instYears.forEach(function(yr, i){ i===0 ? ctx.moveTo(mapX(yr), mapY(chinaInst[i])) : ctx.lineTo(mapX(yr), mapY(chinaInst[i])); });
+  ctx.stroke();
+
+  // Labels
+  var last = instYears.length - 1;
+  [{y: indiaInst[last], col: C.india, lbl: 'India 86'},
+   {y: chinaInst[last], col: C.china, lbl: 'China 147'}].forEach(function(item){
+    ctx.fillStyle = item.col; ctx.font = 'bold 11px DM Mono,monospace'; ctx.textAlign = 'left';
+    ctx.fillText(item.lbl, mapX(maxX) + 6, mapY(item.y) + 3);
+  });
+
+  // Annotation: Project 211
+  ctx.strokeStyle = C.china + '88'; ctx.lineWidth = 1; ctx.setLineDash([4,4]);
+  var x95 = mapX(1995);
+  ctx.beginPath(); ctx.moveTo(x95, pt); ctx.lineTo(x95, pt + ch); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = C.china + 'bb'; ctx.font = '9px DM Mono,monospace'; ctx.textAlign = 'center';
+  ctx.fillText('Project 211', x95, pt + 14);
+}
+
+function drawSection(name) {
+  var C = getC();
+  if(name === 'gdp') {
+    var activePanel = document.querySelector('#sec-gdp .spanel.active');
+    if(activePanel && activePanel.id === 'gdp-nominal') {
+      drawLines('gdpChart', 360, [
+        {label:'China', color:C.china, data:gdpPPP.china},
+        {label:'USA',   color:C.usa,   data:gdpPPP.usa},
+        {label:'India', color:C.india, data:gdpPPP.india},
+        {label:'Japan', color:C.japan, data:gdpPPP.japan},
+        {label:'UK',    color:C.uk,    data:gdpPPP.uk},
+        {label:'S\'pore',color:C.singapore, data:gdpPPP.singapore}
+      ], years, {pr:80});
+    } else if(activePanel && activePanel.id === 'gdp-percap') {
+      drawLines('pcapChart', 360, [
+        {label:'S\'pore',color:C.singapore, data:gdpPC.singapore},
+        {label:'USA',   color:C.usa,   data:gdpPC.usa},
+        {label:'Japan', color:C.japan, data:gdpPC.japan},
+        {label:'UK',    color:C.uk,    data:gdpPC.uk},
+        {label:'China', color:C.china, data:gdpPC.china},
+        {label:'India', color:C.india, data:gdpPC.india}
+      ], years, {pr:75, prefix:'$'});
+    } else if(activePanel && activePanel.id === 'gdp-growth') {
+      drawBarGroupChart('growthChart', 340);
     }
+  }
+  if(name === 'rd') {
+    drawLines('rdTrendChart', 300, [
+      {label:'China', color:C.china, data:rdTrend.china},
+      {label:'Korea', color:C.korea, data:rdTrend.korea},
+      {label:'Japan', color:C.japan, data:rdTrend.japan},
+      {label:'USA',   color:C.usa,   data:rdTrend.usa},
+      {label:'India', color:C.india, data:rdTrend.india}
+    ], rdYears, {pr:65, pl:50, prefix:''});
+  }
+  if(name === 'output') {
+    drawLines('pubChart', 340, [
+      {label:'China',  color:C.china,   data:pubData.china},
+      {label:'USA',    color:C.usa,     data:pubData.usa},
+      {label:'Germany',color:C.germany, data:pubData.germany},
+      {label:'Japan',  color:C.japan,   data:pubData.japan},
+      {label:'UK',     color:C.uk,      data:pubData.uk},
+      {label:'India',  color:C.india,   data:pubData.india}
+    ], pubYears, {pr:80});
+  }
+  if(name === 'institutions') {
+    drawInstChart();
+  }
+}
 
-    function setupCanvas(id, H) {
-      const canvas = document.getElementById(id);
-      if (!canvas) return null;
-      const dpr = window.devicePixelRatio || 1;
-      const W = canvas.parentElement.offsetWidth - 64;
-      if (W <= 0) return null;
-      canvas.width = W * dpr; canvas.height = H * dpr;
-      canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
-      const ctx = canvas.getContext('2d');
-      ctx.scale(dpr, dpr);
-      return { ctx, W, H };
-    }
+function redrawActive() {
+  drawSection(currentSec);
+}
 
-    function drawLines(canvasId, H, datasets, xData, opts = {}) {
-      const r = setupCanvas(canvasId, H);
-      if (!r) return;
-      const { ctx, W } = r;
-      const pl = opts.pl || 56, pr = opts.pr || 90, pt = opts.pt || 20, pb = opts.pb || 42;
-      const cw = W - pl - pr, ch = H - pt - pb;
-
-      let maxY = 0;
-      datasets.forEach(d => { if (d.visible !== false) d.data.forEach(v => { if (v > maxY) maxY = v; }); });
-      maxY = maxY * 1.12;
-      const minX = xData[0], maxX = xData[xData.length - 1];
-      const mapX = v => pl + (v - minX) / (maxX - minX) * cw;
-      const mapY = v => pt + ch - (v / maxY) * ch;
-
-      const mutedColor = 'rgba(122,117,110,0.25)';
-      const textColor = getCSSVar('--muted');
-
-      // grid
-      ctx.strokeStyle = mutedColor; ctx.lineWidth = 1;
-      for (let i = 0; i <= 5; i++) {
-        const y = pt + ch * i / 5;
-        ctx.beginPath(); ctx.moveTo(pl, y); ctx.lineTo(pl + cw, y); ctx.stroke();
-        const val = maxY * (1 - i / 5);
-        const label = (opts.prefix || '') + (val >= 1000 ? (val / 1000).toFixed(0) + 'k' : val.toFixed(0));
-        ctx.fillStyle = textColor; ctx.font = '10px DM Sans, sans-serif'; ctx.textAlign = 'right';
-        ctx.fillText(label, pl - 6, y + 4);
-      }
-      // x axis labels
-      const step = xData.length > 12 ? 3 : 2;
-      xData.filter((_, i) => i % step === 0 || i === xData.length - 1).forEach(yr => {
-        ctx.fillStyle = textColor; ctx.font = '10px DM Sans, sans-serif'; ctx.textAlign = 'center';
-        ctx.fillText(yr, mapX(yr), H - pb + 16);
-      });
-      // axes
-      ctx.strokeStyle = mutedColor; ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(pl, pt); ctx.lineTo(pl, pt + ch); ctx.lineTo(pl + cw, pt + ch); ctx.stroke();
-
-      // lines
-      datasets.forEach(d => {
-        if (d.visible === false) return;
-        ctx.strokeStyle = d.color; ctx.lineWidth = 2; ctx.lineJoin = 'round';
-        ctx.beginPath();
-        xData.forEach((yr, i) => {
-          const x = mapX(yr), y = mapY(d.data[i]);
-          i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-        });
-        ctx.stroke();
-        // dots at data points
-        xData.forEach((yr, i) => {
-          ctx.beginPath(); ctx.arc(mapX(yr), mapY(d.data[i]), 2.5, 0, Math.PI * 2);
-          ctx.fillStyle = d.color; ctx.fill();
-        });
-        // end label
-        const lx = mapX(maxX) + 7, ly = mapY(d.data[d.data.length - 1]);
-        ctx.fillStyle = d.color; ctx.font = '500 10px DM Sans, sans-serif'; ctx.textAlign = 'left';
-        ctx.fillText(d.label, Math.min(lx, W - 80), ly + 3);
-      });
-    }
-
-    function buildLegend(containerId, datasets) {
-      const el = document.getElementById(containerId);
-      if (!el) return;
-      el.innerHTML = '';
-      datasets.forEach(d => {
-        const pill = document.createElement('div');
-        pill.className = 'leg';
-        pill.innerHTML = `<span class="leg-dot" style="background:${d.color}"></span>${d.label}`;
-        el.appendChild(pill);
-      });
-    }
-
-    // ── Data ──
-    const years = [1980, 1985, 1990, 1995, 2000, 2005, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024];
-    const gdpDatasets = [
-      { label: 'China',     color: '#8B1A1A', data: [0.31,0.56,1.12,1.94,3.68,7.27,10.5,13.5,17.1,20.7,23.2,27.1,27.8,33.0,35.3] },
-      { label: 'USA',       color: '#2B4A6F', data: [5.90,7.20,8.70,10.3,13.5,16.8,18.0,18.7,19.2,20.5,21.7,23.4,22.7,26.0,28.8] },
-      { label: 'India',     color: '#8B3A2A', data: [0.38,0.59,0.95,1.36,2.15,3.52,4.45,5.65,6.82,8.26,9.57,11.0,10.5,12.5,14.9] },
-      { label: 'Japan',     color: '#5A2A3E', data: [2.10,2.60,3.00,3.20,3.45,3.85,4.15,4.30,4.50,4.60,4.70,5.10,5.20,5.40,5.60] },
-    ];
-    const pcapDatasets = [
-      { label: 'USA',       color: '#2B4A6F', data: [25600,28000,32100,37000,44600,53000,55100,57800,60200,63300,65100,68900,65000,77000,82700] },
-      { label: 'Japan',     color: '#5A2A3E', data: [18000,22000,25000,28000,30000,34000,35500,36000,38000,39000,40000,42000,42000,44000,47000] },
-      { label: 'S\'pore',   color: '#2d4a3e', data: [9500,14000,20000,26000,39000,52000,62000,72000,82000,91000,98000,108000,95000,115000,130000] },
-      { label: 'China',     color: '#8B1A1A', data: [310,530,980,1600,2900,5520,7900,10000,12500,14900,16600,19100,19500,23300,24870] },
-      { label: 'India',     color: '#8B3A2A', data: [490,620,800,1060,1480,2520,3150,3910,4560,5360,6200,7450,7100,8500,10100] },
-    ];
-    const pubYears = [2000,2002,2004,2006,2008,2010,2012,2014,2016,2018,2020,2022,2024];
-    const pubDatasets = [
-      { label: 'China', color: '#8B1A1A', data: [50,80,120,180,250,330,450,560,700,900,1100,1400,1700] },
-      { label: 'USA',   color: '#2B4A6F', data: [300,310,320,330,340,360,380,410,430,450,470,500,520] },
-      { label: 'India', color: '#8B3A2A', data: [25,30,38,48,60,80,100,130,150,175,190,200,195] },
-      { label: 'UK',    color: '#2D3A5A', data: [75,80,85,90,95,100,105,110,115,120,125,130,130] },
-      { label: 'Japan', color: '#5A2A3E', data: [90,92,95,95,95,95,90,85,80,78,76,75,72] },
-    ];
-
-    function drawAll() {
-      buildLegend('gdp-leg', gdpDatasets);
-      buildLegend('pcap-leg', pcapDatasets);
-      buildLegend('pub-leg', pubDatasets);
-      drawLines('gdpChart', 340, gdpDatasets, years, { pr: 80 });
-      drawLines('pcapChart', 300, pcapDatasets, years, { pr: 80, prefix: '$' });
-      drawLines('pubChart', 300, pubDatasets, pubYears, { pr: 80 });
-    }
-
-    window.addEventListener('load', () => setTimeout(drawAll, 100));
-    window.addEventListener('resize', drawAll);
-  </script>
+window.addEventListener('resize', function(){ redrawActive(); });
+</script>
 </body>
 </html>
