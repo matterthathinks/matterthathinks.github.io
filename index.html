@@ -4,11 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Matter That Thinks — Ashutosh Nayak</title>
-<meta name="description" content="Essays on economics, law, power, science, and the examined life. By Ashutosh Nayak.">
+<meta name="description" content="Essays on economics, science, politics, culture, and the examined life. By Ashutosh Nayak.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
+/* ── TOKENS ── */
 :root {
   --bg:       #f7f4ef;
   --bg2:      #ede9e1;
@@ -60,10 +61,7 @@ a { color: inherit; text-decoration: none; }
   height: 56px; display: flex; align-items: center;
   justify-content: space-between; gap: 2rem;
 }
-.logo {
-  font-family: var(--serif); font-size: 1.15rem; font-weight: 500;
-  color: var(--ink); white-space: nowrap; letter-spacing: 0.01em;
-}
+.logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; color: var(--ink); white-space: nowrap; }
 .logo em { font-style: italic; font-weight: 300; color: var(--accent2); }
 .header-nav { display: flex; align-items: center; gap: 0.15rem; }
 .header-nav a {
@@ -77,13 +75,12 @@ a { color: inherit; text-decoration: none; }
 .substack-btn {
   font-family: var(--mono); font-size: 0.59rem; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--bg); background: var(--accent);
-  padding: 0.4rem 1rem; border-radius: 4px; white-space: nowrap;
-  transition: opacity var(--t);
+  padding: 0.4rem 1rem; border-radius: 4px; white-space: nowrap; transition: opacity var(--t);
 }
 .substack-btn:hover { opacity: 0.8; }
 .theme-toggle {
-  width: 34px; height: 34px; border: 1px solid var(--rule);
-  border-radius: 6px; background: transparent; cursor: pointer;
+  width: 34px; height: 34px; border: 1px solid var(--rule); border-radius: 6px;
+  background: transparent; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   transition: background var(--t); flex-shrink: 0;
 }
@@ -92,48 +89,36 @@ a { color: inherit; text-decoration: none; }
 
 /* ── MASTHEAD ── */
 .masthead {
-  border-bottom: 1px solid var(--rule);
-  padding: 4.5rem 2rem 3.5rem;
-  text-align: center;
-  background: var(--bg);
-  position: relative;
-  overflow: hidden;
+  border-bottom: 1px solid var(--rule); padding: 4.5rem 2rem 3.5rem;
+  text-align: center; background: var(--bg); position: relative; overflow: hidden;
   animation: fadeUp 0.55s 0.05s both;
 }
 .masthead::before {
-  content: '';
-  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
   width: 1px; height: 40px; background: var(--rule);
 }
 .masthead-eyebrow {
   font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.2em;
   text-transform: uppercase; color: var(--ink3);
-  margin-bottom: 1.5rem; display: flex;
-  align-items: center; justify-content: center; gap: 1.5rem;
+  margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 1.5rem;
 }
-.masthead-eyebrow::before, .masthead-eyebrow::after {
-  content: ''; width: 48px; height: 1px; background: var(--rule);
-}
+.masthead-eyebrow::before, .masthead-eyebrow::after { content: ''; width: 48px; height: 1px; background: var(--rule); }
 .masthead-title {
-  font-family: var(--serif);
-  font-size: clamp(2.8rem, 7vw, 5.5rem);
-  font-weight: 400; line-height: 1.0; letter-spacing: -0.02em;
-  color: var(--ink); margin-bottom: 1.25rem;
+  font-family: var(--serif); font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 400; line-height: 1.0; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 1.25rem;
 }
 .masthead-title em { font-style: italic; font-weight: 300; color: var(--ink2); }
 .masthead-sub {
-  font-family: var(--serif); font-style: italic; font-size: 1.05rem;
-  font-weight: 300; color: var(--ink3); letter-spacing: 0.01em;
-  max-width: 460px; margin: 0 auto;
+  font-family: var(--serif); font-style: italic; font-size: 1.05rem; font-weight: 300;
+  color: var(--ink3); max-width: 460px; margin: 0 auto;
 }
 
-/* ── LATEST HERO ── */
+/* ── HERO ── */
 .latest-hero {
-  max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+  max-width: 1200px; margin: 0 auto; padding: 3.5rem 2rem;
   border-bottom: 1px solid var(--rule);
   display: grid; grid-template-columns: 1fr 1px 360px;
   gap: 0 4rem; align-items: start;
-  padding-top: 3.5rem; padding-bottom: 3.5rem;
   animation: fadeUp 0.55s 0.1s both;
 }
 .hero-divider { background: var(--rule); align-self: stretch; transition: background var(--t); }
@@ -144,38 +129,30 @@ a { color: inherit; text-decoration: none; }
 }
 .hero-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--rule); max-width: 60px; }
 .hero-title {
-  font-family: var(--serif);
-  font-size: clamp(2rem, 4.5vw, 3.4rem);
-  font-weight: 400; line-height: 1.15; letter-spacing: -0.01em;
-  color: var(--ink); margin-bottom: 1.1rem;
+  font-family: var(--serif); font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 400; line-height: 1.15; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 1.1rem;
 }
 .hero-title em { font-style: italic; font-weight: 300; color: var(--ink2); }
-.hero-title a { transition: color var(--t); }
 .hero-title a:hover { color: var(--accent2); }
 .hero-dek {
-  font-family: var(--serif); font-size: 1.12rem; font-weight: 300;
-  font-style: italic; color: var(--ink2); line-height: 1.7;
-  margin-bottom: 1.75rem; max-width: 520px;
+  font-family: var(--serif); font-size: 1.12rem; font-weight: 300; font-style: italic;
+  color: var(--ink2); line-height: 1.7; margin-bottom: 1.75rem; max-width: 520px;
 }
 .hero-meta { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
 .read-link {
   font-family: var(--mono); font-size: 0.59rem; letter-spacing: 0.12em;
   text-transform: uppercase; color: var(--accent);
-  border-bottom: 1px solid var(--accent); padding-bottom: 1px;
-  transition: opacity var(--t);
+  border-bottom: 1px solid var(--accent); padding-bottom: 1px; transition: opacity var(--t);
 }
 .read-link:hover { opacity: 0.6; }
-.meta-date {
-  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.1em; color: var(--ink3);
-}
+.meta-date { font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.1em; color: var(--ink3); }
 
-/* Hero sidebar */
+/* Sidebar */
 .hero-sidebar { padding-top: 0.25rem; }
 .sidebar-label {
   font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.18em;
   text-transform: uppercase; color: var(--ink3);
-  margin-bottom: 1.25rem; padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--rule);
+  margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--rule);
 }
 .sidebar-item { padding: 1rem 0; border-bottom: 1px solid var(--rule); }
 .sidebar-item:last-child { border-bottom: none; padding-bottom: 0; }
@@ -184,18 +161,12 @@ a { color: inherit; text-decoration: none; }
   text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem;
 }
 .sidebar-title {
-  font-family: var(--serif); font-size: 1rem; font-weight: 400;
-  line-height: 1.35; color: var(--ink); display: block;
-  margin-bottom: 0.3rem; transition: color var(--t);
+  font-family: var(--serif); font-size: 1rem; font-weight: 400; line-height: 1.35;
+  color: var(--ink); display: block; margin-bottom: 0.3rem; transition: color var(--t);
 }
 .sidebar-title:hover { color: var(--accent2); }
-.sidebar-dek {
-  font-size: 0.78rem; color: var(--ink3); line-height: 1.5; font-weight: 300;
-}
-.sidebar-date {
-  font-family: var(--mono); font-size: 0.53rem; color: var(--ink3);
-  letter-spacing: 0.08em; margin-top: 0.4rem; display: block;
-}
+.sidebar-dek { font-size: 0.78rem; color: var(--ink3); line-height: 1.5; font-weight: 300; }
+.sidebar-date { font-family: var(--mono); font-size: 0.53rem; color: var(--ink3); letter-spacing: 0.08em; margin-top: 0.4rem; display: block; }
 
 /* ── CATEGORY BAR ── */
 .category-bar {
@@ -204,33 +175,39 @@ a { color: inherit; text-decoration: none; }
 }
 .category-bar-inner {
   max-width: 1200px; margin: 0 auto; padding: 0 2rem;
-  display: flex; align-items: center;
-  overflow-x: auto; scrollbar-width: none;
+  display: flex; align-items: center; overflow-x: auto; scrollbar-width: none;
 }
 .category-bar-inner::-webkit-scrollbar { display: none; }
 .cat-tab {
-  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.12em;
+  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--ink3);
-  padding: 0.65rem 1.1rem; white-space: nowrap;
+  padding: 0.65rem 1.05rem; white-space: nowrap;
   border-right: 1px solid var(--rule); cursor: pointer;
   border-bottom: 2px solid transparent; margin-bottom: -1px;
-  transition: background var(--t), color var(--t);
-  user-select: none;
+  transition: background var(--t), color var(--t); user-select: none;
 }
 .cat-tab:first-child { border-left: 1px solid var(--rule); }
 .cat-tab:hover { color: var(--ink); background: var(--bg3); }
 .cat-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
 
 /* ── CONTENT ── */
-.content-area {
-  max-width: 1200px; margin: 0 auto; padding: 3rem 2rem 5rem;
-}
+.content-area { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem 5rem; }
 .section-label {
   font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.18em;
   text-transform: uppercase; color: var(--ink3); margin-bottom: 2rem;
 }
+.section-label-row {
+  display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 2rem;
+}
+.section-label-row .section-label { margin-bottom: 0; }
+.section-link {
+  font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent2);
+  border-bottom: 1px solid var(--accent2); padding-bottom: 1px; transition: opacity var(--t);
+}
+.section-link:hover { opacity: 0.6; }
 
-/* Essay grid */
+/* ── ESSAY GRID (latest 6) ── */
 .essays-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1px; background: var(--rule); border: 1px solid var(--rule);
@@ -248,10 +225,7 @@ a { color: inherit; text-decoration: none; }
 }
 .essay-card:hover { background: var(--bg2); }
 .essay-card:hover::after { transform: scaleX(1); }
-.card-n {
-  font-family: var(--mono); font-size: 0.57rem; color: var(--rule);
-  letter-spacing: 0.1em; margin-bottom: 1.2rem;
-}
+.card-n { font-family: var(--mono); font-size: 0.57rem; color: var(--rule); letter-spacing: 0.1em; margin-bottom: 1.2rem; }
 .card-cat {
   font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--gold); margin-bottom: 0.55rem;
@@ -261,14 +235,11 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.35; color: var(--ink); margin-bottom: 0.7rem;
 }
 .card-title a:hover { color: var(--accent2); }
-.card-blurb {
-  font-size: 0.81rem; color: var(--ink3); line-height: 1.6;
-  margin-bottom: 1.2rem; font-weight: 300;
-}
+.card-blurb { font-size: 0.81rem; color: var(--ink3); line-height: 1.6; margin-bottom: 1.2rem; font-weight: 300; }
 .card-foot { display: flex; align-items: center; justify-content: space-between; }
 .card-date { font-family: var(--mono); font-size: 0.55rem; color: var(--ink3); letter-spacing: 0.08em; }
 
-/* Pull quote */
+/* ── PULL QUOTE ── */
 .pull-quote {
   border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink);
   padding: 3rem 0; margin: 0 0 4rem; text-align: center;
@@ -277,109 +248,75 @@ a { color: inherit; text-decoration: none; }
 .pull-quote blockquote {
   font-family: var(--serif); font-style: italic;
   font-size: clamp(1.2rem, 2.4vw, 1.75rem); font-weight: 300;
-  line-height: 1.5; color: var(--ink2);
-  max-width: 700px; margin: 0 auto 1rem; padding: 0 2rem;
+  line-height: 1.5; color: var(--ink2); max-width: 700px; margin: 0 auto 1rem; padding: 0 2rem;
 }
-.pull-quote cite {
-  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--ink3); font-style: normal;
-}
+.pull-quote cite { font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink3); font-style: normal; }
 
-/* Archive list */
+/* ── ARCHIVE TABLE ── */
 .archive-list { margin-bottom: 4rem; }
 .archive-item {
   display: grid; grid-template-columns: 3rem 1fr auto;
   gap: 0 1.5rem; align-items: baseline;
   padding: 0.9rem 0; border-bottom: 1px solid var(--rule);
-  transition: background var(--t);
 }
 .archive-item:first-child { border-top: 1px solid var(--rule); }
-.a-n {
-  font-family: var(--mono); font-size: 0.55rem; color: var(--rule);
-  text-align: right; letter-spacing: 0.05em;
-}
+.a-n { font-family: var(--mono); font-size: 0.55rem; color: var(--rule); text-align: right; letter-spacing: 0.05em; }
 .a-title {
   font-family: var(--serif); font-size: 0.98rem; font-weight: 400;
-  color: var(--ink); display: block; margin-bottom: 0.12rem;
-  transition: color var(--t);
+  color: var(--ink); display: block; margin-bottom: 0.12rem; transition: color var(--t);
 }
 .a-title:hover { color: var(--accent2); }
-.a-sub {
-  font-size: 0.7rem; font-family: var(--mono); color: var(--ink3); letter-spacing: 0.06em;
-}
-.a-date {
-  font-family: var(--mono); font-size: 0.55rem; color: var(--ink3);
-  white-space: nowrap; letter-spacing: 0.06em;
-}
+.a-sub { font-size: 0.7rem; font-family: var(--mono); color: var(--ink3); letter-spacing: 0.06em; }
+.a-date { font-family: var(--mono); font-size: 0.55rem; color: var(--ink3); white-space: nowrap; letter-spacing: 0.06em; }
 
-/* About */
+/* ── ABOUT ── */
 .about-section {
   display: grid; grid-template-columns: 220px 1fr;
-  gap: 4rem; padding: 3rem 0 0;
-  border-top: 1px solid var(--rule); margin-bottom: 4rem;
+  gap: 4rem; padding: 3rem 0 0; border-top: 1px solid var(--rule); margin-bottom: 4rem;
 }
-.about-title {
-  font-family: var(--serif); font-size: 2rem; font-style: italic;
-  font-weight: 300; color: var(--ink2); line-height: 1.2; margin-bottom: 1.5rem;
-}
+.about-title { font-family: var(--serif); font-size: 2rem; font-style: italic; font-weight: 300; color: var(--ink2); line-height: 1.2; margin-bottom: 1.5rem; }
 .about-links { display: flex; flex-direction: column; gap: 0; }
 .about-link {
-  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--accent2);
+  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2);
   border-bottom: 1px solid var(--rule); padding: 0.55rem 0;
   display: flex; align-items: center; justify-content: space-between;
   transition: color var(--t), border-color var(--t);
 }
 .about-link:hover { color: var(--accent); }
 .about-link::after { content: '→'; }
-.about-text {
-  font-family: var(--serif); font-size: 1.05rem; font-weight: 300;
-  line-height: 1.85; color: var(--ink2);
-}
+.about-text { font-family: var(--serif); font-size: 1.05rem; font-weight: 300; line-height: 1.85; color: var(--ink2); }
 .about-text p + p { margin-top: 1.1em; }
 .about-text strong { font-weight: 500; color: var(--ink); }
 
-/* Subscribe band */
+/* ── SUBSCRIBE ── */
 .subscribe-band {
-  background: var(--accent); padding: 3rem 2rem; text-align: center;
-  transition: background var(--t);
+  background: var(--accent); padding: 3rem 2rem; text-align: center; transition: background var(--t);
 }
-.subscribe-band h3 {
-  font-family: var(--serif); font-size: 1.6rem; font-style: italic;
-  font-weight: 300; color: #fff; margin-bottom: 0.5rem;
-}
-.subscribe-band p {
-  font-size: 0.82rem; color: rgba(255,255,255,0.7);
-  margin-bottom: 1.5rem; font-weight: 300;
-}
+.subscribe-band h3 { font-family: var(--serif); font-size: 1.6rem; font-style: italic; font-weight: 300; color: #fff; margin-bottom: 0.5rem; }
+.subscribe-band p { font-size: 0.82rem; color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; font-weight: 300; }
 .subscribe-cta {
   display: inline-block; font-family: var(--mono); font-size: 0.62rem;
   letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
-  background: #fff; padding: 0.7rem 1.75rem; border-radius: 4px;
-  transition: opacity var(--t);
+  background: #fff; padding: 0.7rem 1.75rem; border-radius: 4px; transition: opacity var(--t);
 }
 .subscribe-cta:hover { opacity: 0.85; }
 
-/* Footer */
+/* ── FOOTER ── */
 footer {
-  background: var(--bg2); border-top: 1px solid var(--rule);
-  padding: 1.5rem 2rem;
+  background: var(--bg2); border-top: 1px solid var(--rule); padding: 1.5rem 2rem;
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
   transition: background var(--t), border-color var(--t);
 }
 .footer-logo { font-family: var(--serif); font-style: italic; font-size: 0.9rem; color: var(--ink3); }
-.footer-mono {
-  font-family: var(--mono); font-size: 0.53rem;
-  letter-spacing: 0.1em; color: var(--ink3); text-transform: uppercase;
-}
+.footer-mono { font-family: var(--mono); font-size: 0.53rem; letter-spacing: 0.1em; color: var(--ink3); text-transform: uppercase; }
 
-/* Animation */
+/* ── ANIMATION ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive */
+/* ── RESPONSIVE ── */
 @media (max-width: 920px) {
   .latest-hero { grid-template-columns: 1fr; gap: 2.5rem 0; }
   .hero-divider { display: none; }
@@ -421,53 +358,51 @@ footer {
 
 <!-- MASTHEAD -->
 <div class="masthead">
-  <div class="masthead-eyebrow">Ashutosh Nayak &nbsp;·&nbsp; Bhubaneswar</div>
+  <div class="masthead-eyebrow">Ashutosh Nayak &nbsp;·&nbsp; NISER Bhubaneswar</div>
   <h1 class="masthead-title">Matter That <em>Thinks</em></h1>
-  <p class="masthead-sub">Essays on economics, power, law, science, and the examined life</p>
+  <p class="masthead-sub">Essays on economics, science, politics, culture, and the examined life</p>
 </div>
 
-<!-- LATEST HERO -->
+<!-- HERO — latest post -->
 <section class="latest-hero">
   <article>
-    <div class="hero-eyebrow">Latest Essay &nbsp;·&nbsp; Economics</div>
+    <div class="hero-eyebrow">Latest Essay &nbsp;·&nbsp; Economics &amp; Finance</div>
     <h2 class="hero-title">
-      <a href="https://matterthathinks.substack.com/p/the-most-important-company-youve" target="_blank">
-        The Most Important Company <em>You've Never Heard Of</em>
+      <a href="https://matterthathinks.substack.com/p/the-broken-ladder" target="_blank">
+        The Broken <em>Ladder</em>
       </a>
     </h2>
-    <p class="hero-dek">
-      How a €300 million machine quietly controls the price of everything.
-    </p>
+    <p class="hero-dek">Why the poor don't make bad choices — they make rational ones inside a broken system. A story on hope, dignity, and the economics of staying human.</p>
     <div class="hero-meta">
-      <a href="https://matterthathinks.substack.com/p/the-most-important-company-youve" target="_blank" class="read-link">Read essay</a>
-      <span class="meta-date">April 11, 2026</span>
+      <a href="https://matterthathinks.substack.com/p/the-broken-ladder" target="_blank" class="read-link">Read essay</a>
+      <span class="meta-date">April 2026</span>
     </div>
   </article>
 
   <div class="hero-divider"></div>
 
   <aside class="hero-sidebar">
-    <div class="sidebar-label">Recent writing</div>
+    <div class="sidebar-label">Recently published</div>
 
     <div class="sidebar-item">
-      <div class="sidebar-cat">Personal &amp; Moral</div>
-      <a href="https://matterthathinks.substack.com/p/what-i-learned-about-monsters" target="_blank" class="sidebar-title">What I Learned About Monsters</a>
-      <p class="sidebar-dek">Why the people we fear most don't look the way we expect. A story about abuse, rage, and why punishment alone doesn't prevent it.</p>
-      <span class="sidebar-date">Apr 7</span>
+      <div class="sidebar-cat">Stories &amp; Reflections</div>
+      <a href="https://matterthathinks.substack.com/p/a-question-of-mercy" target="_blank" class="sidebar-title">A Question of Mercy</a>
+      <p class="sidebar-dek">I was sitting in class when a bee hit the fan and fell on the floor.</p>
+      <span class="sidebar-date">Apr 22</span>
     </div>
 
     <div class="sidebar-item">
-      <div class="sidebar-cat">Politics &amp; Power</div>
-      <a href="https://matterthathinks.substack.com/p/the-business-of-the-presidency" target="_blank" class="sidebar-title">The Business of the Presidency</a>
-      <p class="sidebar-dek">How Donald Trump turned political power into a profit engine.</p>
-      <span class="sidebar-date">Apr 5</span>
+      <div class="sidebar-cat">Science &amp; Technology</div>
+      <a href="https://matterthathinks.substack.com/p/the-day-mass-went-missing" target="_blank" class="sidebar-title">The Day Mass Went Missing</a>
+      <p class="sidebar-dek">From uranium deals to fusion dreams, and the physics that quietly powers everything.</p>
+      <span class="sidebar-date">Apr 18</span>
     </div>
 
     <div class="sidebar-item">
-      <div class="sidebar-cat">Law &amp; Society</div>
-      <a href="https://matterthathinks.substack.com/p/who-does-the-law-actually-protect" target="_blank" class="sidebar-title">Who Does the Law Actually Protect?</a>
-      <p class="sidebar-dek">What an evening in Malisahi taught me about law, dignity, and moral hypocrisy.</p>
-      <span class="sidebar-date">Apr 3</span>
+      <div class="sidebar-cat">Society &amp; Culture</div>
+      <a href="https://matterthathinks.substack.com/p/the-price-of-a-cigarette" target="_blank" class="sidebar-title">The Price of a Cigarette</a>
+      <p class="sidebar-dek">What a pan shop outside campus taught me about risk, policy, and why bans don't work.</p>
+      <span class="sidebar-date">Apr 15</span>
     </div>
   </aside>
 </section>
@@ -476,104 +411,138 @@ footer {
 <div class="category-bar">
   <div class="category-bar-inner">
     <span class="cat-tab active" data-cat="all">All</span>
-    <span class="cat-tab" data-cat="economics">Economics</span>
-    <span class="cat-tab" data-cat="politics">Politics</span>
-    <span class="cat-tab" data-cat="law">Law &amp; Society</span>
-    <span class="cat-tab" data-cat="personal">Personal</span>
-    <span class="cat-tab" data-cat="science">Science</span>
+    <span class="cat-tab" data-cat="economics">Economics &amp; Finance</span>
+    <span class="cat-tab" data-cat="politics">Politics &amp; Governance</span>
+    <span class="cat-tab" data-cat="science">Science &amp; Technology</span>
+    <span class="cat-tab" data-cat="society">Society &amp; Culture</span>
+    <span class="cat-tab" data-cat="stories">Stories &amp; Reflections</span>
+    <span class="cat-tab" data-cat="books">Books &amp; Reading</span>
   </div>
 </div>
 
 <!-- CONTENT -->
 <div class="content-area">
-  <div class="section-label" id="essays">Essays</div>
+
+  <!-- RECENT ESSAYS (latest 6) -->
+  <div class="section-label-row" id="essays">
+    <span class="section-label">Recent Essays</span>
+    <a href="#archive" class="section-link">Full archive ↓</a>
+  </div>
 
   <div class="essays-grid" id="essayGrid">
 
     <article class="essay-card" data-cat="economics">
-      <div class="card-n">005</div>
-      <div class="card-cat">Economics &amp; Technology</div>
-      <h3 class="card-title"><a href="https://matterthathinks.substack.com/p/the-most-important-company-youve" target="_blank">The Most Important Company You've Never Heard Of</a></h3>
-      <p class="card-blurb">How a €300 million machine quietly controls the price of everything.</p>
-      <div class="card-foot"><span class="card-date">Apr 11, 2026</span><a href="https://matterthathinks.substack.com/p/the-most-important-company-youve" target="_blank" class="read-link">Read</a></div>
+      <div class="card-n">010</div>
+      <div class="card-cat">Economics &amp; Finance</div>
+      <h3 class="card-title"><a href="https://matterthathinks.substack.com/p/the-broken-ladder" target="_blank">The Broken Ladder</a></h3>
+      <p class="card-blurb">Why the poor don't make bad choices — they make rational ones inside a broken system.</p>
+      <div class="card-foot"><span class="card-date">Apr 2026</span><a href="https://matterthathinks.substack.com/p/the-broken-ladder" target="_blank" class="read-link">Read</a></div>
     </article>
 
-    <article class="essay-card" data-cat="personal">
-      <div class="card-n">004</div>
-      <div class="card-cat">Personal &amp; Moral</div>
-      <h3 class="card-title"><a href="https://matterthathinks.substack.com/p/what-i-learned-about-monsters" target="_blank">What I Learned About Monsters</a></h3>
-      <p class="card-blurb">Why the people we fear most don't look the way we expect. A story about abuse, rage, and why punishment alone doesn't prevent it.</p>
-      <div class="card-foot"><span class="card-date">Apr 7, 2026</span><a href="https://matterthathinks.substack.com/p/what-i-learned-about-monsters" target="_blank" class="read-link">Read</a></div>
+    <article class="essay-card" data-cat="stories">
+      <div class="card-n">009</div>
+      <div class="card-cat">Stories &amp; Reflections</div>
+      <h3 class="card-title"><a href="https://matterthathinks.substack.com/p/a-question-of-mercy" target="_blank">A Question of Mercy</a></h3>
+      <p class="card-blurb">I was sitting in class when a bee hit the fan and fell on the floor.</p>
+      <div class="card-foot"><span class="card-date">Apr 22</span><a href="https://matterthathinks.substack.com/p/a-question-of-mercy" target="_blank" class="read-link">Read</a></div>
     </article>
 
-    <article class="essay-card" data-cat="politics">
-      <div class="card-n">003</div>
-      <div class="card-cat">Politics &amp; Power</div>
-      <h3 class="card-title"><a href="https://matterthathinks.substack.com/p/the-business-of-the-presidency" target="_blank">The Business of the Presidency</a></h3>
-      <p class="card-blurb">How Donald Trump turned political power into a profit engine.</p>
-      <div class="card-foot"><span class="card-date">Apr 5, 2026</span><a href="https://matterthathinks.substack.com/p/the-business-of-the-presidency" target="_blank" class="read-link">Read</a></div>
+    <article class="essay-card" data-cat="science">
+      <div class="card-n">008</div>
+      <div class="card-cat">Science &amp; Technology</div>
+      <h3 class="card-title"><a href="https://matterthathinks.substack.com/p/the-day-mass-went-missing" target="_blank">The Day Mass Went Missing</a></h3>
+      <p class="card-blurb">From uranium deals to fusion dreams, and the physics that quietly powers everything.</p>
+      <div class="card-foot"><span class="card-date">Apr 18</span><a href="https://matterthathinks.substack.com/p/the-day-mass-went-missing" target="_blank" class="read-link">Read</a></div>
     </article>
 
-    <article class="essay-card" data-cat="law">
-      <div class="card-n">002</div>
-      <div class="card-cat">Law &amp; Society</div>
-      <h3 class="card-title"><a href="https://matterthathinks.substack.com/p/who-does-the-law-actually-protect" target="_blank">Who Does the Law Actually Protect?</a></h3>
-      <p class="card-blurb">What an evening in Malisahi taught me about law, dignity, and moral hypocrisy.</p>
-      <div class="card-foot"><span class="card-date">Apr 3, 2026</span><a href="https://matterthathinks.substack.com/p/who-does-the-law-actually-protect" target="_blank" class="read-link">Read</a></div>
+    <article class="essay-card" data-cat="society">
+      <div class="card-n">007</div>
+      <div class="card-cat">Society &amp; Culture</div>
+      <h3 class="card-title"><a href="https://matterthathinks.substack.com/p/the-price-of-a-cigarette" target="_blank">The Price of a Cigarette</a></h3>
+      <p class="card-blurb">What a pan shop outside campus taught me about risk, policy, and why bans don't work the way we think.</p>
+      <div class="card-foot"><span class="card-date">Apr 15</span><a href="https://matterthathinks.substack.com/p/the-price-of-a-cigarette" target="_blank" class="read-link">Read</a></div>
     </article>
 
     <article class="essay-card" data-cat="economics">
-      <div class="card-n">001</div>
-      <div class="card-cat">Economics</div>
-      <h3 class="card-title"><a href="https://matterthathinks.substack.com/p/what-is-seen-and-what-is-not-seen" target="_blank">What Is Seen and What Is Not Seen</a></h3>
-      <p class="card-blurb">Why rising GDP can still mean a poorer world: a story about economics, opportunity, and invisible loss.</p>
-      <div class="card-foot"><span class="card-date">Apr 1, 2026</span><a href="https://matterthathinks.substack.com/p/what-is-seen-and-what-is-not-seen" target="_blank" class="read-link">Read</a></div>
+      <div class="card-n">006</div>
+      <div class="card-cat">Economics &amp; Finance</div>
+      <h3 class="card-title"><a href="https://matterthathinks.substack.com/p/the-street-level-casino" target="_blank">The Street-Level Casino</a></h3>
+      <p class="card-blurb">What India's derivatives boom says about jobs, risk, and desperation.</p>
+      <div class="card-foot"><span class="card-date">Apr 13</span><a href="https://matterthathinks.substack.com/p/the-street-level-casino" target="_blank" class="read-link">Read</a></div>
     </article>
 
-    <!-- placeholder for next essay -->
-    <article class="essay-card" data-cat="placeholder" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:240px;">
-      <div style="font-family:var(--mono);font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rule);text-align:center;">
-        More coming soon
-      </div>
+    <article class="essay-card" data-cat="science">
+      <div class="card-n">005</div>
+      <div class="card-cat">Science &amp; Technology</div>
+      <h3 class="card-title"><a href="https://matterthathinks.substack.com/p/the-most-important-company-youve" target="_blank">The Most Important Company You've Never Heard Of</a></h3>
+      <p class="card-blurb">How a €300 million machine quietly controls the price of everything.</p>
+      <div class="card-foot"><span class="card-date">Apr 11</span><a href="https://matterthathinks.substack.com/p/the-most-important-company-youve" target="_blank" class="read-link">Read</a></div>
     </article>
 
-  </div>
+  </div><!-- /essays-grid -->
 
-  <!-- PULL QUOTE from first post -->
+  <!-- PULL QUOTE -->
   <div class="pull-quote">
     <blockquote>"Maybe writing isn't about being ready. Maybe it's just about starting, being a little uncomfortable, and getting better slowly."</blockquote>
     <cite>— Ashutosh Nayak, To new beginnings</cite>
   </div>
 
-  <!-- ARCHIVE -->
+  <!-- FULL ARCHIVE -->
   <div class="section-label" id="archive">Full Archive</div>
   <div class="archive-list">
+
+    <div class="archive-item">
+      <span class="a-n">010</span>
+      <div><a href="https://matterthathinks.substack.com/p/the-broken-ladder" target="_blank" class="a-title">The Broken Ladder</a><span class="a-sub">Economics &amp; Finance</span></div>
+      <span class="a-date">Apr 2026</span>
+    </div>
+    <div class="archive-item">
+      <span class="a-n">009</span>
+      <div><a href="https://matterthathinks.substack.com/p/a-question-of-mercy" target="_blank" class="a-title">A Question of Mercy</a><span class="a-sub">Stories &amp; Reflections</span></div>
+      <span class="a-date">Apr 22</span>
+    </div>
+    <div class="archive-item">
+      <span class="a-n">008</span>
+      <div><a href="https://matterthathinks.substack.com/p/the-day-mass-went-missing" target="_blank" class="a-title">The Day Mass Went Missing</a><span class="a-sub">Science &amp; Technology</span></div>
+      <span class="a-date">Apr 18</span>
+    </div>
+    <div class="archive-item">
+      <span class="a-n">007</span>
+      <div><a href="https://matterthathinks.substack.com/p/the-price-of-a-cigarette" target="_blank" class="a-title">The Price of a Cigarette</a><span class="a-sub">Society &amp; Culture</span></div>
+      <span class="a-date">Apr 15</span>
+    </div>
+    <div class="archive-item">
+      <span class="a-n">006</span>
+      <div><a href="https://matterthathinks.substack.com/p/the-street-level-casino" target="_blank" class="a-title">The Street-Level Casino</a><span class="a-sub">Economics &amp; Finance</span></div>
+      <span class="a-date">Apr 13</span>
+    </div>
     <div class="archive-item">
       <span class="a-n">005</span>
-      <div><a href="https://matterthathinks.substack.com/p/the-most-important-company-youve" target="_blank" class="a-title">The Most Important Company You've Never Heard Of</a><span class="a-sub">Economics &amp; Technology</span></div>
-      <span class="a-date">Apr 11, 2026</span>
+      <div><a href="https://matterthathinks.substack.com/p/the-most-important-company-youve" target="_blank" class="a-title">The Most Important Company You've Never Heard Of</a><span class="a-sub">Science &amp; Technology</span></div>
+      <span class="a-date">Apr 11</span>
     </div>
     <div class="archive-item">
       <span class="a-n">004</span>
-      <div><a href="https://matterthathinks.substack.com/p/what-i-learned-about-monsters" target="_blank" class="a-title">What I Learned About Monsters</a><span class="a-sub">Personal &amp; Moral</span></div>
-      <span class="a-date">Apr 7, 2026</span>
+      <div><a href="https://matterthathinks.substack.com/p/what-i-learned-about-monsters" target="_blank" class="a-title">What I Learned About Monsters</a><span class="a-sub">Stories &amp; Reflections</span></div>
+      <span class="a-date">Apr 7</span>
     </div>
     <div class="archive-item">
       <span class="a-n">003</span>
-      <div><a href="https://matterthathinks.substack.com/p/the-business-of-the-presidency" target="_blank" class="a-title">The Business of the Presidency</a><span class="a-sub">Politics &amp; Power</span></div>
-      <span class="a-date">Apr 5, 2026</span>
+      <div><a href="https://matterthathinks.substack.com/p/the-business-of-the-presidency" target="_blank" class="a-title">The Business of the Presidency</a><span class="a-sub">Politics &amp; Governance</span></div>
+      <span class="a-date">Apr 5</span>
     </div>
     <div class="archive-item">
       <span class="a-n">002</span>
-      <div><a href="https://matterthathinks.substack.com/p/who-does-the-law-actually-protect" target="_blank" class="a-title">Who Does the Law Actually Protect?</a><span class="a-sub">Law &amp; Society</span></div>
-      <span class="a-date">Apr 3, 2026</span>
+      <div><a href="https://matterthathinks.substack.com/p/who-does-the-law-actually-protect" target="_blank" class="a-title">Who Does the Law Actually Protect?</a><span class="a-sub">Society &amp; Culture</span></div>
+      <span class="a-date">Apr 3</span>
     </div>
     <div class="archive-item">
       <span class="a-n">001</span>
-      <div><a href="https://matterthathinks.substack.com/p/what-is-seen-and-what-is-not-seen" target="_blank" class="a-title">What Is Seen and What Is Not Seen</a><span class="a-sub">Economics</span></div>
-      <span class="a-date">Apr 1, 2026</span>
+      <div><a href="https://matterthathinks.substack.com/p/what-is-seen-and-what-is-not-seen" target="_blank" class="a-title">What Is Seen and What Is Not Seen</a><span class="a-sub">Economics &amp; Finance</span></div>
+      <span class="a-date">Apr 1</span>
     </div>
-  </div>
+
+  </div><!-- /archive-list -->
 
   <!-- ABOUT -->
   <section class="about-section" id="about">
@@ -582,21 +551,22 @@ footer {
       <div class="about-links">
         <a href="https://matterthathinks.substack.com" target="_blank" class="about-link">Substack</a>
         <a href="https://matterthathinks.substack.com/feed" target="_blank" class="about-link">RSS Feed</a>
-        <a href="mailto:heyashunayak@gmail.com" class="about-link">Contact</a>
+        <a href="mailto:heyashunayak@gmail.com" class="about-link">Email</a>
       </div>
     </div>
     <div class="about-text">
-      <p>This is a place where I think out loud. About economics, law, power, science — and whatever else refuses to leave my head.</p>
-      <p>I'm <strong>Ashutosh Nayak</strong>, an Integrated M.Sc. Physics student at NISER Bhubaneswar in my final year. I consume a lot — videos, articles, books, ideas — and I can't stop trying to connect things. This is where those connections end up.</p>
+      <p>This is a place where I think out loud. About economics, science, politics, culture — and whatever else refuses to leave my head.</p>
+      <p>I'm <strong>Ashutosh Nayak</strong>, an Integrated M.Sc. Physics student at <strong>NISER Bhubaneswar</strong>. I consume a lot — videos, articles, books, ideas — and I can't stop trying to connect things. This is where those connections end up.</p>
       <p>The writing here will change as I change. Right now it's earnest and a little raw. That's fine. A small part of me hopes it stays that way.</p>
       <p>Everything is free. No algorithm selects what appears here. No advertiser shapes it.</p>
     </div>
   </section>
-</div>
+
+</div><!-- /content-area -->
 
 <!-- SUBSCRIBE -->
 <div class="subscribe-band">
-  <h3>Essays by email, when they're ready</h3>
+  <h3>Essays by email, when they're ready.</h3>
   <p>No schedule, no noise. Just a note when something new is worth your time.</p>
   <a href="https://matterthathinks.substack.com" target="_blank" class="subscribe-cta">Subscribe on Substack</a>
 </div>
@@ -604,7 +574,7 @@ footer {
 <!-- FOOTER -->
 <footer>
   <span class="footer-logo">Matter That Thinks</span>
-  <span class="footer-mono">Bhubaneswar &nbsp;·&nbsp; Est. 2026 &nbsp;·&nbsp; Independent</span>
+  <span class="footer-mono">NISER Bhubaneswar &nbsp;·&nbsp; Est. 2026 &nbsp;·&nbsp; Independent</span>
   <span class="footer-mono" id="footerDate"></span>
 </footer>
 
@@ -615,35 +585,28 @@ var icon = document.getElementById('themeIcon');
 var html = document.documentElement;
 var SUN  = 'M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M12 5a7 7 0 1 0 0 14A7 7 0 0 0 12 5z';
 var MOON = 'M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z';
-
 function applyTheme(dark) {
   html.setAttribute('data-theme', dark ? 'dark' : 'light');
   icon.innerHTML = '<path d="' + (dark ? SUN : MOON) + '"/>';
   try { localStorage.setItem('mtt-theme', dark ? 'dark' : 'light'); } catch(e){}
 }
-
-(function() {
+(function(){
   var saved = null;
   try { saved = localStorage.getItem('mtt-theme'); } catch(e){}
   applyTheme(saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
 })();
-
 btn.addEventListener('click', function() {
   applyTheme(html.getAttribute('data-theme') === 'light');
 });
 
-/* FILTER */
+/* CATEGORY FILTER */
 document.querySelectorAll('.cat-tab').forEach(function(tab) {
   tab.addEventListener('click', function() {
     var cat = this.dataset.cat;
     document.querySelectorAll('.cat-tab').forEach(function(t){ t.classList.remove('active'); });
     this.classList.add('active');
     document.querySelectorAll('.essay-card').forEach(function(card) {
-      if (cat === 'all' || card.dataset.cat === cat) {
-        card.style.display = '';
-      } else {
-        card.style.display = 'none';
-      }
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
     });
   });
 });
