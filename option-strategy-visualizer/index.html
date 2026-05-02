@@ -443,7 +443,7 @@ nav {
 <nav>
   <div class="brand">Option <em>Strategy</em> Visualiser</div>
   <div class="nav-right">
-    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()">Light mode</button>
+    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()">☀ Light</button>
   </div>
 </nav>
 
@@ -543,7 +543,7 @@ const CS = {
 function toggleTheme() {
   dark = !dark;
   document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
-  document.getElementById('theme-btn').textContent = dark ? '☀' : '☾';
+  document.getElementById('theme-btn').textContent = dark ? '☀ Light' : '☾ Dark';
   DEFS.forEach(d => updateCard(d.id));
   rebuildMain();
   legs.forEach(l => rebuildLegMini(l));
