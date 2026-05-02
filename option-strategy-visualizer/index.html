@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Option Strategy Visualiser</title>
+<title>Option Strategy Visualizer</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700&display=swap');
 
   :root {
+    /* Dark Mode (Default) */
     --bg: #0e0e11;
     --bg2: #16161b;
     --bg3: #1e1e26;
@@ -23,19 +24,28 @@
     --red: #f87171;
     --yellow: #fbbf24;
     --teal: #22d3ee;
+    --grid-line: rgba(255,255,255,0.05);
+    
     --mono: 'DM Mono', monospace;
     --display: 'Syne', sans-serif;
   }
 
+  /* Light Mode Overrides */
   body.light-mode {
-    --bg: #f8f8fa;
+    --bg: #f4f4f5;
     --bg2: #ffffff;
-    --bg3: #f0f0f5;
+    --bg3: #e4e4e7;
     --border: rgba(0,0,0,0.1);
     --border2: rgba(0,0,0,0.15);
-    --text: #1a1a1e;
-    --text2: #5a5a6f;
-    --text3: #8a8a9f;
+    --text: #18181b;
+    --text2: #52525b;
+    --text3: #71717a;
+    --accent: #6366f1;
+    --accent2: #4f46e5;
+    --green: #10b981;
+    --red: #ef4444;
+    --teal: #06b6d4;
+    --grid-line: rgba(0,0,0,0.05);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -71,81 +81,70 @@
     letter-spacing: -0.02em;
   }
   .logo span { color: var(--accent2); }
-  .nav-controls {
+  
+  .theme-toggle {
+    margin-left: auto;
+    background: none;
+    border: 1px solid var(--border2);
+    color: var(--text);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 6px;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    margin-left: auto;
-  }
-  #theme-toggle {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
+    gap: 6px;
     font-family: var(--mono);
-    font-size: 11px;
-    transition: all 0.15s;
+    transition: all 0.2s;
   }
-  #theme-toggle:hover {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
+  .theme-toggle:hover {
+    background: var(--bg3);
   }
 
-  /* SECTIONS */
-  .content {
-    padding: 2rem;
-    max-width: 1600px;
-    margin: 0 auto;
+  /* BASICS PAGE */
+  .basics-header {
+    padding: 3rem 2rem 1.5rem;
+    text-align: center;
   }
-
-  .section-title {
+  .basics-header h1 {
     font-family: var(--display);
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    letter-spacing: -0.03em;
     color: var(--text);
   }
-
-  .section {
-    margin-bottom: 3rem;
+  .basics-header p {
+    color: var(--text2);
+    margin-top: 0.5rem;
+    font-size: 13px;
   }
 
-  /* BASICS SECTION */
   .basics-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 2rem;
+    gap: 12px;
+    margin: 1.5rem 2rem;
   }
-
   .basic-card {
     background: var(--bg2);
-    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.75rem;
   }
-
   .basic-card-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-
   .basic-card h3 {
     font-family: var(--display);
     font-size: 13px;
     font-weight: 600;
     color: var(--text);
   }
-
   .tag {
     font-size: 10px;
     padding: 2px 8px;
@@ -153,7 +152,6 @@
     font-family: var(--mono);
     letter-spacing: 0.05em;
   }
-
   .tag-buy { background: rgba(62,207,142,0.15); color: var(--green); }
   .tag-sell { background: rgba(248,113,113,0.15); color: var(--red); }
   .tag-future { background: rgba(34,211,238,0.15); color: var(--teal); }
@@ -162,46 +160,51 @@
     font-size: 11px;
     color: var(--text2);
     line-height: 1.5;
+    height: auto;
   }
 
-  .controls-box {
+  /* Mini Controls inside Cards */
+  .card-controls {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 6px;
+    background: var(--bg3);
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
   }
-
-  .control-row {
+  .mini-ctrl-row {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
   }
-
-  .control-row label {
-    font-size: 11px;
+  .mini-ctrl-row label {
+    font-size: 10px;
     color: var(--text2);
-    min-width: 70px;
+    width: 40px;
   }
-
-  .control-row input[type="range"] {
+  .mini-ctrl-row input[type=range] {
     flex: 1;
     accent-color: var(--accent2);
-    height: 4px;
+    height: 3px;
+    cursor: pointer;
   }
-
-  .control-row input[type="number"] {
-    width: 70px;
-    padding: 4px 6px;
-    background: var(--bg3);
-    border: 1px solid var(--border2);
-    border-radius: 4px;
-    color: var(--text);
+  .mini-ctrl-row input[type=number] {
+    width: 65px;
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 10px;
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    color: var(--text);
+    border-radius: 4px;
+    padding: 2px 4px;
+    text-align: right;
   }
 
   .mini-chart-wrap {
-    height: 120px;
+    height: 100px;
     position: relative;
+    margin-top: 4px;
   }
 
   .card-formula {
@@ -209,12 +212,16 @@
     font-size: 10px;
     color: var(--text3);
     background: var(--bg3);
-    padding: 8px 10px;
+    padding: 6px 8px;
     border-radius: 6px;
     line-height: 1.6;
   }
 
-  .add-to-builder-btn {
+  .btn-push-down {
+    margin-top: auto;
+  }
+
+  .add-card-btn {
     background: var(--accent);
     border: none;
     border-radius: 6px;
@@ -225,36 +232,31 @@
     cursor: pointer;
     transition: background 0.15s;
     width: 100%;
-    margin-top: 0.5rem;
+    font-weight: 500;
   }
-
-  .add-to-builder-btn:hover {
-    background: var(--accent2);
-  }
+  .add-card-btn:hover { background: var(--accent2); }
 
   /* BUILDER SECTION */
   .builder-layout {
     display: grid;
-    grid-template-columns: 350px 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 340px 1fr;
+    gap: 0;
+    border-top: 1px solid var(--border);
   }
 
-  .builder-sidebar {
+  .sidebar {
     background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.5rem;
-    height: fit-content;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 52px);
+    overflow-y: auto;
   }
 
   .sidebar-section {
-    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    padding: 1rem;
   }
-
-  .sidebar-section:last-child {
-    margin-bottom: 0;
-  }
-
   .sidebar-section h4 {
     font-family: var(--display);
     font-size: 11px;
@@ -265,17 +267,19 @@
     margin-bottom: 0.75rem;
   }
 
+  /* Preset strategy pills */
   .preset-grid {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    max-height: 500px;
+    overflow-y: auto;
   }
-
   .preset-btn {
     background: var(--bg3);
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 8px 10px;
+    padding: 7px 10px;
     cursor: pointer;
     color: var(--text);
     font-family: var(--mono);
@@ -286,24 +290,18 @@
     align-items: center;
     justify-content: space-between;
   }
-
-  .preset-btn:hover {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
-  }
-
+  .preset-btn:hover { background: var(--bg); border-color: var(--accent); color: var(--accent2); }
   .preset-tag {
     font-size: 9px;
     padding: 2px 6px;
     border-radius: 10px;
     letter-spacing: 0.05em;
   }
-
   .pt-bull { background: rgba(62,207,142,0.15); color: var(--green); }
   .pt-bear { background: rgba(248,113,113,0.15); color: var(--red); }
   .pt-neutral { background: rgba(251,191,36,0.15); color: var(--yellow); }
 
+  /* Legs list */
   .legs-list {
     display: flex;
     flex-direction: column;
@@ -311,75 +309,74 @@
     max-height: 400px;
     overflow-y: auto;
   }
-
   .leg-item {
     background: var(--bg3);
     border: 1px solid var(--border);
     border-radius: 6px;
     padding: 8px;
   }
-
-  .leg-header {
+  .leg-item-header {
     display: flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 6px;
   }
-
   .leg-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
     flex-shrink: 0;
   }
-
-  .leg-name {
-    font-size: 11px;
-    color: var(--text);
+  .leg-name { 
+    font-size: 11px; 
+    color: var(--text); 
     font-weight: 500;
     flex: 1;
   }
-
   .leg-remove {
     background: none;
     border: none;
     color: var(--text3);
     cursor: pointer;
-    font-size: 14px;
-    padding: 0;
+    font-size: 16px;
+    padding: 0 4px;
+    line-height: 1;
     transition: color 0.1s;
   }
+  .leg-remove:hover { color: var(--red); }
 
-  .leg-remove:hover {
-    color: var(--red);
-  }
-
-  .leg-inputs {
+  /* Leg sliders */
+  .leg-sliders {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-  }
-
-  .leg-input-row {
-    display: flex;
     gap: 6px;
-    font-size: 10px;
   }
-
-  .leg-input-row label {
-    min-width: 50px;
+  .leg-slider-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .leg-slider-row label {
+    font-size: 9px;
     color: var(--text2);
+    width: 35px;
   }
-
-  .leg-input-row input {
+  .leg-slider-row input[type=range] {
     flex: 1;
-    padding: 4px 6px;
+    accent-color: var(--accent2);
+    height: 3px;
+    cursor: pointer;
+  }
+  .leg-slider-row input[type=number] {
+    width: 50px;
+    font-family: var(--mono);
+    font-size: 9px;
     background: var(--bg2);
     border: 1px solid var(--border2);
-    border-radius: 4px;
     color: var(--text);
-    font-family: var(--mono);
-    font-size: 10px;
+    border-radius: 3px;
+    padding: 2px 3px;
+    text-align: right;
   }
 
   .clear-btn {
@@ -389,20 +386,18 @@
     color: var(--text2);
     font-family: var(--mono);
     font-size: 11px;
-    padding: 6px 10px;
+    padding: 5px 10px;
     cursor: pointer;
     width: 100%;
     transition: all 0.15s;
   }
+  .clear-btn:hover { border-color: var(--red); color: var(--red); }
 
-  .clear-btn:hover {
-    border-color: var(--red);
-    color: var(--red);
-  }
-
-  .builder-main {
+  /* MAIN CHART AREA */
+  .chart-area {
     display: flex;
     flex-direction: column;
+    padding: 1.5rem;
     gap: 1rem;
   }
 
@@ -413,46 +408,32 @@
     flex-wrap: wrap;
     gap: 0.5rem;
   }
-
   .chart-title {
     font-family: var(--display);
     font-size: 1.1rem;
     font-weight: 600;
     letter-spacing: -0.02em;
   }
-
-  .chart-subtitle {
-    font-size: 11px;
-    color: var(--text2);
-  }
+  .chart-subtitle { font-size: 11px; color: var(--text2); }
 
   .stats-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 8px;
   }
-
   .stat-card {
     background: var(--bg2);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 12px;
+    padding: 10px 12px;
   }
-
-  .stat-label {
-    font-size: 10px;
-    color: var(--text3);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
+  .stat-label { font-size: 10px; color: var(--text3); letter-spacing: 0.05em; text-transform: uppercase; }
   .stat-val {
     font-family: var(--display);
     font-size: 18px;
     font-weight: 600;
-    margin-top: 4px;
+    margin-top: 2px;
   }
-
   .stat-pos { color: var(--green); }
   .stat-neg { color: var(--red); }
   .stat-neu { color: var(--text); }
@@ -462,24 +443,8 @@
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 1rem;
-    height: 400px;
     position: relative;
-  }
-
-  .empty-state {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    color: var(--text3);
-    gap: 8px;
-    font-size: 12px;
-  }
-
-  .empty-icon {
-    font-size: 32px;
-    opacity: 0.4;
+    height: 360px;
   }
 
   .spot-controls {
@@ -490,31 +455,29 @@
     background: var(--bg2);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 12px;
+    padding: 10px 14px;
   }
-
   .spot-ctrl-label {
     font-size: 11px;
     color: var(--text2);
-    min-width: 100px;
+    min-width: 80px;
   }
-
+  .spot-ctrl-input {
+    font-family: var(--mono);
+    font-size: 13px;
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    color: var(--teal);
+    font-weight: 600;
+    border-radius: 4px;
+    padding: 4px 8px;
+    width: 90px;
+  }
   .spot-ctrl-range {
     flex: 1;
     accent-color: var(--teal);
-    min-width: 120px;
-    height: 4px;
-  }
-
-  .spot-ctrl-input {
-    width: 90px;
-    padding: 6px 8px;
-    background: var(--bg3);
-    border: 1px solid var(--border2);
-    border-radius: 6px;
-    color: var(--text);
-    font-family: var(--mono);
-    font-size: 11px;
+    min-width: 100px;
+    cursor: pointer;
   }
 
   .current-pnl-badge {
@@ -524,18 +487,31 @@
     font-size: 12px;
     color: var(--text2);
   }
-
   .current-pnl-badge span {
     font-family: var(--display);
     font-size: 16px;
     font-weight: 600;
   }
 
+  /* empty state */
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text3);
+    gap: 8px;
+    font-size: 12px;
+  }
+  .empty-icon { font-size: 32px; opacity: 0.4; }
+
+  /* leg charts */
   .leg-charts-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 10px;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
   }
 
   .leg-chart-wrap {
@@ -553,308 +529,125 @@
 
   .leg-chart-container {
     position: relative;
-    height: 100px;
+    height: 80px;
   }
 
   /* responsive */
-  @media (max-width: 1100px) {
-    .basics-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .builder-layout {
-      grid-template-columns: 1fr;
-    }
-    .builder-sidebar {
-      height: auto;
-    }
-    .stats-row {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  @media (max-width: 1000px) {
+    .basics-grid { grid-template-columns: repeat(2, 1fr); }
   }
-
-  @media (max-width: 600px) {
-    .basics-grid {
-      grid-template-columns: 1fr;
-    }
-    nav {
-      padding: 0 1rem;
-      gap: 1rem;
-    }
-    .logo {
-      font-size: 13px;
-    }
-    .content {
-      padding: 1rem;
-    }
-    .stats-row {
-      grid-template-columns: 1fr;
-    }
+  @media (max-width: 768px) {
+    .basics-grid { grid-template-columns: 1fr; margin: 1rem; }
+    .builder-layout { grid-template-columns: 1fr; }
+    .sidebar { max-height: none; border-right: none; border-bottom: 1px solid var(--border); }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    nav { padding: 0 1rem; gap: 1rem; }
+    .logo { font-size: 13px; }
   }
 
   /* scrollbar */
-  ::-webkit-scrollbar {
-    width: 4px;
-  }
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--border2);
-    border-radius: 2px;
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+  input[type=range] {
+    cursor: pointer;
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">Option<span>Viz</span></div>
-  <div class="nav-controls">
-    <button id="theme-toggle">🌙 Dark</button>
-  </div>
+  <div class="logo">Option Strategy <span>Visualizer</span></div>
+  <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">
+    ☾ Dark Mode
+  </button>
 </nav>
 
-<div class="content">
-  <!-- ========== BASICS SECTION ========== -->
-  <div class="section">
-    <div class="section-title">The 6 Building Blocks</div>
-    <p style="color: var(--text2); margin-bottom: 1.5rem; font-size: 12px;">Understand payoff diagrams for every core instrument. Adjust individual sliders or enter values directly.</p>
+<!-- ========== BASICS SECTION ========== -->
+<div class="basics-header">
+  <h1>The 6 Building Blocks</h1>
+  <p>Understand payoff diagrams for every core instrument. Drag sliders or input values to explore.</p>
+</div>
 
-    <div class="basics-grid">
-      <!-- 1: Buy Call -->
-      <div class="basic-card">
-        <div class="basic-card-header">
-          <h3>Call Option — Buy</h3>
-          <span class="tag tag-buy">LONG</span>
-        </div>
-        <div class="card-desc">Right to buy at strike. Profit when market rises above strike + premium.</div>
-        <div class="controls-box">
-          <div class="control-row">
-            <label>Strike</label>
-            <input type="range" class="bc-strike" min="10000" max="50000" step="100" value="24000" oninput="updateBasics('bc')">
-            <input type="number" class="bc-strike-num" min="10000" max="50000" step="100" value="24000" onchange="updateBasics('bc')">
-          </div>
-          <div class="control-row">
-            <label>Premium</label>
-            <input type="range" class="bc-premium" min="10" max="2000" step="10" value="200" oninput="updateBasics('bc')">
-            <input type="number" class="bc-premium-num" min="10" max="2000" step="10" value="200" onchange="updateBasics('bc')">
-          </div>
-          <div class="control-row">
-            <label>Spot</label>
-            <input type="number" class="bc-spot-num" min="10000" max="50000" step="100" value="24000" onchange="updateBasics('bc')">
-          </div>
-        </div>
-        <div class="mini-chart-wrap"><canvas id="chart-bc" role="img" aria-label="Buy call option payoff diagram"></canvas></div>
-        <div class="card-formula" id="f-bc">Loading...</div>
-        <button class="add-to-builder-btn" onclick="addFromBasics('buyCall', 'bc')">Add to Strategy</button>
+<div class="basics-grid" id="basics-grid">
+  <!-- Dynamically injected -->
+</div>
+
+<div style="border-top: 1px solid var(--border); margin: 2rem 0;"></div>
+
+<!-- ========== BUILDER SECTION ========== -->
+<div id="strategy-builder">
+  <div class="builder-layout">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <!-- Presets -->
+      <div class="sidebar-section">
+        <h4>Preset Strategies</h4>
+        <div class="preset-grid" id="preset-grid"></div>
       </div>
 
-      <!-- 2: Sell Call -->
-      <div class="basic-card">
-        <div class="basic-card-header">
-          <h3>Call Option — Sell</h3>
-          <span class="tag tag-sell">SHORT</span>
+      <!-- Current legs -->
+      <div class="sidebar-section" style="flex:1; overflow: auto; display: flex; flex-direction: column; min-height: 0;">
+        <h4 style="margin-bottom: 0.75rem;">Current Legs <span id="leg-count" style="color:var(--accent2)">(0)</span></h4>
+        <div class="legs-list" id="legs-list" style="flex: 1; overflow-y: auto; min-height: 0;">
+          <div style="font-size:11px; color:var(--text3); text-align:center; padding:1rem 0;">No legs added yet.</div>
         </div>
-        <div class="card-desc">Obligation to sell at strike. Profit limited to premium if market stays below.</div>
-        <div class="controls-box">
-          <div class="control-row">
-            <label>Strike</label>
-            <input type="range" class="sc-strike" min="10000" max="50000" step="100" value="24000" oninput="updateBasics('sc')">
-            <input type="number" class="sc-strike-num" min="10000" max="50000" step="100" value="24000" onchange="updateBasics('sc')">
-          </div>
-          <div class="control-row">
-            <label>Premium</label>
-            <input type="range" class="sc-premium" min="10" max="2000" step="10" value="200" oninput="updateBasics('sc')">
-            <input type="number" class="sc-premium-num" min="10" max="2000" step="10" value="200" onchange="updateBasics('sc')">
-          </div>
-          <div class="control-row">
-            <label>Spot</label>
-            <input type="number" class="sc-spot-num" min="10000" max="50000" step="100" value="24000" onchange="updateBasics('sc')">
-          </div>
-        </div>
-        <div class="mini-chart-wrap"><canvas id="chart-sc" role="img" aria-label="Sell call option payoff diagram"></canvas></div>
-        <div class="card-formula" id="f-sc">Loading...</div>
-        <button class="add-to-builder-btn" onclick="addFromBasics('sellCall', 'sc')">Add to Strategy</button>
       </div>
 
-      <!-- 3: Buy Put -->
-      <div class="basic-card">
-        <div class="basic-card-header">
-          <h3>Put Option — Buy</h3>
-          <span class="tag tag-buy">LONG</span>
-        </div>
-        <div class="card-desc">Right to sell at strike. Profit when market falls below strike – premium.</div>
-        <div class="controls-box">
-          <div class="control-row">
-            <label>Strike</label>
-            <input type="range" class="bp-strike" min="10000" max="50000" step="100" value="24000" oninput="updateBasics('bp')">
-            <input type="number" class="bp-strike-num" min="10000" max="50000" step="100" value="24000" onchange="updateBasics('bp')">
-          </div>
-          <div class="control-row">
-            <label>Premium</label>
-            <input type="range" class="bp-premium" min="10" max="2000" step="10" value="200" oninput="updateBasics('bp')">
-            <input type="number" class="bp-premium-num" min="10" max="2000" step="10" value="200" onchange="updateBasics('bp')">
-          </div>
-          <div class="control-row">
-            <label>Spot</label>
-            <input type="number" class="bp-spot-num" min="10000" max="50000" step="100" value="24000" onchange="updateBasics('bp')">
-          </div>
-        </div>
-        <div class="mini-chart-wrap"><canvas id="chart-bp" role="img" aria-label="Buy put option payoff diagram"></canvas></div>
-        <div class="card-formula" id="f-bp">Loading...</div>
-        <button class="add-to-builder-btn" onclick="addFromBasics('buyPut', 'bp')">Add to Strategy</button>
-      </div>
-
-      <!-- 4: Sell Put -->
-      <div class="basic-card">
-        <div class="basic-card-header">
-          <h3>Put Option — Sell</h3>
-          <span class="tag tag-sell">SHORT</span>
-        </div>
-        <div class="card-desc">Obligation to buy at strike. Profit limited to premium if market stays above.</div>
-        <div class="controls-box">
-          <div class="control-row">
-            <label>Strike</label>
-            <input type="range" class="sp-strike" min="10000" max="50000" step="100" value="24000" oninput="updateBasics('sp')">
-            <input type="number" class="sp-strike-num" min="10000" max="50000" step="100" value="24000" onchange="updateBasics('sp')">
-          </div>
-          <div class="control-row">
-            <label>Premium</label>
-            <input type="range" class="sp-premium" min="10" max="2000" step="10" value="200" oninput="updateBasics('sp')">
-            <input type="number" class="sp-premium-num" min="10" max="2000" step="10" value="200" onchange="updateBasics('sp')">
-          </div>
-          <div class="control-row">
-            <label>Spot</label>
-            <input type="number" class="sp-spot-num" min="10000" max="50000" step="100" value="24000" onchange="updateBasics('sp')">
-          </div>
-        </div>
-        <div class="mini-chart-wrap"><canvas id="chart-sp" role="img" aria-label="Sell put option payoff diagram"></canvas></div>
-        <div class="card-formula" id="f-sp">Loading...</div>
-        <button class="add-to-builder-btn" onclick="addFromBasics('sellPut', 'sp')">Add to Strategy</button>
-      </div>
-
-      <!-- 5: Buy Future -->
-      <div class="basic-card">
-        <div class="basic-card-header">
-          <h3>Futures — Buy (Long)</h3>
-          <span class="tag tag-future">FUTURES</span>
-        </div>
-        <div class="card-desc">Linear payoff. Profit every point market moves above entry. Loss every point below.</div>
-        <div class="controls-box">
-          <div class="control-row">
-            <label>Entry</label>
-            <input type="range" class="bf-strike" min="10000" max="50000" step="100" value="24000" oninput="updateBasics('bf')">
-            <input type="number" class="bf-strike-num" min="10000" max="50000" step="100" value="24000" onchange="updateBasics('bf')">
-          </div>
-          <div class="control-row">
-            <label>Spot</label>
-            <input type="number" class="bf-spot-num" min="10000" max="50000" step="100" value="24000" onchange="updateBasics('bf')">
-          </div>
-        </div>
-        <div class="mini-chart-wrap"><canvas id="chart-bf" role="img" aria-label="Buy futures payoff diagram"></canvas></div>
-        <div class="card-formula" id="f-bf">Loading...</div>
-        <button class="add-to-builder-btn" onclick="addFromBasics('buyFuture', 'bf')">Add to Strategy</button>
-      </div>
-
-      <!-- 6: Sell Future -->
-      <div class="basic-card">
-        <div class="basic-card-header">
-          <h3>Futures — Sell (Short)</h3>
-          <span class="tag tag-future">FUTURES</span>
-        </div>
-        <div class="card-desc">Linear payoff. Profit every point market falls below entry. Loss every point above.</div>
-        <div class="controls-box">
-          <div class="control-row">
-            <label>Entry</label>
-            <input type="range" class="sf-strike" min="10000" max="50000" step="100" value="24000" oninput="updateBasics('sf')">
-            <input type="number" class="sf-strike-num" min="10000" max="50000" step="100" value="24000" onchange="updateBasics('sf')">
-          </div>
-          <div class="control-row">
-            <label>Spot</label>
-            <input type="number" class="sf-spot-num" min="10000" max="50000" step="100" value="24000" onchange="updateBasics('sf')">
-          </div>
-        </div>
-        <div class="mini-chart-wrap"><canvas id="chart-sf" role="img" aria-label="Sell futures payoff diagram"></canvas></div>
-        <div class="card-formula" id="f-sf">Loading...</div>
-        <button class="add-to-builder-btn" onclick="addFromBasics('sellFuture', 'sf')">Add to Strategy</button>
+      <div class="sidebar-section">
+        <button class="clear-btn" onclick="clearLegs()">Clear All Legs</button>
       </div>
     </div>
-  </div>
 
-  <!-- ========== BUILDER SECTION ========== -->
-  <div class="section">
-    <div class="section-title">Strategy Builder</div>
-
-    <div class="builder-layout">
-      <!-- SIDEBAR -->
-      <div class="builder-sidebar">
-        <!-- Presets -->
-        <div class="sidebar-section">
-          <h4>Preset Strategies</h4>
-          <div class="preset-grid" id="preset-grid"></div>
-        </div>
-
-        <!-- Current legs -->
-        <div class="sidebar-section">
-          <h4>Current Legs <span id="leg-count" style="color:var(--accent2)">(0)</span></h4>
-          <div class="legs-list" id="legs-list">
-            <div style="font-size:11px; color:var(--text3); text-align:center; padding:1rem 0;">No legs added yet.</div>
-          </div>
-        </div>
-
-        <div class="sidebar-section">
-          <button class="clear-btn" onclick="clearLegs()">Clear All Legs</button>
+    <!-- CHART AREA -->
+    <div class="chart-area">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title" id="builder-title">Build Your Strategy</div>
+          <div class="chart-subtitle" id="builder-subtitle">Add legs from basics section to see combined payoff</div>
         </div>
       </div>
 
-      <!-- MAIN AREA -->
-      <div class="builder-main">
-        <div class="chart-header">
-          <div>
-            <div class="chart-title" id="builder-title">Build Your Strategy</div>
-            <div class="chart-subtitle" id="builder-subtitle">Add legs to see the combined payoff</div>
-          </div>
+      <div class="stats-row" id="stats-row">
+        <div class="stat-card">
+          <div class="stat-label">Max Profit</div>
+          <div class="stat-val stat-pos" id="stat-maxprofit">—</div>
         </div>
-
-        <div class="stats-row" id="stats-row">
-          <div class="stat-card">
-            <div class="stat-label">Max Profit</div>
-            <div class="stat-val stat-pos" id="stat-maxprofit">—</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Max Loss</div>
-            <div class="stat-val stat-neg" id="stat-maxloss">—</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Breakeven(s)</div>
-            <div class="stat-val stat-neu" id="stat-be" style="font-size:13px; margin-top:4px">—</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Net Debit/Credit</div>
-            <div class="stat-val" id="stat-net">—</div>
-          </div>
+        <div class="stat-card">
+          <div class="stat-label">Max Loss</div>
+          <div class="stat-val stat-neg" id="stat-maxloss">—</div>
         </div>
-
-        <div class="main-chart-wrap" id="main-chart-wrap">
-          <div class="empty-state" id="empty-state">
-            <div class="empty-icon">◈</div>
-            <div>Add a leg or choose a preset strategy</div>
-          </div>
-          <canvas id="main-chart" style="display:none" role="img" aria-label="Strategy payoff diagram"></canvas>
+        <div class="stat-card">
+          <div class="stat-label">Breakeven(s)</div>
+          <div class="stat-val stat-neu" id="stat-be" style="font-size:13px; margin-top:4px">—</div>
         </div>
-
-        <!-- Spot price slider -->
-        <div class="spot-controls">
-          <span class="spot-ctrl-label">Simulated Spot</span>
-          <input type="range" class="spot-ctrl-range" id="spot-slider" min="10000" max="50000" step="100" value="24000" oninput="updateSpotMarker()">
-          <input type="number" class="spot-ctrl-input" id="spot-input" min="10000" max="50000" step="100" value="24000" onchange="syncSpotInput()">
-          <div class="current-pnl-badge">
-            P&amp;L: <span id="spot-pnl" style="font-family:var(--display); font-size:16px; font-weight:600; color:var(--green); margin-left:4px">0</span>
-          </div>
+        <div class="stat-card">
+          <div class="stat-label">Net Debit/Credit</div>
+          <div class="stat-val" id="stat-net">—</div>
         </div>
-
-        <!-- Individual leg charts -->
-        <div class="leg-charts-grid" id="leg-charts-grid"></div>
       </div>
+
+      <div class="main-chart-wrap" id="main-chart-wrap">
+        <div class="empty-state" id="empty-state">
+          <div class="empty-icon">◈</div>
+          <div>Add a leg from the basics section</div>
+        </div>
+        <canvas id="main-chart" style="display:none"></canvas>
+      </div>
+
+      <!-- Spot price slider -->
+      <div class="spot-controls">
+        <span class="spot-ctrl-label">Simulated Spot</span>
+        <input type="range" class="spot-ctrl-range" id="spot-slider" min="1000" max="100000" step="50" value="24000" oninput="updateSpotMarker(false)">
+        <input type="number" class="spot-ctrl-input" id="spot-input" value="24000" step="100" min="1000" max="100000" onchange="updateSpotMarker(true)">
+        <div class="current-pnl-badge">
+          P&amp;L: <span id="spot-pnl" style="font-family:var(--display); font-size:14px; font-weight:600; color:var(--green); margin-left:4px">0</span>
+        </div>
+      </div>
+
+      <!-- Individual leg charts -->
+      <div class="leg-charts-grid" id="leg-charts-grid"></div>
     </div>
   </div>
 </div>
@@ -863,34 +656,32 @@
 // ============================================================
 // THEME TOGGLE
 // ============================================================
-const themeToggle = document.getElementById('theme-toggle');
-const savedTheme = localStorage.getItem('theme') || 'dark';
-if (savedTheme === 'light') {
-  document.body.classList.add('light-mode');
-  themeToggle.textContent = '☀️ Light';
+function toggleTheme() {
+  const isLight = document.body.classList.toggle('light-mode');
+  const btn = document.getElementById('theme-btn');
+  if(isLight) {
+    btn.innerHTML = '☼ Light Mode';
+    localStorage.setItem('theme', 'light');
+  } else {
+    btn.innerHTML = '☾ Dark Mode';
+    localStorage.setItem('theme', 'dark');
+  }
+  Object.keys(basicState).forEach(id => updateBasicCard(id));
+  renderMainChart();
 }
-themeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('light-mode');
-  const isLight = document.body.classList.contains('light-mode');
-  localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  themeToggle.textContent = isLight ? '☀️ Light' : '🌙 Dark';
-});
+
+if(localStorage.getItem('theme') === 'light') {
+  document.body.classList.add('light-mode');
+  document.getElementById('theme-btn').innerHTML = '☼ Light Mode';
+}
 
 // ============================================================
 // PAYOFF MATH
 // ============================================================
-function buyCallPayoff(spot, strike, premium) {
-  return spot < strike ? -premium : (spot - strike - premium);
-}
-function sellCallPayoff(spot, strike, premium) {
-  return spot < strike ? premium : (premium - (spot - strike));
-}
-function buyPutPayoff(spot, strike, premium) {
-  return spot > strike ? -premium : (strike - spot - premium);
-}
-function sellPutPayoff(spot, strike, premium) {
-  return spot > strike ? premium : (premium - (strike - spot));
-}
+function buyCallPayoff(spot, strike, premium) { return spot < strike ? -premium : (spot - strike - premium); }
+function sellCallPayoff(spot, strike, premium) { return spot < strike ? premium : (premium - (spot - strike)); }
+function buyPutPayoff(spot, strike, premium) { return spot > strike ? -premium : (strike - spot - premium); }
+function sellPutPayoff(spot, strike, premium) { return spot > strike ? premium : (premium - (strike - spot)); }
 function buyFuturePayoff(spot, entry) { return spot - entry; }
 function sellFuturePayoff(spot, entry) { return entry - spot; }
 
@@ -906,15 +697,25 @@ function legPayoff(leg, spot) {
   return p * lots;
 }
 
-function totalPayoff(legs, spot) {
-  return legs.reduce((s, l) => s + legPayoff(l, spot), 0);
-}
+function totalPayoff(legs, spot) { return legs.reduce((s, l) => s + legPayoff(l, spot), 0); }
 
 // ============================================================
-// CHART COLORS
+// CHART GLOBALS
 // ============================================================
 const LEG_COLORS = ['#7c6eec','#3ecf8e','#f87171','#fbbf24','#22d3ee','#a78bfa','#fb923c'];
 const miniChartInstances = {};
+
+function getGridColor() {
+  return document.body.classList.contains('light-mode') ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.05)';
+}
+
+function getTextColor() {
+  return document.body.classList.contains('light-mode') ? '#18181b' : '#e8e8f0';
+}
+
+function getTextColor3() {
+  return document.body.classList.contains('light-mode') ? '#71717a' : '#5a5a72';
+}
 
 function buildMiniChart(id, labels, data) {
   const ctx = document.getElementById(id);
@@ -922,47 +723,35 @@ function buildMiniChart(id, labels, data) {
   
   if (miniChartInstances[id]) miniChartInstances[id].destroy();
 
+  const borderColors = data.map(v => v >= 0 ? '#3ecf8e' : '#f87171');
+  const gridColor = getGridColor();
+  const textColor3 = getTextColor3();
+
   miniChartInstances[id] = new Chart(ctx.getContext('2d'), {
     type: 'line',
     data: {
       labels,
       datasets: [{
         data,
-        borderColor: data => data >= 0 ? '#3ecf8e' : '#f87171',
+        borderColor: borderColors,
         borderWidth: 2,
         pointRadius: 0,
-        fill: {
-          target: 'origin',
-          above: 'rgba(62,207,142,0.08)',
-          below: 'rgba(248,113,113,0.08)'
-        },
-        segment: {
-          borderColor: ctx2 => {
-            const y = ctx2.p0.parsed.y;
-            return y >= 0 ? '#3ecf8e' : '#f87171';
-          }
-        },
+        fill: { target: 'origin', above: 'rgba(62,207,142,0.08)', below: 'rgba(248,113,113,0.08)' },
+        segment: { borderColor: ctx2 => ctx2.p0.parsed.y >= 0 ? '#3ecf8e' : '#f87171' },
         tension: 0.1
       }]
     },
     options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      animation: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: { enabled: false }
-      },
+      responsive: true, maintainAspectRatio: false, animation: false,
+      plugins: { legend: { display: false }, tooltip: { enabled: false } },
       scales: {
-        x: {
-          display: true,
-          grid: { color: 'rgba(255,255,255,0.05)', drawTicks: false },
-          ticks: { color: '#5a5a72', font: { size: 9, family: 'DM Mono' }, maxTicksLimit: 5, maxRotation: 0 }
+        x: { 
+          grid: { color: gridColor, drawTicks: false }, 
+          ticks: { color: textColor3, font: { size: 9, family: 'DM Mono' }, maxTicksLimit: 5 } 
         },
-        y: {
-          display: true,
-          grid: { color: 'rgba(255,255,255,0.05)', drawTicks: false },
-          ticks: { color: '#5a5a72', font: { size: 9, family: 'DM Mono' }, maxTicksLimit: 4 }
+        y: { 
+          grid: { color: gridColor, drawTicks: false }, 
+          ticks: { color: textColor3, font: { size: 9, family: 'DM Mono' }, maxTicksLimit: 4 } 
         }
       }
     }
@@ -970,58 +759,130 @@ function buildMiniChart(id, labels, data) {
 }
 
 // ============================================================
-// BASICS PAGE
+// BASICS CARDS GENERATION & LOGIC
 // ============================================================
-function updateBasics(prefix) {
-  const getVal = (cls) => +document.querySelector(`.${prefix}-${cls}`).value;
-  const getNumVal = (cls) => +document.querySelector(`.${prefix}-${cls}-num`).value;
-  
-  const strike = getVal('strike');
-  const premium = getVal('premium');
-  const spot = getNumVal('spot');
-  
-  // Update sliders from inputs
-  document.querySelector(`.${prefix}-strike`).value = strike;
-  document.querySelector(`.${prefix}-premium`).value = premium;
-  document.querySelector(`.${prefix}-strike-num`).value = strike;
-  document.querySelector(`.${prefix}-premium-num`).value = premium;
+const basicCardsConfig = [
+  { id: 'bc', type: 'buyCall', title: 'Call Option — Buy', tag: 'LONG', tClass: 'tag-buy', hasPrem: true, desc: 'Right to buy at strike. Profit when market rises above strike + premium.' },
+  { id: 'sc', type: 'sellCall', title: 'Call Option — Sell', tag: 'SHORT', tClass: 'tag-sell', hasPrem: true, desc: 'Obligation to sell at strike. Profit limited to premium if market stays below.' },
+  { id: 'bp', type: 'buyPut', title: 'Put Option — Buy', tag: 'LONG', tClass: 'tag-buy', hasPrem: true, desc: 'Right to sell at strike. Profit when market falls below strike – premium.' },
+  { id: 'sp', type: 'sellPut', title: 'Put Option — Sell', tag: 'SHORT', tClass: 'tag-sell', hasPrem: true, desc: 'Obligation to buy at strike. Profit limited to premium if market stays above.' },
+  { id: 'bf', type: 'buyFuture', title: 'Futures — Buy (Long)', tag: 'FUTURES', tClass: 'tag-future', hasPrem: false, desc: 'Linear payoff. Profit every point market moves above entry. Loss every point below.' },
+  { id: 'sf', type: 'sellFuture', title: 'Futures — Sell (Short)', tag: 'FUTURES', tClass: 'tag-future', hasPrem: false, desc: 'Linear payoff. Profit every point market falls below entry. Loss every point above.' }
+];
 
+const basicState = {};
+
+function initBasics() {
+  const grid = document.getElementById('basics-grid');
+  
+  basicCardsConfig.forEach(c => {
+    basicState[c.id] = { spot: 24000, strike: 24000, premium: c.hasPrem ? 200 : 0, type: c.type, hasPrem: c.hasPrem };
+
+    const premHtml = c.hasPrem ? `
+      <div class="mini-ctrl-row">
+        <label>Premium</label>
+        <input type="range" id="${c.id}-prem-sl" min="1" max="5000" step="5" value="200" oninput="syncBasic('${c.id}', 'prem', false)">
+        <input type="number" id="${c.id}-prem-num" value="200" oninput="syncBasic('${c.id}', 'prem', true)">
+      </div>` : '';
+
+    grid.innerHTML += `
+      <div class="basic-card">
+        <div class="basic-card-header">
+          <h3>${c.title}</h3> <span class="tag ${c.tClass}">${c.tag}</span>
+        </div>
+        <div class="card-desc">${c.desc}</div>
+        
+        <div class="card-controls">
+          <div class="mini-ctrl-row">
+            <label>Spot</label>
+            <input type="range" id="${c.id}-spot-sl" min="1000" max="100000" step="50" value="24000" oninput="syncBasic('${c.id}', 'spot', false)">
+            <input type="number" id="${c.id}-spot-num" value="24000" min="1000" max="100000" oninput="syncBasic('${c.id}', 'spot', true)">
+          </div>
+          <div class="mini-ctrl-row">
+            <label>${c.hasPrem ? 'Strike' : 'Entry'}</label>
+            <input type="range" id="${c.id}-str-sl" min="1000" max="100000" step="50" value="24000" oninput="syncBasic('${c.id}', 'str', false)">
+            <input type="number" id="${c.id}-str-num" value="24000" min="1000" max="100000" oninput="syncBasic('${c.id}', 'str', true)">
+          </div>
+          ${premHtml}
+        </div>
+
+        <div class="mini-chart-wrap"><canvas id="chart-${c.id}"></canvas></div>
+        <div class="card-formula" id="f-${c.id}">Loading...</div>
+        <button class="add-card-btn btn-push-down" onclick="addLegFromCard('${c.id}')">+ Add to Builder</button>
+      </div>
+    `;
+  });
+
+  Object.keys(basicState).forEach(id => updateBasicCard(id));
+}
+
+function syncBasic(id, field, fromNum) {
+  const st = basicState[id];
+  const sl = document.getElementById(`${id}-${field}-sl`);
+  const num = document.getElementById(`${id}-${field}-num`);
+  
+  let val = fromNum ? +num.value : +sl.value;
+  if(fromNum) sl.value = val; else num.value = val;
+
+  if(field === 'spot') st.spot = val;
+  if(field === 'str') st.strike = val;
+  if(field === 'prem') st.premium = val;
+
+  updateBasicCard(id);
+}
+
+function updateBasicCard(id) {
+  const { type, spot, strike, premium } = basicState[id];
+  
   const range = [];
-  const minP = Math.min(strike, spot) - 4000;
-  const maxP = Math.max(strike, spot) + 4000;
-  const step = 200;
-  for (let p = minP; p <= maxP; p += step) range.push(p);
+  const minP = Math.max(0, Math.min(strike, spot) - 3000);
+  const maxP = Math.max(strike, spot) + 3000;
+  for (let p = minP; p <= maxP; p += 200) range.push(p);
   const labels = range.map(p => p >= 1000 ? (p/1000).toFixed(1)+'k' : p);
 
-  if (prefix === 'bc') {
-    buildMiniChart('chart-bc', labels, range.map(p => buyCallPayoff(p, strike, premium)));
-    document.getElementById('f-bc').innerHTML =
-      `Breakeven: ${(strike + premium).toLocaleString()}<br>Max loss: −${premium} (premium)<br>Max profit: Unlimited`;
-  } else if (prefix === 'sc') {
-    buildMiniChart('chart-sc', labels, range.map(p => sellCallPayoff(p, strike, premium)));
-    document.getElementById('f-sc').innerHTML =
-      `Breakeven: ${(strike + premium).toLocaleString()}<br>Max profit: +${premium} (premium)<br>Max loss: Unlimited`;
-  } else if (prefix === 'bp') {
-    buildMiniChart('chart-bp', labels, range.map(p => buyPutPayoff(p, strike, premium)));
-    document.getElementById('f-bp').innerHTML =
-      `Breakeven: ${(strike - premium).toLocaleString()}<br>Max loss: −${premium} (premium)<br>Max profit: Unlimited (downside)`;
-  } else if (prefix === 'sp') {
-    buildMiniChart('chart-sp', labels, range.map(p => sellPutPayoff(p, strike, premium)));
-    document.getElementById('f-sp').innerHTML =
-      `Breakeven: ${(strike - premium).toLocaleString()}<br>Max profit: +${premium} (premium)<br>Max loss: Unlimited (downside)`;
-  } else if (prefix === 'bf') {
-    buildMiniChart('chart-bf', labels, range.map(p => buyFuturePayoff(p, strike)));
-    document.getElementById('f-bf').innerHTML =
-      `Entry: ${strike.toLocaleString()}<br>Payoff: (Expiry − Entry)<br>Linear, symmetric P&L`;
-  } else if (prefix === 'sf') {
-    buildMiniChart('chart-sf', labels, range.map(p => sellFuturePayoff(p, strike)));
-    document.getElementById('f-sf').innerHTML =
-      `Entry: ${strike.toLocaleString()}<br>Payoff: (Entry − Expiry)<br>Linear, symmetric P&L`;
+  let data = [];
+  let formula = '';
+
+  if (type === 'buyCall') {
+    data = range.map(p => buyCallPayoff(p, strike, premium));
+    formula = `Breakeven: ${(strike + premium).toLocaleString()}<br>Max loss: −${premium}<br>Max profit: Unlimited`;
+  } else if (type === 'sellCall') {
+    data = range.map(p => sellCallPayoff(p, strike, premium));
+    formula = `Breakeven: ${(strike + premium).toLocaleString()}<br>Max profit: +${premium}<br>Max loss: Unlimited`;
+  } else if (type === 'buyPut') {
+    data = range.map(p => buyPutPayoff(p, strike, premium));
+    formula = `Breakeven: ${(strike - premium).toLocaleString()}<br>Max loss: −${premium}<br>Max profit: Limited to strike`;
+  } else if (type === 'sellPut') {
+    data = range.map(p => sellPutPayoff(p, strike, premium));
+    formula = `Breakeven: ${(strike - premium).toLocaleString()}<br>Max profit: +${premium}<br>Max loss: Limited to strike`;
+  } else if (type === 'buyFuture') {
+    data = range.map(p => buyFuturePayoff(p, strike));
+    formula = `Entry: ${strike.toLocaleString()}<br>Payoff: (Expiry − Entry)<br>Linear P&L`;
+  } else if (type === 'sellFuture') {
+    data = range.map(p => sellFuturePayoff(p, strike));
+    formula = `Entry: ${strike.toLocaleString()}<br>Payoff: (Entry − Expiry)<br>Linear P&L`;
   }
+
+  buildMiniChart(`chart-${id}`, labels, data);
+  document.getElementById(`f-${id}`).innerHTML = formula;
+}
+
+function addLegFromCard(id) {
+  const st = basicState[id];
+  legs.push({ id: legIdCounter++, type: st.type, strike: st.strike, premium: st.premium, lots: 1 });
+  renderLegs();
+  renderMainChart();
+  document.getElementById('strategy-builder').scrollIntoView({ behavior: 'smooth' });
+  
+  const slider = document.getElementById('spot-slider');
+  const input = document.getElementById('spot-input');
+  slider.value = st.spot;
+  input.value = st.spot;
+  updateSpotMarker(false);
 }
 
 // ============================================================
-// BUILDER STATE
+// BUILDER STATE & PRESETS
 // ============================================================
 let legs = [];
 let legIdCounter = 0;
@@ -1029,100 +890,35 @@ let mainChartInstance = null;
 let legChartInstances = {};
 
 const TYPE_LABELS = {
-  buyCall: 'Buy Call', sellCall: 'Sell Call',
-  buyPut: 'Buy Put', sellPut: 'Sell Put',
-  buyFuture: 'Buy Future', sellFuture: 'Sell Future'
+  buyCall: 'Buy Call', sellCall: 'Sell Call', buyPut: 'Buy Put', sellPut: 'Sell Put', buyFuture: 'Buy Future', sellFuture: 'Sell Future'
 };
 
-// ============================================================
-// PRESETS
-// ============================================================
 const PRESETS = [
-  {
-    name: 'Bull Call Spread', tag: 'bull',
-    desc: 'Buy ATM call, Sell OTM call',
-    legs: [
-      { type: 'buyCall',  strike: 24000, premium: 200, lots: 1 },
-      { type: 'sellCall', strike: 24500, premium: 100, lots: 1 }
-    ]
-  },
-  {
-    name: 'Bull Put Spread', tag: 'bull',
-    desc: 'Sell ITM put, Buy OTM put',
-    legs: [
-      { type: 'sellPut', strike: 24000, premium: 250, lots: 1 },
-      { type: 'buyPut',  strike: 23500, premium: 100, lots: 1 }
-    ]
-  },
-  {
-    name: 'Bear Put Spread', tag: 'bear',
-    desc: 'Buy ITM put, Sell OTM put',
-    legs: [
-      { type: 'buyPut',  strike: 24000, premium: 200, lots: 1 },
-      { type: 'sellPut', strike: 23500, premium: 80,  lots: 1 }
-    ]
-  },
-  {
-    name: 'Bear Call Spread', tag: 'bear',
-    desc: 'Buy OTM call, Sell ITM call',
-    legs: [
-      { type: 'buyCall',  strike: 24500, premium: 80,  lots: 1 },
-      { type: 'sellCall', strike: 24000, premium: 200, lots: 1 }
-    ]
-  },
-  {
-    name: 'Long Straddle', tag: 'neutral',
-    desc: 'Buy ATM call + ATM put',
-    legs: [
-      { type: 'buyCall', strike: 24000, premium: 200, lots: 1 },
-      { type: 'buyPut',  strike: 24000, premium: 180, lots: 1 }
-    ]
-  },
-  {
-    name: 'Short Straddle', tag: 'neutral',
-    desc: 'Sell ATM call + ATM put',
-    legs: [
-      { type: 'sellCall', strike: 24000, premium: 200, lots: 1 },
-      { type: 'sellPut',  strike: 24000, premium: 180, lots: 1 }
-    ]
-  },
-  {
-    name: 'Long Strangle', tag: 'neutral',
-    desc: 'Buy OTM call + OTM put',
-    legs: [
-      { type: 'buyCall', strike: 24500, premium: 100, lots: 1 },
-      { type: 'buyPut',  strike: 23500, premium: 90,  lots: 1 }
-    ]
-  },
-  {
-    name: 'Short Strangle', tag: 'neutral',
-    desc: 'Sell OTM call + OTM put',
-    legs: [
-      { type: 'sellCall', strike: 24500, premium: 100, lots: 1 },
-      { type: 'sellPut',  strike: 23500, premium: 90,  lots: 1 }
-    ]
-  },
-  {
-    name: 'Long Future', tag: 'bull',
-    desc: 'Buy futures at current price',
-    legs: [
-      { type: 'buyFuture', strike: 24000, premium: 0, lots: 1 }
-    ]
-  }
+  { name: 'Bull Call Spread', tag: 'bull', desc: 'Buy ATM call, Sell OTM call', legs: [{ type: 'buyCall', strike: 24000, premium: 200, lots: 1 }, { type: 'sellCall', strike: 24500, premium: 100, lots: 1 }] },
+  { name: 'Bull Put Spread', tag: 'bull', desc: 'Sell ITM put, Buy OTM put', legs: [{ type: 'sellPut', strike: 24000, premium: 250, lots: 1 }, { type: 'buyPut', strike: 23500, premium: 100, lots: 1 }] },
+  { name: 'Bear Put Spread', tag: 'bear', desc: 'Buy ITM put, Sell OTM put', legs: [{ type: 'buyPut', strike: 24000, premium: 200, lots: 1 }, { type: 'sellPut', strike: 23500, premium: 80, lots: 1 }] },
+  { name: 'Bear Call Spread', tag: 'bear', desc: 'Buy OTM call, Sell ITM call', legs: [{ type: 'buyCall', strike: 24500, premium: 80, lots: 1 }, { type: 'sellCall', strike: 24000, premium: 200, lots: 1 }] },
+  { name: 'Long Straddle', tag: 'neutral', desc: 'Buy ATM call + ATM put', legs: [{ type: 'buyCall', strike: 24000, premium: 200, lots: 1 }, { type: 'buyPut', strike: 24000, premium: 180, lots: 1 }] },
+  { name: 'Short Straddle', tag: 'neutral', desc: 'Sell ATM call + ATM put', legs: [{ type: 'sellCall', strike: 24000, premium: 200, lots: 1 }, { type: 'sellPut', strike: 24000, premium: 180, lots: 1 }] },
+  { name: 'Long Strangle', tag: 'neutral', desc: 'Buy OTM call + OTM put', legs: [{ type: 'buyCall', strike: 24500, premium: 100, lots: 1 }, { type: 'buyPut', strike: 23500, premium: 90, lots: 1 }] },
+  { name: 'Short Strangle', tag: 'neutral', desc: 'Sell OTM call + OTM put', legs: [{ type: 'sellCall', strike: 24500, premium: 100, lots: 1 }, { type: 'sellPut', strike: 23500, premium: 90, lots: 1 }] },
+  { name: 'Call Ratio Backspread', tag: 'bull', desc: 'Sell 1 ITM call, Buy 2 OTM calls', legs: [{ type: 'sellCall', strike: 23500, premium: 350, lots: 1 }, { type: 'buyCall', strike: 24000, premium: 200, lots: 2 }] },
+  { name: 'Put Ratio Backspread', tag: 'bear', desc: 'Sell 1 ITM put, Buy 2 OTM puts', legs: [{ type: 'sellPut', strike: 24000, premium: 280, lots: 1 }, { type: 'buyPut', strike: 23500, premium: 120, lots: 2 }] },
+  { name: 'Synthetic Long', tag: 'bull', desc: 'Buy ATM call, Sell ATM put', legs: [{ type: 'buyCall', strike: 24000, premium: 200, lots: 1 }, { type: 'sellPut', strike: 24000, premium: 180, lots: 1 }] },
+  { name: 'Synthetic Short', tag: 'bear', desc: 'Sell ATM call, Buy ATM put', legs: [{ type: 'sellCall', strike: 24000, premium: 200, lots: 1 }, { type: 'buyPut', strike: 24000, premium: 180, lots: 1 }] },
+  { name: 'Long Call Butterfly', tag: 'neutral', desc: 'Buy 1 ATM call, Sell 2 higher calls, Buy 1 even higher call', legs: [{ type: 'buyCall', strike: 24000, premium: 300, lots: 1 }, { type: 'sellCall', strike: 24250, premium: 150, lots: 2 }, { type: 'buyCall', strike: 24500, premium: 50, lots: 1 }] },
+  { name: 'Iron Condor', tag: 'neutral', desc: 'Bull put + Bear call spreads', legs: [{ type: 'buyPut', strike: 23000, premium: 100, lots: 1 }, { type: 'sellPut', strike: 23500, premium: 200, lots: 1 }, { type: 'sellCall', strike: 24500, premium: 200, lots: 1 }, { type: 'buyCall', strike: 25000, premium: 100, lots: 1 }] },
+  { name: 'Long Future', tag: 'bull', desc: 'Buy futures at current price', legs: [{ type: 'buyFuture', strike: 24000, premium: 0, lots: 1 }] },
+  { name: 'Short Future', tag: 'bear', desc: 'Sell futures at current price', legs: [{ type: 'sellFuture', strike: 24000, premium: 0, lots: 1 }] }
 ];
 
 function buildPresets() {
   const grid = document.getElementById('preset-grid');
-  grid.innerHTML = '';
   PRESETS.forEach((p, i) => {
     const tagClass = p.tag === 'bull' ? 'pt-bull' : p.tag === 'bear' ? 'pt-bear' : 'pt-neutral';
-    const tagLabel = p.tag.toUpperCase();
-    const btn = document.createElement('button');
-    btn.className = 'preset-btn';
-    btn.innerHTML = `<span>${p.name}</span><span class="preset-tag ${tagClass}">${tagLabel}</span>`;
-    btn.title = p.desc;
-    btn.onclick = () => loadPreset(i);
-    grid.appendChild(btn);
+    grid.innerHTML += `<button class="preset-btn" onclick="loadPreset(${i})" title="${p.desc}">
+      <span>${p.name}</span><span class="preset-tag ${tagClass}">${p.tag.toUpperCase()}</span>
+    </button>`;
   });
 }
 
@@ -1133,31 +929,21 @@ function loadPreset(idx) {
   renderMainChart();
   document.getElementById('builder-title').textContent = preset.name;
   document.getElementById('builder-subtitle').textContent = preset.desc;
-}
-
-// ============================================================
-// ADD FROM BASICS
-// ============================================================
-function addFromBasics(type, prefix) {
-  const strike = +document.querySelector(`.${prefix}-strike-num`).value;
-  const premium = +document.querySelector(`.${prefix}-premium-num`).value || 0;
-  const lots = 1;
   
-  legs.push({ id: legIdCounter++, type, strike, premium, lots });
-  renderLegs();
-  renderMainChart();
-  document.getElementById('builder-title').textContent = 'Custom Strategy';
-  document.getElementById('builder-subtitle').textContent = `${legs.length} leg${legs.length > 1 ? 's' : ''}`;
+  const avgStrike = Math.round(legs.reduce((s, l) => s + l.strike, 0) / legs.length);
+  document.getElementById('spot-slider').value = avgStrike;
+  document.getElementById('spot-input').value = avgStrike;
+  updateSpotMarker(false);
 }
 
 // ============================================================
-// ADD / REMOVE LEGS
+// REMOVE LEGS IN BUILDER
 // ============================================================
 function removeLeg(id) {
   legs = legs.filter(l => l.id !== id);
   renderLegs();
   renderMainChart();
-  updateSpotMarker();
+  updateSpotMarker(false);
 }
 
 function clearLegs() {
@@ -1165,7 +951,7 @@ function clearLegs() {
   renderLegs();
   renderMainChart();
   document.getElementById('builder-title').textContent = 'Build Your Strategy';
-  document.getElementById('builder-subtitle').textContent = 'Add legs to see the combined payoff';
+  document.getElementById('builder-subtitle').textContent = 'Add legs from basics section to see combined payoff';
 }
 
 function renderLegs() {
@@ -1175,51 +961,60 @@ function renderLegs() {
     list.innerHTML = '<div style="font-size:11px; color:var(--text3); text-align:center; padding:1rem 0;">No legs added yet.</div>';
     return;
   }
-  list.innerHTML = '';
-  legs.forEach((leg, i) => {
+  
+  list.innerHTML = legs.map((leg, i) => {
     const color = LEG_COLORS[i % LEG_COLORS.length];
     const isFuture = leg.type.includes('Future');
-    const div = document.createElement('div');
-    div.className = 'leg-item';
-    div.innerHTML = `
-      <div class="leg-header">
-        <div class="leg-dot" style="background:${color}"></div>
-        <div class="leg-name">${TYPE_LABELS[leg.type]} × ${leg.lots}</div>
-        <button class="leg-remove" onclick="removeLeg(${leg.id})" title="Remove">×</button>
-      </div>
-      <div class="leg-inputs">
-        <div class="leg-input-row">
-          <label>Strike</label>
-          <input type="number" step="100" value="${leg.strike}" onchange="updateLegStrike(${leg.id}, this.value)">
+    const strikeMin = Math.max(1000, leg.strike - 5000);
+    const strikeMax = leg.strike + 5000;
+    const premMin = isFuture ? 0 : Math.max(1, leg.premium - 500);
+    const premMax = isFuture ? 0 : leg.premium + 500;
+    
+    return `
+      <div class="leg-item">
+        <div class="leg-item-header">
+          <div class="leg-dot" style="background:${color}"></div>
+          <div class="leg-name">${TYPE_LABELS[leg.type]} × ${leg.lots}</div>
+          <button class="leg-remove" onclick="removeLeg(${leg.id})" title="Remove">×</button>
         </div>
-        ${isFuture ? '' : `
-        <div class="leg-input-row">
-          <label>Premium</label>
-          <input type="number" step="10" value="${leg.premium}" onchange="updateLegPremium(${leg.id}, this.value)">
+        <div class="leg-sliders">
+          <div class="leg-slider-row">
+            <label>Strike</label>
+            <input type="range" min="${strikeMin}" max="${strikeMax}" step="50" value="${leg.strike}" oninput="syncLegSlider(${leg.id}, 'strike', false)">
+            <input type="number" min="${strikeMin}" max="${strikeMax}" step="50" value="${leg.strike}" onchange="syncLegSlider(${leg.id}, 'strike', true)">
+          </div>
+          ${isFuture ? '' : `
+          <div class="leg-slider-row">
+            <label>Premium</label>
+            <input type="range" min="${premMin}" max="${premMax}" step="5" value="${leg.premium}" oninput="syncLegSlider(${leg.id}, 'premium', false)">
+            <input type="number" min="${premMin}" max="${premMax}" step="5" value="${leg.premium}" onchange="syncLegSlider(${leg.id}, 'premium', true)">
+          </div>
+          `}
         </div>
-        `}
       </div>
     `;
-    list.appendChild(div);
-  });
+  }).join('');
 }
 
-function updateLegStrike(id, val) {
+function syncLegSlider(id, field, fromNum) {
   const leg = legs.find(l => l.id === id);
-  if (leg) {
-    leg.strike = +val;
-    renderMainChart();
-    updateSpotMarker();
-  }
-}
+  if (!leg) return;
 
-function updateLegPremium(id, val) {
-  const leg = legs.find(l => l.id === id);
-  if (leg) {
-    leg.premium = +val;
-    renderMainChart();
-    updateSpotMarker();
+  const sliderInput = document.querySelector(`input[type=range][value="${leg[field]}"]`);
+  const numberInput = document.querySelector(`input[type=number][value="${leg[field]}"]`);
+
+  if (fromNum && numberInput) {
+    const val = +numberInput.value;
+    leg[field] = val;
+    if (sliderInput) sliderInput.value = val;
+  } else if (sliderInput) {
+    const val = +sliderInput.value;
+    leg[field] = val;
+    if (numberInput) numberInput.value = val;
   }
+
+  renderMainChart();
+  updateSpotMarker(false);
 }
 
 // ============================================================
@@ -1230,10 +1025,9 @@ function buildPriceRange(legs) {
   const strikes = legs.map(l => l.strike);
   const min = Math.min(...strikes);
   const max = Math.max(...strikes);
-  const pad = Math.max(4000, (max - min) * 1.5);
+  const pad = Math.max(3000, (max - min) * 1.5);
   const range = [];
-  const step = 100;
-  for (let p = min - pad; p <= max + pad; p += step) range.push(Math.round(p));
+  for (let p = Math.max(0, min - pad); p <= max + pad; p += 100) range.push(Math.round(p));
   return range;
 }
 
@@ -1245,34 +1039,28 @@ function computeStats(legs, priceRange) {
   const breakevens = [];
   for (let i = 1; i < payoffs.length; i++) {
     if ((payoffs[i-1] < 0 && payoffs[i] >= 0) || (payoffs[i-1] >= 0 && payoffs[i] < 0)) {
-      const be = Math.round((priceRange[i-1] + priceRange[i]) / 2);
-      breakevens.push(be);
+      breakevens.push(Math.round((priceRange[i-1] + priceRange[i]) / 2));
     }
   }
 
   const netPremium = legs.reduce((s, l) => {
-    const sign = (l.type.startsWith('sell')) ? 1 : -1;
     const isFuture = l.type.includes('Future');
-    return s + (isFuture ? 0 : sign * l.premium * l.lots);
+    return s + (isFuture ? 0 : (l.type.startsWith('sell') ? 1 : -1) * l.premium * l.lots);
   }, 0);
 
   return { maxProfit, maxLoss, breakevens, netPremium };
 }
 
 function renderMainChart() {
-  const wrap = document.getElementById('main-chart-wrap');
   const canvas = document.getElementById('main-chart');
   const empty = document.getElementById('empty-state');
 
   if (legs.length === 0) {
     canvas.style.display = 'none';
     empty.style.display = 'flex';
-    document.getElementById('stat-maxprofit').textContent = '—';
-    document.getElementById('stat-maxloss').textContent = '—';
-    document.getElementById('stat-be').textContent = '—';
-    document.getElementById('stat-net').textContent = '—';
+    ['stat-maxprofit', 'stat-maxloss', 'stat-be', 'stat-net'].forEach(id => document.getElementById(id).textContent = '—');
     document.getElementById('stat-net').className = 'stat-val stat-neu';
-    renderLegCharts([]);
+    document.getElementById('leg-charts-grid').innerHTML = '';
     return;
   }
 
@@ -1283,108 +1071,63 @@ function renderMainChart() {
   const payoffs = priceRange.map(p => totalPayoff(legs, p));
   const stats = computeStats(legs, priceRange);
 
-  const mp = stats.maxProfit;
-  const ml = stats.maxLoss;
-  document.getElementById('stat-maxprofit').textContent = mp > 9999 ? 'Unlimited' : '+' + mp.toFixed(0);
-  document.getElementById('stat-maxloss').textContent = ml < -9999 ? 'Unlimited' : ml.toFixed(0);
-  document.getElementById('stat-be').textContent = stats.breakevens.length > 0
-    ? stats.breakevens.map(b => b.toLocaleString()).join(' / ')
-    : 'None';
-  const net = stats.netPremium;
-  document.getElementById('stat-net').textContent = net >= 0 ? `+${net.toFixed(0)} Credit` : `${net.toFixed(0)} Debit`;
-  document.getElementById('stat-net').className = 'stat-val ' + (net >= 0 ? 'stat-pos' : 'stat-neg');
+  document.getElementById('stat-maxprofit').textContent = stats.maxProfit > 9999 ? 'Unlimited' : '+' + stats.maxProfit.toFixed(0);
+  document.getElementById('stat-maxloss').textContent = stats.maxLoss < -9999 ? 'Unlimited' : stats.maxLoss.toFixed(0);
+  document.getElementById('stat-be').textContent = stats.breakevens.length > 0 ? stats.breakevens.map(b => b.toLocaleString()).join(' / ') : 'None';
+  document.getElementById('stat-net').textContent = stats.netPremium >= 0 ? `+${stats.netPremium.toFixed(0)} Credit` : `${stats.netPremium.toFixed(0)} Debit`;
+  document.getElementById('stat-net').className = 'stat-val ' + (stats.netPremium >= 0 ? 'stat-pos' : 'stat-neg');
 
-  const labels = priceRange.map(p => p >= 1000 ? (p/1000).toFixed(1)+'k' : String(p));
-
-  if (mainChartInstance) { mainChartInstance.destroy(); mainChartInstance = null; }
+  if (mainChartInstance) mainChartInstance.destroy();
 
   const ctx = canvas.getContext('2d');
-
-  const legDatasets = legs.map((leg, i) => ({
-    label: `${TYPE_LABELS[leg.type]} @${leg.strike}`,
-    data: priceRange.map(p => legPayoff(leg, p)),
-    borderColor: LEG_COLORS[i % LEG_COLORS.length],
-    borderWidth: 1.5,
-    borderDash: [4, 4],
-    pointRadius: 0,
-    fill: false,
-    tension: 0.1
-  }));
-
-  const combinedDataset = {
-    label: 'Combined Payoff',
-    data: payoffs,
-    borderColor: '#ffffff',
-    borderWidth: 2.5,
-    pointRadius: 0,
-    fill: {
-      target: 'origin',
-      above: 'rgba(62,207,142,0.12)',
-      below: 'rgba(248,113,113,0.12)'
-    },
-    segment: {
-      borderColor: ctx2 => ctx2.p0.parsed.y >= 0 ? '#3ecf8e' : '#f87171'
-    },
-    tension: 0.1,
-    order: 0
-  };
-
-  const zeroDataset = {
-    label: '',
-    data: priceRange.map(() => 0),
-    borderColor: 'rgba(255,255,255,0.15)',
-    borderWidth: 1,
-    borderDash: [2, 6],
-    pointRadius: 0,
-    fill: false,
-    tension: 0
-  };
+  const gridColor = getGridColor();
+  const textColor = getTextColor();
+  const textColor2 = document.body.classList.contains('light-mode') ? '#52525b' : '#9090a8';
+  const textColor3 = getTextColor3();
 
   mainChartInstance = new Chart(ctx, {
     type: 'line',
-    data: { labels, datasets: [zeroDataset, ...legDatasets, combinedDataset] },
+    data: {
+      labels: priceRange.map(p => p >= 1000 ? (p/1000).toFixed(1)+'k' : String(p)),
+      datasets: [
+        { label: '', data: priceRange.map(() => 0), borderColor: gridColor, borderWidth: 1, borderDash: [2, 6], pointRadius: 0, fill: false, tension: 0 },
+        ...legs.map((leg, i) => ({
+          label: `${TYPE_LABELS[leg.type]} @${leg.strike}`, data: priceRange.map(p => legPayoff(leg, p)), borderColor: LEG_COLORS[i % LEG_COLORS.length], borderWidth: 1.5, borderDash: [4, 4], pointRadius: 0, fill: false, tension: 0.1
+        })),
+        {
+          label: 'Combined Payoff', data: payoffs, borderColor: textColor, borderWidth: 2.5, pointRadius: 0,
+          fill: { target: 'origin', above: 'rgba(62,207,142,0.12)', below: 'rgba(248,113,113,0.12)' },
+          segment: { borderColor: ctx2 => ctx2.p0.parsed.y >= 0 ? '#3ecf8e' : '#f87171' }, tension: 0.1
+        }
+      ]
+    },
     options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      animation: false,
-      interaction: { mode: 'index', intersect: false },
+      responsive: true, maintainAspectRatio: false, animation: false, interaction: { mode: 'index', intersect: false },
       plugins: {
-        legend: {
-          display: true,
-          position: 'top',
-          labels: {
-            color: '#9090a8',
-            font: { size: 10, family: 'DM Mono' },
-            boxWidth: 16,
-            boxHeight: 2,
-            filter: item => item.text !== ''
-          }
+        legend: { 
+          labels: { color: textColor2, font: { size: 10, family: 'DM Mono' }, filter: item => item.text !== '', boxWidth: 14, boxHeight: 2 }
         },
         tooltip: {
-          backgroundColor: 'var(--bg2)',
-          borderColor: 'var(--border)',
+          backgroundColor: document.body.classList.contains('light-mode') ? 'rgba(255,255,255,0.9)' : 'rgba(22,22,27,0.9)',
+          borderColor: gridColor,
           borderWidth: 1,
-          titleColor: '#9090a8',
-          bodyColor: 'var(--text)',
+          titleColor: textColor2,
+          bodyColor: textColor,
           titleFont: { size: 10, family: 'DM Mono' },
           bodyFont: { size: 11, family: 'DM Mono' },
           callbacks: {
-            label: ctx2 => {
-              if (ctx2.dataset.label === '') return null;
-              const v = ctx2.parsed.y;
-              return ` ${ctx2.dataset.label}: ${v >= 0 ? '+' : ''}${v.toFixed(0)}`;
-            }
+            label: ctx2 => ctx2.dataset.label ? ` ${ctx2.dataset.label}: ${ctx2.parsed.y >= 0 ? '+' : ''}${ctx2.parsed.y.toFixed(0)}` : null
           }
         }
       },
       scales: {
-        x: {
-          grid: { color: 'rgba(255,255,255,0.04)', drawTicks: false },
-          ticks: { color: '#5a5a72', font: { size: 9, family: 'DM Mono' }, maxTicksLimit: 10, maxRotation: 0 }
+        x: { 
+          grid: { color: gridColor, drawTicks: false }, 
+          ticks: { color: textColor3, font: { size: 9, family: 'DM Mono' }, maxTicksLimit: 10 } 
         },
-        y: {
-          grid: { color: 'rgba(255,255,255,0.04)', drawTicks: false },
-          ticks: { color: '#5a5a72', font: { size: 10, family: 'DM Mono' }, maxTicksLimit: 8 }
+        y: { 
+          grid: { color: gridColor, drawTicks: false }, 
+          ticks: { color: textColor3, font: { size: 10, family: 'DM Mono' }, maxTicksLimit: 8 } 
         }
       }
     }
@@ -1397,100 +1140,70 @@ function renderLegCharts(priceRange) {
   const grid = document.getElementById('leg-charts-grid');
   Object.values(legChartInstances).forEach(c => c.destroy());
   legChartInstances = {};
-  grid.innerHTML = '';
-  if (legs.length === 0) return;
+  const gridColor = getGridColor();
+  const textColor3 = getTextColor3();
 
-  legs.forEach((leg, i) => {
-    const color = LEG_COLORS[i % LEG_COLORS.length];
-    const data = priceRange.map(p => legPayoff(leg, p));
-    const labels = priceRange.map(p => p >= 1000 ? (p/1000).toFixed(1)+'k' : String(p));
-
-    const wrap = document.createElement('div');
-    wrap.className = 'leg-chart-wrap';
-    const cid = `leg-chart-${leg.id}`;
-    wrap.innerHTML = `
-      <div class="leg-chart-label" style="color:${color}">
-        ${TYPE_LABELS[leg.type]} × ${leg.lots} &nbsp;@&nbsp; ${leg.strike.toLocaleString()}
-        ${leg.type.includes('Future') ? '' : `&nbsp;·&nbsp; prem ${leg.premium}`}
+  grid.innerHTML = legs.map((leg, i) => `
+    <div class="leg-chart-wrap">
+      <div class="leg-chart-label" style="color:${LEG_COLORS[i % LEG_COLORS.length]}">
+        ${TYPE_LABELS[leg.type]} × ${leg.lots} @ ${leg.strike.toLocaleString()} ${leg.type.includes('Future') ? '' : `· prem ${leg.premium}`}
       </div>
-      <div class="leg-chart-container">
-        <canvas id="${cid}" role="img" aria-label="${TYPE_LABELS[leg.type]} payoff"></canvas>
-      </div>
-    `;
-    grid.appendChild(wrap);
+      <div class="leg-chart-container"><canvas id="leg-chart-${leg.id}"></canvas></div>
+    </div>
+  `).join('');
 
-    setTimeout(() => {
-      const ctx = document.getElementById(cid).getContext('2d');
-      legChartInstances[cid] = new Chart(ctx, {
+  setTimeout(() => {
+    legs.forEach((leg, i) => {
+      const cid = `leg-chart-${leg.id}`;
+      const canvasEl = document.getElementById(cid);
+      if(!canvasEl) return;
+      
+      legChartInstances[cid] = new Chart(canvasEl.getContext('2d'), {
         type: 'line',
         data: {
-          labels,
+          labels: priceRange.map(p => p >= 1000 ? (p/1000).toFixed(1)+'k' : String(p)),
           datasets: [{
-            data,
-            borderColor: color,
+            data: priceRange.map(p => legPayoff(leg, p)),
+            borderColor: LEG_COLORS[i % LEG_COLORS.length],
             borderWidth: 1.5,
             pointRadius: 0,
-            fill: { target: 'origin', above: color + '18', below: color + '18' },
-            segment: { borderColor: () => color },
+            fill: { target: 'origin', above: LEG_COLORS[i % LEG_COLORS.length]+'20', below: LEG_COLORS[i % LEG_COLORS.length]+'20' },
             tension: 0.1
           }]
         },
         options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          animation: false,
+          responsive: true, maintainAspectRatio: false, animation: false,
           plugins: { legend: { display: false }, tooltip: { enabled: false } },
           scales: {
-            x: {
-              grid: { color: 'rgba(255,255,255,0.04)', drawTicks: false },
-              ticks: { color: '#5a5a72', font: { size: 8, family: 'DM Mono' }, maxTicksLimit: 5, maxRotation: 0 }
-            },
-            y: {
-              grid: { color: 'rgba(255,255,255,0.04)', drawTicks: false },
-              ticks: { color: '#5a5a72', font: { size: 8, family: 'DM Mono' }, maxTicksLimit: 4 }
-            }
+            x: { display: false },
+            y: { display: false }
           }
         }
       });
-    }, 50);
-  });
+    });
+  }, 50);
 }
 
-// ============================================================
-// SPOT SLIDER
-// ============================================================
-function updateSpotMarker() {
-  const spot = +document.getElementById('spot-slider').value;
-  document.getElementById('spot-input').value = spot;
+function updateSpotMarker(fromInput = false) {
+  const slider = document.getElementById('spot-slider');
+  const input = document.getElementById('spot-input');
+  
+  if (fromInput) slider.value = input.value;
+  else input.value = slider.value;
+
   if (legs.length === 0) return;
-  const pnl = totalPayoff(legs, spot);
+  const pnl = totalPayoff(legs, +slider.value);
   const el = document.getElementById('spot-pnl');
   el.textContent = (pnl >= 0 ? '+' : '') + pnl.toFixed(0);
   el.style.color = pnl >= 0 ? 'var(--green)' : 'var(--red)';
 }
 
-function syncSpotInput() {
-  const val = +document.getElementById('spot-input').value;
-  if (val < 10000) document.getElementById('spot-input').value = 10000;
-  if (val > 50000) document.getElementById('spot-input').value = 50000;
-  document.getElementById('spot-slider').value = val;
-  updateSpotMarker();
-}
-
 // ============================================================
 // INIT
 // ============================================================
+initBasics();
 buildPresets();
-updateBasics('bc');
-updateBasics('sc');
-updateBasics('bp');
-updateBasics('sp');
-updateBasics('bf');
-updateBasics('sf');
-
-setTimeout(() => {
-  loadPreset(0);
-}, 100);
+setTimeout(() => loadPreset(0), 100);
 </script>
 </body>
 </html>
