@@ -1,1209 +1,1095 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Option Strategy Visualizer</title>
+<title>Option Strategy Visualiser</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap');
 
-  :root {
-    /* Dark Mode (Default) */
-    --bg: #0e0e11;
-    --bg2: #16161b;
-    --bg3: #1e1e26;
-    --border: rgba(255,255,255,0.08);
-    --border2: rgba(255,255,255,0.14);
-    --text: #e8e8f0;
-    --text2: #9090a8;
-    --text3: #5a5a72;
-    --accent: #7c6eec;
-    --accent2: #a598f5;
-    --green: #3ecf8e;
-    --red: #f87171;
-    --yellow: #fbbf24;
-    --teal: #22d3ee;
-    --grid-line: rgba(255,255,255,0.05);
-    
-    --mono: 'DM Mono', monospace;
-    --display: 'Syne', sans-serif;
-  }
+/* ─── TOKENS ─────────────────────────────────── */
+[data-theme="dark"]{
+  --bg:#0d0d10;--bg2:#141418;--bg3:#1c1c24;--bg4:#24242f;--bg5:#2c2c3a;
+  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.13);--border3:rgba(255,255,255,.2);
+  --text:#e2e2ee;--text2:#8888a8;--text3:#50506a;
+  --accent:#7c6eec;--accent2:#a598f5;--accentbg:rgba(124,110,236,.12);
+  --green:#3ecf8e;--greenbg:rgba(62,207,142,.12);
+  --red:#f87171;--redbg:rgba(248,113,113,.12);
+  --yellow:#f0b429;--yellowbg:rgba(240,180,41,.12);
+  --teal:#22d3ee;--tealbg:rgba(34,211,238,.1);
+  --navbg:#0d0d10;
+  --shadow:0 8px 32px rgba(0,0,0,.6);
+  --shadow-sm:0 2px 8px rgba(0,0,0,.4);
+}
+[data-theme="light"]{
+  --bg:#f0f0f6;--bg2:#ffffff;--bg3:#f5f5fb;--bg4:#eaeaf4;--bg5:#e0e0ee;
+  --border:rgba(0,0,0,.07);--border2:rgba(0,0,0,.13);--border3:rgba(0,0,0,.2);
+  --text:#18182a;--text2:#52527a;--text3:#9898b8;
+  --accent:#6154e0;--accent2:#7c6eec;--accentbg:rgba(97,84,224,.1);
+  --green:#12955a;--greenbg:rgba(18,149,90,.1);
+  --red:#d63031;--redbg:rgba(214,48,49,.1);
+  --yellow:#b76e00;--yellowbg:rgba(183,110,0,.1);
+  --teal:#0284c7;--tealbg:rgba(2,132,199,.1);
+  --navbg:#ffffff;
+  --shadow:0 8px 32px rgba(0,0,0,.1);
+  --shadow-sm:0 2px 8px rgba(0,0,0,.07);
+}
 
-  /* Light Mode Overrides */
-  body.light-mode {
-    --bg: #f4f4f5;
-    --bg2: #ffffff;
-    --bg3: #e4e4e7;
-    --border: rgba(0,0,0,0.1);
-    --border2: rgba(0,0,0,0.15);
-    --text: #18181b;
-    --text2: #52525b;
-    --text3: #71717a;
-    --accent: #6366f1;
-    --accent2: #4f46e5;
-    --green: #10b981;
-    --red: #ef4444;
-    --teal: #06b6d4;
-    --grid-line: rgba(0,0,0,0.05);
-  }
+/* ─── RESET ──────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Mono',monospace;font-size:13px;line-height:1.6;transition:background .25s,color .25s;}
+input,select,button{font-family:'DM Mono',monospace;}
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+/* ─── NAV ────────────────────────────────────── */
+nav{
+  background:var(--navbg);border-bottom:1px solid var(--border);
+  padding:0 2rem;height:54px;display:flex;align-items:center;gap:1.5rem;
+  position:sticky;top:0;z-index:300;
+  box-shadow:var(--shadow-sm);
+}
+.nav-brand{font-family:'Syne',sans-serif;font-weight:800;font-size:14px;letter-spacing:-.02em;color:var(--text);white-space:nowrap;}
+.nav-brand span{color:var(--accent2);}
+.nav-links{display:flex;gap:0;margin-left:auto;align-items:center;}
+.nav-a{padding:0 14px;height:54px;display:flex;align-items:center;cursor:pointer;color:var(--text2);font-size:11px;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid transparent;transition:all .15s;text-decoration:none;user-select:none;}
+.nav-a:hover{color:var(--text);}
+.nav-a.active{color:var(--accent2);border-bottom-color:var(--accent2);}
+.theme-toggle{
+  display:flex;align-items:center;gap:7px;
+  background:var(--bg3);border:1px solid var(--border2);border-radius:24px;
+  padding:5px 12px;cursor:pointer;color:var(--text2);font-size:11px;
+  transition:all .15s;margin-left:6px;white-space:nowrap;
+}
+.theme-toggle:hover{color:var(--text);border-color:var(--border3);}
+.theme-icon{font-size:12px;line-height:1;}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--mono);
-    font-size: 13px;
-    line-height: 1.6;
-    min-height: 100vh;
-    transition: background 0.3s, color 0.3s;
-  }
+/* ─── SECTIONS ───────────────────────────────── */
+.section{padding:3rem 2rem;}
+.section-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:.5rem;}
+.section-title{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;letter-spacing:-.03em;color:var(--text);}
+.section-sub{color:var(--text2);margin-top:.35rem;font-size:12px;line-height:1.6;}
+.section-header{margin-bottom:2rem;}
+.divider{height:1px;background:var(--border);margin:0 2rem;}
 
-  /* NAV */
-  nav {
-    background: var(--bg2);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    height: 52px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .logo {
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: 15px;
-    color: var(--text);
-    letter-spacing: -0.02em;
-  }
-  .logo span { color: var(--accent2); }
-  
-  .theme-toggle {
-    margin-left: auto;
-    background: none;
-    border: 1px solid var(--border2);
-    color: var(--text);
-    font-size: 14px;
-    cursor: pointer;
-    padding: 4px 10px;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-family: var(--mono);
-    transition: all 0.2s;
-  }
-  .theme-toggle:hover {
-    background: var(--bg3);
-  }
+/* ─── BASICS GRID ────────────────────────────── */
+.basics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
 
-  /* BASICS PAGE */
-  .basics-header {
-    padding: 3rem 2rem 1.5rem;
-    text-align: center;
-  }
-  .basics-header h1 {
-    font-family: var(--display);
-    font-size: 2.2rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    color: var(--text);
-  }
-  .basics-header p {
-    color: var(--text2);
-    margin-top: 0.5rem;
-    font-size: 13px;
-  }
+.basic-card{
+  background:var(--bg2);border:1px solid var(--border);border-radius:14px;
+  padding:1.1rem;display:flex;flex-direction:column;gap:10px;
+  transition:border-color .2s,box-shadow .2s;
+}
+.basic-card:hover{border-color:var(--border2);box-shadow:var(--shadow-sm);}
 
-  .basics-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin: 1.5rem 2rem;
-  }
-  .basic-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  .basic-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .basic-card h3 {
-    font-family: var(--display);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text);
-  }
-  .tag {
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 20px;
-    font-family: var(--mono);
-    letter-spacing: 0.05em;
-  }
-  .tag-buy { background: rgba(62,207,142,0.15); color: var(--green); }
-  .tag-sell { background: rgba(248,113,113,0.15); color: var(--red); }
-  .tag-future { background: rgba(34,211,238,0.15); color: var(--teal); }
+.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+.card-head-left{display:flex;flex-direction:column;gap:3px;}
+.card-name{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--text);}
+.card-desc{font-size:10px;color:var(--text2);line-height:1.5;}
 
-  .card-desc {
-    font-size: 11px;
-    color: var(--text2);
-    line-height: 1.5;
-    height: auto;
-  }
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:9px;padding:3px 8px;border-radius:20px;letter-spacing:.05em;white-space:nowrap;font-weight:500;}
+.badge-long{background:var(--greenbg);color:var(--green);}
+.badge-short{background:var(--redbg);color:var(--red);}
+.badge-future{background:var(--tealbg);color:var(--teal);}
 
-  /* Mini Controls inside Cards */
-  .card-controls {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    background: var(--bg3);
-    padding: 8px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-  }
-  .mini-ctrl-row {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .mini-ctrl-row label {
-    font-size: 10px;
-    color: var(--text2);
-    width: 40px;
-  }
-  .mini-ctrl-row input[type=range] {
-    flex: 1;
-    accent-color: var(--accent2);
-    height: 3px;
-    cursor: pointer;
-  }
-  .mini-ctrl-row input[type=number] {
-    width: 65px;
-    font-family: var(--mono);
-    font-size: 10px;
-    background: var(--bg2);
-    border: 1px solid var(--border2);
-    color: var(--text);
-    border-radius: 4px;
-    padding: 2px 4px;
-    text-align: right;
-  }
+.mini-chart{height:88px;position:relative;margin:2px 0;}
 
-  .mini-chart-wrap {
-    height: 100px;
-    position: relative;
-    margin-top: 4px;
-  }
+/* card controls */
+.card-ctrl-grid{display:flex;flex-direction:column;gap:5px;}
+.ctrl-row{display:grid;grid-template-columns:46px 1fr 72px;align-items:center;gap:6px;}
+.ctrl-label{font-size:9px;color:var(--text3);letter-spacing:.05em;text-transform:uppercase;}
+.ctrl-range{accent-color:var(--accent2);cursor:pointer;width:100%;height:3px;}
+.ctrl-num{
+  background:var(--bg3);border:1px solid var(--border2);border-radius:6px;
+  color:var(--text);font-family:'DM Mono',monospace;font-size:10px;
+  padding:3px 6px;text-align:right;outline:none;width:100%;
+  transition:border-color .15s;
+}
+.ctrl-num:focus{border-color:var(--accent);}
+/* hide spinner */
+.ctrl-num::-webkit-inner-spin-button,.ctrl-num::-webkit-outer-spin-button{opacity:.4;}
 
-  .card-formula {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text3);
-    background: var(--bg3);
-    padding: 6px 8px;
-    border-radius: 6px;
-    line-height: 1.6;
-  }
+.card-formula{font-size:9px;color:var(--text3);background:var(--bg3);padding:6px 9px;border-radius:7px;line-height:1.8;}
 
-  .btn-push-down {
-    margin-top: auto;
-  }
+.atb-btn{
+  background:var(--accentbg);border:1px solid var(--accent);border-radius:8px;
+  color:var(--accent2);font-family:'DM Mono',monospace;font-size:10px;font-weight:500;
+  padding:7px;cursor:pointer;width:100%;letter-spacing:.03em;
+  transition:all .15s;
+}
+.atb-btn:hover{background:var(--accent);color:#fff;}
+.atb-btn.done{background:var(--greenbg);border-color:var(--green);color:var(--green);}
 
-  .add-card-btn {
-    background: var(--accent);
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    font-family: var(--mono);
-    font-size: 11px;
-    padding: 6px 12px;
-    cursor: pointer;
-    transition: background 0.15s;
-    width: 100%;
-    font-weight: 500;
-  }
-  .add-card-btn:hover { background: var(--accent2); }
+/* ─── BUILDER SECTION ────────────────────────── */
+/* Strategy presets - 3 columns */
+.presets-wrap{margin-bottom:1.75rem;}
+.presets-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.preset-col-header{
+  font-size:9px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;
+  padding:5px 10px;border-radius:6px;margin-bottom:6px;
+  display:flex;align-items:center;gap:6px;
+}
+.pch-bull{background:var(--greenbg);color:var(--green);}
+.pch-bear{background:var(--redbg);color:var(--red);}
+.pch-neutral{background:var(--yellowbg);color:var(--yellow);}
+.preset-pill{
+  display:block;width:100%;text-align:left;background:var(--bg3);
+  border:1px solid var(--border);border-radius:7px;padding:6px 10px;
+  color:var(--text2);font-family:'DM Mono',monospace;font-size:10px;
+  cursor:pointer;transition:all .15s;margin-bottom:4px;
+}
+.preset-pill:hover{background:var(--bg4);color:var(--text);border-color:var(--border2);}
+.preset-pill.active-preset{background:var(--accentbg);border-color:var(--accent);color:var(--accent2);}
 
-  /* BUILDER SECTION */
-  .builder-layout {
-    display: grid;
-    grid-template-columns: 340px 1fr;
-    gap: 0;
-    border-top: 1px solid var(--border);
-  }
+/* combined chart area */
+.builder-chart-area{
+  background:var(--bg2);border:1px solid var(--border);border-radius:14px;
+  padding:1.25rem;display:flex;flex-direction:column;gap:12px;
+}
+.bca-title-row{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.bca-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:-.02em;}
+.bca-sub{font-size:11px;color:var(--text2);}
 
-  .sidebar {
-    background: var(--bg2);
-    border-right: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    max-height: calc(100vh - 52px);
-    overflow-y: auto;
-  }
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.stat-box{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:10px 12px;}
+.stat-box-label{font-size:9px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;}
+.stat-box-val{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-top:2px;line-height:1.2;}
+.sv-g{color:var(--green);}
+.sv-r{color:var(--red);}
+.sv-n{color:var(--text);}
 
-  .sidebar-section {
-    border-bottom: 1px solid var(--border);
-    padding: 1rem;
-  }
-  .sidebar-section h4 {
-    font-family: var(--display);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text3);
-    margin-bottom: 0.75rem;
-  }
+.main-canvas-wrap{position:relative;height:340px;}
+.chart-empty{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:10px;
+  color:var(--text3);font-size:12px;pointer-events:none;
+}
+.chart-empty-icon{font-size:30px;opacity:.25;}
 
-  /* Preset strategy pills */
-  .preset-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    max-height: 500px;
-    overflow-y: auto;
-  }
-  .preset-btn {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 7px 10px;
-    cursor: pointer;
-    color: var(--text);
-    font-family: var(--mono);
-    font-size: 11px;
-    text-align: left;
-    transition: all 0.15s;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .preset-btn:hover { background: var(--bg); border-color: var(--accent); color: var(--accent2); }
-  .preset-tag {
-    font-size: 9px;
-    padding: 2px 6px;
-    border-radius: 10px;
-    letter-spacing: 0.05em;
-  }
-  .pt-bull { background: rgba(62,207,142,0.15); color: var(--green); }
-  .pt-bear { background: rgba(248,113,113,0.15); color: var(--red); }
-  .pt-neutral { background: rgba(251,191,36,0.15); color: var(--yellow); }
+/* spot bar */
+.spot-bar{
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+  background:var(--bg3);border:1px solid var(--border);border-radius:9px;
+  padding:10px 14px;
+}
+.spot-bar-label{font-size:11px;color:var(--text2);white-space:nowrap;}
+.spot-bar-range{flex:1;min-width:80px;accent-color:var(--teal);cursor:pointer;height:3px;}
+.spot-bar-num{
+  width:90px;background:var(--bg2);border:1px solid var(--border2);border-radius:7px;
+  color:var(--teal);font-family:'DM Mono',monospace;font-size:12px;
+  padding:4px 8px;text-align:right;outline:none;
+}
+.spot-bar-num:focus{border-color:var(--teal);}
+.spot-pnl-label{font-size:11px;color:var(--text2);}
+.spot-pnl-val{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;min-width:72px;text-align:right;}
 
-  /* Legs list */
-  .legs-list {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    max-height: 400px;
-    overflow-y: auto;
-  }
-  .leg-item {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 8px;
-  }
-  .leg-item-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 6px;
-  }
-  .leg-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .leg-name { 
-    font-size: 11px; 
-    color: var(--text); 
-    font-weight: 500;
-    flex: 1;
-  }
-  .leg-remove {
-    background: none;
-    border: none;
-    color: var(--text3);
-    cursor: pointer;
-    font-size: 16px;
-    padding: 0 4px;
-    line-height: 1;
-    transition: color 0.1s;
-  }
-  .leg-remove:hover { color: var(--red); }
+/* leg cards below chart */
+.legs-section{margin-top:.5rem;}
+.legs-section-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:.75rem;flex-wrap:wrap;gap:8px;
+}
+.legs-section-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:var(--text2);letter-spacing:-.01em;}
+.legs-count{color:var(--accent2);margin-left:6px;}
+.clear-all-btn{
+  background:none;border:1px solid var(--border2);border-radius:7px;
+  color:var(--text3);font-family:'DM Mono',monospace;font-size:10px;
+  padding:4px 12px;cursor:pointer;transition:all .15s;
+}
+.clear-all-btn:hover{border-color:var(--red);color:var(--red);}
 
-  /* Leg sliders */
-  .leg-sliders {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .leg-slider-row {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .leg-slider-row label {
-    font-size: 9px;
-    color: var(--text2);
-    width: 35px;
-  }
-  .leg-slider-row input[type=range] {
-    flex: 1;
-    accent-color: var(--accent2);
-    height: 3px;
-    cursor: pointer;
-  }
-  .leg-slider-row input[type=number] {
-    width: 50px;
-    font-family: var(--mono);
-    font-size: 9px;
-    background: var(--bg2);
-    border: 1px solid var(--border2);
-    color: var(--text);
-    border-radius: 3px;
-    padding: 2px 3px;
-    text-align: right;
-  }
+.legs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;}
+.leg-card{
+  background:var(--bg2);border:1px solid var(--border);border-radius:12px;
+  padding:1rem;display:flex;flex-direction:column;gap:9px;
+  transition:border-color .2s;
+}
+.leg-card-head{display:flex;align-items:center;gap:8px;}
+.leg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.leg-card-name{flex:1;font-family:'Syne',sans-serif;font-size:11px;font-weight:600;}
+.leg-remove-btn{
+  background:none;border:none;color:var(--text3);cursor:pointer;
+  font-size:16px;line-height:1;padding:0 2px;transition:color .1s;
+}
+.leg-remove-btn:hover{color:var(--red);}
+.leg-mini{height:72px;position:relative;}
+.leg-ctrl-grid{display:flex;flex-direction:column;gap:5px;}
+/* same ctrl-row as basics cards */
 
-  .clear-btn {
-    background: none;
-    border: 1px solid var(--border2);
-    border-radius: 6px;
-    color: var(--text2);
-    font-family: var(--mono);
-    font-size: 11px;
-    padding: 5px 10px;
-    cursor: pointer;
-    width: 100%;
-    transition: all 0.15s;
-  }
-  .clear-btn:hover { border-color: var(--red); color: var(--red); }
+/* ─── UTILITIES ──────────────────────────────── */
+.empty-legs-msg{font-size:11px;color:var(--text3);padding:.75rem 0;text-align:center;}
 
-  /* MAIN CHART AREA */
-  .chart-area {
-    display: flex;
-    flex-direction: column;
-    padding: 1.5rem;
-    gap: 1rem;
-  }
-
-  .chart-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .chart-title {
-    font-family: var(--display);
-    font-size: 1.1rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-  }
-  .chart-subtitle { font-size: 11px; color: var(--text2); }
-
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-  }
-  .stat-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px 12px;
-  }
-  .stat-label { font-size: 10px; color: var(--text3); letter-spacing: 0.05em; text-transform: uppercase; }
-  .stat-val {
-    font-family: var(--display);
-    font-size: 18px;
-    font-weight: 600;
-    margin-top: 2px;
-  }
-  .stat-pos { color: var(--green); }
-  .stat-neg { color: var(--red); }
-  .stat-neu { color: var(--text); }
-
-  .main-chart-wrap {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1rem;
-    position: relative;
-    height: 360px;
-  }
-
-  .spot-controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    align-items: center;
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px 14px;
-  }
-  .spot-ctrl-label {
-    font-size: 11px;
-    color: var(--text2);
-    min-width: 80px;
-  }
-  .spot-ctrl-input {
-    font-family: var(--mono);
-    font-size: 13px;
-    background: var(--bg3);
-    border: 1px solid var(--border2);
-    color: var(--teal);
-    font-weight: 600;
-    border-radius: 4px;
-    padding: 4px 8px;
-    width: 90px;
-  }
-  .spot-ctrl-range {
-    flex: 1;
-    accent-color: var(--teal);
-    min-width: 100px;
-    cursor: pointer;
-  }
-
-  .current-pnl-badge {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    color: var(--text2);
-  }
-  .current-pnl-badge span {
-    font-family: var(--display);
-    font-size: 16px;
-    font-weight: 600;
-  }
-
-  /* empty state */
-  .empty-state {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    color: var(--text3);
-    gap: 8px;
-    font-size: 12px;
-  }
-  .empty-icon { font-size: 32px; opacity: 0.4; }
-
-  /* leg charts */
-  .leg-charts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 10px;
-    margin-top: 0.5rem;
-  }
-
-  .leg-chart-wrap {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px;
-  }
-
-  .leg-chart-label {
-    font-size: 10px;
-    font-weight: 500;
-    margin-bottom: 6px;
-  }
-
-  .leg-chart-container {
-    position: relative;
-    height: 80px;
-  }
-
-  /* responsive */
-  @media (max-width: 1000px) {
-    .basics-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 768px) {
-    .basics-grid { grid-template-columns: 1fr; margin: 1rem; }
-    .builder-layout { grid-template-columns: 1fr; }
-    .sidebar { max-height: none; border-right: none; border-bottom: 1px solid var(--border); }
-    .stats-row { grid-template-columns: repeat(2, 1fr); }
-    nav { padding: 0 1rem; gap: 1rem; }
-    .logo { font-size: 13px; }
-  }
-
-  /* scrollbar */
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
-
-  input[type=range] {
-    cursor: pointer;
-  }
+/* ─── RESPONSIVE ─────────────────────────────── */
+@media(max-width:1100px){
+  .basics-grid{grid-template-columns:repeat(2,1fr);}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:780px){
+  .basics-grid{grid-template-columns:1fr;}
+  .presets-cols{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  nav{padding:0 1rem;}
+  .section{padding:2rem 1rem;}
+  .divider{margin:0 1rem;}
+  .nav-brand{font-size:12px;}
+}
+@media(max-width:520px){
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .spot-bar{gap:7px;}
+}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <div class="logo">Option Strategy <span>Visualizer</span></div>
-  <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">
-    ☾ Dark Mode
-  </button>
+  <div class="nav-brand">Option <span>Strategy</span> Visualiser</div>
+  <div class="nav-links">
+    <a class="nav-a active" href="#sec-basics">Basics</a>
+    <a class="nav-a" href="#sec-builder">Builder</a>
+    <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">
+      <span class="theme-icon" id="theme-icon">◑</span>
+      <span id="theme-label">Light</span>
+    </button>
+  </div>
 </nav>
 
-<!-- ========== BASICS SECTION ========== -->
-<div class="basics-header">
-  <h1>The 6 Building Blocks</h1>
-  <p>Understand payoff diagrams for every core instrument. Drag sliders or input values to explore.</p>
-</div>
 
-<div class="basics-grid" id="basics-grid">
-  <!-- Dynamically injected -->
-</div>
+<!-- ═══════════════════ SECTION 1 ═══════════════════ -->
+<section class="section" id="sec-basics">
+  <div class="section-header">
+    <div class="section-label">Section 1</div>
+    <h2 class="section-title">The 6 Building Blocks</h2>
+    <p class="section-sub">
+      Every option strategy is built from these. Adjust each card independently — change spot price, strike &amp; premium with sliders or by typing directly.
+      When you like a setup, hit <strong style="color:var(--accent2)">Add to Builder ↓</strong> to send it to your strategy below.
+    </p>
+  </div>
+  <div class="basics-grid" id="basics-grid"></div>
+</section>
 
-<div style="border-top: 1px solid var(--border); margin: 2rem 0;"></div>
+<div class="divider"></div>
 
-<!-- ========== BUILDER SECTION ========== -->
-<div id="strategy-builder">
-  <div class="builder-layout">
-    <!-- SIDEBAR -->
-    <div class="sidebar">
-      <!-- Presets -->
-      <div class="sidebar-section">
-        <h4>Preset Strategies</h4>
-        <div class="preset-grid" id="preset-grid"></div>
-      </div>
+<!-- ═══════════════════ SECTION 2 ═══════════════════ -->
+<section class="section" id="sec-builder">
+  <div class="section-header">
+    <div class="section-label">Section 2</div>
+    <h2 class="section-title">Strategy Builder</h2>
+    <p class="section-sub">
+      Pick a preset strategy below, or add legs from the Basics cards above. Edit any leg's parameters directly — the payoff chart updates live.
+    </p>
+  </div>
 
-      <!-- Current legs -->
-      <div class="sidebar-section" style="flex:1; overflow: auto; display: flex; flex-direction: column; min-height: 0;">
-        <h4 style="margin-bottom: 0.75rem;">Current Legs <span id="leg-count" style="color:var(--accent2)">(0)</span></h4>
-        <div class="legs-list" id="legs-list" style="flex: 1; overflow-y: auto; min-height: 0;">
-          <div style="font-size:11px; color:var(--text3); text-align:center; padding:1rem 0;">No legs added yet.</div>
-        </div>
-      </div>
+  <!-- PRESETS 3-COLUMN -->
+  <div class="presets-wrap">
+    <div class="presets-cols" id="presets-cols"></div>
+  </div>
 
-      <div class="sidebar-section">
-        <button class="clear-btn" onclick="clearLegs()">Clear All Legs</button>
+  <!-- COMBINED CHART AREA -->
+  <div class="builder-chart-area">
+    <div class="bca-title-row">
+      <div>
+        <div class="bca-title" id="bca-title">Build Your Strategy</div>
+        <div class="bca-sub" id="bca-sub">Add legs from the Basics section above, or choose a preset</div>
       </div>
     </div>
 
-    <!-- CHART AREA -->
-    <div class="chart-area">
-      <div class="chart-header">
-        <div>
-          <div class="chart-title" id="builder-title">Build Your Strategy</div>
-          <div class="chart-subtitle" id="builder-subtitle">Add legs from basics section to see combined payoff</div>
-        </div>
-      </div>
+    <!-- STATS -->
+    <div class="stats-grid">
+      <div class="stat-box"><div class="stat-box-label">Max Profit</div><div class="stat-box-val sv-g" id="s-mp">—</div></div>
+      <div class="stat-box"><div class="stat-box-label">Max Loss</div><div class="stat-box-val sv-r" id="s-ml">—</div></div>
+      <div class="stat-box"><div class="stat-box-label">Breakeven(s)</div><div class="stat-box-val sv-n" id="s-be" style="font-size:12px;margin-top:4px">—</div></div>
+      <div class="stat-box"><div class="stat-box-label">Net Debit / Credit</div><div class="stat-box-val" id="s-net">—</div></div>
+    </div>
 
-      <div class="stats-row" id="stats-row">
-        <div class="stat-card">
-          <div class="stat-label">Max Profit</div>
-          <div class="stat-val stat-pos" id="stat-maxprofit">—</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Max Loss</div>
-          <div class="stat-val stat-neg" id="stat-maxloss">—</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Breakeven(s)</div>
-          <div class="stat-val stat-neu" id="stat-be" style="font-size:13px; margin-top:4px">—</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Net Debit/Credit</div>
-          <div class="stat-val" id="stat-net">—</div>
-        </div>
+    <!-- MAIN CHART -->
+    <div class="main-canvas-wrap">
+      <div class="chart-empty" id="chart-empty">
+        <div class="chart-empty-icon">◈</div>
+        <div>Add a leg or choose a preset to see the combined payoff</div>
       </div>
+      <canvas id="main-canvas" style="display:none" aria-label="Combined strategy payoff"></canvas>
+    </div>
 
-      <div class="main-chart-wrap" id="main-chart-wrap">
-        <div class="empty-state" id="empty-state">
-          <div class="empty-icon">◈</div>
-          <div>Add a leg from the basics section</div>
-        </div>
-        <canvas id="main-chart" style="display:none"></canvas>
-      </div>
-
-      <!-- Spot price slider -->
-      <div class="spot-controls">
-        <span class="spot-ctrl-label">Simulated Spot</span>
-        <input type="range" class="spot-ctrl-range" id="spot-slider" min="1000" max="100000" step="50" value="24000" oninput="updateSpotMarker(false)">
-        <input type="number" class="spot-ctrl-input" id="spot-input" value="24000" step="100" min="1000" max="100000" onchange="updateSpotMarker(true)">
-        <div class="current-pnl-badge">
-          P&amp;L: <span id="spot-pnl" style="font-family:var(--display); font-size:14px; font-weight:600; color:var(--green); margin-left:4px">0</span>
-        </div>
-      </div>
-
-      <!-- Individual leg charts -->
-      <div class="leg-charts-grid" id="leg-charts-grid"></div>
+    <!-- SPOT SLIDER -->
+    <div class="spot-bar">
+      <span class="spot-bar-label">Simulate spot:</span>
+      <input type="range" class="spot-bar-range" id="spot-range" min="5000" max="65000" step="50" value="24000" oninput="onSpotRange()">
+      <input type="number" class="spot-bar-num" id="spot-num" value="24000" min="1" step="50" oninput="onSpotNum()">
+      <span class="spot-bar-label">P&amp;L:</span>
+      <span class="spot-pnl-val sv-n" id="spot-pnl">—</span>
     </div>
   </div>
-</div>
+
+  <!-- LEG CARDS -->
+  <div class="legs-section">
+    <div class="legs-section-header">
+      <div class="legs-section-title">
+        Current Legs <span class="legs-count" id="legs-count">(0)</span>
+      </div>
+      <button class="clear-all-btn" onclick="clearAllLegs()">Clear All</button>
+    </div>
+    <div class="legs-grid" id="legs-grid">
+      <div class="empty-legs-msg">No legs yet — add from the Basics section above or load a preset.</div>
+    </div>
+  </div>
+</section>
+
 
 <script>
-// ============================================================
-// THEME TOGGLE
-// ============================================================
-function toggleTheme() {
-  const isLight = document.body.classList.toggle('light-mode');
-  const btn = document.getElementById('theme-btn');
-  if(isLight) {
-    btn.innerHTML = '☼ Light Mode';
-    localStorage.setItem('theme', 'light');
-  } else {
-    btn.innerHTML = '☾ Dark Mode';
-    localStorage.setItem('theme', 'dark');
-  }
-  Object.keys(basicState).forEach(id => updateBasicCard(id));
-  renderMainChart();
-}
+/* ═══════════════════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════════════════ */
+let darkMode = true;
+let legs = [];
+let legIdCounter = 0;
+let activePresetIdx = -1;
+let mainChartInst = null;
+const legChartInsts = {};   // cid -> Chart instance
+const miniBasicInsts = {};  // cid -> Chart instance
 
-if(localStorage.getItem('theme') === 'light') {
-  document.body.classList.add('light-mode');
-  document.getElementById('theme-btn').innerHTML = '☼ Light Mode';
-}
+/* per-basic-card state */
+const CARD_STATE = {
+  bc:  { spot:24000, strike:24000, premium:200, lots:1 },
+  sc:  { spot:24000, strike:24000, premium:200, lots:1 },
+  bp:  { spot:24000, strike:24000, premium:200, lots:1 },
+  sp:  { spot:24000, strike:24000, premium:200, lots:1 },
+  bf:  { spot:24000, strike:24000, premium:0,   lots:1 },
+  sf:  { spot:24000, strike:24000, premium:0,   lots:1 },
+};
 
-// ============================================================
-// PAYOFF MATH
-// ============================================================
-function buyCallPayoff(spot, strike, premium) { return spot < strike ? -premium : (spot - strike - premium); }
-function sellCallPayoff(spot, strike, premium) { return spot < strike ? premium : (premium - (spot - strike)); }
-function buyPutPayoff(spot, strike, premium) { return spot > strike ? -premium : (strike - spot - premium); }
-function sellPutPayoff(spot, strike, premium) { return spot > strike ? premium : (premium - (strike - spot)); }
-function buyFuturePayoff(spot, entry) { return spot - entry; }
-function sellFuturePayoff(spot, entry) { return entry - spot; }
+/* ═══════════════════════════════════════════════════════
+   PAYOFF MATH
+═══════════════════════════════════════════════════════ */
+function pnlBuyCall(spot, strike, prem)  { return spot < strike ? -prem : spot - strike - prem; }
+function pnlSellCall(spot, strike, prem) { return spot < strike ?  prem : prem - (spot - strike); }
+function pnlBuyPut(spot, strike, prem)   { return spot > strike ? -prem : strike - spot - prem; }
+function pnlSellPut(spot, strike, prem)  { return spot > strike ?  prem : prem - (strike - spot); }
+function pnlBuyFut(spot, entry)          { return spot - entry; }
+function pnlSellFut(spot, entry)         { return entry - spot; }
 
 function legPayoff(leg, spot) {
   const { type, strike, premium, lots } = leg;
   let p = 0;
-  if (type === 'buyCall')    p = buyCallPayoff(spot, strike, premium);
-  if (type === 'sellCall')   p = sellCallPayoff(spot, strike, premium);
-  if (type === 'buyPut')     p = buyPutPayoff(spot, strike, premium);
-  if (type === 'sellPut')    p = sellPutPayoff(spot, strike, premium);
-  if (type === 'buyFuture')  p = buyFuturePayoff(spot, strike);
-  if (type === 'sellFuture') p = sellFuturePayoff(spot, strike);
+  if (type === 'buyCall')    p = pnlBuyCall(spot, strike, premium);
+  if (type === 'sellCall')   p = pnlSellCall(spot, strike, premium);
+  if (type === 'buyPut')     p = pnlBuyPut(spot, strike, premium);
+  if (type === 'sellPut')    p = pnlSellPut(spot, strike, premium);
+  if (type === 'buyFuture')  p = pnlBuyFut(spot, strike);
+  if (type === 'sellFuture') p = pnlSellFut(spot, strike);
   return p * lots;
 }
 
-function totalPayoff(legs, spot) { return legs.reduce((s, l) => s + legPayoff(l, spot), 0); }
-
-// ============================================================
-// CHART GLOBALS
-// ============================================================
-const LEG_COLORS = ['#7c6eec','#3ecf8e','#f87171','#fbbf24','#22d3ee','#a78bfa','#fb923c'];
-const miniChartInstances = {};
-
-function getGridColor() {
-  return document.body.classList.contains('light-mode') ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.05)';
+function strategyPayoff(legs, spot) {
+  return legs.reduce((sum, l) => sum + legPayoff(l, spot), 0);
 }
 
-function getTextColor() {
-  return document.body.classList.contains('light-mode') ? '#18181b' : '#e8e8f0';
+/* ═══════════════════════════════════════════════════════
+   THEME
+═══════════════════════════════════════════════════════ */
+function toggleTheme() {
+  darkMode = !darkMode;
+  document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+  document.getElementById('theme-icon').textContent  = darkMode ? '◑' : '◐';
+  document.getElementById('theme-label').textContent = darkMode ? 'Light' : 'Dark';
+  // Rebuild all charts
+  Object.keys(CARD_STATE).forEach(id => updateBasicCard(id));
+  rebuildMainChart();
+  Object.keys(legChartInsts).forEach(cid => {
+    const lid = parseInt(cid.replace('lgc-',''));
+    const leg = legs.find(l => l.id === lid);
+    if (leg) rebuildLegMini(leg);
+  });
 }
 
-function getTextColor3() {
-  return document.body.classList.contains('light-mode') ? '#71717a' : '#5a5a72';
+/* ═══════════════════════════════════════════════════════
+   CHART THEME HELPERS
+═══════════════════════════════════════════════════════ */
+function chartColors() {
+  return darkMode
+    ? { grid: 'rgba(255,255,255,.04)', tick: '#50506a', tooltip_bg: '#141418', tooltip_body: '#e2e2ee' }
+    : { grid: 'rgba(0,0,0,.05)',       tick: '#9898b8', tooltip_bg: '#ffffff', tooltip_body: '#18182a' };
 }
 
-function buildMiniChart(id, labels, data) {
-  const ctx = document.getElementById(id);
-  if (!ctx) return;
-  
-  if (miniChartInstances[id]) miniChartInstances[id].destroy();
+const LEG_PALETTE = ['#7c6eec','#3ecf8e','#f87171','#f0b429','#22d3ee','#a78bfa','#fb923c','#f472b6'];
 
-  const borderColors = data.map(v => v >= 0 ? '#3ecf8e' : '#f87171');
-  const gridColor = getGridColor();
-  const textColor3 = getTextColor3();
+function makeXRange(minV, maxV, steps = 100) {
+  const arr = [];
+  const step = (maxV - minV) / steps;
+  for (let v = minV; v <= maxV + step * 0.1; v += step) arr.push(Math.round(v));
+  return arr;
+}
 
-  miniChartInstances[id] = new Chart(ctx.getContext('2d'), {
+function segColor(isDark) {
+  return (ctx) => ctx.p0.parsed.y >= 0
+    ? (isDark ? '#3ecf8e' : '#12955a')
+    : (isDark ? '#f87171' : '#d63031');
+}
+
+/* ═══════════════════════════════════════════════════════
+   BASICS CARDS — BUILD
+═══════════════════════════════════════════════════════ */
+const BASICS_DEFS = [
+  { id:'bc',  type:'buyCall',   name:'Call Option — Buy',      badge:'LONG',    badgeClass:'badge-long',   hasPrem:true,
+    desc:'Right to buy. Profits when market rises above strike + premium paid.' },
+  { id:'sc',  type:'sellCall',  name:'Call Option — Sell',     badge:'SHORT',   badgeClass:'badge-short',  hasPrem:true,
+    desc:'Profit capped to premium collected. Loss is unlimited if market rallies.' },
+  { id:'bp',  type:'buyPut',    name:'Put Option — Buy',       badge:'LONG',    badgeClass:'badge-long',   hasPrem:true,
+    desc:'Right to sell. Profits when market falls below strike – premium paid.' },
+  { id:'sp',  type:'sellPut',   name:'Put Option — Sell',      badge:'SHORT',   badgeClass:'badge-short',  hasPrem:true,
+    desc:'Profit capped to premium. Loss grows if market falls below strike.' },
+  { id:'bf',  type:'buyFuture', name:'Futures — Buy (Long)',   badge:'FUTURES', badgeClass:'badge-future', hasPrem:false,
+    desc:'Linear payoff. Every point the market moves up = profit. Symmetric P&L.' },
+  { id:'sf',  type:'sellFuture',name:'Futures — Sell (Short)', badge:'FUTURES', badgeClass:'badge-future', hasPrem:false,
+    desc:'Linear payoff. Every point the market falls = profit. Symmetric P&L.' },
+];
+
+function buildBasicsGrid() {
+  const grid = document.getElementById('basics-grid');
+  grid.innerHTML = '';
+
+  BASICS_DEFS.forEach(def => {
+    const s = CARD_STATE[def.id];
+    const isFut = !def.hasPrem;
+
+    const card = document.createElement('div');
+    card.className = 'basic-card';
+    card.id = `bcard-${def.id}`;
+
+    const premRow = def.hasPrem ? `
+      <div class="ctrl-row">
+        <label class="ctrl-label">Prem</label>
+        <input type="range" class="ctrl-range" id="r-${def.id}-prem"
+          min="5" max="2000" step="5" value="${s.premium}"
+          oninput="onBasicSlider('${def.id}','premium',this.value)">
+        <input type="number" class="ctrl-num" id="n-${def.id}-prem"
+          value="${s.premium}" min="5" max="2000" step="5"
+          oninput="onBasicNum('${def.id}','premium',this.value)">
+      </div>` : '';
+
+    card.innerHTML = `
+      <div class="card-head">
+        <div class="card-head-left">
+          <div class="card-name">${def.name}</div>
+        </div>
+        <span class="badge ${def.badgeClass}">${def.badge}</span>
+      </div>
+      <div class="card-desc">${def.desc}</div>
+      <div class="mini-chart"><canvas id="mini-${def.id}" aria-label="${def.name} payoff"></canvas></div>
+      <div class="card-ctrl-grid">
+        <div class="ctrl-row">
+          <label class="ctrl-label">Spot</label>
+          <input type="range" class="ctrl-range" id="r-${def.id}-spot"
+            min="5000" max="65000" step="50" value="${s.spot}"
+            oninput="onBasicSlider('${def.id}','spot',this.value)">
+          <input type="number" class="ctrl-num" id="n-${def.id}-spot"
+            value="${s.spot}" min="1" step="50"
+            oninput="onBasicNum('${def.id}','spot',this.value)">
+        </div>
+        <div class="ctrl-row">
+          <label class="ctrl-label">${isFut ? 'Entry' : 'Strike'}</label>
+          <input type="range" class="ctrl-range" id="r-${def.id}-strike"
+            min="5000" max="65000" step="50" value="${s.strike}"
+            oninput="onBasicSlider('${def.id}','strike',this.value)">
+          <input type="number" class="ctrl-num" id="n-${def.id}-strike"
+            value="${s.strike}" min="1" step="50"
+            oninput="onBasicNum('${def.id}','strike',this.value)">
+        </div>
+        ${premRow}
+        <div class="ctrl-row">
+          <label class="ctrl-label">Lots</label>
+          <input type="range" class="ctrl-range" id="r-${def.id}-lots"
+            min="1" max="20" step="1" value="${s.lots}"
+            oninput="onBasicSlider('${def.id}','lots',this.value)">
+          <input type="number" class="ctrl-num" id="n-${def.id}-lots"
+            value="${s.lots}" min="1" max="20" step="1"
+            oninput="onBasicNum('${def.id}','lots',this.value)">
+        </div>
+      </div>
+      <div class="card-formula" id="fml-${def.id}"></div>
+      <button class="atb-btn" id="atb-${def.id}" onclick="addLegFromCard('${def.id}')">
+        Add to Builder ↓
+      </button>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function onBasicSlider(id, field, val) {
+  CARD_STATE[id][field] = +val;
+  const numEl = document.getElementById(`n-${id}-${field}`);
+  if (numEl) numEl.value = val;
+  updateBasicCard(id);
+}
+
+function onBasicNum(id, field, val) {
+  const v = parseFloat(val);
+  if (isNaN(v)) return;
+  CARD_STATE[id][field] = v;
+  // sync slider (clamp to range)
+  const slEl = document.getElementById(`r-${id}-${field}`);
+  if (slEl) slEl.value = Math.min(+slEl.max, Math.max(+slEl.min, v));
+  updateBasicCard(id);
+}
+
+function updateBasicCard(id) {
+  const def = BASICS_DEFS.find(d => d.id === id);
+  const s = CARD_STATE[id];
+  const isFut = !def.hasPrem;
+  const k = s.strike, p = s.premium, en = s.spot;
+
+  const pivot = isFut ? en : k;
+  const pad = Math.max(5000, pivot * 0.22);
+  const xs = makeXRange(Math.max(100, pivot - pad), pivot + pad, 90);
+
+  const ys = xs.map(x => {
+    const raw = isFut
+      ? (def.type === 'buyFuture' ? pnlBuyFut(x, en) : pnlSellFut(x, en))
+      : (def.type === 'buyCall'  ? pnlBuyCall(x, k, p)
+       : def.type === 'sellCall' ? pnlSellCall(x, k, p)
+       : def.type === 'buyPut'  ? pnlBuyPut(x, k, p)
+       :                           pnlSellPut(x, k, p));
+    return raw * s.lots;
+  });
+
+  drawMiniChart(`mini-${id}`, xs, ys, miniBasicInsts);
+
+  // formula text
+  const fEl = document.getElementById(`fml-${id}`);
+  if (!fEl) return;
+  if (def.type === 'buyCall')
+    fEl.innerHTML = `Breakeven: <b>${(k+p).toLocaleString()}</b> &nbsp;·&nbsp; Max loss: −${p} &nbsp;·&nbsp; Profit: unlimited ↑`;
+  else if (def.type === 'sellCall')
+    fEl.innerHTML = `Breakeven: <b>${(k+p).toLocaleString()}</b> &nbsp;·&nbsp; Max profit: +${p} &nbsp;·&nbsp; Loss: unlimited ↑`;
+  else if (def.type === 'buyPut')
+    fEl.innerHTML = `Breakeven: <b>${(k-p).toLocaleString()}</b> &nbsp;·&nbsp; Max loss: −${p} &nbsp;·&nbsp; Profit: unlimited ↓`;
+  else if (def.type === 'sellPut')
+    fEl.innerHTML = `Breakeven: <b>${(k-p).toLocaleString()}</b> &nbsp;·&nbsp; Max profit: +${p} &nbsp;·&nbsp; Loss: unlimited ↓`;
+  else if (def.type === 'buyFuture')
+    fEl.innerHTML = `Entry: <b>${en.toLocaleString()}</b> &nbsp;·&nbsp; Payoff = Expiry − Entry &nbsp;·&nbsp; Symmetric, linear`;
+  else
+    fEl.innerHTML = `Entry: <b>${en.toLocaleString()}</b> &nbsp;·&nbsp; Payoff = Entry − Expiry &nbsp;·&nbsp; Symmetric, linear`;
+}
+
+function addLegFromCard(id) {
+  const def = BASICS_DEFS.find(d => d.id === id);
+  const s = CARD_STATE[id];
+  legs.push({
+    id: legIdCounter++,
+    type: def.type,
+    strike: s.strike,
+    premium: s.premium,
+    lots: s.lots,
+  });
+  activePresetIdx = -1;
+  document.querySelectorAll('.preset-pill').forEach(p => p.classList.remove('active-preset'));
+  updateBuilderTitle();
+  renderLegCards();
+  rebuildMainChart();
+  updateSpotPnl();
+
+  const btn = document.getElementById(`atb-${id}`);
+  const orig = btn.textContent;
+  btn.textContent = '✓ Added!';
+  btn.classList.add('done');
+  setTimeout(() => { btn.textContent = orig; btn.classList.remove('done'); }, 1300);
+
+  document.getElementById('sec-builder').scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ═══════════════════════════════════════════════════════
+   PRESETS
+═══════════════════════════════════════════════════════ */
+const PRESETS = {
+  bull: [
+    { name: 'Bull Call Spread',      legs: [{type:'buyCall',strike:24000,premium:200,lots:1},{type:'sellCall',strike:24500,premium:100,lots:1}] },
+    { name: 'Bull Put Spread',       legs: [{type:'sellPut',strike:24000,premium:250,lots:1},{type:'buyPut',strike:23500,premium:100,lots:1}] },
+    { name: 'Call Ratio Backspread', legs: [{type:'sellCall',strike:23500,premium:350,lots:1},{type:'buyCall',strike:24000,premium:200,lots:2}] },
+    { name: 'Bear Call Ladder',      legs: [{type:'sellCall',strike:23500,premium:300,lots:1},{type:'buyCall',strike:24000,premium:180,lots:1},{type:'buyCall',strike:24500,premium:90,lots:1}] },
+    { name: 'Synthetic Long',        legs: [{type:'buyCall',strike:24000,premium:200,lots:1},{type:'sellPut',strike:24000,premium:180,lots:1}] },
+    { name: 'Long Future',           legs: [{type:'buyFuture',strike:24000,premium:0,lots:1}] },
+    { name: 'Strap (2C+1P)',         legs: [{type:'buyCall',strike:24000,premium:200,lots:2},{type:'buyPut',strike:24000,premium:180,lots:1}] },
+  ],
+  bear: [
+    { name: 'Bear Put Spread',       legs: [{type:'buyPut',strike:24000,premium:200,lots:1},{type:'sellPut',strike:23500,premium:80,lots:1}] },
+    { name: 'Bear Call Spread',      legs: [{type:'buyCall',strike:24500,premium:80,lots:1},{type:'sellCall',strike:24000,premium:200,lots:1}] },
+    { name: 'Put Ratio Backspread',  legs: [{type:'sellPut',strike:24000,premium:280,lots:1},{type:'buyPut',strike:23500,premium:120,lots:2}] },
+    { name: 'Bull Put Ladder',       legs: [{type:'buyPut',strike:24000,premium:200,lots:1},{type:'sellPut',strike:23500,premium:100,lots:1},{type:'sellPut',strike:23000,premium:50,lots:1}] },
+    { name: 'Synthetic Short',       legs: [{type:'sellCall',strike:24000,premium:200,lots:1},{type:'buyPut',strike:24000,premium:180,lots:1}] },
+    { name: 'Short Future',          legs: [{type:'sellFuture',strike:24000,premium:0,lots:1}] },
+    { name: 'Strip (1C+2P)',         legs: [{type:'buyCall',strike:24000,premium:200,lots:1},{type:'buyPut',strike:24000,premium:180,lots:2}] },
+  ],
+  neutral: [
+    { name: 'Long Straddle',         legs: [{type:'buyCall',strike:24000,premium:200,lots:1},{type:'buyPut',strike:24000,premium:180,lots:1}] },
+    { name: 'Short Straddle',        legs: [{type:'sellCall',strike:24000,premium:200,lots:1},{type:'sellPut',strike:24000,premium:180,lots:1}] },
+    { name: 'Long Strangle',         legs: [{type:'buyCall',strike:24500,premium:100,lots:1},{type:'buyPut',strike:23500,premium:90,lots:1}] },
+    { name: 'Short Strangle',        legs: [{type:'sellCall',strike:24500,premium:100,lots:1},{type:'sellPut',strike:23500,premium:90,lots:1}] },
+    { name: 'Long Iron Condor',      legs: [{type:'buyPut',strike:22500,premium:40,lots:1},{type:'sellPut',strike:23000,premium:90,lots:1},{type:'sellCall',strike:25000,premium:85,lots:1},{type:'buyCall',strike:25500,premium:35,lots:1}] },
+    { name: 'Short Iron Condor',     legs: [{type:'sellPut',strike:22500,premium:40,lots:1},{type:'buyPut',strike:23000,premium:90,lots:1},{type:'buyCall',strike:25000,premium:85,lots:1},{type:'sellCall',strike:25500,premium:35,lots:1}] },
+    { name: 'Long Butterfly',        legs: [{type:'buyCall',strike:23500,premium:250,lots:1},{type:'sellCall',strike:24000,premium:150,lots:2},{type:'buyCall',strike:24500,premium:80,lots:1}] },
+    { name: 'Box Spread',            legs: [{type:'buyCall',strike:23500,premium:250,lots:1},{type:'sellCall',strike:24500,premium:80,lots:1},{type:'sellPut',strike:23500,premium:90,lots:1},{type:'buyPut',strike:24500,premium:200,lots:1}] },
+  ],
+};
+
+// flat index for click handler
+const PRESET_FLAT = [];
+
+function buildPresets() {
+  const cols = document.getElementById('presets-cols');
+  cols.innerHTML = '';
+
+  const groups = [
+    { key:'bull',    label:'Bullish',  hClass:'pch-bull'    },
+    { key:'bear',    label:'Bearish',  hClass:'pch-bear'    },
+    { key:'neutral', label:'Neutral',  hClass:'pch-neutral' },
+  ];
+
+  groups.forEach(g => {
+    const col = document.createElement('div');
+    const header = document.createElement('div');
+    header.className = `preset-col-header ${g.hClass}`;
+    header.textContent = g.label;
+    col.appendChild(header);
+
+    PRESETS[g.key].forEach(pr => {
+      const idx = PRESET_FLAT.length;
+      PRESET_FLAT.push(pr);
+
+      const btn = document.createElement('button');
+      btn.className = 'preset-pill';
+      btn.id = `pp-${idx}`;
+      btn.textContent = pr.name;
+      btn.onclick = () => loadPreset(idx);
+      col.appendChild(btn);
+    });
+
+    cols.appendChild(col);
+  });
+}
+
+function loadPreset(idx) {
+  activePresetIdx = idx;
+  document.querySelectorAll('.preset-pill').forEach((p, i) => {
+    p.classList.toggle('active-preset', i === idx);
+  });
+
+  const pr = PRESET_FLAT[idx];
+  legs = pr.legs.map(l => ({ ...l, id: legIdCounter++ }));
+  updateBuilderTitle(pr.name);
+  renderLegCards();
+  rebuildMainChart();
+  const avgK = Math.round(legs.reduce((s, l) => s + l.strike, 0) / legs.length);
+  setSpotValue(avgK);
+  updateSpotPnl();
+}
+
+/* ═══════════════════════════════════════════════════════
+   LEGS — RENDER CARDS
+═══════════════════════════════════════════════════════ */
+const TYPE_LABELS = {
+  buyCall:'Buy Call', sellCall:'Sell Call',
+  buyPut:'Buy Put',   sellPut:'Sell Put',
+  buyFuture:'Buy Future', sellFuture:'Sell Future',
+};
+
+function renderLegCards() {
+  const grid = document.getElementById('legs-grid');
+  document.getElementById('legs-count').textContent = `(${legs.length})`;
+
+  if (!legs.length) {
+    grid.innerHTML = '<div class="empty-legs-msg">No legs yet — add from the Basics section above or load a preset.</div>';
+    return;
+  }
+
+  grid.innerHTML = '';
+  legs.forEach((leg, i) => {
+    const color = LEG_PALETTE[i % LEG_PALETTE.length];
+    const isFut = leg.type.includes('Future');
+    const cid = `lgc-${leg.id}`;
+
+    const premRow = !isFut ? `
+      <div class="ctrl-row">
+        <label class="ctrl-label">Prem</label>
+        <input type="range" class="ctrl-range" id="lr-${leg.id}-premium"
+          min="5" max="2000" step="5" value="${leg.premium}"
+          oninput="onLegSlider(${leg.id},'premium',this.value)">
+        <input type="number" class="ctrl-num" id="ln-${leg.id}-premium"
+          value="${leg.premium}" min="5" step="5"
+          oninput="onLegNum(${leg.id},'premium',this.value)">
+      </div>` : '';
+
+    const card = document.createElement('div');
+    card.className = 'leg-card';
+    card.id = `leg-card-${leg.id}`;
+    card.innerHTML = `
+      <div class="leg-card-head">
+        <div class="leg-dot" style="background:${color}"></div>
+        <div class="leg-card-name">${TYPE_LABELS[leg.type]}</div>
+        <button class="leg-remove-btn" onclick="removeLeg(${leg.id})">×</button>
+      </div>
+      <div class="leg-mini"><canvas id="${cid}" aria-label="${TYPE_LABELS[leg.type]} payoff"></canvas></div>
+      <div class="leg-ctrl-grid">
+        <div class="ctrl-row">
+          <label class="ctrl-label">${isFut ? 'Entry' : 'Strike'}</label>
+          <input type="range" class="ctrl-range" id="lr-${leg.id}-strike"
+            min="5000" max="65000" step="50" value="${leg.strike}"
+            oninput="onLegSlider(${leg.id},'strike',this.value)">
+          <input type="number" class="ctrl-num" id="ln-${leg.id}-strike"
+            value="${leg.strike}" min="1" step="50"
+            oninput="onLegNum(${leg.id},'strike',this.value)">
+        </div>
+        ${premRow}
+        <div class="ctrl-row">
+          <label class="ctrl-label">Lots</label>
+          <input type="range" class="ctrl-range" id="lr-${leg.id}-lots"
+            min="1" max="20" step="1" value="${leg.lots}"
+            oninput="onLegSlider(${leg.id},'lots',this.value)">
+          <input type="number" class="ctrl-num" id="ln-${leg.id}-lots"
+            value="${leg.lots}" min="1" max="20" step="1"
+            oninput="onLegNum(${leg.id},'lots',this.value)">
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+
+    // draw mini after DOM is ready
+    setTimeout(() => {
+      buildLegMiniFromState(leg, cid, color);
+    }, 30);
+  });
+}
+
+function onLegSlider(legId, field, val) {
+  const leg = legs.find(l => l.id === legId);
+  if (!leg) return;
+  leg[field] = +val;
+  const numEl = document.getElementById(`ln-${legId}-${field}`);
+  if (numEl) numEl.value = val;
+  const cid = `lgc-${legId}`;
+  const idx = legs.findIndex(l => l.id === legId);
+  buildLegMiniFromState(leg, cid, LEG_PALETTE[idx % LEG_PALETTE.length]);
+  rebuildMainChart();
+  updateSpotPnl();
+}
+
+function onLegNum(legId, field, val) {
+  const v = parseFloat(val);
+  if (isNaN(v)) return;
+  const leg = legs.find(l => l.id === legId);
+  if (!leg) return;
+  leg[field] = v;
+  const slEl = document.getElementById(`lr-${legId}-${field}`);
+  if (slEl) slEl.value = Math.min(+slEl.max, Math.max(+slEl.min, v));
+  const cid = `lgc-${legId}`;
+  const idx = legs.findIndex(l => l.id === legId);
+  buildLegMiniFromState(leg, cid, LEG_PALETTE[idx % LEG_PALETTE.length]);
+  rebuildMainChart();
+  updateSpotPnl();
+}
+
+function removeLeg(legId) {
+  legs = legs.filter(l => l.id !== legId);
+  activePresetIdx = -1;
+  document.querySelectorAll('.preset-pill').forEach(p => p.classList.remove('active-preset'));
+  updateBuilderTitle();
+  renderLegCards();
+  rebuildMainChart();
+  updateSpotPnl();
+}
+
+function clearAllLegs() {
+  legs = [];
+  activePresetIdx = -1;
+  document.querySelectorAll('.preset-pill').forEach(p => p.classList.remove('active-preset'));
+  updateBuilderTitle();
+  renderLegCards();
+  rebuildMainChart();
+  document.getElementById('spot-pnl').textContent = '—';
+  document.getElementById('spot-pnl').className = 'spot-pnl-val sv-n';
+}
+
+function updateBuilderTitle(name) {
+  const t = document.getElementById('bca-title');
+  const s = document.getElementById('bca-sub');
+  if (name) {
+    t.textContent = name;
+    s.textContent = `${legs.length} leg${legs.length !== 1 ? 's' : ''} · preset strategy`;
+  } else if (legs.length) {
+    t.textContent = 'Custom Strategy';
+    s.textContent = `${legs.length} leg${legs.length !== 1 ? 's' : ''} · custom`;
+  } else {
+    t.textContent = 'Build Your Strategy';
+    s.textContent = 'Add legs from the Basics section above, or choose a preset';
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   CHART — MINI (shared helper)
+═══════════════════════════════════════════════════════ */
+function drawMiniChart(canvasId, xs, ys, instStore) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  if (instStore[canvasId]) { instStore[canvasId].destroy(); delete instStore[canvasId]; }
+  const cc = chartColors();
+  instStore[canvasId] = new Chart(canvas.getContext('2d'), {
     type: 'line',
     data: {
-      labels,
+      labels: xs.map(v => (v/1000).toFixed(1)+'k'),
       datasets: [{
-        data,
-        borderColor: borderColors,
+        data: ys,
         borderWidth: 2,
         pointRadius: 0,
-        fill: { target: 'origin', above: 'rgba(62,207,142,0.08)', below: 'rgba(248,113,113,0.08)' },
-        segment: { borderColor: ctx2 => ctx2.p0.parsed.y >= 0 ? '#3ecf8e' : '#f87171' },
-        tension: 0.1
-      }]
+        fill: { target: 'origin', above: 'rgba(62,207,142,.1)', below: 'rgba(248,113,113,.1)' },
+        segment: { borderColor: segColor(darkMode) },
+        tension: 0.1,
+      }],
     },
     options: {
       responsive: true, maintainAspectRatio: false, animation: false,
       plugins: { legend: { display: false }, tooltip: { enabled: false } },
       scales: {
-        x: { 
-          grid: { color: gridColor, drawTicks: false }, 
-          ticks: { color: textColor3, font: { size: 9, family: 'DM Mono' }, maxTicksLimit: 5 } 
-        },
-        y: { 
-          grid: { color: gridColor, drawTicks: false }, 
-          ticks: { color: textColor3, font: { size: 9, family: 'DM Mono' }, maxTicksLimit: 4 } 
-        }
-      }
-    }
+        x: { grid: { color: cc.grid, drawTicks: false }, ticks: { color: cc.tick, font: { size: 8, family: 'DM Mono' }, maxTicksLimit: 5, maxRotation: 0 } },
+        y: { grid: { color: cc.grid, drawTicks: false }, ticks: { color: cc.tick, font: { size: 8, family: 'DM Mono' }, maxTicksLimit: 4 } },
+      },
+    },
   });
 }
 
-// ============================================================
-// BASICS CARDS GENERATION & LOGIC
-// ============================================================
-const basicCardsConfig = [
-  { id: 'bc', type: 'buyCall', title: 'Call Option — Buy', tag: 'LONG', tClass: 'tag-buy', hasPrem: true, desc: 'Right to buy at strike. Profit when market rises above strike + premium.' },
-  { id: 'sc', type: 'sellCall', title: 'Call Option — Sell', tag: 'SHORT', tClass: 'tag-sell', hasPrem: true, desc: 'Obligation to sell at strike. Profit limited to premium if market stays below.' },
-  { id: 'bp', type: 'buyPut', title: 'Put Option — Buy', tag: 'LONG', tClass: 'tag-buy', hasPrem: true, desc: 'Right to sell at strike. Profit when market falls below strike – premium.' },
-  { id: 'sp', type: 'sellPut', title: 'Put Option — Sell', tag: 'SHORT', tClass: 'tag-sell', hasPrem: true, desc: 'Obligation to buy at strike. Profit limited to premium if market stays above.' },
-  { id: 'bf', type: 'buyFuture', title: 'Futures — Buy (Long)', tag: 'FUTURES', tClass: 'tag-future', hasPrem: false, desc: 'Linear payoff. Profit every point market moves above entry. Loss every point below.' },
-  { id: 'sf', type: 'sellFuture', title: 'Futures — Sell (Short)', tag: 'FUTURES', tClass: 'tag-future', hasPrem: false, desc: 'Linear payoff. Profit every point market falls below entry. Loss every point above.' }
-];
-
-const basicState = {};
-
-function initBasics() {
-  const grid = document.getElementById('basics-grid');
-  
-  basicCardsConfig.forEach(c => {
-    basicState[c.id] = { spot: 24000, strike: 24000, premium: c.hasPrem ? 200 : 0, type: c.type, hasPrem: c.hasPrem };
-
-    const premHtml = c.hasPrem ? `
-      <div class="mini-ctrl-row">
-        <label>Premium</label>
-        <input type="range" id="${c.id}-prem-sl" min="1" max="5000" step="5" value="200" oninput="syncBasic('${c.id}', 'prem', false)">
-        <input type="number" id="${c.id}-prem-num" value="200" oninput="syncBasic('${c.id}', 'prem', true)">
-      </div>` : '';
-
-    grid.innerHTML += `
-      <div class="basic-card">
-        <div class="basic-card-header">
-          <h3>${c.title}</h3> <span class="tag ${c.tClass}">${c.tag}</span>
-        </div>
-        <div class="card-desc">${c.desc}</div>
-        
-        <div class="card-controls">
-          <div class="mini-ctrl-row">
-            <label>Spot</label>
-            <input type="range" id="${c.id}-spot-sl" min="1000" max="100000" step="50" value="24000" oninput="syncBasic('${c.id}', 'spot', false)">
-            <input type="number" id="${c.id}-spot-num" value="24000" min="1000" max="100000" oninput="syncBasic('${c.id}', 'spot', true)">
-          </div>
-          <div class="mini-ctrl-row">
-            <label>${c.hasPrem ? 'Strike' : 'Entry'}</label>
-            <input type="range" id="${c.id}-str-sl" min="1000" max="100000" step="50" value="24000" oninput="syncBasic('${c.id}', 'str', false)">
-            <input type="number" id="${c.id}-str-num" value="24000" min="1000" max="100000" oninput="syncBasic('${c.id}', 'str', true)">
-          </div>
-          ${premHtml}
-        </div>
-
-        <div class="mini-chart-wrap"><canvas id="chart-${c.id}"></canvas></div>
-        <div class="card-formula" id="f-${c.id}">Loading...</div>
-        <button class="add-card-btn btn-push-down" onclick="addLegFromCard('${c.id}')">+ Add to Builder</button>
-      </div>
-    `;
-  });
-
-  Object.keys(basicState).forEach(id => updateBasicCard(id));
-}
-
-function syncBasic(id, field, fromNum) {
-  const st = basicState[id];
-  const sl = document.getElementById(`${id}-${field}-sl`);
-  const num = document.getElementById(`${id}-${field}-num`);
-  
-  let val = fromNum ? +num.value : +sl.value;
-  if(fromNum) sl.value = val; else num.value = val;
-
-  if(field === 'spot') st.spot = val;
-  if(field === 'str') st.strike = val;
-  if(field === 'prem') st.premium = val;
-
-  updateBasicCard(id);
-}
-
-function updateBasicCard(id) {
-  const { type, spot, strike, premium } = basicState[id];
-  
-  const range = [];
-  const minP = Math.max(0, Math.min(strike, spot) - 3000);
-  const maxP = Math.max(strike, spot) + 3000;
-  for (let p = minP; p <= maxP; p += 200) range.push(p);
-  const labels = range.map(p => p >= 1000 ? (p/1000).toFixed(1)+'k' : p);
-
-  let data = [];
-  let formula = '';
-
-  if (type === 'buyCall') {
-    data = range.map(p => buyCallPayoff(p, strike, premium));
-    formula = `Breakeven: ${(strike + premium).toLocaleString()}<br>Max loss: −${premium}<br>Max profit: Unlimited`;
-  } else if (type === 'sellCall') {
-    data = range.map(p => sellCallPayoff(p, strike, premium));
-    formula = `Breakeven: ${(strike + premium).toLocaleString()}<br>Max profit: +${premium}<br>Max loss: Unlimited`;
-  } else if (type === 'buyPut') {
-    data = range.map(p => buyPutPayoff(p, strike, premium));
-    formula = `Breakeven: ${(strike - premium).toLocaleString()}<br>Max loss: −${premium}<br>Max profit: Limited to strike`;
-  } else if (type === 'sellPut') {
-    data = range.map(p => sellPutPayoff(p, strike, premium));
-    formula = `Breakeven: ${(strike - premium).toLocaleString()}<br>Max profit: +${premium}<br>Max loss: Limited to strike`;
-  } else if (type === 'buyFuture') {
-    data = range.map(p => buyFuturePayoff(p, strike));
-    formula = `Entry: ${strike.toLocaleString()}<br>Payoff: (Expiry − Entry)<br>Linear P&L`;
-  } else if (type === 'sellFuture') {
-    data = range.map(p => sellFuturePayoff(p, strike));
-    formula = `Entry: ${strike.toLocaleString()}<br>Payoff: (Entry − Expiry)<br>Linear P&L`;
-  }
-
-  buildMiniChart(`chart-${id}`, labels, data);
-  document.getElementById(`f-${id}`).innerHTML = formula;
-}
-
-function addLegFromCard(id) {
-  const st = basicState[id];
-  legs.push({ id: legIdCounter++, type: st.type, strike: st.strike, premium: st.premium, lots: 1 });
-  renderLegs();
-  renderMainChart();
-  document.getElementById('strategy-builder').scrollIntoView({ behavior: 'smooth' });
-  
-  const slider = document.getElementById('spot-slider');
-  const input = document.getElementById('spot-input');
-  slider.value = st.spot;
-  input.value = st.spot;
-  updateSpotMarker(false);
-}
-
-// ============================================================
-// BUILDER STATE & PRESETS
-// ============================================================
-let legs = [];
-let legIdCounter = 0;
-let mainChartInstance = null;
-let legChartInstances = {};
-
-const TYPE_LABELS = {
-  buyCall: 'Buy Call', sellCall: 'Sell Call', buyPut: 'Buy Put', sellPut: 'Sell Put', buyFuture: 'Buy Future', sellFuture: 'Sell Future'
-};
-
-const PRESETS = [
-  { name: 'Bull Call Spread', tag: 'bull', desc: 'Buy ATM call, Sell OTM call', legs: [{ type: 'buyCall', strike: 24000, premium: 200, lots: 1 }, { type: 'sellCall', strike: 24500, premium: 100, lots: 1 }] },
-  { name: 'Bull Put Spread', tag: 'bull', desc: 'Sell ITM put, Buy OTM put', legs: [{ type: 'sellPut', strike: 24000, premium: 250, lots: 1 }, { type: 'buyPut', strike: 23500, premium: 100, lots: 1 }] },
-  { name: 'Bear Put Spread', tag: 'bear', desc: 'Buy ITM put, Sell OTM put', legs: [{ type: 'buyPut', strike: 24000, premium: 200, lots: 1 }, { type: 'sellPut', strike: 23500, premium: 80, lots: 1 }] },
-  { name: 'Bear Call Spread', tag: 'bear', desc: 'Buy OTM call, Sell ITM call', legs: [{ type: 'buyCall', strike: 24500, premium: 80, lots: 1 }, { type: 'sellCall', strike: 24000, premium: 200, lots: 1 }] },
-  { name: 'Long Straddle', tag: 'neutral', desc: 'Buy ATM call + ATM put', legs: [{ type: 'buyCall', strike: 24000, premium: 200, lots: 1 }, { type: 'buyPut', strike: 24000, premium: 180, lots: 1 }] },
-  { name: 'Short Straddle', tag: 'neutral', desc: 'Sell ATM call + ATM put', legs: [{ type: 'sellCall', strike: 24000, premium: 200, lots: 1 }, { type: 'sellPut', strike: 24000, premium: 180, lots: 1 }] },
-  { name: 'Long Strangle', tag: 'neutral', desc: 'Buy OTM call + OTM put', legs: [{ type: 'buyCall', strike: 24500, premium: 100, lots: 1 }, { type: 'buyPut', strike: 23500, premium: 90, lots: 1 }] },
-  { name: 'Short Strangle', tag: 'neutral', desc: 'Sell OTM call + OTM put', legs: [{ type: 'sellCall', strike: 24500, premium: 100, lots: 1 }, { type: 'sellPut', strike: 23500, premium: 90, lots: 1 }] },
-  { name: 'Call Ratio Backspread', tag: 'bull', desc: 'Sell 1 ITM call, Buy 2 OTM calls', legs: [{ type: 'sellCall', strike: 23500, premium: 350, lots: 1 }, { type: 'buyCall', strike: 24000, premium: 200, lots: 2 }] },
-  { name: 'Put Ratio Backspread', tag: 'bear', desc: 'Sell 1 ITM put, Buy 2 OTM puts', legs: [{ type: 'sellPut', strike: 24000, premium: 280, lots: 1 }, { type: 'buyPut', strike: 23500, premium: 120, lots: 2 }] },
-  { name: 'Synthetic Long', tag: 'bull', desc: 'Buy ATM call, Sell ATM put', legs: [{ type: 'buyCall', strike: 24000, premium: 200, lots: 1 }, { type: 'sellPut', strike: 24000, premium: 180, lots: 1 }] },
-  { name: 'Synthetic Short', tag: 'bear', desc: 'Sell ATM call, Buy ATM put', legs: [{ type: 'sellCall', strike: 24000, premium: 200, lots: 1 }, { type: 'buyPut', strike: 24000, premium: 180, lots: 1 }] },
-  { name: 'Long Call Butterfly', tag: 'neutral', desc: 'Buy 1 ATM call, Sell 2 higher calls, Buy 1 even higher call', legs: [{ type: 'buyCall', strike: 24000, premium: 300, lots: 1 }, { type: 'sellCall', strike: 24250, premium: 150, lots: 2 }, { type: 'buyCall', strike: 24500, premium: 50, lots: 1 }] },
-  { name: 'Iron Condor', tag: 'neutral', desc: 'Bull put + Bear call spreads', legs: [{ type: 'buyPut', strike: 23000, premium: 100, lots: 1 }, { type: 'sellPut', strike: 23500, premium: 200, lots: 1 }, { type: 'sellCall', strike: 24500, premium: 200, lots: 1 }, { type: 'buyCall', strike: 25000, premium: 100, lots: 1 }] },
-  { name: 'Long Future', tag: 'bull', desc: 'Buy futures at current price', legs: [{ type: 'buyFuture', strike: 24000, premium: 0, lots: 1 }] },
-  { name: 'Short Future', tag: 'bear', desc: 'Sell futures at current price', legs: [{ type: 'sellFuture', strike: 24000, premium: 0, lots: 1 }] }
-];
-
-function buildPresets() {
-  const grid = document.getElementById('preset-grid');
-  PRESETS.forEach((p, i) => {
-    const tagClass = p.tag === 'bull' ? 'pt-bull' : p.tag === 'bear' ? 'pt-bear' : 'pt-neutral';
-    grid.innerHTML += `<button class="preset-btn" onclick="loadPreset(${i})" title="${p.desc}">
-      <span>${p.name}</span><span class="preset-tag ${tagClass}">${p.tag.toUpperCase()}</span>
-    </button>`;
+function buildLegMiniFromState(leg, cid, color) {
+  if (!document.getElementById(cid)) return;
+  if (legChartInsts[cid]) { legChartInsts[cid].destroy(); delete legChartInsts[cid]; }
+  const isFut = leg.type.includes('Future');
+  const pivot = leg.strike;
+  const pad = Math.max(5000, pivot * 0.2);
+  const xs = makeXRange(Math.max(100, pivot - pad), pivot + pad, 80);
+  const ys = xs.map(x => legPayoff(leg, x));
+  const cc = chartColors();
+  legChartInsts[cid] = new Chart(document.getElementById(cid).getContext('2d'), {
+    type: 'line',
+    data: {
+      labels: xs.map(v => (v/1000).toFixed(1)+'k'),
+      datasets: [{
+        data: ys,
+        borderColor: color,
+        borderWidth: 2,
+        pointRadius: 0,
+        fill: { target: 'origin', above: color + '22', below: color + '22' },
+        segment: { borderColor: () => color },
+        tension: 0.1,
+      }],
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, animation: false,
+      plugins: { legend: { display: false }, tooltip: { enabled: false } },
+      scales: {
+        x: { grid: { color: cc.grid, drawTicks: false }, ticks: { color: cc.tick, font: { size: 8, family: 'DM Mono' }, maxTicksLimit: 5, maxRotation: 0 } },
+        y: { grid: { color: cc.grid, drawTicks: false }, ticks: { color: cc.tick, font: { size: 8, family: 'DM Mono' }, maxTicksLimit: 4 } },
+      },
+    },
   });
 }
 
-function loadPreset(idx) {
-  const preset = PRESETS[idx];
-  legs = preset.legs.map(l => ({ ...l, id: legIdCounter++ }));
-  renderLegs();
-  renderMainChart();
-  document.getElementById('builder-title').textContent = preset.name;
-  document.getElementById('builder-subtitle').textContent = preset.desc;
-  
-  const avgStrike = Math.round(legs.reduce((s, l) => s + l.strike, 0) / legs.length);
-  document.getElementById('spot-slider').value = avgStrike;
-  document.getElementById('spot-input').value = avgStrike;
-  updateSpotMarker(false);
+function rebuildLegMini(leg) {
+  const idx = legs.findIndex(l => l.id === leg.id);
+  const cid = `lgc-${leg.id}`;
+  buildLegMiniFromState(leg, cid, LEG_PALETTE[idx % LEG_PALETTE.length]);
 }
 
-// ============================================================
-// REMOVE LEGS IN BUILDER
-// ============================================================
-function removeLeg(id) {
-  legs = legs.filter(l => l.id !== id);
-  renderLegs();
-  renderMainChart();
-  updateSpotMarker(false);
+/* ═══════════════════════════════════════════════════════
+   CHART — MAIN
+═══════════════════════════════════════════════════════ */
+function getMainXRange() {
+  if (!legs.length) return makeXRange(18000, 30000);
+  const ks = legs.map(l => l.strike);
+  const mn = Math.min(...ks), mx = Math.max(...ks);
+  const pad = Math.max(5000, (mx - mn) * 1.5);
+  return makeXRange(Math.max(100, mn - pad), mx + pad, 110);
 }
 
-function clearLegs() {
-  legs = [];
-  renderLegs();
-  renderMainChart();
-  document.getElementById('builder-title').textContent = 'Build Your Strategy';
-  document.getElementById('builder-subtitle').textContent = 'Add legs from basics section to see combined payoff';
-}
-
-function renderLegs() {
-  const list = document.getElementById('legs-list');
-  document.getElementById('leg-count').textContent = `(${legs.length})`;
-  if (legs.length === 0) {
-    list.innerHTML = '<div style="font-size:11px; color:var(--text3); text-align:center; padding:1rem 0;">No legs added yet.</div>';
-    return;
-  }
-  
-  list.innerHTML = legs.map((leg, i) => {
-    const color = LEG_COLORS[i % LEG_COLORS.length];
-    const isFuture = leg.type.includes('Future');
-    const strikeMin = Math.max(1000, leg.strike - 5000);
-    const strikeMax = leg.strike + 5000;
-    const premMin = isFuture ? 0 : Math.max(1, leg.premium - 500);
-    const premMax = isFuture ? 0 : leg.premium + 500;
-    
-    return `
-      <div class="leg-item">
-        <div class="leg-item-header">
-          <div class="leg-dot" style="background:${color}"></div>
-          <div class="leg-name">${TYPE_LABELS[leg.type]} × ${leg.lots}</div>
-          <button class="leg-remove" onclick="removeLeg(${leg.id})" title="Remove">×</button>
-        </div>
-        <div class="leg-sliders">
-          <div class="leg-slider-row">
-            <label>Strike</label>
-            <input type="range" min="${strikeMin}" max="${strikeMax}" step="50" value="${leg.strike}" oninput="syncLegSlider(${leg.id}, 'strike', false)">
-            <input type="number" min="${strikeMin}" max="${strikeMax}" step="50" value="${leg.strike}" onchange="syncLegSlider(${leg.id}, 'strike', true)">
-          </div>
-          ${isFuture ? '' : `
-          <div class="leg-slider-row">
-            <label>Premium</label>
-            <input type="range" min="${premMin}" max="${premMax}" step="5" value="${leg.premium}" oninput="syncLegSlider(${leg.id}, 'premium', false)">
-            <input type="number" min="${premMin}" max="${premMax}" step="5" value="${leg.premium}" onchange="syncLegSlider(${leg.id}, 'premium', true)">
-          </div>
-          `}
-        </div>
-      </div>
-    `;
-  }).join('');
-}
-
-function syncLegSlider(id, field, fromNum) {
-  const leg = legs.find(l => l.id === id);
-  if (!leg) return;
-
-  const sliderInput = document.querySelector(`input[type=range][value="${leg[field]}"]`);
-  const numberInput = document.querySelector(`input[type=number][value="${leg[field]}"]`);
-
-  if (fromNum && numberInput) {
-    const val = +numberInput.value;
-    leg[field] = val;
-    if (sliderInput) sliderInput.value = val;
-  } else if (sliderInput) {
-    const val = +sliderInput.value;
-    leg[field] = val;
-    if (numberInput) numberInput.value = val;
-  }
-
-  renderMainChart();
-  updateSpotMarker(false);
-}
-
-// ============================================================
-// MAIN CHART
-// ============================================================
-function buildPriceRange(legs) {
-  if (legs.length === 0) return [];
-  const strikes = legs.map(l => l.strike);
-  const min = Math.min(...strikes);
-  const max = Math.max(...strikes);
-  const pad = Math.max(3000, (max - min) * 1.5);
-  const range = [];
-  for (let p = Math.max(0, min - pad); p <= max + pad; p += 100) range.push(Math.round(p));
-  return range;
-}
-
-function computeStats(legs, priceRange) {
-  const payoffs = priceRange.map(p => totalPayoff(legs, p));
-  const maxProfit = Math.max(...payoffs);
-  const maxLoss = Math.min(...payoffs);
-
-  const breakevens = [];
-  for (let i = 1; i < payoffs.length; i++) {
-    if ((payoffs[i-1] < 0 && payoffs[i] >= 0) || (payoffs[i-1] >= 0 && payoffs[i] < 0)) {
-      breakevens.push(Math.round((priceRange[i-1] + priceRange[i]) / 2));
+function computeStrategyStats(xs) {
+  const ys = xs.map(x => strategyPayoff(legs, x));
+  const maxP = Math.max(...ys);
+  const maxL = Math.min(...ys);
+  const bes = [];
+  for (let i = 1; i < ys.length; i++) {
+    if ((ys[i-1] < 0 && ys[i] >= 0) || (ys[i-1] >= 0 && ys[i] < 0)) {
+      bes.push(Math.round((xs[i-1] + xs[i]) / 2));
     }
   }
-
-  const netPremium = legs.reduce((s, l) => {
-    const isFuture = l.type.includes('Future');
-    return s + (isFuture ? 0 : (l.type.startsWith('sell') ? 1 : -1) * l.premium * l.lots);
+  const netPremium = legs.reduce((sum, l) => {
+    if (l.type.includes('Future')) return sum;
+    return sum + (l.type.startsWith('sell') ? 1 : -1) * l.premium * l.lots;
   }, 0);
-
-  return { maxProfit, maxLoss, breakevens, netPremium };
+  return { maxP, maxL, bes, netPremium };
 }
 
-function renderMainChart() {
-  const canvas = document.getElementById('main-chart');
-  const empty = document.getElementById('empty-state');
+function rebuildMainChart() {
+  const canvas = document.getElementById('main-canvas');
+  const empty = document.getElementById('chart-empty');
 
-  if (legs.length === 0) {
+  if (!legs.length) {
     canvas.style.display = 'none';
     empty.style.display = 'flex';
-    ['stat-maxprofit', 'stat-maxloss', 'stat-be', 'stat-net'].forEach(id => document.getElementById(id).textContent = '—');
-    document.getElementById('stat-net').className = 'stat-val stat-neu';
-    document.getElementById('leg-charts-grid').innerHTML = '';
+    ['s-mp','s-ml','s-be','s-net'].forEach(id => document.getElementById(id).textContent = '—');
+    document.getElementById('s-net').className = 'stat-box-val sv-n';
     return;
   }
 
   canvas.style.display = 'block';
   empty.style.display = 'none';
 
-  const priceRange = buildPriceRange(legs);
-  const payoffs = priceRange.map(p => totalPayoff(legs, p));
-  const stats = computeStats(legs, priceRange);
+  const xs = getMainXRange();
+  const st = computeStrategyStats(xs);
 
-  document.getElementById('stat-maxprofit').textContent = stats.maxProfit > 9999 ? 'Unlimited' : '+' + stats.maxProfit.toFixed(0);
-  document.getElementById('stat-maxloss').textContent = stats.maxLoss < -9999 ? 'Unlimited' : stats.maxLoss.toFixed(0);
-  document.getElementById('stat-be').textContent = stats.breakevens.length > 0 ? stats.breakevens.map(b => b.toLocaleString()).join(' / ') : 'None';
-  document.getElementById('stat-net').textContent = stats.netPremium >= 0 ? `+${stats.netPremium.toFixed(0)} Credit` : `${stats.netPremium.toFixed(0)} Debit`;
-  document.getElementById('stat-net').className = 'stat-val ' + (stats.netPremium >= 0 ? 'stat-pos' : 'stat-neg');
+  // Stats
+  document.getElementById('s-mp').textContent = st.maxP > 199999 ? 'Unlimited' : '+' + Math.round(st.maxP).toLocaleString();
+  document.getElementById('s-ml').textContent = st.maxL < -199999 ? 'Unlimited' : Math.round(st.maxL).toLocaleString();
+  document.getElementById('s-be').textContent = st.bes.length ? st.bes.map(b => b.toLocaleString()).join(' / ') : 'None';
+  const netTxt = st.netPremium >= 0 ? `+${st.netPremium.toFixed(0)} Credit` : `${st.netPremium.toFixed(0)} Debit`;
+  document.getElementById('s-net').textContent = netTxt;
+  document.getElementById('s-net').className = 'stat-box-val ' + (st.netPremium >= 0 ? 'sv-g' : 'sv-r');
 
-  if (mainChartInstance) mainChartInstance.destroy();
+  const labels = xs.map(v => (v/1000).toFixed(1) + 'k');
+  const cc = chartColors();
 
-  const ctx = canvas.getContext('2d');
-  const gridColor = getGridColor();
-  const textColor = getTextColor();
-  const textColor2 = document.body.classList.contains('light-mode') ? '#52525b' : '#9090a8';
-  const textColor3 = getTextColor3();
+  // Individual leg datasets (dashed)
+  const legDatasets = legs.map((leg, i) => ({
+    label: `${TYPE_LABELS[leg.type]} @${leg.strike.toLocaleString()}`,
+    data: xs.map(x => legPayoff(leg, x)),
+    borderColor: LEG_PALETTE[i % LEG_PALETTE.length],
+    borderWidth: 1.5,
+    borderDash: [5, 4],
+    pointRadius: 0,
+    fill: false,
+    tension: 0.1,
+  }));
 
-  mainChartInstance = new Chart(ctx, {
+  // Combined
+  const combined = {
+    label: 'Combined P&L',
+    data: xs.map(x => strategyPayoff(legs, x)),
+    borderWidth: 2.5,
+    pointRadius: 0,
+    fill: { target: 'origin', above: 'rgba(62,207,142,.1)', below: 'rgba(248,113,113,.1)' },
+    segment: { borderColor: segColor(darkMode) },
+    tension: 0.1,
+    order: 0,
+  };
+
+  // Zero line
+  const zeroLine = {
+    label: '',
+    data: xs.map(() => 0),
+    borderColor: darkMode ? 'rgba(255,255,255,.15)' : 'rgba(0,0,0,.15)',
+    borderWidth: 1,
+    borderDash: [2, 6],
+    pointRadius: 0,
+    fill: false,
+    tension: 0,
+  };
+
+  if (mainChartInst) { mainChartInst.destroy(); mainChartInst = null; }
+
+  mainChartInst = new Chart(canvas.getContext('2d'), {
     type: 'line',
-    data: {
-      labels: priceRange.map(p => p >= 1000 ? (p/1000).toFixed(1)+'k' : String(p)),
-      datasets: [
-        { label: '', data: priceRange.map(() => 0), borderColor: gridColor, borderWidth: 1, borderDash: [2, 6], pointRadius: 0, fill: false, tension: 0 },
-        ...legs.map((leg, i) => ({
-          label: `${TYPE_LABELS[leg.type]} @${leg.strike}`, data: priceRange.map(p => legPayoff(leg, p)), borderColor: LEG_COLORS[i % LEG_COLORS.length], borderWidth: 1.5, borderDash: [4, 4], pointRadius: 0, fill: false, tension: 0.1
-        })),
-        {
-          label: 'Combined Payoff', data: payoffs, borderColor: textColor, borderWidth: 2.5, pointRadius: 0,
-          fill: { target: 'origin', above: 'rgba(62,207,142,0.12)', below: 'rgba(248,113,113,0.12)' },
-          segment: { borderColor: ctx2 => ctx2.p0.parsed.y >= 0 ? '#3ecf8e' : '#f87171' }, tension: 0.1
-        }
-      ]
-    },
+    data: { labels, datasets: [zeroLine, ...legDatasets, combined] },
     options: {
-      responsive: true, maintainAspectRatio: false, animation: false, interaction: { mode: 'index', intersect: false },
+      responsive: true, maintainAspectRatio: false, animation: false,
+      interaction: { mode: 'index', intersect: false },
       plugins: {
-        legend: { 
-          labels: { color: textColor2, font: { size: 10, family: 'DM Mono' }, filter: item => item.text !== '', boxWidth: 14, boxHeight: 2 }
+        legend: {
+          display: true, position: 'top',
+          labels: {
+            color: cc.tick,
+            font: { size: 10, family: 'DM Mono' },
+            boxWidth: 18, boxHeight: 2,
+            filter: item => item.text !== '',
+          },
         },
         tooltip: {
-          backgroundColor: document.body.classList.contains('light-mode') ? 'rgba(255,255,255,0.9)' : 'rgba(22,22,27,0.9)',
-          borderColor: gridColor,
+          backgroundColor: cc.tooltip_bg,
+          borderColor: darkMode ? 'rgba(255,255,255,.1)' : 'rgba(0,0,0,.1)',
           borderWidth: 1,
-          titleColor: textColor2,
-          bodyColor: textColor,
+          titleColor: cc.tick,
+          bodyColor: cc.tooltip_body,
           titleFont: { size: 10, family: 'DM Mono' },
           bodyFont: { size: 11, family: 'DM Mono' },
           callbacks: {
-            label: ctx2 => ctx2.dataset.label ? ` ${ctx2.dataset.label}: ${ctx2.parsed.y >= 0 ? '+' : ''}${ctx2.parsed.y.toFixed(0)}` : null
-          }
-        }
+            label: ctx => {
+              if (!ctx.dataset.label) return null;
+              const v = ctx.parsed.y;
+              return ` ${ctx.dataset.label}: ${v >= 0 ? '+' : ''}${v.toFixed(0)}`;
+            },
+          },
+        },
       },
       scales: {
-        x: { 
-          grid: { color: gridColor, drawTicks: false }, 
-          ticks: { color: textColor3, font: { size: 9, family: 'DM Mono' }, maxTicksLimit: 10 } 
-        },
-        y: { 
-          grid: { color: gridColor, drawTicks: false }, 
-          ticks: { color: textColor3, font: { size: 10, family: 'DM Mono' }, maxTicksLimit: 8 } 
-        }
-      }
+        x: { grid: { color: cc.grid, drawTicks: false }, ticks: { color: cc.tick, font: { size: 9, family: 'DM Mono' }, maxTicksLimit: 10, maxRotation: 0 } },
+        y: { grid: { color: cc.grid, drawTicks: false }, ticks: { color: cc.tick, font: { size: 10, family: 'DM Mono' }, maxTicksLimit: 8 } },
+      },
+    },
+  });
+}
+
+/* ═══════════════════════════════════════════════════════
+   SPOT SLIDER
+═══════════════════════════════════════════════════════ */
+function setSpotValue(val) {
+  document.getElementById('spot-range').value = Math.min(65000, Math.max(5000, val));
+  document.getElementById('spot-num').value = val;
+}
+
+function onSpotRange() {
+  const v = +document.getElementById('spot-range').value;
+  document.getElementById('spot-num').value = v;
+  updateSpotPnl(v);
+}
+
+function onSpotNum() {
+  const v = +document.getElementById('spot-num').value;
+  if (v > 0) {
+    document.getElementById('spot-range').value = Math.min(65000, Math.max(5000, v));
+    updateSpotPnl(v);
+  }
+}
+
+function updateSpotPnl(val) {
+  if (val === undefined) val = +document.getElementById('spot-num').value;
+  const el = document.getElementById('spot-pnl');
+  if (!legs.length) { el.textContent = '—'; el.className = 'spot-pnl-val sv-n'; return; }
+  const pnl = strategyPayoff(legs, val);
+  el.textContent = (pnl >= 0 ? '+' : '') + pnl.toFixed(0);
+  el.className = 'spot-pnl-val ' + (pnl >= 0 ? 'sv-g' : 'sv-r');
+}
+
+/* ═══════════════════════════════════════════════════════
+   NAV ACTIVE STATE
+═══════════════════════════════════════════════════════ */
+const navObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.nav-a').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+      });
     }
   });
+}, { threshold: 0.25 });
+['sec-basics', 'sec-builder'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) navObserver.observe(el);
+});
 
-  renderLegCharts(priceRange);
-}
-
-function renderLegCharts(priceRange) {
-  const grid = document.getElementById('leg-charts-grid');
-  Object.values(legChartInstances).forEach(c => c.destroy());
-  legChartInstances = {};
-  const gridColor = getGridColor();
-  const textColor3 = getTextColor3();
-
-  grid.innerHTML = legs.map((leg, i) => `
-    <div class="leg-chart-wrap">
-      <div class="leg-chart-label" style="color:${LEG_COLORS[i % LEG_COLORS.length]}">
-        ${TYPE_LABELS[leg.type]} × ${leg.lots} @ ${leg.strike.toLocaleString()} ${leg.type.includes('Future') ? '' : `· prem ${leg.premium}`}
-      </div>
-      <div class="leg-chart-container"><canvas id="leg-chart-${leg.id}"></canvas></div>
-    </div>
-  `).join('');
-
-  setTimeout(() => {
-    legs.forEach((leg, i) => {
-      const cid = `leg-chart-${leg.id}`;
-      const canvasEl = document.getElementById(cid);
-      if(!canvasEl) return;
-      
-      legChartInstances[cid] = new Chart(canvasEl.getContext('2d'), {
-        type: 'line',
-        data: {
-          labels: priceRange.map(p => p >= 1000 ? (p/1000).toFixed(1)+'k' : String(p)),
-          datasets: [{
-            data: priceRange.map(p => legPayoff(leg, p)),
-            borderColor: LEG_COLORS[i % LEG_COLORS.length],
-            borderWidth: 1.5,
-            pointRadius: 0,
-            fill: { target: 'origin', above: LEG_COLORS[i % LEG_COLORS.length]+'20', below: LEG_COLORS[i % LEG_COLORS.length]+'20' },
-            tension: 0.1
-          }]
-        },
-        options: {
-          responsive: true, maintainAspectRatio: false, animation: false,
-          plugins: { legend: { display: false }, tooltip: { enabled: false } },
-          scales: {
-            x: { display: false },
-            y: { display: false }
-          }
-        }
-      });
-    });
-  }, 50);
-}
-
-function updateSpotMarker(fromInput = false) {
-  const slider = document.getElementById('spot-slider');
-  const input = document.getElementById('spot-input');
-  
-  if (fromInput) slider.value = input.value;
-  else input.value = slider.value;
-
-  if (legs.length === 0) return;
-  const pnl = totalPayoff(legs, +slider.value);
-  const el = document.getElementById('spot-pnl');
-  el.textContent = (pnl >= 0 ? '+' : '') + pnl.toFixed(0);
-  el.style.color = pnl >= 0 ? 'var(--green)' : 'var(--red)';
-}
-
-// ============================================================
-// INIT
-// ============================================================
-initBasics();
+/* ═══════════════════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════════════════ */
+buildBasicsGrid();
+Object.keys(CARD_STATE).forEach(id => updateBasicCard(id));
 buildPresets();
-setTimeout(() => loadPreset(0), 100);
+// Default: load Bull Call Spread
+setTimeout(() => loadPreset(0), 60);
 </script>
 </body>
 </html>
