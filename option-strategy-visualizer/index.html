@@ -602,7 +602,7 @@ const CS = {
 function toggleTheme() {
   dark = !dark;
   document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
-  document.getElementById('theme-btn').textContent = dark ? '◑ Ligh' : '◐ Dark';
+  document.getElementById('theme-btn').textContent = dark ? '◑ Light' : '◐ Dark';
   DEFS.forEach(d => updateCard(d.id));
   rebuildMain();
   legs.forEach(l => rebuildLegMini(l));
