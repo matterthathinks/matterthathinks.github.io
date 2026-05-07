@@ -90,7 +90,7 @@ a { color: inherit; text-decoration: none; }
 /* ── MASTHEAD ── */
 .masthead {
   border-bottom: 1px solid var(--rule); padding: 4.5rem 2rem 3.5rem;
-  text-align: center; background: var(--bg); position: relative; overflow: hidden;
+  text-align: center; background: var(--bg); position: relative;
   animation: fadeUp 0.55s 0.05s both;
 }
 .masthead::before {
@@ -190,8 +190,9 @@ a { color: inherit; text-decoration: none; }
 .cat-tab:hover { color: var(--ink); background: var(--bg3); }
 .cat-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
 
-/* ── CONTENT ── */
+/* ── CONTENT AREA ── */
 .content-area { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+
 .section-label {
   font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.18em;
   text-transform: uppercase; color: var(--ink3); margin-bottom: 2rem;
@@ -200,14 +201,14 @@ a { color: inherit; text-decoration: none; }
   display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 2rem;
 }
 .section-label-row .section-label { margin-bottom: 0; }
-.section-link {
+.jump-link {
   font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.12em;
   text-transform: uppercase; color: var(--accent2);
   border-bottom: 1px solid var(--accent2); padding-bottom: 1px; transition: opacity var(--t);
 }
-.section-link:hover { opacity: 0.6; }
+.jump-link:hover { opacity: 0.6; }
 
-/* ── ESSAY GRID (latest 6) ── */
+/* ── ESSAY GRID ── */
 .essays-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1px; background: var(--rule); border: 1px solid var(--rule);
@@ -252,7 +253,7 @@ a { color: inherit; text-decoration: none; }
 }
 .pull-quote cite { font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink3); font-style: normal; }
 
-/* ── ARCHIVE TABLE ── */
+/* ── ARCHIVE ── */
 .archive-list { margin-bottom: 4rem; }
 .archive-item {
   display: grid; grid-template-columns: 3rem 1fr auto;
@@ -269,11 +270,49 @@ a { color: inherit; text-decoration: none; }
 .a-sub { font-size: 0.7rem; font-family: var(--mono); color: var(--ink3); letter-spacing: 0.06em; }
 .a-date { font-family: var(--mono); font-size: 0.55rem; color: var(--ink3); white-space: nowrap; letter-spacing: 0.06em; }
 
+/* ── PROJECTS ── */
+.projects-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+  margin-bottom: 4rem;
+  transition: background var(--t), border-color var(--t);
+}
+.project-card {
+  background: var(--bg); padding: 1.75rem;
+  transition: background var(--t); position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.project-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--gold); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.project-card:hover { background: var(--bg2); }
+.project-card:hover::after { transform: scaleX(1); }
+.project-tag {
+  font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink3); margin-bottom: 0.75rem;
+}
+.project-title {
+  font-family: var(--serif); font-size: 1.15rem; font-weight: 400;
+  line-height: 1.3; color: var(--ink); margin-bottom: 0.65rem;
+}
+.project-title a:hover { color: var(--accent2); }
+.project-desc { font-size: 0.81rem; color: var(--ink3); line-height: 1.6; font-weight: 300; flex: 1; margin-bottom: 1.25rem; }
+.project-link {
+  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold);
+  border-bottom: 1px solid var(--gold); padding-bottom: 1px;
+  display: inline-block; transition: opacity var(--t); align-self: flex-start;
+}
+.project-link:hover { opacity: 0.6; }
+
 /* ── ABOUT ── */
 .about-section {
   display: grid; grid-template-columns: 220px 1fr;
   gap: 4rem; padding: 3rem 0 0; border-top: 1px solid var(--rule); margin-bottom: 4rem;
 }
+.about-left {}
 .about-title { font-family: var(--serif); font-size: 2rem; font-style: italic; font-weight: 300; color: var(--ink2); line-height: 1.2; margin-bottom: 1.5rem; }
 .about-links { display: flex; flex-direction: column; gap: 0; }
 .about-link {
@@ -287,6 +326,8 @@ a { color: inherit; text-decoration: none; }
 .about-text { font-family: var(--serif); font-size: 1.05rem; font-weight: 300; line-height: 1.85; color: var(--ink2); }
 .about-text p + p { margin-top: 1.1em; }
 .about-text strong { font-weight: 500; color: var(--ink); }
+.about-text a { color: var(--accent2); border-bottom: 1px solid var(--rule); transition: color var(--t), border-color var(--t); }
+.about-text a:hover { color: var(--accent); border-color: var(--accent); }
 
 /* ── SUBSCRIBE ── */
 .subscribe-band {
@@ -309,6 +350,9 @@ footer {
 }
 .footer-logo { font-family: var(--serif); font-style: italic; font-size: 0.9rem; color: var(--ink3); }
 .footer-mono { font-family: var(--mono); font-size: 0.53rem; letter-spacing: 0.1em; color: var(--ink3); text-transform: uppercase; }
+.footer-nav { display: flex; gap: 1.25rem; }
+.footer-nav a { font-family: var(--mono); font-size: 0.53rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); transition: color var(--t); }
+.footer-nav a:hover { color: var(--accent2); }
 
 /* ── ANIMATION ── */
 @keyframes fadeUp {
@@ -320,7 +364,7 @@ footer {
 @media (max-width: 920px) {
   .latest-hero { grid-template-columns: 1fr; gap: 2.5rem 0; }
   .hero-divider { display: none; }
-  .essays-grid { grid-template-columns: 1fr 1fr; }
+  .essays-grid, .projects-grid { grid-template-columns: 1fr 1fr; }
   .about-section { grid-template-columns: 1fr; gap: 2rem; }
   .header-nav { display: none; }
 }
@@ -328,23 +372,25 @@ footer {
   .header-inner { padding: 0 1.25rem; }
   .masthead, .latest-hero { padding-left: 1.25rem; padding-right: 1.25rem; }
   .content-area { padding: 2.5rem 1.25rem 4rem; }
-  .essays-grid { grid-template-columns: 1fr; }
+  .essays-grid, .projects-grid { grid-template-columns: 1fr; }
   .archive-item { grid-template-columns: 2.5rem 1fr; }
   .a-date { display: none; }
   .subscribe-band { padding: 2.5rem 1.25rem; }
-  footer { flex-direction: column; text-align: center; padding: 1.5rem 1.25rem; }
+  footer { flex-direction: column; text-align: center; padding: 1.5rem 1.25rem; gap: 0.75rem; }
+  .footer-nav { justify-content: center; flex-wrap: wrap; gap: 1rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- ── HEADER ── -->
 <header class="site-header">
   <div class="header-inner">
     <a href="/" class="logo">Matter That <em>Thinks</em></a>
     <nav class="header-nav">
       <a href="#essays">Essays</a>
       <a href="#archive">Archive</a>
+      <a href="#projects">Projects</a>
       <a href="#about">About</a>
     </nav>
     <div class="header-right">
@@ -356,26 +402,26 @@ footer {
   </div>
 </header>
 
-<!-- MASTHEAD -->
+<!-- ── MASTHEAD ── -->
 <div class="masthead">
   <div class="masthead-eyebrow">Ashutosh Nayak &nbsp;·&nbsp; NISER Bhubaneswar</div>
   <h1 class="masthead-title">Matter That <em>Thinks</em></h1>
   <p class="masthead-sub">Essays on economics, science, politics, culture, and the examined life</p>
 </div>
 
-<!-- HERO — latest post -->
+<!-- ── HERO ── -->
 <section class="latest-hero">
   <article>
     <div class="hero-eyebrow">Latest Essay &nbsp;·&nbsp; Economics &amp; Finance</div>
     <h2 class="hero-title">
-      <a href="https://matterthathinks.substack.com/p/the-broken-ladder" target="_blank">
-        The Broken <em>Ladder</em>
+      <a href="https://matterthathinks.substack.com/p/the-price-of-trust" target="_blank">
+        The Price of <em>Trust</em>
       </a>
     </h2>
-    <p class="hero-dek">Why the poor don't make bad choices — they make rational ones inside a broken system. A story on hope, dignity, and the economics of staying human.</p>
+    <p class="hero-dek">Why Ponzi schemes don't just steal money — they leave behind a system people no longer believe in.</p>
     <div class="hero-meta">
-      <a href="https://matterthathinks.substack.com/p/the-broken-ladder" target="_blank" class="read-link">Read essay</a>
-      <span class="meta-date">April 2026</span>
+      <a href="https://matterthathinks.substack.com/p/the-price-of-trust" target="_blank" class="read-link">Read essay</a>
+      <span class="meta-date">May 7, 2026</span>
     </div>
   </article>
 
@@ -386,28 +432,28 @@ footer {
 
     <div class="sidebar-item">
       <div class="sidebar-cat">Stories &amp; Reflections</div>
+      <a href="https://matterthathinks.substack.com/p/the-weight-that-spreads" target="_blank" class="sidebar-title">The Weight That Spreads</a>
+      <p class="sidebar-dek">On the pain that belongs to many.</p>
+      <span class="sidebar-date">May 1</span>
+    </div>
+
+    <div class="sidebar-item">
+      <div class="sidebar-cat">Economics &amp; Finance</div>
+      <a href="https://matterthathinks.substack.com/p/the-broken-ladder" target="_blank" class="sidebar-title">The Broken Ladder</a>
+      <p class="sidebar-dek">Why the poor make rational choices inside a broken system.</p>
+      <span class="sidebar-date">Apr 25</span>
+    </div>
+
+    <div class="sidebar-item">
+      <div class="sidebar-cat">Stories &amp; Reflections</div>
       <a href="https://matterthathinks.substack.com/p/a-question-of-mercy" target="_blank" class="sidebar-title">A Question of Mercy</a>
       <p class="sidebar-dek">I was sitting in class when a bee hit the fan and fell on the floor.</p>
       <span class="sidebar-date">Apr 22</span>
     </div>
-
-    <div class="sidebar-item">
-      <div class="sidebar-cat">Science &amp; Technology</div>
-      <a href="https://matterthathinks.substack.com/p/the-day-mass-went-missing" target="_blank" class="sidebar-title">The Day Mass Went Missing</a>
-      <p class="sidebar-dek">From uranium deals to fusion dreams, and the physics that quietly powers everything.</p>
-      <span class="sidebar-date">Apr 18</span>
-    </div>
-
-    <div class="sidebar-item">
-      <div class="sidebar-cat">Society &amp; Culture</div>
-      <a href="https://matterthathinks.substack.com/p/the-price-of-a-cigarette" target="_blank" class="sidebar-title">The Price of a Cigarette</a>
-      <p class="sidebar-dek">What a pan shop outside campus taught me about risk, policy, and why bans don't work.</p>
-      <span class="sidebar-date">Apr 15</span>
-    </div>
   </aside>
 </section>
 
-<!-- CATEGORY BAR -->
+<!-- ── CATEGORY BAR ── -->
 <div class="category-bar">
   <div class="category-bar-inner">
     <span class="cat-tab active" data-cat="all">All</span>
@@ -420,23 +466,39 @@ footer {
   </div>
 </div>
 
-<!-- CONTENT -->
+<!-- ── MAIN CONTENT ── -->
 <div class="content-area">
 
   <!-- RECENT ESSAYS (latest 6) -->
   <div class="section-label-row" id="essays">
     <span class="section-label">Recent Essays</span>
-    <a href="#archive" class="section-link">Full archive ↓</a>
+    <a href="#archive" class="jump-link">Full archive ↓</a>
   </div>
 
   <div class="essays-grid" id="essayGrid">
+
+    <article class="essay-card" data-cat="economics">
+      <div class="card-n">012</div>
+      <div class="card-cat">Economics &amp; Finance</div>
+      <h3 class="card-title"><a href="https://matterthathinks.substack.com/p/the-price-of-trust" target="_blank">The Price of Trust</a></h3>
+      <p class="card-blurb">Why Ponzi schemes don't just steal money — they leave behind a system people no longer believe in.</p>
+      <div class="card-foot"><span class="card-date">May 7, 2026</span><a href="https://matterthathinks.substack.com/p/the-price-of-trust" target="_blank" class="read-link">Read</a></div>
+    </article>
+
+    <article class="essay-card" data-cat="stories">
+      <div class="card-n">011</div>
+      <div class="card-cat">Stories &amp; Reflections</div>
+      <h3 class="card-title"><a href="https://matterthathinks.substack.com/p/the-weight-that-spreads" target="_blank">The Weight That Spreads</a></h3>
+      <p class="card-blurb">On the pain that belongs to many.</p>
+      <div class="card-foot"><span class="card-date">May 1, 2026</span><a href="https://matterthathinks.substack.com/p/the-weight-that-spreads" target="_blank" class="read-link">Read</a></div>
+    </article>
 
     <article class="essay-card" data-cat="economics">
       <div class="card-n">010</div>
       <div class="card-cat">Economics &amp; Finance</div>
       <h3 class="card-title"><a href="https://matterthathinks.substack.com/p/the-broken-ladder" target="_blank">The Broken Ladder</a></h3>
       <p class="card-blurb">Why the poor don't make bad choices — they make rational ones inside a broken system.</p>
-      <div class="card-foot"><span class="card-date">Apr 2026</span><a href="https://matterthathinks.substack.com/p/the-broken-ladder" target="_blank" class="read-link">Read</a></div>
+      <div class="card-foot"><span class="card-date">Apr 25</span><a href="https://matterthathinks.substack.com/p/the-broken-ladder" target="_blank" class="read-link">Read</a></div>
     </article>
 
     <article class="essay-card" data-cat="stories">
@@ -463,22 +525,6 @@ footer {
       <div class="card-foot"><span class="card-date">Apr 15</span><a href="https://matterthathinks.substack.com/p/the-price-of-a-cigarette" target="_blank" class="read-link">Read</a></div>
     </article>
 
-    <article class="essay-card" data-cat="economics">
-      <div class="card-n">006</div>
-      <div class="card-cat">Economics &amp; Finance</div>
-      <h3 class="card-title"><a href="https://matterthathinks.substack.com/p/the-street-level-casino" target="_blank">The Street-Level Casino</a></h3>
-      <p class="card-blurb">What India's derivatives boom says about jobs, risk, and desperation.</p>
-      <div class="card-foot"><span class="card-date">Apr 13</span><a href="https://matterthathinks.substack.com/p/the-street-level-casino" target="_blank" class="read-link">Read</a></div>
-    </article>
-
-    <article class="essay-card" data-cat="science">
-      <div class="card-n">005</div>
-      <div class="card-cat">Science &amp; Technology</div>
-      <h3 class="card-title"><a href="https://matterthathinks.substack.com/p/the-most-important-company-youve" target="_blank">The Most Important Company You've Never Heard Of</a></h3>
-      <p class="card-blurb">How a €300 million machine quietly controls the price of everything.</p>
-      <div class="card-foot"><span class="card-date">Apr 11</span><a href="https://matterthathinks.substack.com/p/the-most-important-company-youve" target="_blank" class="read-link">Read</a></div>
-    </article>
-
   </div><!-- /essays-grid -->
 
   <!-- PULL QUOTE -->
@@ -490,11 +536,20 @@ footer {
   <!-- FULL ARCHIVE -->
   <div class="section-label" id="archive">Full Archive</div>
   <div class="archive-list">
-
+    <div class="archive-item">
+      <span class="a-n">012</span>
+      <div><a href="https://matterthathinks.substack.com/p/the-price-of-trust" target="_blank" class="a-title">The Price of Trust</a><span class="a-sub">Economics &amp; Finance</span></div>
+      <span class="a-date">May 7, 2026</span>
+    </div>
+    <div class="archive-item">
+      <span class="a-n">011</span>
+      <div><a href="https://matterthathinks.substack.com/p/the-weight-that-spreads" target="_blank" class="a-title">The Weight That Spreads</a><span class="a-sub">Stories &amp; Reflections</span></div>
+      <span class="a-date">May 1, 2026</span>
+    </div>
     <div class="archive-item">
       <span class="a-n">010</span>
       <div><a href="https://matterthathinks.substack.com/p/the-broken-ladder" target="_blank" class="a-title">The Broken Ladder</a><span class="a-sub">Economics &amp; Finance</span></div>
-      <span class="a-date">Apr 2026</span>
+      <span class="a-date">Apr 25</span>
     </div>
     <div class="archive-item">
       <span class="a-n">009</span>
@@ -541,14 +596,44 @@ footer {
       <div><a href="https://matterthathinks.substack.com/p/what-is-seen-and-what-is-not-seen" target="_blank" class="a-title">What Is Seen and What Is Not Seen</a><span class="a-sub">Economics &amp; Finance</span></div>
       <span class="a-date">Apr 1</span>
     </div>
+  </div><!-- /archive -->
 
-  </div><!-- /archive-list -->
+  <!-- PROJECTS -->
+  <div class="section-label-row" id="projects">
+    <span class="section-label">Projects</span>
+  </div>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-tag">Data · Geopolitics</div>
+      <h3 class="project-title"><a href="https://matterthathinks.github.io/india-vs-china/" target="_blank">India vs China</a></h3>
+      <p class="project-desc">A visual comparison of India and China across economic, demographic, and development indicators.</p>
+      <a href="https://matterthathinks.github.io/india-vs-china/" target="_blank" class="project-link">View project</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">Finance · Tool</div>
+      <h3 class="project-title"><a href="https://matterthathinks.github.io/option-strategy-visualizer/" target="_blank">Option Strategy Visualizer</a></h3>
+      <p class="project-desc">An interactive tool to visualise payoff diagrams for options strategies.</p>
+      <a href="https://matterthathinks.github.io/option-strategy-visualizer/" target="_blank" class="project-link">View project</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">Campus · Community</div>
+      <h3 class="project-title"><a href="https://rate-my-prof-niser.vercel.app/" target="_blank">Rate My Prof — NISER</a></h3>
+      <p class="project-desc">A professor rating platform built for the NISER community.</p>
+      <a href="https://rate-my-prof-niser.vercel.app/" target="_blank" class="project-link">View project</a>
+    </div>
+
+  </div><!-- /projects-grid -->
 
   <!-- ABOUT -->
   <section class="about-section" id="about">
-    <div>
+    <div class="about-left">
       <div class="about-title">About this place</div>
       <div class="about-links">
+        <a href="https://nayakashutosh.github.io/" target="_blank" class="about-link">Personal site &amp; CV</a>
         <a href="https://matterthathinks.substack.com" target="_blank" class="about-link">Substack</a>
         <a href="https://matterthathinks.substack.com/feed" target="_blank" class="about-link">RSS Feed</a>
         <a href="mailto:heyashunayak@gmail.com" class="about-link">Email</a>
@@ -557,6 +642,7 @@ footer {
     <div class="about-text">
       <p>This is a place where I think out loud. About economics, science, politics, culture — and whatever else refuses to leave my head.</p>
       <p>I'm <strong>Ashutosh Nayak</strong>, an Integrated M.Sc. Physics student at <strong>NISER Bhubaneswar</strong>. I consume a lot — videos, articles, books, ideas — and I can't stop trying to connect things. This is where those connections end up.</p>
+      <p>You can find my academic background, CV, and other work on my <a href="https://nayakashutosh.github.io/" target="_blank">personal site</a>.</p>
       <p>The writing here will change as I change. Right now it's earnest and a little raw. That's fine. A small part of me hopes it stays that way.</p>
       <p>Everything is free. No algorithm selects what appears here. No advertiser shapes it.</p>
     </div>
@@ -574,7 +660,13 @@ footer {
 <!-- FOOTER -->
 <footer>
   <span class="footer-logo">Matter That Thinks</span>
-  <span class="footer-mono">NISER Bhubaneswar &nbsp;·&nbsp; Est. 2026 &nbsp;·&nbsp; Independent</span>
+  <nav class="footer-nav">
+    <a href="#essays">Essays</a>
+    <a href="#archive">Archive</a>
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a href="https://matterthathinks.substack.com" target="_blank">Substack</a>
+  </nav>
   <span class="footer-mono" id="footerDate"></span>
 </footer>
 
