@@ -270,43 +270,6 @@ a { color: inherit; text-decoration: none; }
 .a-sub { font-size: 0.7rem; font-family: var(--mono); color: var(--ink3); letter-spacing: 0.06em; }
 .a-date { font-family: var(--mono); font-size: 0.55rem; color: var(--ink3); white-space: nowrap; letter-spacing: 0.06em; }
 
-/* ── PROJECTS ── */
-.projects-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1px; background: var(--rule); border: 1px solid var(--rule);
-  margin-bottom: 4rem;
-  transition: background var(--t), border-color var(--t);
-}
-.project-card {
-  background: var(--bg); padding: 1.75rem;
-  transition: background var(--t); position: relative; overflow: hidden;
-  display: flex; flex-direction: column;
-}
-.project-card::after {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
-  background: var(--gold); transform: scaleX(0); transform-origin: left;
-  transition: transform 0.25s ease;
-}
-.project-card:hover { background: var(--bg2); }
-.project-card:hover::after { transform: scaleX(1); }
-.project-tag {
-  font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--ink3); margin-bottom: 0.75rem;
-}
-.project-title {
-  font-family: var(--serif); font-size: 1.15rem; font-weight: 400;
-  line-height: 1.3; color: var(--ink); margin-bottom: 0.65rem;
-}
-.project-title a:hover { color: var(--accent2); }
-.project-desc { font-size: 0.81rem; color: var(--ink3); line-height: 1.6; font-weight: 300; flex: 1; margin-bottom: 1.25rem; }
-.project-link {
-  font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--gold);
-  border-bottom: 1px solid var(--gold); padding-bottom: 1px;
-  display: inline-block; transition: opacity var(--t); align-self: flex-start;
-}
-.project-link:hover { opacity: 0.6; }
-
 /* ── ABOUT ── */
 .about-section {
   display: grid; grid-template-columns: 220px 1fr;
@@ -364,7 +327,7 @@ footer {
 @media (max-width: 920px) {
   .latest-hero { grid-template-columns: 1fr; gap: 2.5rem 0; }
   .hero-divider { display: none; }
-  .essays-grid, .projects-grid { grid-template-columns: 1fr 1fr; }
+  .essays-grid { grid-template-columns: 1fr 1fr; }
   .about-section { grid-template-columns: 1fr; gap: 2rem; }
   .header-nav { display: none; }
 }
@@ -372,7 +335,7 @@ footer {
   .header-inner { padding: 0 1.25rem; }
   .masthead, .latest-hero { padding-left: 1.25rem; padding-right: 1.25rem; }
   .content-area { padding: 2.5rem 1.25rem 4rem; }
-  .essays-grid, .projects-grid { grid-template-columns: 1fr; }
+  .essays-grid { grid-template-columns: 1fr; }
   .archive-item { grid-template-columns: 2.5rem 1fr; }
   .a-date { display: none; }
   .subscribe-band { padding: 2.5rem 1.25rem; }
@@ -390,7 +353,6 @@ footer {
     <nav class="header-nav">
       <a href="#essays">Essays</a>
       <a href="#archive">Archive</a>
-      <a href="#projects">Projects</a>
       <a href="#about">About</a>
     </nav>
     <div class="header-right">
@@ -530,7 +492,7 @@ footer {
   <!-- PULL QUOTE -->
   <div class="pull-quote">
     <blockquote>"Maybe writing isn't about being ready. Maybe it's just about starting, being a little uncomfortable, and getting better slowly."</blockquote>
-    <cite>— Ashutosh Nayak, To new beginnings</cite>
+    <cite>— Ashutosh Nayak, <a href="https://matterthathinks.substack.com/p/hi" target="_blank" style="color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:1px;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">To new beginnings</a></cite>
   </div>
 
   <!-- FULL ARCHIVE -->
@@ -598,36 +560,6 @@ footer {
     </div>
   </div><!-- /archive -->
 
-  <!-- PROJECTS -->
-  <div class="section-label-row" id="projects">
-    <span class="section-label">Projects</span>
-  </div>
-
-  <div class="projects-grid">
-
-    <div class="project-card">
-      <div class="project-tag">Data · Geopolitics</div>
-      <h3 class="project-title"><a href="https://matterthathinks.github.io/india-vs-china/" target="_blank">India vs China</a></h3>
-      <p class="project-desc">A visual comparison of India and China across economic, demographic, and development indicators.</p>
-      <a href="https://matterthathinks.github.io/india-vs-china/" target="_blank" class="project-link">View project</a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-tag">Finance · Tool</div>
-      <h3 class="project-title"><a href="https://matterthathinks.github.io/option-strategy-visualizer/" target="_blank">Option Strategy Visualizer</a></h3>
-      <p class="project-desc">An interactive tool to visualise payoff diagrams for options strategies.</p>
-      <a href="https://matterthathinks.github.io/option-strategy-visualizer/" target="_blank" class="project-link">View project</a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-tag">Campus · Community</div>
-      <h3 class="project-title"><a href="https://rate-my-prof-niser.vercel.app/" target="_blank">Rate My Prof — NISER</a></h3>
-      <p class="project-desc">A professor rating platform built for the NISER community.</p>
-      <a href="https://rate-my-prof-niser.vercel.app/" target="_blank" class="project-link">View project</a>
-    </div>
-
-  </div><!-- /projects-grid -->
-
   <!-- ABOUT -->
   <section class="about-section" id="about">
     <div class="about-left">
@@ -663,7 +595,6 @@ footer {
   <nav class="footer-nav">
     <a href="#essays">Essays</a>
     <a href="#archive">Archive</a>
-    <a href="#projects">Projects</a>
     <a href="#about">About</a>
     <a href="https://matterthathinks.substack.com" target="_blank">Substack</a>
   </nav>
