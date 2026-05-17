@@ -174,14 +174,15 @@ a { color: inherit; text-decoration: none; }
   transition: background var(--t), border-color var(--t);
 }
 .category-bar-inner {
-  max-width: 1200px; margin: 0 auto; padding: 0 2rem;
-  display: flex; align-items: center; overflow-x: auto; scrollbar-width: none;
+  width: 100%;
+  display: flex; align-items: stretch; overflow-x: auto; scrollbar-width: none;
 }
 .category-bar-inner::-webkit-scrollbar { display: none; }
 .cat-tab {
   font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--ink3);
   padding: 0.65rem 1.05rem; white-space: nowrap;
+  flex: 1; text-align: center;
   border-right: 1px solid var(--rule); cursor: pointer;
   border-bottom: 2px solid transparent; margin-bottom: -1px;
   transition: background var(--t), color var(--t); user-select: none;
@@ -374,16 +375,16 @@ footer {
 <!-- ── HERO ── -->
 <section class="latest-hero">
   <article>
-    <div class="hero-eyebrow">Latest Essay &nbsp;·&nbsp; Economics &amp; Finance</div>
+    <div class="hero-eyebrow">Latest Essay &nbsp;·&nbsp; Stories &amp; Reflections</div>
     <h2 class="hero-title">
-      <a href="https://matterthathinks.substack.com/p/the-price-of-trust" target="_blank">
-        The Price of <em>Trust</em>
+      <a href="https://matterthathinks.substack.com/p/blair-and-orwell" target="_blank">
+        Blair and <em>Orwell</em>
       </a>
     </h2>
-    <p class="hero-dek">Why Ponzi schemes don't just steal money — they leave behind a system people no longer believe in.</p>
+    <p class="hero-dek">What it costs to become who you want to be.</p>
     <div class="hero-meta">
-      <a href="https://matterthathinks.substack.com/p/the-price-of-trust" target="_blank" class="read-link">Read essay</a>
-      <span class="meta-date">May 7, 2026</span>
+      <a href="https://matterthathinks.substack.com/p/blair-and-orwell" target="_blank" class="read-link">Read essay</a>
+      <span class="meta-date">May 16, 2026</span>
     </div>
   </article>
 
@@ -391,6 +392,13 @@ footer {
 
   <aside class="hero-sidebar">
     <div class="sidebar-label">Recently published</div>
+
+    <div class="sidebar-item">
+      <div class="sidebar-cat">Economics &amp; Finance</div>
+      <a href="https://matterthathinks.substack.com/p/the-price-of-trust" target="_blank" class="sidebar-title">The Price of Trust</a>
+      <p class="sidebar-dek">Why Ponzi schemes don't just steal money — they leave behind a system people no longer believe in.</p>
+      <span class="sidebar-date">May 7</span>
+    </div>
 
     <div class="sidebar-item">
       <div class="sidebar-cat">Stories &amp; Reflections</div>
@@ -404,13 +412,6 @@ footer {
       <a href="https://matterthathinks.substack.com/p/the-broken-ladder" target="_blank" class="sidebar-title">The Broken Ladder</a>
       <p class="sidebar-dek">Why the poor make rational choices inside a broken system.</p>
       <span class="sidebar-date">Apr 25</span>
-    </div>
-
-    <div class="sidebar-item">
-      <div class="sidebar-cat">Stories &amp; Reflections</div>
-      <a href="https://matterthathinks.substack.com/p/a-question-of-mercy" target="_blank" class="sidebar-title">A Question of Mercy</a>
-      <p class="sidebar-dek">I was sitting in class when a bee hit the fan and fell on the floor.</p>
-      <span class="sidebar-date">Apr 22</span>
     </div>
   </aside>
 </section>
@@ -439,6 +440,14 @@ footer {
   </div>
 
   <div class="essays-grid" id="essayGrid">
+
+    <article class="essay-card" data-cat="stories">
+      <div class="card-n">013</div>
+      <div class="card-cat">Stories &amp; Reflections</div>
+      <h3 class="card-title"><a href="https://matterthathinks.substack.com/p/blair-and-orwell" target="_blank">Blair and Orwell</a></h3>
+      <p class="card-blurb">What it costs to become who you want to be.</p>
+      <div class="card-foot"><span class="card-date">May 16, 2026</span><a href="https://matterthathinks.substack.com/p/blair-and-orwell" target="_blank" class="read-link">Read</a></div>
+    </article>
 
     <article class="essay-card" data-cat="economics">
       <div class="card-n">012</div>
@@ -499,6 +508,11 @@ footer {
   <!-- FULL ARCHIVE -->
   <div class="section-label" id="archive">Full Archive</div>
   <div class="archive-list">
+    <div class="archive-item">
+      <span class="a-n">013</span>
+      <div><a href="https://matterthathinks.substack.com/p/blair-and-orwell" target="_blank" class="a-title">Blair and Orwell</a><span class="a-sub">Stories &amp; Reflections</span></div>
+      <span class="a-date">May 16, 2026</span>
+    </div>
     <div class="archive-item">
       <span class="a-n">012</span>
       <div><a href="https://matterthathinks.substack.com/p/the-price-of-trust" target="_blank" class="a-title">The Price of Trust</a><span class="a-sub">Economics &amp; Finance</span></div>
