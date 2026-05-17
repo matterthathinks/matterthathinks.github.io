@@ -174,7 +174,7 @@ a { color: inherit; text-decoration: none; }
   transition: background var(--t), border-color var(--t);
 }
 .category-bar-inner {
-  width: 100%;
+  max-width: 1200px; margin: 0 auto; padding: 0 2rem;
   display: flex; align-items: stretch; overflow-x: auto; scrollbar-width: none;
 }
 .category-bar-inner::-webkit-scrollbar { display: none; }
@@ -426,7 +426,6 @@ footer {
     <span class="cat-tab" data-cat="society">Society &amp; Culture</span>
     <span class="cat-tab" data-cat="stories">Stories &amp; Reflections</span>
     <span class="cat-tab" data-cat="books">Books &amp; Reading</span>
-    <span class="cat-tab" data-cat="misc">Miscellaneous</span>
   </div>
 </div>
 
@@ -575,38 +574,6 @@ footer {
     </div>
   </div><!-- /archive -->
 
-  <!-- MISCELLANEOUS CARDS — only visible when Miscellaneous tab is active -->
-  <div id="miscSection" style="display:none; margin-bottom:4rem;">
-    <div class="section-label" style="margin-bottom:2rem;">Miscellaneous</div>
-    <div class="essays-grid" style="margin-bottom:0;">
-
-      <article class="essay-card" data-cat="misc">
-        <div class="card-n">—</div>
-        <div class="card-cat">Data &middot; Geopolitics</div>
-        <h3 class="card-title"><a href="https://matterthathinks.github.io/india-vs-china/" target="_blank">India vs China</a></h3>
-        <p class="card-blurb">A visual comparison of India and China across economic, demographic, and development indicators.</p>
-        <div class="card-foot"><a href="https://matterthathinks.github.io/india-vs-china/" target="_blank" class="read-link">View</a></div>
-      </article>
-
-      <article class="essay-card" data-cat="misc">
-        <div class="card-n">—</div>
-        <div class="card-cat">Finance &middot; Tool</div>
-        <h3 class="card-title"><a href="https://matterthathinks.github.io/option-strategy-visualizer/" target="_blank">Option Strategy Visualizer</a></h3>
-        <p class="card-blurb">An interactive tool to visualise payoff diagrams for options strategies.</p>
-        <div class="card-foot"><a href="https://matterthathinks.github.io/option-strategy-visualizer/" target="_blank" class="read-link">View</a></div>
-      </article>
-
-      <article class="essay-card" data-cat="misc">
-        <div class="card-n">—</div>
-        <div class="card-cat">Campus &middot; Community</div>
-        <h3 class="card-title"><a href="https://rate-my-prof-niser.vercel.app/" target="_blank">Rate My Prof — NISER</a></h3>
-        <p class="card-blurb">A professor rating platform built for the NISER community.</p>
-        <div class="card-foot"><a href="https://rate-my-prof-niser.vercel.app/" target="_blank" class="read-link">View</a></div>
-      </article>
-
-    </div>
-  </div>
-
   <!-- ABOUT -->
   <section class="about-section" id="about">
     <div class="about-left">
@@ -675,33 +642,9 @@ document.querySelectorAll('.cat-tab').forEach(function(tab) {
     var cat = this.dataset.cat;
     document.querySelectorAll('.cat-tab').forEach(function(t){ t.classList.remove('active'); });
     this.classList.add('active');
-
-    var miscSection = document.getElementById('miscSection');
-    var essayGrid   = document.getElementById('essayGrid');
-    var archiveList = document.querySelector('.archive-list');
-    var archiveLabel = document.querySelector('#archive');
-    var pullQuote   = document.querySelector('.pull-quote');
-
-    if (cat === 'misc') {
-      // Show misc, hide essay grid + archive + pull quote
-      miscSection.style.display = 'block';
-      essayGrid.style.display = 'none';
-      if (archiveList) archiveList.style.display = 'none';
-      if (archiveLabel) archiveLabel.style.display = 'none';
-      if (pullQuote) pullQuote.style.display = 'none';
-    } else {
-      // Hide misc, restore everything
-      miscSection.style.display = 'none';
-      essayGrid.style.display = '';
-      if (archiveList) archiveList.style.display = '';
-      if (archiveLabel) archiveLabel.style.display = '';
-      if (pullQuote) pullQuote.style.display = '';
-
-      // Filter essay cards
-      document.querySelectorAll('.essay-card').forEach(function(card) {
-        card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
-      });
-    }
+    document.querySelectorAll('.essay-card').forEach(function(card) {
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+    });
   });
 });
 
