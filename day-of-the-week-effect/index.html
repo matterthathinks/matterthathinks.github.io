@@ -331,6 +331,16 @@ footer a{color:var(--text3)}
       <button class="tab" onclick="setHmRange('All')">All Data</button>
     </div>
 
+    <div style="
+    margin-top:-8px;
+    margin-bottom:18px;
+    font-size:12px;
+    color:var(--text3);
+    font-style:italic;
+    ">
+    * <strong style="color:var(--text2);">"All Data"</strong> refers to the complete dataset analysed, covering <strong>1 January 2022 – June 2026</strong>.
+    </div>
+    
     <div style="display:flex;gap:1.5rem;margin-bottom:1rem;flex-wrap:wrap">
       <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text2);cursor:pointer">
         <input type="radio" name="hmMetric" value="avg" checked onchange="setHmMetric('avg')"> Avg daily return %
@@ -354,6 +364,16 @@ footer a{color:var(--text3)}
       <div style="width:180px;height:10px;border-radius:4px;background:linear-gradient(to right,#1D9E75,rgba(60,60,64,.3),#e85c5c)"></div>
       <span>Higher returns (costlier to buy)</span>
     </div>
+
+    <div class="notice" style="margin-top:1.2rem;">
+    <strong>ℹ️ Reading this heatmap</strong><br><br>
+    
+    <strong>All Data</strong> refers to the complete dataset analysed, covering <strong>1 January 2022 – June 2026</strong>.
+    
+    <br><br>
+    
+    <strong>⚠️</strong> Markets marked with this symbol have a <strong>limited historical dataset</strong> (approximately one month or fewer than 10 observations per weekday). Their weekday patterns should be interpreted with additional caution compared with markets that have over four years of historical data.
+    </div>          
   </div>
 </div>
 </section>
