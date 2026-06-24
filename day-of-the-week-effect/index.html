@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Day-of-Week Effect — Does Tuesday Really Boost Your SIP?</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root {
+  --bg: #0d0d0f;
+  --bg2: #141416;
+  --bg3: #1c1c1f;
+  --bg4: #242428;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --text: #f0ede8;
+  --text2: #a09d98;
+  --text3: #6b6864;
+  --accent: #7c6fe0;
+  --accent2: #5ad4a5;
+  --amber: #f0a832;
+  --red: #e85c5c;
+  --blue: #4fa3e8;
+  --pink: #e87fba;
+  --green: #5ad4a5;
+  --teal: #3ecfcf;
+  --r: 10px;
+  --r2: 16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent);color:#fff}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(13,13,15,0.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;gap:2rem;height:56px}
+.nav-logo{font-weight:700;font-size:15px;color:var(--text);letter-spacing:-.3px}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:1.5rem;list-style:none;margin-left:auto}
+.nav-links a{font-size:13px;color:var(--text2);transition:color .2s}
+.nav-links a:hover{color:var(--text);text-decoration:none}
+
+/* HERO */
+.hero{min-height:88vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,111,224,0.12) 0%, transparent 70%)}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(124,111,224,0.12);border:1px solid rgba(124,111,224,0.3);border-radius:100px;padding:5px 14px;font-size:12px;color:var(--accent);margin-bottom:1.5rem;letter-spacing:.05em;text-transform:uppercase;font-weight:600}
+h1{font-size:clamp(2.4rem,6vw,5rem);font-weight:800;line-height:1.1;letter-spacing:-2px;margin-bottom:1.5rem}
+h1 .hl{background:linear-gradient(135deg,var(--accent),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:var(--text2);max-width:640px;margin:0 auto 2.5rem;line-height:1.7}
+.hero-cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;border-radius:100px;padding:12px 28px;font-size:15px;font-weight:600;transition:opacity .2s;text-decoration:none}
+.hero-cta:hover{opacity:.85;text-decoration:none}
+.hero-stats{display:flex;justify-content:center;gap:3rem;margin-top:4rem;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat-n{font-size:2.2rem;font-weight:800;letter-spacing:-1px}
+.hero-stat-l{font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+
+/* SECTIONS */
+section{padding:6rem 0}
+.container{max-width:1100px;margin:0 auto;padding:0 2rem}
+.section-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700;margin-bottom:.75rem}
+h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-1px;line-height:1.15;margin-bottom:1rem}
+h3{font-size:1.3rem;font-weight:700;letter-spacing:-.3px;margin-bottom:.5rem}
+.lead{font-size:1.05rem;color:var(--text2);line-height:1.75;max-width:720px}
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* CARDS */
+.card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:1.5rem}
+.card-sm{padding:1rem 1.2rem;border-radius:var(--r)}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem}
+.grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem}
+.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem}
+.stat-label{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:.35rem}
+.stat-val{font-size:2rem;font-weight:800;letter-spacing:-1px}
+.stat-sub{font-size:12px;color:var(--text3);margin-top:.2rem}
+.badge{display:inline-block;padding:2px 8px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.04em}
+.badge-green{background:rgba(90,212,165,.15);color:var(--green)}
+.badge-red{background:rgba(232,92,92,.15);color:var(--red)}
+.badge-amber{background:rgba(240,168,50,.12);color:var(--amber)}
+.badge-purple{background:rgba(124,111,224,.15);color:var(--accent)}
+.badge-blue{background:rgba(79,163,232,.12);color:var(--blue)}
+
+/* TABS */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.5rem}
+.tab{padding:6px 16px;border-radius:100px;font-size:13px;font-weight:500;border:1px solid var(--border2);background:transparent;color:var(--text3);cursor:pointer;transition:all .2s}
+.tab:hover{color:var(--text);border-color:var(--border2)}
+.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* HEATMAP */
+.hm-wrap{overflow-x:auto;margin-top:1.5rem}
+.hm-table{min-width:600px;width:100%;border-collapse:separate;border-spacing:3px}
+.hm-table th{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);padding:6px 8px;text-align:center}
+.hm-table th:first-child{text-align:left;width:150px}
+.hm-table td{padding:0;border-radius:7px;text-align:center;height:44px;font-size:12px;font-weight:600;transition:transform .15s}
+.hm-table td:first-child{background:transparent!important;text-align:left;padding:0 8px;font-size:12px;color:var(--text);font-weight:500}
+.hm-table td:hover{transform:scale(1.05)}
+.hm-sub{font-size:10px;font-weight:400;opacity:.7;display:block}
+.hm-best{outline:2px solid var(--green);outline-offset:-2px}
+.hm-worst{outline:2px solid var(--red);outline-offset:-2px}
+
+/* CHART wrappers */
+.chart-wrap{position:relative;width:100%}
+.chart-legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:10px}
+.chart-legend span{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2)}
+.chart-legend-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+
+/* TIMELINE/RESEARCH */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),var(--teal))}
+.timeline-item{position:relative;padding-bottom:2.5rem}
+.timeline-item::before{content:'';position:absolute;left:-2rem;top:4px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);transform:translateX(-4px)}
+.timeline-year{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:.3rem}
+.timeline-title{font-size:1rem;font-weight:700;margin-bottom:.3rem}
+.timeline-body{font-size:14px;color:var(--text2);line-height:1.65}
+
+/* WHY BOX */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-top:1.5rem}
+.why-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r2);padding:1.4rem}
+.why-icon{font-size:1.6rem;margin-bottom:.75rem}
+.why-title{font-size:1rem;font-weight:700;margin-bottom:.4rem}
+.why-body{font-size:13.5px;color:var(--text2);line-height:1.65}
+
+/* FOOTER */
+footer{padding:3rem 2rem;text-align:center;border-top:1px solid var(--border);color:var(--text3);font-size:13px}
+footer a{color:var(--text3)}
+
+/* SCROLL ANIMATION */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:none}
+
+/* TOOLTIP */
+.tooltip-wrap{position:relative;display:inline-block}
+.tooltip-wrap:hover .tooltip-box{display:block}
+.tooltip-box{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--bg4);border:1px solid var(--border2);border-radius:8px;padding:8px 12px;font-size:12px;color:var(--text);white-space:nowrap;z-index:10;pointer-events:none}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  nav{padding:0 1rem;gap:1rem}
+  .nav-links{display:none}
+  .hero{padding:5rem 1rem 3rem}
+  .grid-5{grid-template-columns:repeat(3,1fr)}
+  h1{letter-spacing:-1px}
+  .hero-stats{gap:2rem}
+}
+
+/* NOTICE BOX */
+.notice{background:rgba(240,168,50,.07);border:1px solid rgba(240,168,50,.2);border-radius:var(--r);padding:1rem 1.2rem;font-size:13px;color:var(--text2);line-height:1.65;margin-top:1rem}
+.notice strong{color:var(--amber)}
+
+/* MARKET SELECTOR */
+.market-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.5rem}
+.mpill{padding:5px 12px;border-radius:100px;font-size:12px;font-weight:600;border:1px solid var(--border2);background:transparent;color:var(--text3);cursor:pointer;transition:all .2s}
+.mpill:hover{color:var(--text)}
+.mpill.active{color:#fff}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;font-size:13px}
+.data-table th{text-align:left;padding:8px 12px;border-bottom:1px solid var(--border2);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);font-weight:700}
+.data-table td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text2)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table .val-pos{color:var(--green);font-weight:600}
+.data-table .val-neg{color:var(--red);font-weight:600}
+
+/* COMPARISON BARS */
+.comp-bar-wrap{display:flex;align-items:center;gap:10px;height:28px}
+.comp-bar-label{width:32px;font-size:12px;color:var(--text2);flex-shrink:0;text-align:right}
+.comp-bar-track{flex:1;background:var(--bg4);border-radius:4px;height:14px;position:relative;overflow:hidden}
+.comp-bar-fill{height:100%;border-radius:4px;transition:width .6s ease}
+.comp-bar-val{font-size:12px;font-weight:600;width:48px;flex-shrink:0}
+
+/* CALLOUT */
+.callout{background:linear-gradient(135deg,rgba(124,111,224,.08),rgba(90,212,165,.06));border:1px solid rgba(124,111,224,.2);border-radius:var(--r2);padding:1.8rem;margin:2rem 0}
+.callout h3{font-size:1.15rem;margin-bottom:.5rem}
+.callout p{font-size:14px;color:var(--text2);line-height:1.7}
+
+/* progress ring */
+.ring-container{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.ring-label{font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em}
+.ring-pct{font-size:1.2rem;font-weight:800}
+
+/* BIG number */
+.big-day{font-size:3.5rem;font-weight:900;letter-spacing:-3px;line-height:1}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">day<span>effect</span>.study</div>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#explorer">Explorer</a></li>
+    <li><a href="#heatmap">Heatmap</a></li>
+    <li><a href="#cumulative">Cumulative</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#sip">SIP Guide</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div style="position:relative;z-index:1">
+    <div class="hero-badge">📊 Data-driven analysis · 13 global markets · 4.5 years</div>
+    <h1>Does the day you invest<br>actually <span class="hl">matter?</span></h1>
+    <p class="hero-sub">We analysed 55,000+ daily return data points across Indian indices, US markets, Japan, China, Europe, commodities and mutual funds — to find out whether the <strong style="color:var(--text)">Day-of-Week Effect</strong> is real, and what it means for your SIP.</p>
+    <a href="#overview" class="hero-cta">Explore the data ↓</a>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-n" style="color:var(--accent)">13</div>
+        <div class="hero-stat-l">Markets analysed</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n" style="color:var(--green)">4.5yr</div>
+        <div class="hero-stat-l">Data history</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n" style="color:var(--amber)">5</div>
+        <div class="hero-stat-l">Time ranges</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n" style="color:var(--blue)">50yr</div>
+        <div class="hero-stat-l">Of research</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- OVERVIEW -->
+<section id="overview">
+<div class="container">
+  <div class="fade-up">
+    <div class="section-eyebrow">The Hypothesis</div>
+    <h2>The market has a weekly rhythm.<br>Can you exploit it?</h2>
+    <p class="lead">The <strong>Day-of-Week (DoW) Effect</strong> is one of the most studied calendar anomalies in finance. The core idea: stock returns are not uniformly distributed across the five trading days. Some days systematically deliver lower returns than others — and for a long-term SIP investor, consistently buying on a "cheaper" day could compound meaningfully over decades.</p>
+  </div>
+
+  <div class="grid-3" style="margin-top:2.5rem">
+    <div class="card fade-up">
+      <div style="font-size:2rem;margin-bottom:.75rem">📉</div>
+      <h3>The Monday Effect</h3>
+      <p style="font-size:14px;color:var(--text2);line-height:1.65">Documented since 1973, US markets historically deliver negative returns on Mondays. Bad news accumulates over weekends and gets priced in at Monday's open — creating a consistent downward drift.</p>
+    </div>
+    <div class="card fade-up">
+      <div style="font-size:2rem;margin-bottom:.75rem">🌏</div>
+      <h3>The Asian Tuesday Shift</h3>
+      <p style="font-size:14px;color:var(--text2);line-height:1.65">In Japan, India and other Asian markets, the negative effect shifts to <strong style="color:var(--text)">Tuesday</strong>. Monday's US close transmits to Asian Tuesday opens via overnight futures. India absorbs global weekend sentiment a full day later.</p>
+    </div>
+    <div class="card fade-up">
+      <div style="font-size:2rem;margin-bottom:.75rem">📈</div>
+      <h3>The Friday Strength</h3>
+      <p style="font-size:14px;color:var(--text2);line-height:1.65">Fridays tend to be strong globally. Institutional traders square positions, retail sentiment is positive pre-weekend, and short-sellers cover — creating an upward bias. The worst day to SIP.</p>
+    </div>
+  </div>
+
+  <div class="callout fade-up">
+    <h3>🔑 Key finding from our data</h3>
+    <p>Across 4.5 years of daily data, <strong style="color:var(--text)">Wednesday is the single most consistent best SIP day for Indian markets</strong> (Nifty 50: +27.89% cumulative Wednesday-only returns vs –10.30% Thursday). For US markets, <strong style="color:var(--text)">Monday dominates</strong> (S&P 500: +25.20% Monday vs –9.71% Thursday). For Japan (Nikkei), <strong style="color:var(--text)">Tuesday is the clear winner</strong> (+62.97% cumulative). Friday is the worst SIP day in 9 out of 13 markets studied.</p>
+  </div>
+</div>
+</section>
+
+<hr class="divider">
+
+<!-- INTERACTIVE EXPLORER -->
+<section id="explorer" style="padding:5rem 0">
+<div class="container">
+  <div class="fade-up">
+    <div class="section-eyebrow">Interactive Explorer</div>
+    <h2>Daily returns by market & time range</h2>
+    <p class="lead" style="margin-bottom:2rem">Select any market and time range to explore day-of-week return patterns. The bar chart shows average daily close-to-close returns (%) — lower bars = better SIP entry point.</p>
+  </div>
+
+  <div class="fade-up">
+    <div style="margin-bottom:1rem">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:.5rem;font-weight:700">Market</div>
+      <div class="market-pills" id="marketPills"></div>
+    </div>
+    <div>
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:.5rem;font-weight:700">Time range</div>
+      <div class="tabs" id="rangeTabs">
+        <button class="tab" onclick="setRange('3M')">3 Months</button>
+        <button class="tab" onclick="setRange('6M')">6 Months</button>
+        <button class="tab active" onclick="setRange('1Y')">1 Year</button>
+        <button class="tab" onclick="setRange('3Y')">3 Years</button>
+        <button class="tab" onclick="setRange('All')">All Data</button>
+      </div>
+    </div>
+
+    <div class="grid-5" id="dayCards" style="margin-bottom:1.5rem"></div>
+
+    <div class="card" style="padding:1.2rem">
+      <div class="chart-wrap" style="height:280px">
+        <canvas id="explorerChart" role="img" aria-label="Bar chart of average daily returns by day of week"></canvas>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:1rem;padding:1.2rem">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:.8rem">Detailed statistics</div>
+      <div class="hm-wrap">
+        <table class="data-table" id="statsTable">
+          <thead><tr><th>Day</th><th>Avg Return</th><th>% Green Days</th><th>% Red Days</th><th>Best Day</th><th>Worst Day</th><th>Volatility (σ)</th><th>Sample size</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="notice" id="explorerInsight"></div>
+  </div>
+</div>
+</section>
+
+<hr class="divider">
+
+<!-- HEATMAP -->
+<section id="heatmap" style="padding:5rem 0">
+<div class="container">
+  <div class="fade-up">
+    <div class="section-eyebrow">Global Heatmap</div>
+    <h2>All markets at a glance</h2>
+    <p class="lead" style="margin-bottom:1.5rem">The heatmap below shows average daily returns across all 13 markets and 5 time ranges simultaneously. <span class="badge badge-green">Green</span> = lower returns = cheaper SIP entry. <span class="badge badge-red">Red</span> = higher returns = more expensive to buy. Outlined cells are the best/worst per row.</p>
+
+    <div class="tabs" id="hmRangeTabs">
+      <button class="tab" onclick="setHmRange('3M')">3 Months</button>
+      <button class="tab" onclick="setHmRange('6M')">6 Months</button>
+      <button class="tab active" onclick="setHmRange('1Y')">1 Year</button>
+      <button class="tab" onclick="setHmRange('3Y')">3 Years</button>
+      <button class="tab" onclick="setHmRange('All')">All Data</button>
+    </div>
+
+    <div style="display:flex;gap:1.5rem;margin-bottom:1rem;flex-wrap:wrap">
+      <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text2);cursor:pointer">
+        <input type="radio" name="hmMetric" value="avg" checked onchange="setHmMetric('avg')"> Avg daily return %
+      </label>
+      <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text2);cursor:pointer">
+        <input type="radio" name="hmMetric" value="neg" onchange="setHmMetric('neg')"> % Red days (close < open)
+      </label>
+    </div>
+
+    <div class="hm-wrap">
+      <table class="hm-table" id="hmTable">
+        <thead><tr>
+          <th>Market</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:10px;margin-top:1rem;font-size:12px;color:var(--text3)">
+      <span>Lower returns (better SIP)</span>
+      <div style="width:180px;height:10px;border-radius:4px;background:linear-gradient(to right,#1D9E75,rgba(60,60,64,.3),#e85c5c)"></div>
+      <span>Higher returns (costlier to buy)</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<hr class="divider">
+
+<!-- CUMULATIVE RETURNS -->
+<section id="cumulative" style="padding:5rem 0">
+<div class="container">
+  <div class="fade-up">
+    <div class="section-eyebrow">Cumulative Impact</div>
+    <h2>What if you only invested on one day?</h2>
+    <p class="lead" style="margin-bottom:1.5rem">This hypothetical shows the compounded return you'd have earned investing only on a specific weekday — across the entire dataset period. This isolates the "day premium" purely from day-of-week selection.</p>
+
+    <div class="tabs" id="cumRangeTabs">
+      <button class="tab" onclick="setCumRange('3M')">3 Months</button>
+      <button class="tab" onclick="setCumRange('6M')">6 Months</button>
+      <button class="tab active" onclick="setCumRange('1Y')">1 Year</button>
+      <button class="tab" onclick="setCumRange('3Y')">3 Years</button>
+      <button class="tab" onclick="setCumRange('All')">All Data</button>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;color:var(--text2);margin-bottom:1rem">Indian Markets</div>
+        <div class="chart-wrap" style="height:280px">
+          <canvas id="cumIndiaChart" role="img" aria-label="Cumulative returns by weekday for Indian indices"></canvas>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;color:var(--text2);margin-bottom:1rem">Global Markets</div>
+        <div class="chart-wrap" style="height:280px">
+          <canvas id="cumGlobalChart" role="img" aria-label="Cumulative returns by weekday for global markets"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:1.5rem">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:1rem">Cumulative Wednesday vs Friday gap — Indian markets (All data)</div>
+      <div id="wedFriComparison"></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<hr class="divider">
+
+<!-- RESEARCH -->
+<section id="research" style="padding:5rem 0">
+<div class="container">
+  <div class="fade-up">
+    <div class="section-eyebrow">Academic Research</div>
+    <h2>50 years of evidence behind<br>the day-of-week effect</h2>
+    <p class="lead" style="margin-bottom:2.5rem">This isn't a new discovery. The Day-of-Week effect is one of the most replicated and debated findings in financial economics. Here's the complete intellectual history.</p>
+
+    <div class="timeline">
+      <div class="timeline-item fade-up">
+        <div class="timeline-year">1973</div>
+        <div class="timeline-title">Frank Cross — The first observation</div>
+        <div class="timeline-body">In his landmark paper <em>"The Behavior of Stock Prices on Fridays and Mondays"</em> in the Financial Analysts Journal, Cross documented that S&P 500 returns from 1953–1970 were positive on Fridays 62% of the time but only 39.5% of the time on Mondays. The Weekend Effect was born. This was the first quantitative proof that weekday isn't just a label — it statistically predicts return direction.</div>
+      </div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-year">1980</div>
+        <div class="timeline-title">Kenneth French — The Monday Effect formalised</div>
+        <div class="timeline-body"><em>"Stock Returns and the Weekend Effect"</em> in the Journal of Financial Economics is the most-cited paper in this space. French found that S&P 500 returns from 1953–1977 were significantly negative on Mondays (–0.17% on average) while all other days were positive. He proposed the "trading time" vs "calendar time" hypothesis: if returns were uniform, overnight and weekend returns should equal trading session returns. They don't. The paper also posed the key puzzle: if everyone knows about this, why hasn't it been arbitraged away?</div>
+      </div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-year">1984</div>
+        <div class="timeline-title">Gibbons & Hess — It's the weekend, not just Monday</div>
+        <div class="timeline-body">Gibbons and Hess showed that the negative Monday return actually originates during the weekend — not during Monday trading hours. Stocks gap down at the Monday open, and the average intraday return on Monday is actually slightly positive. The implication: bad news released Friday after-hours or over the weekend gets fully priced in at Monday's open. This makes the SIP timing question about the open price, not just the daily return.</div>
+      </div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-year">1985</div>
+        <div class="timeline-title">Jaffe & Westerfield — The Asian Tuesday Effect</div>
+        <div class="timeline-body">This is the most relevant paper for Indian investors. Jaffe and Westerfield studied Australia, Canada, Japan, and the UK. They found that Australian and Japanese markets had their lowest returns on <strong>Tuesdays</strong>, not Mondays. The mechanism: these markets trade on Tuesday when the US market's Monday session has already closed. US Monday's negative close transmits to Tokyo and Sydney Tuesday opens via overnight futures. India, being in a similar timezone relationship with the US, shows the same Tuesday spillover effect — precisely what we see in the Nifty data.</div>
+      </div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-year">1990s</div>
+        <div class="timeline-title">International confirmation wave</div>
+        <div class="timeline-body">Multiple studies confirmed the DoW effect globally: Solnik & Bousquet (1990) found negative Tuesday returns in France; Athanassakos & Robinson (1994) in Canada; Board & Sutcliffe (1988) in the UK; Ho (1990) across 8 Asian markets. Each market had its own "weak" day depending on its relationship with the US close. This cross-market transmission mechanism became the dominant explanation — and it's precisely why India's "bad day" is Tuesday rather than Monday.</div>
+      </div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-year">2000–2005</div>
+        <div class="timeline-title">The anomaly begins to weaken in developed markets</div>
+        <div class="timeline-body">Mehdian & Perry (2001) showed the Monday effect in the US had reversed post-1987 — US large-caps actually earned positive Monday returns in the 1990s. Steeley (2001) found the UK Monday effect disappeared post-1990. Interpretation: as institutional awareness grew and algorithmic arbitrage became possible, the easy money was taken. But emerging markets like India lagged — their anomalies persist longer because information dissemination is slower and transaction costs are higher. This is a classic story of market efficiency catching up gradually.</div>
+      </div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-year">2005–2015</div>
+        <div class="timeline-title">Indian market studies emerge</div>
+        <div class="timeline-body">Several papers specifically studied Indian markets: Patel (2008) studied BSE Sensex returns from 1996–2006 and found significant Tuesday weakness. Raj & Kumari (2006) confirmed the negative Tuesday effect in Indian markets across multiple indices. Kaur (2010) found the effect strongest in mid-caps and small-caps. The consensus: India has a clearly identifiable Tuesday weakness that persists across market cycles, though the magnitude varies year to year.</div>
+      </div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-year">2015–Present</div>
+        <div class="timeline-title">The SIP timing question enters the discourse</div>
+        <div class="timeline-body">As SIP investing became mainstream in India (AMFI data shows SIP book growing from ₹4,000 Cr/month in 2016 to ₹26,000+ Cr/month by 2025), researchers began quantifying whether SIP timing adds value. Multiple studies (including analysis by AMFI-registered distributors and academics) found that while the day effect is statistically significant over long periods, consistency of investing matters 10x more than the day chosen. Still, for a cost-free optimisation, Tuesday or Wednesday remains the most defensible choice for Indian SIP investors.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:3rem" class="fade-up">
+    <div class="section-eyebrow">The Mechanisms</div>
+    <h3 style="font-size:1.6rem;margin-bottom:1.5rem">Why does this effect exist?</h3>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">📰</div>
+        <div class="why-title">Weekend news accumulation</div>
+        <div class="why-body">Companies, governments, and central banks release bad news Friday afternoons and over weekends when markets are closed — minimising immediate reaction. This negative sentiment gets digested at Monday's (or Tuesday's) open, creating systematic downward pressure at week-start.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌐</div>
+        <div class="why-title">Cross-market contagion</div>
+        <div class="why-body">US market movements ripple to Asian markets the next session via futures and ADR pricing. When the S&P 500 falls on Monday, Nifty futures reflect it Tuesday morning. India's Tuesday weakness is partly borrowed from America's Monday weakness — a time-zone transmission effect.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🏦</div>
+        <div class="why-title">Institutional settlement patterns</div>
+        <div class="why-body">Institutional investors — mutual funds, insurance companies, FIIs — have weekly settlement and portfolio rebalancing rhythms. They tend to be sellers at week-start (Monday/Tuesday) as they process weekend risk reviews, and buyers toward week-end (Thursday/Friday) to deploy fresh allocations.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">😊</div>
+        <div class="why-title">Investor psychology & mood</div>
+        <div class="why-body">Behavioural finance research (Hirshleifer & Shumway, 2003) links sunshine and good weather to positive returns. The Monday Blues — the documented psychological phenomenon where people feel worse on Mondays — also affects trading sentiment. Retail investors in particular tend to be net sellers on Mondays.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📋</div>
+        <div class="why-title">Options expiry & derivatives</div>
+        <div class="why-body">In India, weekly Nifty options expire on Thursdays. This creates structured buying/selling pressure as market makers and option writers hedge positions mid-week (Tuesday-Wednesday hedging selloffs) and unwind by Thursday close, contributing to the Wednesday dip pattern we observe.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤖</div>
+        <div class="why-title">Why it doesn't disappear</div>
+        <div class="why-body">If the effect is so well known, why hasn't arbitrage eliminated it? Because the edge (0.1–0.2% per day) is too small to overcome transaction costs for active traders. But for a buy-and-hold SIP investor who pays zero marginal cost to choose Tuesday over Friday, the edge is genuinely free — and that's why it persists.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<hr class="divider">
+
+<!-- SIP GUIDE -->
+<section id="sip" style="padding:5rem 0">
+<div class="container">
+  <div class="fade-up">
+    <div class="section-eyebrow">SIP Optimisation</div>
+    <h2>The practical guide for<br>Indian SIP investors</h2>
+    <p class="lead" style="margin-bottom:2rem">Here's what our data, plus 50 years of academic research, actually tells you to do — and not to do.</p>
+  </div>
+
+  <div class="grid-2 fade-up">
+    <div class="card" style="border-color:rgba(90,212,165,.25)">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--green);margin-bottom:1rem">✅ What the data says to do</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.85rem">
+        <li style="font-size:14px;color:var(--text2);line-height:1.6;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:var(--green)">→</span> <strong style="color:var(--text)">Set your SIP date to Tuesday or Wednesday</strong> for Indian indices and mutual funds. Our data shows Wednesday has the lowest cumulative return across 4.5 years (meaning cheaper average price paid over time).</li>
+        <li style="font-size:14px;color:var(--text2);line-height:1.6;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:var(--green)">→</span> <strong style="color:var(--text)">Prioritise consistency over timing.</strong> An SIP missed because you were waiting for "the right day" destroys far more value than any day-of-week optimisation can provide.</li>
+        <li style="font-size:14px;color:var(--text2);line-height:1.6;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:var(--green)">→</span> <strong style="color:var(--text)">For US equity funds (like Parag Parikh Flexicap)</strong> which have significant US exposure, Wednesday still wins in our data (+26.07% cumulative vs –1.46% Friday over all data).</li>
+        <li style="font-size:14px;color:var(--text2);line-height:1.6;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:var(--green)">→</span> <strong style="color:var(--text)">Think in decades, not days.</strong> The day effect is a 0.1–0.2% weekly edge. Compounded over 20 years of SIP, it's meaningful — but it requires staying invested through market cycles, not timing exits.</li>
+      </ul>
+    </div>
+    <div class="card" style="border-color:rgba(232,92,92,.2)">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--red);margin-bottom:1rem">❌ What NOT to do</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.85rem">
+        <li style="font-size:14px;color:var(--text2);line-height:1.6;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:var(--red)">✗</span> <strong style="color:var(--text)">Don't set SIP on Friday</strong> — it's the most expensive day in 9 out of 13 markets, and the worst by cumulative return for Indian indices over 1Y and 3Y periods.</li>
+        <li style="font-size:14px;color:var(--text2);line-height:1.6;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:var(--red)">✗</span> <strong style="color:var(--text)">Don't try to time the market week by week</strong> based on this data. The effect is a statistical average — any given Tuesday can be a +2% day. It only works compounded over hundreds of SIP installments.</li>
+        <li style="font-size:14px;color:var(--text2);line-height:1.6;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:var(--red)">✗</span> <strong style="color:var(--text)">Don't ignore your fund's global exposure.</strong> NASDAQ and FTSE data in our set is limited (&lt;30 observations) — don't over-read those patterns.</li>
+        <li style="font-size:14px;color:var(--text2);line-height:1.6;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:var(--red)">✗</span> <strong style="color:var(--text)">Don't let this analysis cause you to stop or pause your SIP.</strong> The biggest risk to your SIP return isn't which day you invest — it's stopping during a correction.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1.5rem;padding:2rem;background:linear-gradient(135deg,rgba(124,111,224,.06),rgba(90,212,165,.04));border-color:rgba(124,111,224,.2)" class="fade-up">
+    <div style="display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;flex-wrap:wrap">
+      <div>
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700;margin-bottom:.5rem">The bottom line</div>
+        <div class="big-day" style="color:var(--accent);margin-bottom:.5rem">Wed/Tue</div>
+        <p style="font-size:15px;color:var(--text2);line-height:1.7">Set your Nifty SIP to <strong style="color:var(--text)">Wednesday</strong> (best over 3Y and all-data) or <strong style="color:var(--text)">Tuesday</strong> (strong over 6M and 1Y). Avoid Thursday and Friday. This costs you nothing extra and gives you a statistically defensible edge over the life of your investment.</p>
+      </div>
+      <div style="text-align:center;flex-shrink:0">
+        <div style="font-size:3rem;font-weight:900;color:var(--green);letter-spacing:-2px">+27.9%</div>
+        <div style="font-size:12px;color:var(--text3)">Wednesday cumulative<br>Nifty 50 (all data)</div>
+        <div style="font-size:2rem;font-weight:800;color:var(--red);margin-top:1rem">–10.3%</div>
+        <div style="font-size:12px;color:var(--text3)">Thursday cumulative<br>Nifty 50 (all data)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notice" style="margin-top:1.5rem">
+    <strong>⚠️ Disclaimer:</strong> This analysis is for educational purposes only. Past patterns in daily returns do not guarantee future performance. The day-of-week effect varies across market regimes and may not persist. This is not investment advice. Always consult a SEBI-registered financial advisor before making investment decisions. The data covers Jan 2022 – Jun 2026 and may not represent prior market conditions.
+  </div>
+</div>
+</section>
+
+<hr class="divider">
+
+<!-- DATA SOURCES -->
+<section style="padding:4rem 0">
+<div class="container fade-up">
+  <div class="section-eyebrow">Data & Methodology</div>
+  <h2 style="font-size:1.8rem;margin-bottom:1.5rem">What we analysed</h2>
+  <div class="grid-3">
+    <div>
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:.75rem">Indian Markets</div>
+      <div style="display:flex;flex-direction:column;gap:.4rem">
+        <span class="badge badge-purple" style="width:fit-content">Nifty 50</span>
+        <span class="badge badge-purple" style="width:fit-content">Nifty 100</span>
+        <span class="badge badge-purple" style="width:fit-content">Nifty 500</span>
+        <span class="badge badge-purple" style="width:fit-content">Parag Parikh Flexicap MF</span>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--blue);margin-bottom:.75rem">Global Indices</div>
+      <div style="display:flex;flex-direction:column;gap:.4rem">
+        <span class="badge badge-blue" style="width:fit-content">S&P 500 (USA)</span>
+        <span class="badge badge-blue" style="width:fit-content">NASDAQ Composite (USA)</span>
+        <span class="badge badge-blue" style="width:fit-content">Dow Jones (USA)</span>
+        <span class="badge badge-blue" style="width:fit-content">Nikkei 225 (Japan)</span>
+        <span class="badge badge-blue" style="width:fit-content">Shanghai Composite (China)</span>
+        <span class="badge badge-blue" style="width:fit-content">FTSE Europe</span>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--amber);margin-bottom:.75rem">Commodities</div>
+      <div style="display:flex;flex-direction:column;gap:.4rem">
+        <span class="badge badge-amber" style="width:fit-content">Gold Futures</span>
+        <span class="badge badge-amber" style="width:fit-content">Silver Futures</span>
+        <span class="badge badge-amber" style="width:fit-content">Crude Oil WTI Futures</span>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:1.5rem;font-size:13px;color:var(--text3);line-height:1.7">
+    <strong style="color:var(--text2)">Methodology:</strong> All returns are computed as close-to-close percentage change (the "Change %" column from Investing.com daily OHLCV data). Returns are grouped by calendar day of week (Monday=0 through Friday=4). Analysis spans January 2022 – June 2026 for most markets (~4.5 years, ~220 observations per weekday). NASDAQ, FTSE Europe, Gold, Silver, Crude Oil, Nifty 100, and Nifty 500 data covers only the most recent ~1 month (~4–5 observations per day) — results for these should be treated as indicative, not statistically robust. Cumulative returns are computed as compounded product of all daily returns on that weekday: ∏(1 + r_i/100) − 1.
+    <br><br>
+    <strong style="color:var(--text2)">Note on sample sizes:</strong> Markets with ≥200 observations per weekday (Nifty 50, S&P 500, Dow Jones, Shanghai, Nikkei 225, Parag Parikh MF) are statistically robust. Markets with &lt;10 observations per weekday should be treated as directional indicators only.
+  </div>
+</div>
+</section>
+
+<footer>
+  <div>Built with real market data · Analysis by Claude · Data source: Investing.com</div>
+  <div style="margin-top:.5rem">For educational purposes only. Not investment advice.</div>
+</footer>
+
+<script>
+const DATA = {"Nifty 50":{"3M":{"Mon":{"avg":-0.08,"neg":38.5,"pos":61.5,"std":1.0393,"best":1.32,"worst":-2.14,"n":13},"Tue":{"avg":-0.1191,"neg":54.5,"pos":45.5,"std":0.8027,"best":0.87,"worst":-1.83,"n":11},"Wed":{"avg":0.7154,"neg":30.8,"pos":69.2,"std":1.132,"best":3.78,"worst":-0.81,"n":13},"Thu":{"avg":-0.1091,"neg":63.6,"pos":36.4,"std":0.5716,"best":1.18,"worst":-0.93,"n":11},"Fri":{"avg":-0.2109,"neg":63.6,"pos":36.4,"std":1.1323,"best":1.99,"worst":-2.09,"n":11}},"6M":{"Mon":{"avg":-0.1224,"neg":44.0,"pos":56.0,"std":1.0851,"best":1.32,"worst":-2.6,"n":25},"Tue":{"avg":0.1161,"neg":47.8,"pos":52.2,"std":0.972,"best":2.55,"worst":-1.83,"n":23},"Wed":{"avg":0.3935,"neg":34.6,"pos":65.4,"std":1.0631,"best":3.78,"worst":-1.63,"n":26},"Thu":{"avg":-0.3091,"neg":59.1,"pos":40.9,"std":0.9171,"best":1.18,"worst":-3.26,"n":22},"Fri":{"avg":-0.3629,"neg":62.5,"pos":37.5,"std":0.9852,"best":1.99,"worst":-2.09,"n":24}},"1Y":{"Mon":{"avg":0.0214,"neg":43.1,"pos":54.9,"std":0.8542,"best":1.32,"worst":-2.6,"n":51},"Tue":{"avg":0.017,"neg":52.0,"pos":48.0,"std":0.7322,"best":2.55,"worst":-1.83,"n":50},"Wed":{"avg":0.325,"neg":36.0,"pos":64.0,"std":0.8336,"best":3.78,"worst":-1.63,"n":50},"Thu":{"avg":-0.1349,"neg":48.9,"pos":51.1,"std":0.7447,"best":1.21,"worst":-3.26,"n":47},"Fri":{"avg":-0.2608,"neg":59.2,"pos":40.8,"std":0.7943,"best":1.99,"worst":-2.09,"n":49}},"3Y":{"Mon":{"avg":0.0662,"neg":43.5,"pos":55.1,"std":0.9277,"best":3.82,"worst":-3.24,"n":147},"Tue":{"avg":-0.0277,"neg":48.0,"pos":50.0,"std":0.8385,"best":2.55,"worst":-5.93,"n":150},"Wed":{"avg":0.1647,"neg":38.1,"pos":61.2,"std":0.7595,"best":3.78,"worst":-2.09,"n":147},"Thu":{"avg":-0.005,"neg":47.9,"pos":52.1,"std":0.7582,"best":1.89,"worst":-3.26,"n":146},"Fri":{"avg":0.0028,"neg":51.0,"pos":48.3,"std":0.8392,"best":2.39,"worst":-2.09,"n":147}},"All":{"Mon":{"avg":0.042,"neg":43.2,"pos":55.4,"std":0.981,"best":3.82,"worst":-3.24,"n":222},"Tue":{"avg":0.0585,"neg":45.2,"pos":52.9,"std":0.8699,"best":3.03,"worst":-5.93,"n":221},"Wed":{"avg":0.1149,"neg":42.7,"pos":56.8,"std":0.7715,"best":3.78,"worst":-2.29,"n":220},"Thu":{"avg":-0.0458,"neg":50.5,"pos":49.5,"std":0.8487,"best":1.89,"worst":-4.78,"n":220},"Fri":{"avg":0.0049,"neg":51.4,"pos":47.7,"std":0.8938,"best":2.89,"worst":-2.09,"n":220}}},"S&P 500":{"3M":{"Mon":{"avg":0.2083,"neg":41.7,"pos":58.3,"std":0.589,"best":1.65,"worst":-0.41,"n":12},"Tue":{"avg":0.1154,"neg":53.8,"pos":46.2,"std":1.0494,"best":2.91,"worst":-1.44,"n":13},"Wed":{"avg":0.3842,"neg":33.3,"pos":66.7,"std":1.1204,"best":2.51,"worst":-1.62,"n":12},"Thu":{"avg":0.3262,"neg":23.1,"pos":76.9,"std":0.8235,"best":1.75,"worst":-1.74,"n":13},"Fri":{"avg":-0.1309,"neg":36.4,"pos":63.6,"std":1.1451,"best":1.2,"worst":-2.64,"n":11}},"6M":{"Mon":{"avg":0.2804,"neg":30.4,"pos":69.6,"std":0.6011,"best":1.65,"worst":-1.04,"n":23},"Tue":{"avg":-0.055,"neg":57.7,"pos":42.3,"std":0.9158,"best":2.91,"worst":-2.06,"n":26},"Wed":{"avg":0.1956,"neg":44.0,"pos":52.0,"std":0.9413,"best":2.51,"worst":-1.62,"n":25},"Thu":{"avg":-0.0433,"neg":45.8,"pos":54.2,"std":0.856,"best":1.75,"worst":-1.74,"n":24},"Fri":{"avg":-0.0942,"neg":45.8,"pos":54.2,"std":1.0003,"best":1.97,"worst":-2.64,"n":24}},"1Y":{"Mon":{"avg":0.3083,"neg":31.2,"pos":68.8,"std":0.6635,"best":1.65,"worst":-1.04,"n":48},"Tue":{"avg":-0.0411,"neg":56.6,"pos":41.5,"std":0.7506,"best":2.91,"worst":-2.06,"n":53},"Wed":{"avg":0.2087,"neg":32.7,"pos":61.5,"std":0.7205,"best":2.51,"worst":-1.62,"n":52},"Thu":{"avg":-0.038,"neg":42.9,"pos":57.1,"std":0.7887,"best":1.75,"worst":-1.74,"n":49},"Fri":{"avg":-0.0147,"neg":42.9,"pos":57.1,"std":0.9364,"best":1.97,"worst":-2.71,"n":49}},"3Y":{"Mon":{"avg":0.2006,"neg":32.2,"pos":67.1,"std":0.7908,"best":3.26,"worst":-3.0,"n":143},"Tue":{"avg":0.0344,"neg":47.4,"pos":51.9,"std":0.7838,"best":2.91,"worst":-2.12,"n":156},"Wed":{"avg":0.1459,"neg":38.6,"pos":58.2,"std":1.1355,"best":9.52,"worst":-2.95,"n":153},"Thu":{"avg":-0.0511,"neg":49.3,"pos":50.0,"std":0.948,"best":2.3,"worst":-4.84,"n":148},"Fri":{"avg":0.0472,"neg":43.7,"pos":55.6,"std":1.0009,"best":2.13,"worst":-5.97,"n":151}},"All":{"Mon":{"avg":0.1125,"neg":38.0,"pos":61.5,"std":0.9393,"best":3.26,"worst":-3.88,"n":208},"Tue":{"avg":0.0115,"neg":50.2,"pos":48.5,"std":0.9697,"best":3.06,"worst":-4.32,"n":233},"Wed":{"avg":0.1035,"neg":44.8,"pos":53.0,"std":1.1978,"best":9.52,"worst":-4.04,"n":230},"Thu":{"avg":-0.0389,"neg":50.4,"pos":49.1,"std":1.1591,"best":5.54,"worst":-4.84,"n":224},"Fri":{"avg":0.0402,"neg":46.0,"pos":53.5,"std":1.1891,"best":3.06,"worst":-5.97,"n":226}}},"NASDAQ":{"3M":{"Mon":{"avg":0.7575,"neg":25.0,"pos":75.0,"std":1.5643,"best":3.07,"worst":-1.32,"n":4},"Tue":{"avg":-0.622,"neg":60.0,"pos":40.0,"std":1.1515,"best":1.19,"worst":-2.21,"n":5},"Wed":{"avg":-1.035,"neg":75.0,"pos":25.0,"std":0.7463,"best":0.07,"worst":-1.98,"n":4},"Thu":{"avg":1.3175,"neg":25.0,"pos":75.0,"std":0.9991,"best":2.54,"worst":-0.09,"n":4},"Fri":{"avg":-1.2233,"neg":33.3,"pos":66.7,"std":2.0912,"best":0.31,"worst":-4.18,"n":3}},"6M":{"Mon":{"avg":0.7575,"neg":25.0,"pos":75.0,"std":1.5643,"best":3.07,"worst":-1.32,"n":4},"Tue":{"avg":-0.622,"neg":60.0,"pos":40.0,"std":1.1515,"best":1.19,"worst":-2.21,"n":5},"Wed":{"avg":-1.035,"neg":75.0,"pos":25.0,"std":0.7463,"best":0.07,"worst":-1.98,"n":4},"Thu":{"avg":1.3175,"neg":25.0,"pos":75.0,"std":0.9991,"best":2.54,"worst":-0.09,"n":4},"Fri":{"avg":-1.2233,"neg":33.3,"pos":66.7,"std":2.0912,"best":0.31,"worst":-4.18,"n":3}},"1Y":{"Mon":{"avg":0.7575,"neg":25.0,"pos":75.0,"std":1.5643,"best":3.07,"worst":-1.32,"n":4},"Tue":{"avg":-0.622,"neg":60.0,"pos":40.0,"std":1.1515,"best":1.19,"worst":-2.21,"n":5},"Wed":{"avg":-1.035,"neg":75.0,"pos":25.0,"std":0.7463,"best":0.07,"worst":-1.98,"n":4},"Thu":{"avg":1.3175,"neg":25.0,"pos":75.0,"std":0.9991,"best":2.54,"worst":-0.09,"n":4},"Fri":{"avg":-1.2233,"neg":33.3,"pos":66.7,"std":2.0912,"best":0.31,"worst":-4.18,"n":3}},"3Y":{"Mon":{"avg":0.7575,"neg":25.0,"pos":75.0,"std":1.5643,"best":3.07,"worst":-1.32,"n":4},"Tue":{"avg":-0.622,"neg":60.0,"pos":40.0,"std":1.1515,"best":1.19,"worst":-2.21,"n":5},"Wed":{"avg":-1.035,"neg":75.0,"pos":25.0,"std":0.7463,"best":0.07,"worst":-1.98,"n":4},"Thu":{"avg":1.3175,"neg":25.0,"pos":75.0,"std":0.9991,"best":2.54,"worst":-0.09,"n":4},"Fri":{"avg":-1.2233,"neg":33.3,"pos":66.7,"std":2.0912,"best":0.31,"worst":-4.18,"n":3}},"All":{"Mon":{"avg":0.7575,"neg":25.0,"pos":75.0,"std":1.5643,"best":3.07,"worst":-1.32,"n":4},"Tue":{"avg":-0.622,"neg":60.0,"pos":40.0,"std":1.1515,"best":1.19,"worst":-2.21,"n":5},"Wed":{"avg":-1.035,"neg":75.0,"pos":25.0,"std":0.7463,"best":0.07,"worst":-1.98,"n":4},"Thu":{"avg":1.3175,"neg":25.0,"pos":75.0,"std":0.9991,"best":2.54,"worst":-0.09,"n":4},"Fri":{"avg":-1.2233,"neg":33.3,"pos":66.7,"std":2.0912,"best":0.31,"worst":-4.18,"n":3}}},"Dow Jones":{"3M":{"Mon":{"avg":0.1233,"neg":33.3,"pos":66.7,"std":0.4789,"best":0.92,"worst":-1.13,"n":12},"Tue":{"avg":0.2662,"neg":46.2,"pos":53.8,"std":0.773,"best":2.49,"worst":-0.65,"n":13},"Wed":{"avg":0.1675,"neg":50.0,"pos":50.0,"std":1.2303,"best":2.85,"worst":-1.87,"n":12},"Thu":{"avg":0.4146,"neg":30.8,"pos":69.2,"std":0.8632,"best":1.86,"worst":-1.01,"n":13},"Fri":{"avg":-0.1245,"neg":54.5,"pos":45.5,"std":0.9897,"best":1.79,"worst":-1.73,"n":11}},"6M":{"Mon":{"avg":0.2174,"neg":30.4,"pos":69.6,"std":0.6848,"best":1.38,"worst":-1.66,"n":23},"Tue":{"avg":0.0181,"neg":53.8,"pos":46.2,"std":0.7739,"best":2.49,"worst":-1.76,"n":26},"Wed":{"avg":0.0712,"neg":48.0,"pos":52.0,"std":1.0118,"best":2.85,"worst":-1.87,"n":25},"Thu":{"avg":0.0258,"neg":41.7,"pos":58.3,"std":0.9514,"best":1.86,"worst":-1.61,"n":24},"Fri":{"avg":-0.065,"neg":58.3,"pos":41.7,"std":0.9428,"best":2.47,"worst":-1.73,"n":24}},"1Y":{"Mon":{"avg":0.1458,"neg":39.6,"pos":60.4,"std":0.678,"best":1.38,"worst":-1.66,"n":48},"Tue":{"avg":0.0689,"neg":49.1,"pos":50.9,"std":0.7155,"best":2.49,"worst":-1.76,"n":53},"Wed":{"avg":0.1479,"neg":42.3,"pos":55.8,"std":0.7922,"best":2.85,"worst":-1.87,"n":52},"Thu":{"avg":0.0062,"neg":46.0,"pos":52.0,"std":0.8318,"best":1.86,"worst":-1.65,"n":50},"Fri":{"avg":0.0294,"neg":46.9,"pos":53.1,"std":0.8714,"best":2.47,"worst":-1.9,"n":49}},"3Y":{"Mon":{"avg":0.1248,"neg":37.8,"pos":60.8,"std":0.7298,"best":2.81,"worst":-2.6,"n":143},"Tue":{"avg":0.0325,"neg":49.4,"pos":50.6,"std":0.7227,"best":2.66,"worst":-1.76,"n":156},"Wed":{"avg":0.1185,"neg":45.5,"pos":52.6,"std":0.9976,"best":7.87,"worst":-2.58,"n":154},"Thu":{"avg":-0.0232,"neg":45.6,"pos":52.3,"std":0.8541,"best":1.86,"worst":-3.98,"n":149},"Fri":{"avg":0.0512,"neg":40.4,"pos":59.6,"std":0.9177,"best":2.47,"worst":-5.5,"n":151}},"All":{"Mon":{"avg":0.0856,"neg":40.9,"pos":57.2,"std":0.8161,"best":2.81,"worst":-2.79,"n":208},"Tue":{"avg":0.0015,"neg":50.6,"pos":49.4,"std":0.8702,"best":2.8,"worst":-3.94,"n":233},"Wed":{"avg":0.0752,"neg":47.6,"pos":50.6,"std":1.0214,"best":7.87,"worst":-3.57,"n":231},"Thu":{"avg":-0.0351,"neg":48.4,"pos":50.2,"std":0.9632,"best":3.7,"worst":-3.98,"n":225},"Fri":{"avg":0.056,"neg":42.9,"pos":57.1,"std":1.0549,"best":2.68,"worst":-5.5,"n":226}}},"Shanghai":{"3M":{"Mon":{"avg":0.4173,"neg":27.3,"pos":72.7,"std":0.9327,"best":1.78,"worst":-1.7,"n":11},"Tue":{"avg":0.085,"neg":50.0,"pos":50.0,"std":0.7196,"best":1.28,"worst":-1.37,"n":12},"Wed":{"avg":0.47,"neg":23.1,"pos":76.9,"std":0.9232,"best":2.69,"worst":-1.25,"n":13},"Thu":{"avg":-0.4808,"neg":69.2,"pos":30.8,"std":0.7437,"best":0.7,"worst":-2.04,"n":13},"Fri":{"avg":-0.0718,"neg":54.5,"pos":36.4,"std":0.7293,"best":1.12,"worst":-1.02,"n":11}},"6M":{"Mon":{"avg":0.0973,"neg":36.4,"pos":63.6,"std":1.2883,"best":1.78,"worst":-3.63,"n":22},"Tue":{"avg":0.1871,"neg":41.7,"pos":54.2,"std":0.8404,"best":1.78,"worst":-1.43,"n":24},"Wed":{"avg":0.3536,"neg":20.0,"pos":80.0,"std":0.7766,"best":2.69,"worst":-1.25,"n":25},"Thu":{"avg":-0.3391,"neg":65.2,"pos":34.8,"std":0.6748,"best":0.7,"worst":-2.04,"n":23},"Fri":{"avg":-0.1573,"neg":54.5,"pos":40.9,"std":0.7222,"best":1.12,"worst":-1.26,"n":22}},"1Y":{"Mon":{"avg":0.2668,"neg":25.5,"pos":74.5,"std":0.9596,"best":1.78,"worst":-3.63,"n":47},"Tue":{"avg":0.1136,"neg":48.0,"pos":50.0,"std":0.7408,"best":1.78,"worst":-1.43,"n":50},"Wed":{"avg":0.2642,"neg":30.0,"pos":70.0,"std":0.7315,"best":2.69,"worst":-1.76,"n":50},"Thu":{"avg":-0.1008,"neg":51.0,"pos":49.0,"std":0.7401,"best":1.65,"worst":-2.04,"n":49},"Fri":{"avg":-0.1315,"neg":53.2,"pos":44.7,"std":0.8129,"best":1.45,"worst":-2.45,"n":47}},"3Y":{"Mon":{"avg":0.1137,"neg":40.6,"pos":58.7,"std":1.2509,"best":8.06,"worst":-7.34,"n":143},"Tue":{"avg":0.1318,"neg":46.6,"pos":51.4,"std":0.9727,"best":4.59,"worst":-2.53,"n":148},"Wed":{"avg":0.0154,"neg":45.3,"pos":54.1,"std":0.9447,"best":2.69,"worst":-6.62,"n":148},"Thu":{"avg":0.0301,"neg":47.3,"pos":52.1,"std":0.8612,"best":3.61,"worst":-2.66,"n":146},"Fri":{"avg":-0.0968,"neg":52.5,"pos":46.8,"std":0.918,"best":2.91,"worst":-3.06,"n":141}},"All":{"Mon":{"avg":0.047,"neg":42.2,"pos":56.9,"std":1.2311,"best":8.06,"worst":-7.34,"n":211},"Tue":{"avg":0.0709,"neg":47.0,"pos":51.6,"std":1.0352,"best":4.59,"worst":-4.95,"n":219},"Wed":{"avg":0.0011,"neg":48.4,"pos":50.7,"std":0.9425,"best":3.48,"worst":-6.62,"n":219},"Thu":{"avg":0.0152,"neg":50.2,"pos":48.4,"std":0.8315,"best":3.61,"worst":-2.66,"n":219},"Fri":{"avg":-0.0531,"neg":51.2,"pos":48.4,"std":0.9496,"best":2.91,"worst":-3.06,"n":213}}},"FTSE Europe":{"3M":{"Mon":{"avg":0.16,"neg":40.0,"pos":60.0,"std":0.5591,"best":0.94,"worst":-0.47,"n":5},"Tue":{"avg":-0.12,"neg":60.0,"pos":40.0,"std":0.4645,"best":0.59,"worst":-0.53,"n":5},"Wed":{"avg":-0.098,"neg":60.0,"pos":40.0,"std":0.2953,"best":0.18,"worst":-0.67,"n":5},"Thu":{"avg":-0.155,"neg":50.0,"pos":50.0,"std":0.5141,"best":0.39,"worst":-0.75,"n":4},"Fri":{"avg":0.365,"neg":50.0,"pos":50.0,"std":0.8124,"best":1.76,"worst":-0.25,"n":4}},"6M":{"Mon":{"avg":0.16,"neg":40.0,"pos":60.0,"std":0.5591,"best":0.94,"worst":-0.47,"n":5},"Tue":{"avg":-0.12,"neg":60.0,"pos":40.0,"std":0.4645,"best":0.59,"worst":-0.53,"n":5},"Wed":{"avg":-0.098,"neg":60.0,"pos":40.0,"std":0.2953,"best":0.18,"worst":-0.67,"n":5},"Thu":{"avg":-0.155,"neg":50.0,"pos":50.0,"std":0.5141,"best":0.39,"worst":-0.75,"n":4},"Fri":{"avg":0.365,"neg":50.0,"pos":50.0,"std":0.8124,"best":1.76,"worst":-0.25,"n":4}},"1Y":{"Mon":{"avg":0.16,"neg":40.0,"pos":60.0,"std":0.5591,"best":0.94,"worst":-0.47,"n":5},"Tue":{"avg":-0.12,"neg":60.0,"pos":40.0,"std":0.4645,"best":0.59,"worst":-0.53,"n":5},"Wed":{"avg":-0.098,"neg":60.0,"pos":40.0,"std":0.2953,"best":0.18,"worst":-0.67,"n":5},"Thu":{"avg":-0.155,"neg":50.0,"pos":50.0,"std":0.5141,"best":0.39,"worst":-0.75,"n":4},"Fri":{"avg":0.365,"neg":50.0,"pos":50.0,"std":0.8124,"best":1.76,"worst":-0.25,"n":4}},"3Y":{"Mon":{"avg":0.16,"neg":40.0,"pos":60.0,"std":0.5591,"best":0.94,"worst":-0.47,"n":5},"Tue":{"avg":-0.12,"neg":60.0,"pos":40.0,"std":0.4645,"best":0.59,"worst":-0.53,"n":5},"Wed":{"avg":-0.098,"neg":60.0,"pos":40.0,"std":0.2953,"best":0.18,"worst":-0.67,"n":5},"Thu":{"avg":-0.155,"neg":50.0,"pos":50.0,"std":0.5141,"best":0.39,"worst":-0.75,"n":4},"Fri":{"avg":0.365,"neg":50.0,"pos":50.0,"std":0.8124,"best":1.76,"worst":-0.25,"n":4}},"All":{"Mon":{"avg":0.16,"neg":40.0,"pos":60.0,"std":0.5591,"best":0.94,"worst":-0.47,"n":5},"Tue":{"avg":-0.12,"neg":60.0,"pos":40.0,"std":0.4645,"best":0.59,"worst":-0.53,"n":5},"Wed":{"avg":-0.098,"neg":60.0,"pos":40.0,"std":0.2953,"best":0.18,"worst":-0.67,"n":5},"Thu":{"avg":-0.155,"neg":50.0,"pos":50.0,"std":0.5141,"best":0.39,"worst":-0.75,"n":4},"Fri":{"avg":0.365,"neg":50.0,"pos":50.0,"std":0.8124,"best":1.76,"worst":-0.25,"n":4}}},"Nikkei 225":{"3M":{"Mon":{"avg":0.5167,"neg":25.0,"pos":75.0,"std":1.118,"best":2.08,"worst":-1.62,"n":12},"Tue":{"avg":-0.1042,"neg":50.0,"pos":50.0,"std":1.5842,"best":2.43,"worst":-3.83,"n":12},"Wed":{"avg":1.1208,"neg":30.8,"pos":69.2,"std":2.3287,"best":5.39,"worst":-1.89,"n":13},"Thu":{"avg":0.16,"neg":53.8,"pos":46.2,"std":1.5272,"best":3.14,"worst":-2.38,"n":13},"Fri":{"avg":0.5446,"neg":38.5,"pos":61.5,"std":1.5865,"best":2.81,"worst":-1.99,"n":13}},"6M":{"Mon":{"avg":0.2412,"neg":37.5,"pos":62.5,"std":1.2672,"best":2.97,"worst":-2.2,"n":24},"Tue":{"avg":0.4228,"neg":44.0,"pos":56.0,"std":1.7985,"best":3.92,"worst":-3.83,"n":25},"Wed":{"avg":0.8428,"neg":32.0,"pos":68.0,"std":2.1051,"best":5.39,"worst":-3.61,"n":25},"Thu":{"avg":-0.05,"neg":54.2,"pos":45.8,"std":1.4989,"best":3.14,"worst":-3.38,"n":24},"Fri":{"avg":0.3058,"neg":41.7,"pos":58.3,"std":1.334,"best":2.81,"worst":-1.99,"n":24}},"1Y":{"Mon":{"avg":0.3559,"neg":40.9,"pos":59.1,"std":1.4636,"best":4.75,"worst":-2.2,"n":44},"Tue":{"avg":0.0476,"neg":47.1,"pos":51.0,"std":1.5245,"best":3.92,"worst":-3.83,"n":51},"Wed":{"avg":0.5498,"neg":40.4,"pos":59.6,"std":1.7093,"best":5.39,"worst":-3.61,"n":52},"Thu":{"avg":0.3041,"neg":37.3,"pos":62.7,"std":1.3283,"best":3.14,"worst":-3.38,"n":51},"Fri":{"avg":0.195,"neg":46.0,"pos":54.0,"std":1.2881,"best":2.81,"worst":-2.4,"n":50}},"3Y":{"Mon":{"avg":-0.0054,"neg":43.9,"pos":56.1,"std":1.8623,"best":4.75,"worst":-12.4,"n":132},"Tue":{"avg":0.2854,"neg":41.3,"pos":58.0,"std":1.5225,"best":10.23,"worst":-3.83,"n":150},"Wed":{"avg":0.1922,"neg":47.1,"pos":52.3,"std":1.4043,"best":5.39,"worst":-4.24,"n":153},"Thu":{"avg":0.1851,"neg":44.7,"pos":55.3,"std":1.4856,"best":9.13,"worst":-3.38,"n":152},"Fri":{"avg":-0.0413,"neg":49.7,"pos":49.0,"std":1.2935,"best":3.64,"worst":-5.81,"n":149}},"All":{"Mon":{"avg":-0.0229,"neg":43.3,"pos":56.7,"std":1.6605,"best":4.75,"worst":-12.4,"n":201},"Tue":{"avg":0.2278,"neg":38.8,"pos":60.7,"std":1.3898,"best":10.23,"worst":-3.83,"n":224},"Wed":{"avg":0.1412,"neg":48.2,"pos":51.3,"std":1.3453,"best":5.39,"worst":-4.24,"n":226},"Thu":{"avg":0.1163,"neg":46.0,"pos":54.0,"std":1.4016,"best":9.13,"worst":-3.38,"n":224},"Fri":{"avg":0.0205,"neg":47.7,"pos":50.9,"std":1.2826,"best":3.64,"worst":-5.81,"n":222}}},"Gold":{"3M":{"Mon":{"avg":0.36,"neg":50.0,"pos":50.0,"std":1.6306,"best":2.66,"worst":-1.89,"n":4},"Tue":{"avg":-0.772,"neg":60.0,"pos":40.0,"std":0.805,"best":0.3,"worst":-1.76,"n":5},"Wed":{"avg":-1.232,"neg":80.0,"pos":20.0,"std":1.3869,"best":0.62,"worst":-3.57,"n":5},"Thu":{"avg":-0.3925,"neg":50.0,"pos":50.0,"std":1.6714,"best":1.14,"worst":-3.09,"n":4},"Fri":{"avg":-0.1125,"neg":50.0,"pos":50.0,"std":2.4235,"best":3.03,"worst":-3.1,"n":4}},"6M":{"Mon":{"avg":0.36,"neg":50.0,"pos":50.0,"std":1.6306,"best":2.66,"worst":-1.89,"n":4},"Tue":{"avg":-0.772,"neg":60.0,"pos":40.0,"std":0.805,"best":0.3,"worst":-1.76,"n":5},"Wed":{"avg":-1.232,"neg":80.0,"pos":20.0,"std":1.3869,"best":0.62,"worst":-3.57,"n":5},"Thu":{"avg":-0.3925,"neg":50.0,"pos":50.0,"std":1.6714,"best":1.14,"worst":-3.09,"n":4},"Fri":{"avg":-0.1125,"neg":50.0,"pos":50.0,"std":2.4235,"best":3.03,"worst":-3.1,"n":4}},"1Y":{"Mon":{"avg":0.36,"neg":50.0,"pos":50.0,"std":1.6306,"best":2.66,"worst":-1.89,"n":4},"Tue":{"avg":-0.772,"neg":60.0,"pos":40.0,"std":0.805,"best":0.3,"worst":-1.76,"n":5},"Wed":{"avg":-1.232,"neg":80.0,"pos":20.0,"std":1.3869,"best":0.62,"worst":-3.57,"n":5},"Thu":{"avg":-0.3925,"neg":50.0,"pos":50.0,"std":1.6714,"best":1.14,"worst":-3.09,"n":4},"Fri":{"avg":-0.1125,"neg":50.0,"pos":50.0,"std":2.4235,"best":3.03,"worst":-3.1,"n":4}},"3Y":{"Mon":{"avg":0.36,"neg":50.0,"pos":50.0,"std":1.6306,"best":2.66,"worst":-1.89,"n":4},"Tue":{"avg":-0.772,"neg":60.0,"pos":40.0,"std":0.805,"best":0.3,"worst":-1.76,"n":5},"Wed":{"avg":-1.232,"neg":80.0,"pos":20.0,"std":1.3869,"best":0.62,"worst":-3.57,"n":5},"Thu":{"avg":-0.3925,"neg":50.0,"pos":50.0,"std":1.6714,"best":1.14,"worst":-3.09,"n":4},"Fri":{"avg":-0.1125,"neg":50.0,"pos":50.0,"std":2.4235,"best":3.03,"worst":-3.1,"n":4}},"All":{"Mon":{"avg":0.36,"neg":50.0,"pos":50.0,"std":1.6306,"best":2.66,"worst":-1.89,"n":4},"Tue":{"avg":-0.772,"neg":60.0,"pos":40.0,"std":0.805,"best":0.3,"worst":-1.76,"n":5},"Wed":{"avg":-1.232,"neg":80.0,"pos":20.0,"std":1.3869,"best":0.62,"worst":-3.57,"n":5},"Thu":{"avg":-0.3925,"neg":50.0,"pos":50.0,"std":1.6714,"best":1.14,"worst":-3.09,"n":4},"Fri":{"avg":-0.1125,"neg":50.0,"pos":50.0,"std":2.4235,"best":3.03,"worst":-3.1,"n":4}}},"Silver":{"3M":{"Mon":{"avg":0.68,"neg":50.0,"pos":50.0,"std":1.6605,"best":3.25,"worst":-0.82,"n":4},"Tue":{"avg":-1.91,"neg":60.0,"pos":40.0,"std":2.6383,"best":0.53,"worst":-5.36,"n":5},"Wed":{"avg":-1.108,"neg":80.0,"pos":20.0,"std":1.2642,"best":1.08,"worst":-2.46,"n":5},"Thu":{"avg":-1.4225,"neg":50.0,"pos":50.0,"std":2.948,"best":1.36,"worst":-6.29,"n":4},"Fri":{"avg":-0.635,"neg":75.0,"pos":25.0,"std":4.6028,"best":6.21,"worst":-6.58,"n":4}},"6M":{"Mon":{"avg":0.68,"neg":50.0,"pos":50.0,"std":1.6605,"best":3.25,"worst":-0.82,"n":4},"Tue":{"avg":-1.91,"neg":60.0,"pos":40.0,"std":2.6383,"best":0.53,"worst":-5.36,"n":5},"Wed":{"avg":-1.108,"neg":80.0,"pos":20.0,"std":1.2642,"best":1.08,"worst":-2.46,"n":5},"Thu":{"avg":-1.4225,"neg":50.0,"pos":50.0,"std":2.948,"best":1.36,"worst":-6.29,"n":4},"Fri":{"avg":-0.635,"neg":75.0,"pos":25.0,"std":4.6028,"best":6.21,"worst":-6.58,"n":4}},"1Y":{"Mon":{"avg":0.68,"neg":50.0,"pos":50.0,"std":1.6605,"best":3.25,"worst":-0.82,"n":4},"Tue":{"avg":-1.91,"neg":60.0,"pos":40.0,"std":2.6383,"best":0.53,"worst":-5.36,"n":5},"Wed":{"avg":-1.108,"neg":80.0,"pos":20.0,"std":1.2642,"best":1.08,"worst":-2.46,"n":5},"Thu":{"avg":-1.4225,"neg":50.0,"pos":50.0,"std":2.948,"best":1.36,"worst":-6.29,"n":4},"Fri":{"avg":-0.635,"neg":75.0,"pos":25.0,"std":4.6028,"best":6.21,"worst":-6.58,"n":4}},"3Y":{"Mon":{"avg":0.68,"neg":50.0,"pos":50.0,"std":1.6605,"best":3.25,"worst":-0.82,"n":4},"Tue":{"avg":-1.91,"neg":60.0,"pos":40.0,"std":2.6383,"best":0.53,"worst":-5.36,"n":5},"Wed":{"avg":-1.108,"neg":80.0,"pos":20.0,"std":1.2642,"best":1.08,"worst":-2.46,"n":5},"Thu":{"avg":-1.4225,"neg":50.0,"pos":50.0,"std":2.948,"best":1.36,"worst":-6.29,"n":4},"Fri":{"avg":-0.635,"neg":75.0,"pos":25.0,"std":4.6028,"best":6.21,"worst":-6.58,"n":4}},"All":{"Mon":{"avg":0.68,"neg":50.0,"pos":50.0,"std":1.6605,"best":3.25,"worst":-0.82,"n":4},"Tue":{"avg":-1.91,"neg":60.0,"pos":40.0,"std":2.6383,"best":0.53,"worst":-5.36,"n":5},"Wed":{"avg":-1.108,"neg":80.0,"pos":20.0,"std":1.2642,"best":1.08,"worst":-2.46,"n":5},"Thu":{"avg":-1.4225,"neg":50.0,"pos":50.0,"std":2.948,"best":1.36,"worst":-6.29,"n":4},"Fri":{"avg":-0.635,"neg":75.0,"pos":25.0,"std":4.6028,"best":6.21,"worst":-6.58,"n":4}}},"Crude Oil":{"3M":{"Mon":{"avg":-0.5725,"neg":50.0,"pos":50.0,"std":4.3447,"best":5.49,"worst":-6.41,"n":4},"Tue":{"avg":-2.374,"neg":80.0,"pos":20.0,"std":2.3017,"best":1.74,"worst":-5.25,"n":5},"Wed":{"avg":-0.196,"neg":40.0,"pos":60.0,"std":3.1148,"best":2.41,"worst":-5.55,"n":5},"Thu":{"avg":-1.42,"neg":75.0,"pos":25.0,"std":1.4427,"best":0.25,"worst":-3.1,"n":4},"Fri":{"avg":-1.9425,"neg":100.0,"pos":0.0,"std":1.1814,"best":-0.12,"worst":-3.23,"n":4}},"6M":{"Mon":{"avg":-0.5725,"neg":50.0,"pos":50.0,"std":4.3447,"best":5.49,"worst":-6.41,"n":4},"Tue":{"avg":-2.374,"neg":80.0,"pos":20.0,"std":2.3017,"best":1.74,"worst":-5.25,"n":5},"Wed":{"avg":-0.196,"neg":40.0,"pos":60.0,"std":3.1148,"best":2.41,"worst":-5.55,"n":5},"Thu":{"avg":-1.42,"neg":75.0,"pos":25.0,"std":1.4427,"best":0.25,"worst":-3.1,"n":4},"Fri":{"avg":-1.9425,"neg":100.0,"pos":0.0,"std":1.1814,"best":-0.12,"worst":-3.23,"n":4}},"1Y":{"Mon":{"avg":-0.5725,"neg":50.0,"pos":50.0,"std":4.3447,"best":5.49,"worst":-6.41,"n":4},"Tue":{"avg":-2.374,"neg":80.0,"pos":20.0,"std":2.3017,"best":1.74,"worst":-5.25,"n":5},"Wed":{"avg":-0.196,"neg":40.0,"pos":60.0,"std":3.1148,"best":2.41,"worst":-5.55,"n":5},"Thu":{"avg":-1.42,"neg":75.0,"pos":25.0,"std":1.4427,"best":0.25,"worst":-3.1,"n":4},"Fri":{"avg":-1.9425,"neg":100.0,"pos":0.0,"std":1.1814,"best":-0.12,"worst":-3.23,"n":4}},"3Y":{"Mon":{"avg":-0.5725,"neg":50.0,"pos":50.0,"std":4.3447,"best":5.49,"worst":-6.41,"n":4},"Tue":{"avg":-2.374,"neg":80.0,"pos":20.0,"std":2.3017,"best":1.74,"worst":-5.25,"n":5},"Wed":{"avg":-0.196,"neg":40.0,"pos":60.0,"std":3.1148,"best":2.41,"worst":-5.55,"n":5},"Thu":{"avg":-1.42,"neg":75.0,"pos":25.0,"std":1.4427,"best":0.25,"worst":-3.1,"n":4},"Fri":{"avg":-1.9425,"neg":100.0,"pos":0.0,"std":1.1814,"best":-0.12,"worst":-3.23,"n":4}},"All":{"Mon":{"avg":-0.5725,"neg":50.0,"pos":50.0,"std":4.3447,"best":5.49,"worst":-6.41,"n":4},"Tue":{"avg":-2.374,"neg":80.0,"pos":20.0,"std":2.3017,"best":1.74,"worst":-5.25,"n":5},"Wed":{"avg":-0.196,"neg":40.0,"pos":60.0,"std":3.1148,"best":2.41,"worst":-5.55,"n":5},"Thu":{"avg":-1.42,"neg":75.0,"pos":25.0,"std":1.4427,"best":0.25,"worst":-3.1,"n":4},"Fri":{"avg":-1.9425,"neg":100.0,"pos":0.0,"std":1.1814,"best":-0.12,"worst":-3.23,"n":4}}},"Nifty 100":{"3M":{"Mon":{"avg":0.206,"neg":40.0,"pos":60.0,"std":1.0518,"best":1.35,"worst":-1.17,"n":5},"Tue":{"avg":0.0,"neg":40.0,"pos":60.0,"std":0.6985,"best":0.68,"worst":-1.2,"n":5},"Wed":{"avg":0.136,"neg":40.0,"pos":60.0,"std":0.3972,"best":0.64,"worst":-0.34,"n":5},"Thu":{"avg":0.0167,"neg":33.3,"pos":66.7,"std":0.3175,"best":0.37,"worst":-0.4,"n":3},"Fri":{"avg":-0.0225,"neg":75.0,"pos":25.0,"std":1.2937,"best":2.06,"worst":-1.45,"n":4}},"6M":{"Mon":{"avg":0.206,"neg":40.0,"pos":60.0,"std":1.0518,"best":1.35,"worst":-1.17,"n":5},"Tue":{"avg":0.0,"neg":40.0,"pos":60.0,"std":0.6985,"best":0.68,"worst":-1.2,"n":5},"Wed":{"avg":0.136,"neg":40.0,"pos":60.0,"std":0.3972,"best":0.64,"worst":-0.34,"n":5},"Thu":{"avg":0.0167,"neg":33.3,"pos":66.7,"std":0.3175,"best":0.37,"worst":-0.4,"n":3},"Fri":{"avg":-0.0225,"neg":75.0,"pos":25.0,"std":1.2937,"best":2.06,"worst":-1.45,"n":4}},"1Y":{"Mon":{"avg":0.206,"neg":40.0,"pos":60.0,"std":1.0518,"best":1.35,"worst":-1.17,"n":5},"Tue":{"avg":0.0,"neg":40.0,"pos":60.0,"std":0.6985,"best":0.68,"worst":-1.2,"n":5},"Wed":{"avg":0.136,"neg":40.0,"pos":60.0,"std":0.3972,"best":0.64,"worst":-0.34,"n":5},"Thu":{"avg":0.0167,"neg":33.3,"pos":66.7,"std":0.3175,"best":0.37,"worst":-0.4,"n":3},"Fri":{"avg":-0.0225,"neg":75.0,"pos":25.0,"std":1.2937,"best":2.06,"worst":-1.45,"n":4}},"3Y":{"Mon":{"avg":0.206,"neg":40.0,"pos":60.0,"std":1.0518,"best":1.35,"worst":-1.17,"n":5},"Tue":{"avg":0.0,"neg":40.0,"pos":60.0,"std":0.6985,"best":0.68,"worst":-1.2,"n":5},"Wed":{"avg":0.136,"neg":40.0,"pos":60.0,"std":0.3972,"best":0.64,"worst":-0.34,"n":5},"Thu":{"avg":0.0167,"neg":33.3,"pos":66.7,"std":0.3175,"best":0.37,"worst":-0.4,"n":3},"Fri":{"avg":-0.0225,"neg":75.0,"pos":25.0,"std":1.2937,"best":2.06,"worst":-1.45,"n":4}},"All":{"Mon":{"avg":0.206,"neg":40.0,"pos":60.0,"std":1.0518,"best":1.35,"worst":-1.17,"n":5},"Tue":{"avg":0.0,"neg":40.0,"pos":60.0,"std":0.6985,"best":0.68,"worst":-1.2,"n":5},"Wed":{"avg":0.136,"neg":40.0,"pos":60.0,"std":0.3972,"best":0.64,"worst":-0.34,"n":5},"Thu":{"avg":0.0167,"neg":33.3,"pos":66.7,"std":0.3175,"best":0.37,"worst":-0.4,"n":3},"Fri":{"avg":-0.0225,"neg":75.0,"pos":25.0,"std":1.2937,"best":2.06,"worst":-1.45,"n":4}}},"Nifty 500":{"3M":{"Mon":{"avg":0.152,"neg":40.0,"pos":60.0,"std":1.0911,"best":1.29,"worst":-1.3,"n":5},"Tue":{"avg":0.1,"neg":40.0,"pos":60.0,"std":0.6748,"best":0.89,"worst":-1.08,"n":5},"Wed":{"avg":0.072,"neg":40.0,"pos":60.0,"std":0.4492,"best":0.49,"worst":-0.61,"n":5},"Thu":{"avg":0.0267,"neg":33.3,"pos":66.7,"std":0.4106,"best":0.42,"worst":-0.54,"n":3},"Fri":{"avg":0.1075,"neg":75.0,"pos":25.0,"std":1.2908,"best":2.19,"worst":-1.35,"n":4}},"6M":{"Mon":{"avg":0.152,"neg":40.0,"pos":60.0,"std":1.0911,"best":1.29,"worst":-1.3,"n":5},"Tue":{"avg":0.1,"neg":40.0,"pos":60.0,"std":0.6748,"best":0.89,"worst":-1.08,"n":5},"Wed":{"avg":0.072,"neg":40.0,"pos":60.0,"std":0.4492,"best":0.49,"worst":-0.61,"n":5},"Thu":{"avg":0.0267,"neg":33.3,"pos":66.7,"std":0.4106,"best":0.42,"worst":-0.54,"n":3},"Fri":{"avg":0.1075,"neg":75.0,"pos":25.0,"std":1.2908,"best":2.19,"worst":-1.35,"n":4}},"1Y":{"Mon":{"avg":0.152,"neg":40.0,"pos":60.0,"std":1.0911,"best":1.29,"worst":-1.3,"n":5},"Tue":{"avg":0.1,"neg":40.0,"pos":60.0,"std":0.6748,"best":0.89,"worst":-1.08,"n":5},"Wed":{"avg":0.072,"neg":40.0,"pos":60.0,"std":0.4492,"best":0.49,"worst":-0.61,"n":5},"Thu":{"avg":0.0167,"neg":33.3,"pos":66.7,"std":0.4106,"best":0.42,"worst":-0.54,"n":3},"Fri":{"avg":0.1075,"neg":75.0,"pos":25.0,"std":1.2908,"best":2.19,"worst":-1.35,"n":4}},"3Y":{"Mon":{"avg":0.152,"neg":40.0,"pos":60.0,"std":1.0911,"best":1.29,"worst":-1.3,"n":5},"Tue":{"avg":0.1,"neg":40.0,"pos":60.0,"std":0.6748,"best":0.89,"worst":-1.08,"n":5},"Wed":{"avg":0.072,"neg":40.0,"pos":60.0,"std":0.4492,"best":0.49,"worst":-0.61,"n":5},"Thu":{"avg":0.0267,"neg":33.3,"pos":66.7,"std":0.4106,"best":0.42,"worst":-0.54,"n":3},"Fri":{"avg":0.1075,"neg":75.0,"pos":25.0,"std":1.2908,"best":2.19,"worst":-1.35,"n":4}},"All":{"Mon":{"avg":0.152,"neg":40.0,"pos":60.0,"std":1.0911,"best":1.29,"worst":-1.3,"n":5},"Tue":{"avg":0.1,"neg":40.0,"pos":60.0,"std":0.6748,"best":0.89,"worst":-1.08,"n":5},"Wed":{"avg":0.072,"neg":40.0,"pos":60.0,"std":0.4492,"best":0.49,"worst":-0.61,"n":5},"Thu":{"avg":0.0267,"neg":33.3,"pos":66.7,"std":0.4106,"best":0.42,"worst":-0.54,"n":3},"Fri":{"avg":0.1075,"neg":75.0,"pos":25.0,"std":1.2908,"best":2.19,"worst":-1.35,"n":4}}},"Parag Parikh MF":{"3M":{"Mon":{"avg":-0.0469,"neg":61.5,"pos":38.5,"std":0.6864,"best":1.12,"worst":-1.38,"n":13},"Tue":{"avg":-0.0033,"neg":50.0,"pos":50.0,"std":0.5528,"best":0.64,"worst":-1.32,"n":12},"Wed":{"avg":0.3983,"neg":33.3,"pos":66.7,"std":0.8726,"best":2.36,"worst":-0.77,"n":12},"Thu":{"avg":0.0282,"neg":63.6,"pos":36.4,"std":0.2962,"best":0.67,"worst":-0.44,"n":11},"Fri":{"avg":-0.2282,"neg":63.6,"pos":36.4,"std":0.702,"best":0.91,"worst":-1.59,"n":11}},"6M":{"Mon":{"avg":-0.0764,"neg":52.0,"pos":44.0,"std":0.6712,"best":1.12,"worst":-1.38,"n":25},"Tue":{"avg":0.0412,"neg":45.8,"pos":50.0,"std":0.5693,"best":1.13,"worst":-1.32,"n":24},"Wed":{"avg":0.2328,"neg":44.0,"pos":56.0,"std":0.7184,"best":2.36,"worst":-0.78,"n":25},"Thu":{"avg":-0.1795,"neg":68.2,"pos":31.8,"std":0.5749,"best":0.73,"worst":-1.87,"n":22},"Fri":{"avg":-0.3029,"neg":66.7,"pos":33.3,"std":0.6241,"best":0.91,"worst":-1.59,"n":24}},"1Y":{"Mon":{"avg":0.0396,"neg":39.2,"pos":58.8,"std":0.5452,"best":1.12,"worst":-1.38,"n":51},"Tue":{"avg":-0.0218,"neg":56.0,"pos":42.0,"std":0.4718,"best":1.13,"worst":-1.32,"n":50},"Wed":{"avg":0.1829,"neg":40.8,"pos":59.2,"std":0.5549,"best":2.36,"worst":-0.78,"n":49},"Thu":{"avg":-0.0649,"neg":53.2,"pos":44.7,"std":0.4908,"best":0.75,"worst":-1.87,"n":47},"Fri":{"avg":-0.1827,"neg":59.2,"pos":40.8,"std":0.5194,"best":0.91,"worst":-1.59,"n":49}},"3Y":{"Mon":{"avg":0.1155,"neg":35.8,"pos":63.5,"std":0.695,"best":3.07,"worst":-2.61,"n":148},"Tue":{"avg":-0.023,"neg":49.0,"pos":49.7,"std":0.5912,"best":1.19,"worst":-4.19,"n":149},"Wed":{"avg":0.1437,"neg":38.4,"pos":61.6,"std":0.6261,"best":2.7,"worst":-1.6,"n":146},"Thu":{"avg":0.0305,"neg":44.1,"pos":55.2,"std":0.5187,"best":1.21,"worst":-1.87,"n":145},"Fri":{"avg":0.0164,"neg":49.3,"pos":50.7,"std":0.6358,"best":1.68,"worst":-1.59,"n":146}},"All":{"Mon":{"avg":0.072,"neg":38.0,"pos":61.5,"std":0.8203,"best":3.07,"worst":-2.81,"n":221},"Tue":{"avg":0.0227,"neg":47.0,"pos":52.1,"std":0.649,"best":1.69,"worst":-4.19,"n":219},"Wed":{"avg":0.1079,"neg":40.6,"pos":59.4,"std":0.6433,"best":2.7,"worst":-1.6,"n":219},"Thu":{"avg":0.0253,"neg":45.7,"pos":53.4,"std":0.7115,"best":3.07,"worst":-3.83,"n":219},"Fri":{"avg":-0.0036,"neg":47.9,"pos":52.1,"std":0.788,"best":3.34,"worst":-3.28,"n":219}}}};
+
+const CUM = {"Nifty 50":{"3M":{"Mon":-1.1,"Tue":-1.34,"Wed":9.62,"Thu":-1.21,"Fri":-2.36},"6M":{"Mon":-3.16,"Tue":2.59,"Wed":10.59,"Thu":-6.67,"Fri":-8.46},"1Y":{"Mon":0.91,"Tue":0.72,"Wed":17.41,"Thu":-6.27,"Fri":-12.15},"3Y":{"Mon":9.52,"Tue":-4.59,"Wed":26.83,"Thu":-1.14,"Fri":-0.11},"All":{"Mon":8.61,"Tue":12.84,"Wed":27.89,"Thu":-10.3,"Fri":0.19}},"S&P 500":{"3M":{"Mon":2.51,"Tue":1.44,"Wed":4.63,"Thu":4.28,"Fri":-1.5},"6M":{"Mon":6.61,"Tue":-1.53,"Wed":4.89,"Thu":-1.12,"Fri":-2.35},"1Y":{"Mon":15.8,"Tue":-2.3,"Wed":11.3,"Thu":-1.99,"Fri":-0.93},"3Y":{"Mon":32.58,"Tue":5.01,"Wed":23.81,"Thu":-7.9,"Fri":6.57},"All":{"Mon":25.2,"Tue":1.6,"Wed":24.83,"Thu":-9.71,"Fri":7.76}},"NASDAQ":{"3M":{"Mon":3.02,"Tue":-3.1,"Wed":-4.09,"Thu":5.35,"Fri":-3.69},"6M":{"Mon":3.02,"Tue":-3.1,"Wed":-4.09,"Thu":5.35,"Fri":-3.69},"1Y":{"Mon":3.02,"Tue":-3.1,"Wed":-4.09,"Thu":5.35,"Fri":-3.69},"3Y":{"Mon":3.02,"Tue":-3.1,"Wed":-4.09,"Thu":5.35,"Fri":-3.69},"All":{"Mon":3.02,"Tue":-3.1,"Wed":-4.09,"Thu":5.35,"Fri":-3.69}},"Dow Jones":{"3M":{"Mon":1.48,"Tue":3.48,"Wed":1.94,"Thu":5.48,"Fri":-1.41},"6M":{"Mon":5.06,"Tue":0.39,"Wed":1.67,"Thu":0.51,"Fri":-1.65},"1Y":{"Mon":7.13,"Tue":3.58,"Wed":7.81,"Thu":0.14,"Fri":1.26},"3Y":{"Mon":19.06,"Tue":4.77,"Wed":19.11,"Thu":-3.93,"Fri":7.34},"All":{"Mon":18.66,"Tue":-0.54,"Wed":17.57,"Thu":-8.56,"Fri":12.06}},"Shanghai":{"3M":{"Mon":4.64,"Tue":0.99,"Wed":6.23,"Thu":-6.11,"Fri":-0.82},"6M":{"Mon":1.97,"Tue":4.5,"Wed":9.14,"Thu":-7.56,"Fri":-3.46},"1Y":{"Mon":13.09,"Tue":5.7,"Wed":13.95,"Thu":-4.95,"Fri":-6.14},"3Y":{"Mon":16.34,"Tue":20.69,"Wed":1.62,"Thu":3.93,"Fri":-13.28},"All":{"Mon":8.66,"Tue":15.42,"Wed":-0.74,"Thu":2.6,"Fri":-11.55}},"FTSE Europe":{"3M":{"Mon":0.79,"Tue":-0.6,"Wed":-0.49,"Thu":-0.62,"Fri":1.45},"6M":{"Mon":0.79,"Tue":-0.6,"Wed":-0.49,"Thu":-0.62,"Fri":1.45},"1Y":{"Mon":0.79,"Tue":-0.6,"Wed":-0.49,"Thu":-0.62,"Fri":1.45},"3Y":{"Mon":0.79,"Tue":-0.6,"Wed":-0.49,"Thu":-0.62,"Fri":1.45},"All":{"Mon":0.79,"Tue":-0.6,"Wed":-0.49,"Thu":-0.62,"Fri":1.45}},"Nikkei 225":{"3M":{"Mon":6.3,"Tue":-1.39,"Wed":15.2,"Thu":1.95,"Fri":7.14},"6M":{"Mon":5.75,"Tue":10.68,"Wed":22.68,"Thu":-1.46,"Fri":7.38},"1Y":{"Mon":16.38,"Tue":1.85,"Wed":32.0,"Thu":16.23,"Fri":9.78},"3Y":{"Mon":-3.04,"Tue":50.76,"Wed":32.16,"Thu":30.28,"Fri":-7.14},"All":{"Mon":-7.2,"Tue":62.97,"Wed":34.8,"Thu":26.96,"Fri":2.75}},"Gold":{"3M":{"Mon":1.39,"Tue":-3.82,"Wed":-6.06,"Thu":-1.62,"Fri":-0.57},"6M":{"Mon":1.39,"Tue":-3.82,"Wed":-6.06,"Thu":-1.62,"Fri":-0.57},"1Y":{"Mon":1.39,"Tue":-3.82,"Wed":-6.06,"Thu":-1.62,"Fri":-0.57},"3Y":{"Mon":1.39,"Tue":-3.82,"Wed":-6.06,"Thu":-1.62,"Fri":-0.57},"All":{"Mon":1.39,"Tue":-3.82,"Wed":-6.06,"Thu":-1.62,"Fri":-0.57}},"Silver":{"3M":{"Mon":2.69,"Tue":-9.36,"Wed":-5.46,"Thu":-5.74,"Fri":-2.93},"6M":{"Mon":2.69,"Tue":-9.36,"Wed":-5.46,"Thu":-5.74,"Fri":-2.93},"1Y":{"Mon":2.69,"Tue":-9.36,"Wed":-5.46,"Thu":-5.74,"Fri":-2.93},"3Y":{"Mon":2.69,"Tue":-9.36,"Wed":-5.46,"Thu":-5.74,"Fri":-2.93},"All":{"Mon":2.69,"Tue":-9.36,"Wed":-5.46,"Thu":-5.74,"Fri":-2.93}},"Crude Oil":{"3M":{"Mon":-2.64,"Tue":-11.44,"Wed":-1.22,"Thu":-5.6,"Fri":-7.57},"6M":{"Mon":-2.64,"Tue":-11.44,"Wed":-1.22,"Thu":-5.6,"Fri":-7.57},"1Y":{"Mon":-2.64,"Tue":-11.44,"Wed":-1.22,"Thu":-5.6,"Fri":-7.57},"3Y":{"Mon":-2.64,"Tue":-11.44,"Wed":-1.22,"Thu":-5.6,"Fri":-7.57},"All":{"Mon":-2.64,"Tue":-11.44,"Wed":-1.22,"Thu":-5.6,"Fri":-7.57}},"Nifty 100":{"3M":{"Mon":1.01,"Tue":-0.01,"Wed":0.68,"Thu":0.05,"Fri":-0.12},"6M":{"Mon":1.01,"Tue":-0.01,"Wed":0.68,"Thu":0.05,"Fri":-0.12},"1Y":{"Mon":1.01,"Tue":-0.01,"Wed":0.68,"Thu":0.05,"Fri":-0.12},"3Y":{"Mon":1.01,"Tue":-0.01,"Wed":0.68,"Thu":0.05,"Fri":-0.12},"All":{"Mon":1.01,"Tue":-0.01,"Wed":0.68,"Thu":0.05,"Fri":-0.12}},"Nifty 500":{"3M":{"Mon":0.73,"Tue":0.49,"Wed":0.36,"Thu":0.08,"Fri":0.4},"6M":{"Mon":0.73,"Tue":0.49,"Wed":0.36,"Thu":0.08,"Fri":0.4},"1Y":{"Mon":0.73,"Tue":0.49,"Wed":0.36,"Thu":0.08,"Fri":0.4},"3Y":{"Mon":0.73,"Tue":0.49,"Wed":0.36,"Thu":0.08,"Fri":0.4},"All":{"Mon":0.73,"Tue":0.49,"Wed":0.36,"Thu":0.08,"Fri":0.4}},"Parag Parikh MF":{"3M":{"Mon":-0.64,"Tue":-0.06,"Wed":4.84,"Thu":0.31,"Fri":-2.51},"6M":{"Mon":-1.95,"Tue":0.96,"Wed":5.92,"Thu":-3.91,"Fri":-7.07},"1Y":{"Mon":1.96,"Tue":-1.14,"Wed":9.28,"Thu":-3.06,"Fri":-8.63},"3Y":{"Mon":18.2,"Tue":-3.62,"Wed":22.97,"Thu":4.31,"Fri":2.12},"All":{"Mon":16.37,"Tue":4.62,"Wed":26.07,"Thu":5.11,"Fri":-1.46}}};
+
+const MARKETS = Object.keys(DATA);
+const DAYS = ['Mon','Tue','Wed','Thu','Fri'];
+const COLORS = {
+  'Nifty 50':'#7c6fe0','S&P 500':'#4fa3e8','NASDAQ':'#3ecfcf','Dow Jones':'#5ad4a5',
+  'Shanghai':'#f0a832','FTSE Europe':'#e87fba','Nikkei 225':'#e85c5c',
+  'Gold':'#c8a951','Silver':'#a0a8b8','Crude Oil':'#d4854a',
+  'Nifty 100':'#8bcf70','Nifty 500':'#60b8a0','Parag Parikh MF':'#bd78d4'
+};
+const REGION = {
+  'Nifty 50':'🇮🇳 India','S&P 500':'🇺🇸 USA','NASDAQ':'🇺🇸 USA','Dow Jones':'🇺🇸 USA',
+  'Shanghai':'🇨🇳 China','FTSE Europe':'🇪🇺 Europe','Nikkei 225':'🇯🇵 Japan',
+  'Gold':'🥇 Commodity','Silver':'🥈 Commodity','Crude Oil':'🛢 Commodity',
+  'Nifty 100':'🇮🇳 India','Nifty 500':'🇮🇳 India','Parag Parikh MF':'🇮🇳 MF'
+};
+const ROBUST = ['Nifty 50','S&P 500','Dow Jones','Shanghai','Nikkei 225','Parag Parikh MF'];
+
+let curMarket = 'Nifty 50', curRange = '1Y', hmRange = '1Y', hmMetric = 'avg', cumRange = '1Y';
+let explorerChart = null, cumIndiaChart = null, cumGlobalChart = null;
+
+// Build market pills
+const pillsEl = document.getElementById('marketPills');
+MARKETS.forEach(m => {
+  const b = document.createElement('button');
+  b.className = 'mpill' + (m === curMarket ? ' active' : '');
+  b.textContent = m;
+  b.style.borderColor = COLORS[m] + '44';
+  if (m === curMarket) { b.style.background = COLORS[m]; }
+  if (!ROBUST.includes(m)) { b.title = 'Limited data (~4 weeks only)'; }
+  b.onclick = () => {
+    curMarket = m;
+    document.querySelectorAll('.mpill').forEach(p => {
+      p.classList.remove('active'); p.style.background = '';
+    });
+    b.classList.add('active'); b.style.background = COLORS[m];
+    renderExplorer();
+  };
+  pillsEl.appendChild(b);
+});
+
+function setRange(r) {
+  curRange = r;
+  document.querySelectorAll('#rangeTabs .tab').forEach(t => t.classList.toggle('active', t.textContent.trim().includes(r === 'All' ? 'All' : r)));
+  renderExplorer();
+}
+function setHmRange(r) {
+  hmRange = r;
+  document.querySelectorAll('#hmRangeTabs .tab').forEach(t => t.classList.toggle('active', t.textContent.trim().includes(r === 'All' ? 'All' : r)));
+  renderHeatmap();
+}
+function setHmMetric(m) { hmMetric = m; renderHeatmap(); }
+function setCumRange(r) {
+  cumRange = r;
+  document.querySelectorAll('#cumRangeTabs .tab').forEach(t => t.classList.toggle('active', t.textContent.trim().includes(r === 'All' ? 'All' : r)));
+  renderCumulative();
+}
+
+function dayColor(val, allVals, metric) {
+  const min = Math.min(...allVals), max = Math.max(...allVals);
+  const t = max === min ? 0.5 : (val - min) / (max - min);
+  const isBetter = metric === 'neg' ? t > 0.5 : t < 0.5;
+  if (metric === 'avg') {
+    if (t < 0.35) return { bg: 'rgba(90,212,165,0.18)', text: '#5ad4a5' };
+    if (t > 0.65) return { bg: 'rgba(232,92,92,0.16)', text: '#e85c5c' };
+    return { bg: 'rgba(255,255,255,0.04)', text: '#a09d98' };
+  } else {
+    if (t > 0.65) return { bg: 'rgba(90,212,165,0.18)', text: '#5ad4a5' };
+    if (t < 0.35) return { bg: 'rgba(232,92,92,0.16)', text: '#e85c5c' };
+    return { bg: 'rgba(255,255,255,0.04)', text: '#a09d98' };
+  }
+}
+
+function renderExplorer() {
+  const d = DATA[curMarket]?.[curRange];
+  if (!d) return;
+  const avgs = DAYS.map(day => d[day]?.avg ?? 0);
+  const allAvgs = avgs.filter(v => v !== null);
+  const minI = avgs.indexOf(Math.min(...avgs));
+  const maxI = avgs.indexOf(Math.max(...avgs));
+
+  // Day cards
+  const cardsEl = document.getElementById('dayCards');
+  cardsEl.innerHTML = DAYS.map((day, i) => {
+    const s = d[day];
+    if (!s) return `<div class="card card-sm"><div class="stat-label">${day}</div><div style="color:var(--text3)">No data</div></div>`;
+    const isBest = i === minI, isWorst = i === maxI;
+    const border = isBest ? 'border-color:rgba(90,212,165,.4)' : isWorst ? 'border-color:rgba(232,92,92,.3)' : '';
+    const col = s.avg >= 0 ? '#5ad4a5' : '#e85c5c';
+    const badge = isBest ? '<span class="badge badge-green" style="margin-top:4px;display:inline-block">best SIP day</span>' : isWorst ? '<span class="badge badge-red" style="margin-top:4px;display:inline-block">avoid</span>' : '';
+    return `<div class="card card-sm" style="${border}">
+      <div class="stat-label">${day}</div>
+      <div class="stat-val" style="font-size:1.4rem;color:${col}">${s.avg >= 0 ? '+' : ''}${s.avg.toFixed(3)}%</div>
+      <div class="stat-sub">${s.pos.toFixed(0)}% green days</div>
+      ${badge}
+    </div>`;
+  }).join('');
+
+  // Bar chart
+  if (explorerChart) explorerChart.destroy();
+  const ctx = document.getElementById('explorerChart').getContext('2d');
+  const barColors = avgs.map((v, i) => i === minI ? '#5ad4a5' : i === maxI ? '#e85c5c' : COLORS[curMarket] + '88');
+  explorerChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: DAYS,
+      datasets: [{
+        label: 'Avg daily return %',
+        data: avgs.map(v => parseFloat(v.toFixed(4))),
+        backgroundColor: barColors,
+        borderRadius: 6,
+        borderSkipped: false
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => `${ctx.parsed.y >= 0 ? '+' : ''}${ctx.parsed.y.toFixed(4)}%` } } },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: '#6b6864', font: { size: 13, weight: '600' } } },
+        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#6b6864', callback: v => v.toFixed(2) + '%' } }
+      }
+    }
+  });
+
+  // Stats table
+  const tbody = document.querySelector('#statsTable tbody');
+  tbody.innerHTML = DAYS.map((day, i) => {
+    const s = d[day];
+    if (!s) return `<tr><td>${day}</td><td colspan="7" style="color:var(--text3)">No data</td></tr>`;
+    const isBest = i === minI, isWorst = i === maxI;
+    const rowStyle = isBest ? 'background:rgba(90,212,165,.05)' : isWorst ? 'background:rgba(232,92,92,.05)' : '';
+    return `<tr style="${rowStyle}">
+      <td style="font-weight:700;color:var(--text)">${day}${isBest ? ' <span class="badge badge-green">best</span>' : isWorst ? ' <span class="badge badge-red">worst</span>' : ''}</td>
+      <td class="${s.avg >= 0 ? 'val-pos' : 'val-neg'}">${s.avg >= 0 ? '+' : ''}${s.avg.toFixed(4)}%</td>
+      <td class="val-pos">${s.pos.toFixed(1)}%</td>
+      <td class="val-neg">${s.neg.toFixed(1)}%</td>
+      <td class="val-pos">+${s.best.toFixed(2)}%</td>
+      <td class="val-neg">${s.worst.toFixed(2)}%</td>
+      <td>${s.std.toFixed(4)}%</td>
+      <td>${s.n}</td>
+    </tr>`;
+  }).join('');
+
+  // Insight
+  const bestDay = DAYS[minI], worstDay = DAYS[maxI];
+  const robust = ROBUST.includes(curMarket);
+  document.getElementById('explorerInsight').innerHTML = `<strong>💡 ${curMarket} · ${curRange}:</strong> ${bestDay} shows the lowest avg return (${d[bestDay]?.avg?.toFixed(3)}%) making it the best SIP entry — ${d[bestDay]?.pos?.toFixed(0)}% of ${bestDay}s are green days. ${worstDay} is the most expensive day to buy (+${d[worstDay]?.avg?.toFixed(3)}%). ${!robust ? '<strong style="color:var(--amber)">⚠️ Note: this market has limited data (~4 weeks). Results are directional, not statistically robust.</strong>' : ''}`;
+}
+
+function renderHeatmap() {
+  const tbody = document.querySelector('#hmTable tbody');
+  tbody.innerHTML = MARKETS.map(market => {
+    const d = DATA[market]?.[hmRange];
+    if (!d) return '';
+    const vals = DAYS.map(day => d[day] ? (hmMetric === 'avg' ? d[day].avg : d[day].neg) : null).filter(v => v !== null);
+    const bestVal = hmMetric === 'avg' ? Math.min(...vals) : Math.max(...vals);
+    const worstVal = hmMetric === 'avg' ? Math.max(...vals) : Math.min(...vals);
+    const cells = DAYS.map(day => {
+      const s = d[day];
+      if (!s) return '<td style="background:rgba(255,255,255,.02);color:#333">—</td>';
+      const val = hmMetric === 'avg' ? s.avg : s.neg;
+      const allVals = DAYS.map(dd => d[dd] ? (hmMetric === 'avg' ? d[dd].avg : d[dd].neg) : null).filter(v => v !== null);
+      const {bg, text} = dayColor(val, allVals, hmMetric);
+      const isBest = val === bestVal, isWorst = val === worstVal;
+      const outline = isBest ? 'outline:2px solid #5ad4a5;outline-offset:-2px' : isWorst ? 'outline:2px solid #e85c5c;outline-offset:-2px' : '';
+      const sign = hmMetric === 'avg' && val > 0 ? '+' : '';
+      return `<td style="background:${bg};color:${text};${outline}">${sign}${val.toFixed(2)}%</td>`;
+    }).join('');
+    const robust = ROBUST.includes(market);
+    return `<tr>
+      <td style="color:var(--text);font-weight:600">${market}<span class="hm-sub" style="color:${COLORS[market]}">${REGION[market]}${!robust ? ' ⚠️' : ''}</span></td>
+      ${cells}
+    </tr>`;
+  }).join('');
+}
+
+function renderCumulative() {
+  const indiaMarkets = ['Nifty 50', 'Nifty 100', 'Nifty 500', 'Parag Parikh MF'];
+  const globalMarkets = ['S&P 500', 'Dow Jones', 'Nikkei 225', 'Shanghai', 'FTSE Europe'];
+  const days = DAYS;
+
+  if (cumIndiaChart) cumIndiaChart.destroy();
+  if (cumGlobalChart) cumGlobalChart.destroy();
+
+  function makeDatasets(markets) {
+    return markets.map(m => ({
+      label: m,
+      data: days.map(d => CUM[m]?.[cumRange]?.[d] ?? null),
+      backgroundColor: COLORS[m] + 'cc',
+      borderRadius: 5,
+      borderSkipped: false
+    }));
+  }
+
+  const commonOpts = {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y >= 0 ? '+' : ''}${ctx.parsed.y.toFixed(2)}%` } }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { color: '#6b6864', font: { weight: '600' } } },
+      y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#6b6864', callback: v => v.toFixed(1) + '%' } }
+    }
+  };
+
+  cumIndiaChart = new Chart(document.getElementById('cumIndiaChart').getContext('2d'), {
+    type: 'bar', data: { labels: days, datasets: makeDatasets(indiaMarkets) }, options: { ...commonOpts }
+  });
+  cumGlobalChart = new Chart(document.getElementById('cumGlobalChart').getContext('2d'), {
+    type: 'bar', data: { labels: days, datasets: makeDatasets(globalMarkets) }, options: { ...commonOpts }
+  });
+
+  // Wed vs Fri comparison
+  const wfEl = document.getElementById('wedFriComparison');
+  const comparisons = [
+    { name: 'Nifty 50', wed: CUM['Nifty 50']['All']['Wed'], fri: CUM['Nifty 50']['All']['Fri'] },
+    { name: 'S&P 500', wed: CUM['S&P 500']['All']['Mon'], fri: CUM['S&P 500']['All']['Thu'], labels: ['Mon', 'Thu'] },
+    { name: 'Nikkei 225', wed: CUM['Nikkei 225']['All']['Tue'], fri: CUM['Nikkei 225']['All']['Mon'], labels: ['Tue', 'Mon'] },
+    { name: 'Parag Parikh MF', wed: CUM['Parag Parikh MF']['All']['Wed'], fri: CUM['Parag Parikh MF']['All']['Fri'] },
+    { name: 'Shanghai', wed: CUM['Shanghai']['All']['Tue'], fri: CUM['Shanghai']['All']['Fri'], labels: ['Tue', 'Fri'] },
+  ];
+  wfEl.innerHTML = comparisons.map(c => {
+    const bestLabel = c.labels ? c.labels[0] : 'Wed';
+    const worstLabel = c.labels ? c.labels[1] : 'Fri';
+    const gap = (c.wed - c.fri).toFixed(1);
+    const maxAbs = Math.max(Math.abs(c.wed), Math.abs(c.fri), 0.1);
+    const bestW = Math.max(1, Math.round(Math.abs(c.wed) / maxAbs * 100));
+    const worstW = Math.max(1, Math.round(Math.abs(c.fri) / maxAbs * 100));
+    return `<div style="margin-bottom:1rem">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+        <span style="font-size:13px;font-weight:600;color:var(--text)">${c.name}</span>
+        <span style="font-size:12px;color:${parseFloat(gap)>0?'var(--green)':'var(--red)'}">gap: ${gap > 0 ? '+' : ''}${gap}pp</span>
+      </div>
+      <div class="comp-bar-wrap"><div class="comp-bar-label" style="color:var(--green)">${bestLabel}</div><div class="comp-bar-track"><div class="comp-bar-fill" style="width:${bestW}%;background:#5ad4a5"></div></div><div class="comp-bar-val" style="color:var(--green)">${c.wed >= 0 ? '+' : ''}${c.wed.toFixed(1)}%</div></div>
+      <div class="comp-bar-wrap"><div class="comp-bar-label" style="color:var(--red)">${worstLabel}</div><div class="comp-bar-track"><div class="comp-bar-fill" style="width:${worstW}%;background:#e85c5c"></div></div><div class="comp-bar-val" style="color:${c.fri>=0?'var(--green)':'var(--red)'}">${c.fri >= 0 ? '+' : ''}${c.fri.toFixed(1)}%</div></div>
+    </div>`;
+  }).join('');
+}
+
+// Scroll animation
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Init
+renderExplorer();
+renderHeatmap();
+renderCumulative();
+</script>
+</body>
+</html>
