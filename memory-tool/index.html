@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Number Ledger — Tables, Squares & Cubes Drill</title>
+<meta name="description" content="Reference and daily practice for multiplication tables, squares and cubes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="margin-rule" id="marginRule" aria-hidden="true"></div>
+
+<header class="site-head">
+  <div class="brand">
+    <span class="brand-mark">§</span>
+    <div class="brand-text">
+      <h1>The Number Ledger</h1>
+      <p class="tagline">tables · squares · cubes — kept, and drilled daily</p>
+    </div>
+  </div>
+  <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle light / dark">
+    <span class="theme-icon" aria-hidden="true">☾</span>
+  </button>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Sections">
+  <button class="tab-btn is-active" data-tab="tables" role="tab" aria-selected="true">Tables</button>
+  <button class="tab-btn" data-tab="squares" role="tab" aria-selected="false">Squares</button>
+  <button class="tab-btn" data-tab="cubes" role="tab" aria-selected="false">Cubes</button>
+  <button class="tab-btn tab-btn--practice" data-tab="practice" role="tab" aria-selected="false">Practice</button>
+</nav>
+
+<main class="page">
+
+  <!-- TABLES -->
+  <section id="tables" class="panel is-active" role="tabpanel">
+    <div class="panel-head">
+      <h2>Multiplication tables, 1–30</h2>
+      <p class="panel-note">16–29 is the stretch that actually earns you speed. Everything below it, you already half-know.</p>
+    </div>
+    <div class="chip-row" id="tablesChips"></div>
+    <div id="tablesGrid" class="tables-grid"></div>
+  </section>
+
+  <!-- SQUARES -->
+  <section id="squares" class="panel" role="tabpanel">
+    <div class="panel-head">
+      <h2>Squares, 1–25 — and how to get to 100 without memorising them</h2>
+      <p class="panel-note">Memorise 1–25 cold. Past that, you don't recall — you compute, in about two seconds, from an anchor.</p>
+    </div>
+
+    <div class="ref-table-wrap">
+      <table class="ref-table" id="squaresTable"></table>
+    </div>
+
+    <div class="tricks">
+      <h3>The anchor method</h3>
+      <p>Every square from 25 to 100 is one algebra identity away from a number you already know: <span class="mono">(a ± k)² = a² ± 2ak + k²</span>. Pick the nearest multiple of 25 as your anchor <span class="mono">a</span>, let <span class="mono">k</span> be the small distance to it, and you're doing single-digit arithmetic.</p>
+
+      <div class="trick-cards">
+        <div class="trick-card">
+          <h4>Ending in 5</h4>
+          <p>For any n5², take n, multiply by (n+1), append "25".</p>
+          <p class="mono">35² → 3×4=12 → <strong>1225</strong>. 65² → 6×7=42 → <strong>4225</strong>.</p>
+        </div>
+        <div class="trick-card">
+          <h4>Anchor at 25 (26–49)</h4>
+          <p class="mono">(25+k)² = 625 + 50k + k²</p>
+          <p class="mono">27² → 625+50(2)+4 = <strong>729</strong></p>
+        </div>
+        <div class="trick-card">
+          <h4>Anchor at 50 (33–66)</h4>
+          <p class="mono">(50±k)² = 2500 ± 100k + k²</p>
+          <p class="mono">47² → 2500−100(3)+9 = <strong>2209</strong></p>
+        </div>
+        <div class="trick-card">
+          <h4>Anchor at 75 (63–87)</h4>
+          <p class="mono">(75±k)² = 5625 ± 150k + k²</p>
+          <p class="mono">78² → 5625+150(3)+9 = <strong>6084</strong></p>
+        </div>
+        <div class="trick-card">
+          <h4>Anchor at 100 (76–100+)</h4>
+          <p class="mono">(100−k)² = 10000 − 200k + k²</p>
+          <p class="mono">97² → 10000−200(3)+9 = <strong>9409</strong></p>
+        </div>
+        <div class="trick-card">
+          <h4>Difference of squares</h4>
+          <p>a² − b² = (a−b)(a+b). Handy when a number is 1 or 2 away from something square-friendly.</p>
+          <p class="mono">29² = 30²−(30+29) = 900−59 = <strong>841</strong></p>
+        </div>
+      </div>
+
+      <button id="revealBig" class="secondary-btn">Show computed values, 26 → 100</button>
+      <div class="ref-table-wrap" id="bigSquaresWrap" hidden>
+        <table class="ref-table" id="bigSquaresTable"></table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUBES -->
+  <section id="cubes" class="panel" role="tabpanel">
+    <div class="panel-head">
+      <h2>Cubes, 1–20</h2>
+      <p class="panel-note">There's no shortcut as clean as the squares one — so this list is worth rote-learning in full. A few things make it easier.</p>
+    </div>
+
+    <div class="ref-table-wrap">
+      <table class="ref-table" id="cubesTable"></table>
+    </div>
+
+    <div class="tricks">
+      <h3>What actually helps</h3>
+      <div class="trick-cards">
+        <div class="trick-card">
+          <h4>Last-digit pairs</h4>
+          <p>Cubes preserve a predictable last digit, and it pairs numbers up: 1↔1, 2↔8, 3↔7, 4↔4, 5↔5, 6↔6, 7↔3, 8↔2, 9↔9, 0↔0. Useful for a sanity check on any answer.</p>
+        </div>
+        <div class="trick-card">
+          <h4>Binomial expansion</h4>
+          <p class="mono">(a+b)³ = a³ + 3a²b + 3ab² + b³</p>
+          <p class="mono">13³ = 10³+3(100)(3)+3(10)(9)+27 = 1000+900+270+27 = <strong>2197</strong></p>
+        </div>
+        <div class="trick-card">
+          <h4>Sum-of-cubes identity</h4>
+          <p>1³+2³+…+n³ = (n(n+1)/2)². Won't give a single cube, but it's a free check when a question asks for a running sum.</p>
+        </div>
+        <div class="trick-card">
+          <h4>Anchor at 10 and 20</h4>
+          <p>Cubes near 10 or 20 are cheapest via the binomial rule above — the a³ and 3a² terms only need computing once per anchor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRACTICE -->
+  <section id="practice" class="panel" role="tabpanel">
+    <div class="panel-head">
+      <h2>Practice</h2>
+      <p class="panel-note">Multiple choice, timed. Get faster and cleaner, and the clock tightens on its own. Miss a few, and it eases back off.</p>
+    </div>
+
+    <div id="quizSetup" class="quiz-setup">
+      <div class="mode-row">
+        <button class="mode-btn is-active" data-mode="tables">Tables <span class="mode-sub">weighted to 16–29</span></button>
+        <button class="mode-btn" data-mode="squares">Squares <span class="mode-sub">1–25</span></button>
+        <button class="mode-btn" data-mode="cubes">Cubes <span class="mode-sub">1–20</span></button>
+        <button class="mode-btn" data-mode="mixed">Mixed <span class="mode-sub">all three</span></button>
+      </div>
+      <div class="stats-row" id="modeStats"></div>
+      <button id="startQuiz" class="primary-btn">Start</button>
+      <button id="resetProgress" class="ghost-btn">Reset all progress</button>
+    </div>
+
+    <div id="quizLive" class="quiz-live" hidden>
+      <div class="quiz-top">
+        <span id="quizModeLabel" class="quiz-mode-label"></span>
+        <span id="quizTimeLimitLabel" class="quiz-time-label"></span>
+        <span id="quizScore" class="quiz-score"></span>
+      </div>
+
+      <div class="question-card">
+        <p class="question-text" id="questionText">—</p>
+        <div class="options-grid" id="optionsGrid"></div>
+        <p class="feedback" id="feedbackText" aria-live="polite"></p>
+      </div>
+
+      <button id="stopQuiz" class="ghost-btn">End session</button>
+    </div>
+
+    <div id="quizSummary" class="quiz-summary" hidden>
+      <h3>Session done</h3>
+      <p id="summaryText"></p>
+      <button id="againQuiz" class="primary-btn">Go again</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <p>Everything here lives in your browser's local storage. Nothing is sent anywhere. Clearing site data clears your progress.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
