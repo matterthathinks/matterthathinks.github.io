@@ -2,9 +2,9 @@
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Number Ledger — Tables, Squares & Cubes Drill</title>
-<meta name="description" content="Reference and daily practice for multiplication tables, squares and cubes.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Number Ledger — Tables, Squares, Cubes & Fractions Drill</title>
+<meta name="description" content="Reference and daily practice for multiplication tables, squares, cubes and fraction-to-percentage recall.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -12,14 +12,14 @@
 </head>
 <body>
 
-<div class="margin-rule" id="marginRule" aria-hidden="true"></div>
+<div class="margin-rule is-idle" id="marginRule" aria-hidden="true"></div>
 
 <header class="site-head">
   <div class="brand">
     <span class="brand-mark">§</span>
     <div class="brand-text">
       <h1>The Number Ledger</h1>
-      <p class="tagline">tables · squares · cubes — kept, and drilled daily</p>
+      <p class="tagline">tables · squares · cubes · fractions — kept, and drilled daily</p>
     </div>
   </div>
   <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle light / dark">
@@ -31,7 +31,7 @@
   <button class="tab-btn is-active" data-tab="tables" role="tab" aria-selected="true">Tables</button>
   <button class="tab-btn" data-tab="squares" role="tab" aria-selected="false">Squares</button>
   <button class="tab-btn" data-tab="cubes" role="tab" aria-selected="false">Cubes</button>
-  <button class="tab-btn" data-tab="fractions" role="tab" aria-selected="false">Fractions → %</button>
+  <button class="tab-btn" data-tab="fractions" role="tab" aria-selected="false">Fractions</button>
   <button class="tab-btn tab-btn--practice" data-tab="practice" role="tab" aria-selected="false">Practice</button>
 </nav>
 
@@ -40,8 +40,8 @@
   <!-- TABLES -->
   <section id="tables" class="panel is-active" role="tabpanel">
     <div class="panel-head">
-      <h2>Multiplication tables, 1–30</h2>
-      <p class="panel-note">16–29 is the stretch that actually earns you speed. Everything below it, you already half-know.</p>
+      <h2>Multiplication tables, 1–30 (×1 to ×10)</h2>
+      <p class="panel-note">16–19, 21–24 and 26–29 are the stretch that actually earns you speed — 20, 25 and 30 are already easy, so they're not the drill's focus.</p>
     </div>
     <div class="chip-row" id="tablesChips"></div>
     <div id="tablesGrid" class="tables-grid"></div>
@@ -137,19 +137,66 @@
     </div>
   </section>
 
+  <!-- FRACTIONS -->
+  <section id="fractions" class="panel" role="tabpanel">
+    <div class="panel-head">
+      <h2>Fractions → percentages, 1/x to 5/x for x up to 30</h2>
+      <p class="panel-note">This table is the one that actually shows up under time pressure — DI sets, CAGR sanity checks, quick margin math. Reading down a column is reading off n/x for a fixed x.</p>
+    </div>
+
+    <div class="ref-table-wrap">
+      <table class="ref-table ref-table--dense" id="fractionsTable"></table>
+    </div>
+
+    <div class="tricks">
+      <h3>How to get there without memorising all 100+ cells</h3>
+      <div class="trick-cards">
+        <div class="trick-card">
+          <h4>Halving chain</h4>
+          <p>1/x for a doubled denominator is just half the previous percentage. Learn 1/2 → 1/4 → 1/8 → 1/16 as one chain, and 1/3 → 1/6 → 1/12 → 1/24 as another.</p>
+          <p class="mono">1/8=12.5% → <strong>1/16=6.25%</strong>. 1/6=16.67% → <strong>1/12=8.33%</strong> → <strong>1/24=4.17%</strong>.</p>
+        </div>
+        <div class="trick-card">
+          <h4>The 1/7 doubling trick</h4>
+          <p>1/7 = 14.28...%. To get there: 7×2=14, 14×2=28 — that's your first four digits, "14.28", straight from doubling 7 twice.</p>
+        </div>
+        <div class="trick-card">
+          <h4>Divide 1/7 by n</h4>
+          <p>Every 1/(7n) is 1/7 divided by n — cheaper than computing fresh.</p>
+          <p class="mono">1/14 = 14.28/2 = <strong>7.14%</strong>. 1/21 = 14.28/3 = <strong>4.76%</strong>. 1/28 = 14.28/4 = <strong>3.57%</strong>.</p>
+        </div>
+        <div class="trick-card">
+          <h4>The 3-4-5 anchor</h4>
+          <p>1/23 ≈ 4.35% and 1/29 ≈ 3.45% — the digits 4-3-5 and 3-4-5 are a Pythagorean triplet, which is purely a mnemonic, not a derivation, but it sticks.</p>
+        </div>
+        <div class="trick-card">
+          <h4>n/x from 1/x</h4>
+          <p>Don't memorise 2/19, 3/19, 4/19 separately — get 1/19 = 5.26% once, then just multiply by n.</p>
+          <p class="mono">1/19=5.26% → <strong>3/19=15.79%</strong> (×3)</p>
+        </div>
+        <div class="trick-card">
+          <h4>Increase ↔ equivalent decrease</h4>
+          <p>If a quantity goes up by n/x, reversing it back down isn't the same percentage — it's n/(x+n). Constant-product situations (Time×Speed, Quantity×Price) use this directly.</p>
+          <p class="mono">+50% (1/2) reverses with −33.33% (1/3), not −50%.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PRACTICE -->
   <section id="practice" class="panel" role="tabpanel">
     <div class="panel-head">
       <h2>Practice</h2>
-      <p class="panel-note">Multiple choice, timed. Get faster and cleaner, and the clock tightens on its own. Miss a few, and it eases back off.</p>
+      <p class="panel-note">Multiple choice, timed. Answer, see the full working, hit Next when you're ready. Get faster and cleaner, and the clock tightens on its own.</p>
     </div>
 
     <div id="quizSetup" class="quiz-setup">
       <div class="mode-row">
-        <button class="mode-btn is-active" data-mode="tables">Tables <span class="mode-sub">weighted to 16–29</span></button>
+        <button class="mode-btn is-active" data-mode="tables">Tables <span class="mode-sub">×1–10, weighted to 16–19 / 21–24 / 26–29</span></button>
         <button class="mode-btn" data-mode="squares">Squares <span class="mode-sub">1–25</span></button>
         <button class="mode-btn" data-mode="cubes">Cubes <span class="mode-sub">1–20</span></button>
-        <button class="mode-btn" data-mode="mixed">Mixed <span class="mode-sub">all three</span></button>
+        <button class="mode-btn" data-mode="fractions">Fractions <span class="mode-sub">n/x → %, x up to 30</span></button>
+        <button class="mode-btn" data-mode="mixed">Mixed <span class="mode-sub">all four</span></button>
       </div>
       <div class="stats-row" id="modeStats"></div>
       <button id="startQuiz" class="primary-btn">Start</button>
@@ -167,6 +214,7 @@
         <p class="question-text" id="questionText">—</p>
         <div class="options-grid" id="optionsGrid"></div>
         <p class="feedback" id="feedbackText" aria-live="polite"></p>
+        <button id="nextQuestionBtn" class="primary-btn next-btn" hidden>Next question →</button>
       </div>
 
       <button id="stopQuiz" class="ghost-btn">End session</button>
