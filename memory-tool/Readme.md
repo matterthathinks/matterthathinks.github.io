@@ -5,9 +5,15 @@ A single-page reference + practice tool for multiplication tables (1–30), squa
 no dependencies beyond two Google Fonts — three files, pure HTML/CSS/JS.
 
 ## Files
-- `index.html` — structure and content for all four sections (Tables, Squares, Cubes, Practice)
-- `style.css` — theme tokens, light/dark mode, layout
+- `index.html` — structure and content for all five sections (Tables, Squares, Cubes, Fractions, Practice)
+- `style.css` — theme tokens, light/dark mode, layout, mobile pass
 - `app.js` — reference-table rendering + the adaptive quiz engine
+
+## What changed since the first version
+- Tables quiz now only asks ×1 through ×10 (no more 19×17-style questions)
+- Focus zone corrected to 16–19, 21–24, 26–29 — 20, 25, 30 are excluded since they're already easy
+- New **Fractions** tab: reference grid of n/x → % for n=1–5, x=2–30, plus the halving-chain, 1/7-doubling, and 3-4-5 mnemonic tricks from your Career Launcher sheet, and a matching Practice mode
+- After answering, the full working (e.g. `16 × 6 = 96`) stays on screen and a **Next question** button appears — no more auto-advance
 
 ## Publishing on GitHub Pages
 
