@@ -1,28 +1,31 @@
 /* ===================== CONFIG ===================== */
 const TABLES_MAX_N = 30;
-const TABLES_MAX_M = 20;
-const FOCUS_LO = 16, FOCUS_HI = 29;   // the "hard zone" the user wants weighted
+const TABLES_MAX_M = 10;                         // "just need multiples till 10"
+const FOCUS_SET = new Set([16,17,18,19, 21,22,23,24, 26,27,28,29]); // 20/25/30 excluded — already easy
 const SQUARES_MAX = 25;
 const SQUARES_REF_MAX = 100;
 const CUBES_MAX = 20;
-const TIME_STEPS = [10, 8, 6, 4, 3];  // adaptive countdown, seconds
-const STREAK_TO_STEP_DOWN = 5;        // this many "fast & correct" in a row tightens the clock
-const STORAGE_KEY = 'numberLedgerState_v1';
-const ADVANCE_DELAY_MS = 1150;
+const FRACTIONS_MAX_X = 30;
+const FRACTIONS_MAX_N = 5;
+const FRACTIONS_HARD_LO = 11, FRACTIONS_HARD_HI = 29; // denominators worth over-weighting
+const TIME_STEPS = [10, 8, 6, 4, 3];              // adaptive countdown, seconds
+const STREAK_TO_STEP_DOWN = 5;                    // this many "fast & correct" in a row tightens the clock
+const STORAGE_KEY = 'numberLedgerState_v2';
 
 /* ===================== STATE ===================== */
 function defaultState() {
   return {
     theme: null, // null = follow system, else 'light' | 'dark'
-    timeLimits: { tables: 10, squares: 10, cubes: 10, mixed: 10 },
-    streaks:    { tables: 0,  squares: 0,  cubes: 0,  mixed: 0 },
-    totals:     {
-      tables: { seen: 0, correct: 0 },
-      squares:{ seen: 0, correct: 0 },
-      cubes:  { seen: 0, correct: 0 },
-      mixed:  { seen: 0, correct: 0 },
+    timeLimits: { tables: 10, squares: 10, cubes: 10, fractions: 10, mixed: 10 },
+    streaks:    { tables: 0,  squares: 0,  cubes: 0,  fractions: 0,  mixed: 0 },
+    totals: {
+      tables:   { seen: 0, correct: 0 },
+      squares:  { seen: 0, correct: 0 },
+      cubes:    { seen: 0, correct: 0 },
+      fractions:{ seen: 0, correct: 0 },
+      mixed:    { seen: 0, correct: 0 },
     },
-    facts: { tables: {}, squares: {}, cubes: {} }, // per-fact weakness tracking
+    facts: { tables: {}, squares: {}, cubes: {}, fractions: {} }, // per-fact weakness tracking
   };
 }
 let state = loadState();
@@ -32,12 +35,14 @@ function loadState() {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return defaultState();
     const parsed = JSON.parse(raw);
-    return Object.assign(defaultState(), parsed, {
-      timeLimits: Object.assign(defaultState().timeLimits, parsed.timeLimits),
-      streaks: Object.assign(defaultState().streaks, parsed.streaks),
-      totals: Object.assign(defaultState().totals, parsed.totals),
-      facts: Object.assign(defaultState().facts, parsed.facts),
-    });
+    const d = defaultState();
+    return {
+      theme: parsed.theme ?? d.theme,
+      timeLimits: Object.assign(d.timeLimits, parsed.timeLimits),
+      streaks: Object.assign(d.streaks, parsed.streaks),
+      totals: Object.assign(d.totals, parsed.totals),
+      facts: Object.assign(d.facts, parsed.facts),
+    };
   } catch (e) { return defaultState(); }
 }
 function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
@@ -70,7 +75,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 });
 
 /* ===================== REFERENCE: TABLES ===================== */
-function isFocusN(n) { return n >= FOCUS_LO && n <= FOCUS_HI; }
+function isFocusN(n) { return FOCUS_SET.has(n); }
 
 function renderTablesChips() {
   const wrap = document.getElementById('tablesChips');
@@ -139,13 +144,36 @@ function renderCubes() {
   t.innerHTML = rows;
 }
 
+/* ===================== REFERENCE: FRACTIONS ===================== */
+function pctOf(n, x) { return Math.round((n / x) * 10000) / 100; } // 2 dp
+
+function renderFractions() {
+  const t = document.getElementById('fractionsTable');
+  let head = '<tr><th>n/x →</th>';
+  for (let x = 2; x <= FRACTIONS_MAX_X; x++) head += `<th>${x}</th>`;
+  head += '</tr>';
+
+  let body = '';
+  for (let n = 1; n <= FRACTIONS_MAX_N; n++) {
+    body += `<tr><td>${n}/x</td>`;
+    for (let x = 2; x <= FRACTIONS_MAX_X; x++) {
+      if (n >= x) { body += '<td class="blank">—</td>'; continue; }
+      body += `<td>${pctOf(n, x).toFixed(2)}</td>`;
+    }
+    body += '</tr>';
+  }
+  t.innerHTML = head + body;
+}
+
 renderTablesChips();
 renderTablesGrid();
 renderSquares();
 renderCubes();
+renderFractions();
 
-/* ===================== QUIZ: FACT POOLS & WEIGHTING ===================== */
-function factKeyTables(n, m) { return `${n}x${m}`; }
+/* ===================== QUIZ: HELPERS ===================== */
+function shuffle(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
+
 function factWeight(category, key, boost) {
   const rec = state.facts[category][key];
   let w = boost || 1;
@@ -164,86 +192,119 @@ function recordFactResult(category, key, correct, slow) {
   bank[key].seen++;
   bank[key].slow = !!slow;
   if (!correct) bank[key].wrong++;
-  else bank[key].wrong = Math.max(0, bank[key].wrong - 0.5); // easing off once it's learned
+  else bank[key].wrong = Math.max(0, bank[key].wrong - 0.5); // eases off once it's learned
+}
+function pickThree(candidateSet, correct) {
+  const pool = [...candidateSet].filter(v => v > 0 && Math.abs(v - correct) > 0.001);
+  shuffle(pool);
+  const out = [];
+  for (const v of pool) { if (!out.some(o => Math.abs(o - v) < 0.001)) out.push(v); if (out.length === 3) break; }
+  while (out.length < 3) {
+    const jitter = Math.round((correct + (Math.floor(Math.random() * 20) - 10 || 1)) * 100) / 100;
+    if (jitter > 0 && Math.abs(jitter - correct) > 0.001 && !out.some(o => Math.abs(o - jitter) < 0.001)) out.push(jitter);
+  }
+  return out;
 }
 
+function formatValue(category, val) {
+  return category === 'fractions' ? val.toFixed(2) + '%' : String(val);
+}
+
+/* ===================== QUIZ: FACT POOLS ===================== */
 function pickTablesFact() {
   const items = [];
   for (let n = 1; n <= TABLES_MAX_N; n++) {
     const boost = isFocusN(n) ? 4 : 1;
     for (let m = 1; m <= TABLES_MAX_M; m++) {
-      const key = factKeyTables(n, m);
+      const key = `${n}x${m}`;
       items.push({ n, m, key, weight: factWeight('tables', key, boost) });
     }
   }
-  const pick = weightedPick(items);
-  return { category: 'tables', key: pick.key, text: `${pick.n} × ${pick.m}`, answer: pick.n * pick.m,
-    distract: () => tablesDistractors(pick.n, pick.m) };
+  const p = weightedPick(items);
+  return {
+    category: 'tables', key: p.key, text: `${p.n} × ${p.m}`, equation: `${p.n} × ${p.m}`, answer: p.n * p.m,
+    distract: () => {
+      const correct = p.n * p.m;
+      const cand = new Set([
+        correct + p.n, correct - p.n, correct + p.m, correct - p.m,
+        p.n * (p.m + 1), p.n * (p.m - 1), correct + 2, correct - 2,
+        (p.n + 1) * p.m, (p.n - 1) * p.m,
+      ]);
+      return pickThree(cand, correct);
+    },
+  };
 }
 function pickSquaresFact() {
   const items = [];
   for (let n = 1; n <= SQUARES_MAX; n++) items.push({ n, key: String(n), weight: factWeight('squares', String(n), 1) });
-  const pick = weightedPick(items);
-  return { category: 'squares', key: pick.key, text: `${pick.n}²`, answer: pick.n * pick.n,
-    distract: () => squareDistractors(pick.n) };
+  const p = weightedPick(items);
+  return {
+    category: 'squares', key: p.key, text: `${p.n}²`, equation: `${p.n}²`, answer: p.n * p.n,
+    distract: () => {
+      const correct = p.n * p.n;
+      const cand = new Set([
+        (p.n - 1) * (p.n - 1), (p.n + 1) * (p.n + 1),
+        correct + p.n, correct - p.n, correct + 2 * p.n - 1, correct - (2 * p.n + 1),
+        correct + 2, correct - 2,
+      ]);
+      return pickThree(cand, correct);
+    },
+  };
 }
 function pickCubesFact() {
   const items = [];
   for (let n = 1; n <= CUBES_MAX; n++) items.push({ n, key: String(n), weight: factWeight('cubes', String(n), 1) });
-  const pick = weightedPick(items);
-  return { category: 'cubes', key: pick.key, text: `${pick.n}³`, answer: pick.n * pick.n * pick.n,
-    distract: () => cubeDistractors(pick.n) };
+  const p = weightedPick(items);
+  return {
+    category: 'cubes', key: p.key, text: `${p.n}³`, equation: `${p.n}³`, answer: p.n * p.n * p.n,
+    distract: () => {
+      const correct = p.n * p.n * p.n;
+      const cand = new Set([
+        (p.n - 1) ** 3, (p.n + 1) ** 3,
+        p.n * p.n * (p.n - 1), p.n * p.n * (p.n + 1),
+        correct + p.n, correct - p.n, correct + 3 * p.n * p.n,
+      ]);
+      return pickThree(cand, correct);
+    },
+  };
 }
-
-function tablesDistractors(n, m) {
-  const correct = n * m;
-  const cand = new Set([
-    correct + n, correct - n, correct + m, correct - m,
-    n * (m + 1), n * (m - 1), correct + 2, correct - 2,
-    (n + 1) * m, (n - 1) * m,
-  ]);
-  return pickThree(cand, correct);
-}
-function squareDistractors(n) {
-  const correct = n * n;
-  const cand = new Set([
-    (n - 1) * (n - 1), (n + 1) * (n + 1),
-    correct + n, correct - n, correct + 2 * n - 1, correct - (2 * n + 1),
-    correct + 2, correct - 2,
-  ]);
-  return pickThree(cand, correct);
-}
-function cubeDistractors(n) {
-  const correct = n * n * n;
-  const cand = new Set([
-    (n - 1) ** 3, (n + 1) ** 3,
-    n * n * (n - 1), n * n * (n + 1),
-    correct + n, correct - n, correct + 3 * n * n,
-  ]);
-  return pickThree(cand, correct);
-}
-function pickThree(candidateSet, correct) {
-  const pool = [...candidateSet].filter(v => v > 0 && v !== correct);
-  shuffle(pool);
-  const out = [];
-  for (const v of pool) { if (!out.includes(v)) out.push(v); if (out.length === 3) break; }
-  while (out.length < 3) {
-    const jitter = correct + (Math.floor(Math.random() * 20) - 10 || 1);
-    if (jitter > 0 && jitter !== correct && !out.includes(jitter)) out.push(jitter);
+function pickFractionFact() {
+  const items = [];
+  for (let x = 2; x <= FRACTIONS_MAX_X; x++) {
+    const boost = (x >= FRACTIONS_HARD_LO && x <= FRACTIONS_HARD_HI) ? 3 : 1;
+    const maxN = Math.min(FRACTIONS_MAX_N, x - 1);
+    for (let n = 1; n <= maxN; n++) {
+      const key = `${n}/${x}`;
+      items.push({ n, x, key, weight: factWeight('fractions', key, boost) });
+    }
   }
-  return out;
+  const p = weightedPick(items);
+  const correct = pctOf(p.n, p.x);
+  return {
+    category: 'fractions', key: p.key, text: `${p.n}/${p.x}`, equation: `${p.n}/${p.x}`, answer: correct,
+    distract: () => {
+      const cand = new Set([
+        pctOf(p.n, p.x - 1), pctOf(p.n, p.x + 1),
+        pctOf(p.n + 1, p.x), Math.max(0, pctOf(p.n - 1, p.x) || pctOf(1, p.x)),
+        Math.round((correct + 1) * 100) / 100, Math.round((correct - 1) * 100) / 100,
+        Math.round((correct * 2) * 100) / 100, Math.round((correct / 2) * 100) / 100,
+      ]);
+      return pickThree(cand, correct);
+    },
+  };
 }
-function shuffle(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
 
 function nextFact(mode) {
   if (mode === 'tables') return pickTablesFact();
   if (mode === 'squares') return pickSquaresFact();
   if (mode === 'cubes') return pickCubesFact();
-  // mixed: tables weighted heavier since that's the bulk of the ask
+  if (mode === 'fractions') return pickFractionFact();
+  // mixed: tables weighted heaviest since that's the bulk of the ask
   const r = Math.random();
-  if (r < 0.5) return pickTablesFact();
-  if (r < 0.75) return pickSquaresFact();
-  return pickCubesFact();
+  if (r < 0.4) return pickTablesFact();
+  if (r < 0.6) return pickSquaresFact();
+  if (r < 0.8) return pickCubesFact();
+  return pickFractionFact();
 }
 
 /* ===================== QUIZ: MODE SELECT / SETUP SCREEN ===================== */
@@ -277,18 +338,20 @@ document.getElementById('resetProgress').addEventListener('click', () => {
 });
 
 /* ===================== QUIZ: LIVE SESSION ===================== */
-let session = null; // { mode, total, correct, active }
-let question = null; // { category, key, text, answer, options, startTs, timeLimit }
+let session = null; // { mode, total, correct }
+let question = null;
 let rafId = null;
 
 const setupEl = document.getElementById('quizSetup');
 const liveEl = document.getElementById('quizLive');
 const summaryEl = document.getElementById('quizSummary');
 const marginRule = document.getElementById('marginRule');
+const nextBtn = document.getElementById('nextQuestionBtn');
 
 document.getElementById('startQuiz').addEventListener('click', () => startSession(currentMode));
 document.getElementById('stopQuiz').addEventListener('click', () => endLiveQuiz(true));
 document.getElementById('againQuiz').addEventListener('click', () => startSession(currentMode));
+nextBtn.addEventListener('click', () => { if (session) askQuestion(); });
 
 function startSession(mode) {
   session = { mode, total: 0, correct: 0 };
@@ -326,18 +389,31 @@ function askQuestion() {
   document.getElementById('quizScore').textContent = `${session.correct}/${session.total}`;
   document.getElementById('feedbackText').textContent = '';
   document.getElementById('feedbackText').className = 'feedback';
+  nextBtn.hidden = true;
 
   const grid = document.getElementById('optionsGrid');
   grid.innerHTML = '';
   options.forEach((val, i) => {
     const b = document.createElement('button');
     b.className = 'option-btn';
-    b.innerHTML = `${val}<span class="key-hint">${i + 1}</span>`;
+    b.dataset.val = val;
+    b.innerHTML = `${formatValue(fact.category, val)}<span class="key-hint">${i + 1}</span>`;
     b.addEventListener('click', () => selectOption(val, b));
     grid.appendChild(b);
   });
 
+  marginRule.style.transform = 'scaleY(1)';
   runTimer();
+
+  const onKey = (e) => {
+    if (!question || question.answered) { document.removeEventListener('keydown', onKey); return; }
+    const idx = parseInt(e.key, 10) - 1;
+    if (idx >= 0 && idx < options.length) {
+      selectOption(options[idx], grid.children[idx]);
+      document.removeEventListener('keydown', onKey);
+    }
+  };
+  document.addEventListener('keydown', onKey);
 }
 
 function runTimer() {
@@ -362,21 +438,21 @@ function handleAnswer(val, timedOut, btnEl) {
   question.answered = true;
   cancelAnimationFrame(rafId);
   const elapsed = (performance.now() - question.startTs) / 1000;
-  const correct = !timedOut && val === question.answer;
+  const correct = !timedOut && Math.abs(val - question.answer) < 0.001;
   const slow = elapsed > question.timeLimit * 0.65;
 
-  // disable & style all options
   document.querySelectorAll('.option-btn').forEach(b => {
     b.disabled = true;
-    const v = parseInt(b.textContent, 10);
-    if (v === question.answer) b.classList.add('is-correct');
+    const v = parseFloat(b.dataset.val);
+    if (Math.abs(v - question.answer) < 0.001) b.classList.add('is-correct');
     else if (b === btnEl) b.classList.add('is-wrong');
   });
 
+  const answerDisplay = formatValue(question.category, question.answer);
   const fb = document.getElementById('feedbackText');
-  if (timedOut) { fb.textContent = `Time's up — it was ${question.answer}.`; fb.className = 'feedback is-timeout'; }
-  else if (correct) { fb.textContent = `Right, in ${elapsed.toFixed(1)}s.`; fb.className = 'feedback is-correct'; }
-  else { fb.textContent = `Not quite — it was ${question.answer}.`; fb.className = 'feedback is-wrong'; }
+  if (timedOut) { fb.textContent = `Time's up — ${question.equation} = ${answerDisplay}`; fb.className = 'feedback is-timeout'; }
+  else if (correct) { fb.textContent = `Right, in ${elapsed.toFixed(1)}s — ${question.equation} = ${answerDisplay}`; fb.className = 'feedback is-correct'; }
+  else { fb.textContent = `Not quite — ${question.equation} = ${answerDisplay}`; fb.className = 'feedback is-wrong'; }
 
   recordFactResult(question.category, question.key, correct, slow);
   session.total++; if (correct) session.correct++;
@@ -387,7 +463,8 @@ function handleAnswer(val, timedOut, btnEl) {
   document.getElementById('quizScore').textContent = `${session.correct}/${session.total}`;
   document.getElementById('quizTimeLimitLabel').textContent = state.timeLimits[session.mode] + 's';
 
-  setTimeout(() => { if (session) askQuestion(); }, ADVANCE_DELAY_MS);
+  nextBtn.hidden = false;
+  nextBtn.focus();
 }
 
 function adjustClock(mode, correct, slow) {
