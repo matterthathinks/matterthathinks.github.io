@@ -173,19 +173,19 @@ table.page-header{
 
 table.grid{
   width:100%;
-  border-collapse:collapse; table-layout:fixed;
-  border-left:0.75pt solid var(--rule); border-top:0.75pt solid var(--rule);
+  border-collapse:separate; border-spacing:0; table-layout:fixed;
+  border-left:1px solid var(--rule); border-top:1px solid var(--rule);
   position:relative; z-index:1;
 }
 .dow{
   font-family:var(--font-mono); font-size:7.5pt; letter-spacing:.09em; text-transform:uppercase;
   color:var(--moss); text-align:left; padding:1mm 0 1.5mm 2.2mm; box-sizing:border-box;
-  border-right:0.75pt solid var(--rule); border-bottom:1.2pt solid var(--ink);
+  border-right:1px solid var(--rule); border-bottom:1.5px solid var(--ink);
 }
 .dow.weekend{ background:var(--accent-soft); }
 
 .cell{
-  border-right:0.75pt solid var(--rule); border-bottom:0.75pt solid var(--rule);
+  border-right:1px solid var(--rule); border-bottom:1px solid var(--rule);
   padding:1.6mm 2.2mm; position:relative; vertical-align:top; box-sizing:border-box;
 }
 body.orient-landscape .dow{ height:8mm; }
