@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Print My Calendar — a goal-countdown calendar you can print</title>
+<meta name="description" content="Pick a date range, add an optional goal day, and get an elegant printable calendar with day-countdown numbers.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='3' fill='%237A4869'/%3E%3Cpath d='M12 2c1.5 3 1.5 5 0 8-1.5-3-1.5-5 0-8zM12 22c1.5-3 1.5-5 0-8-1.5 3-1.5 5 0 8zM2 12c3-1.5 5-1.5 8 0-3 1.5-5 1.5-8 0zM22 12c-3-1.5-5-1.5-8 0 3 1.5 5 1.5 8 0z' fill='%237A4869'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ================= SETUP VIEW (screen only) ================= -->
+  <main id="setupView" class="setup">
+
+    <header class="brand">
+      <span class="brand-name">Matter That Thinks</span>
+      <span class="brand-divider">/</span>
+      <span class="brand-tool">Print My Calendar</span>
+    </header>
+
+    <section class="hero">
+      <h1>A calendar that counts toward <em>your</em> day.</h1>
+      <p class="hero-sub">Choose a range, add a goal day if you have one, and get a quiet, elegant calendar — one page per month, ready to print or save as a PDF.</p>
+    </section>
+
+    <form id="calendarForm" class="form-card" novalidate>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="startMonth">From</label>
+          <input type="month" id="startMonth" name="startMonth" required>
+        </div>
+        <div class="field">
+          <label for="endMonth">To</label>
+          <input type="month" id="endMonth" name="endMonth" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="goalDate">Goal day <span class="optional">— optional</span></label>
+        <input type="date" id="goalDate" name="goalDate">
+        <p class="hint">If you set this, every day from today until this date is numbered — counting down to 0. Leave it blank for a plain calendar.</p>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <span class="group-label">Palette</span>
+          <div class="toggle" role="radiogroup" aria-label="Palette">
+            <button type="button" class="toggle-btn is-active" data-group="palette" data-value="colour" aria-pressed="true">Colour</button>
+            <button type="button" class="toggle-btn" data-group="palette" data-value="mono" aria-pressed="false">Monochrome</button>
+          </div>
+        </div>
+        <div class="field">
+          <span class="group-label">Orientation</span>
+          <div class="toggle" role="radiogroup" aria-label="Orientation">
+            <button type="button" class="toggle-btn is-active" data-group="orientation" data-value="landscape" aria-pressed="true">Landscape</button>
+            <button type="button" class="toggle-btn" data-group="orientation" data-value="portrait" aria-pressed="false">Portrait</button>
+          </div>
+        </div>
+      </div>
+
+      <p id="formError" class="form-error" hidden></p>
+
+      <button type="submit" class="btn-primary">Generate calendar</button>
+    </form>
+
+    <footer class="setup-footer">
+      <p>Nothing leaves your browser — the calendar is built on your device and printed straight from it.</p>
+    </footer>
+  </main>
+
+  <!-- ================= PRINT VIEW ================= -->
+  <div id="printView" hidden>
+
+    <div class="print-toolbar no-print">
+      <button type="button" id="backBtn" class="btn-ghost">← Edit details</button>
+      <span class="toolbar-spacer"></span>
+      <button type="button" id="printBtn" class="btn-primary">Print / Save as PDF</button>
+    </div>
+
+    <div id="pages"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
