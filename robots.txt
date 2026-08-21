@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /memory-tool/
+
+Sitemap: https://matterthathinks.github.io/sitemap.xml
