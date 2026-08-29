@@ -1,0 +1,1180 @@
+{
+"id": "sbi-clerk-pre-2025-20th-sep-shift-2",
+"title": "SBI Clerk Prelims 2025 — 20th Sep, Shift 2 (Memory-Based)",
+"instructions": [
+"This test has 3 sections: English Language, Quantitative Aptitude, and Reasoning Ability.",
+"Each section has its own 20-minute timer. When a section's time is up, it auto-submits and you move to the next section.",
+"You cannot go back to a previous section once it is submitted.",
+"Each correct answer gets +1 mark. Each wrong answer gets -0.25 mark. Unattempted questions get 0.",
+"Some questions are based on a shared passage, table, or diagram shown on the left. It stays fixed while you move between its questions.",
+"Use 'Mark for Review' if you want to flag a question to revisit later within the same section.",
+"Click Submit Test at the end, or the section will auto-submit when time runs out."
+],
+"sections": [
+{
+"id": "english",
+"name": "English Language",
+"durationMinutes": 20,
+"passages": [
+{
+"id": "p1",
+"text": "Rearrange the following sentences to form a meaningful paragraph:\n\n(A) Many merchants are pleased as the steady flow of visitors leads to higher profits.\n(B) However, not everyone shares this excitement because the constant rush creates chaos and congestion.\n(C) Tokyo attracts shoppers from across the globe, making it one of the most vibrant shopping destinations.\n(D) Consequently, Tokyo's bustling shopping scene presents both promising opportunities and serious challenges.\n(E) Local brands in particular struggle to compete with the dominance of international labels."
+},
+{
+"id": "p2",
+"text": "Read the following passage and answer the given questions:\n\nIn a small village that often struggled with a shortage of water, the everyday life of the people was filled with challenges. During the summer months, the scarcity of water became severe, and every drop counted. The villagers depended on a common water tank, but many times, the motor pumping the water was left running for too long. As a result, the tank overflowed, wasting not only water but also electricity. It was during such a time of need that the village sarpanch, a lady named Akshara, known for her dedication and hard work, stepped forward to bring a change.\n\nAkshara had already done much work for the growth and improvement of the village. Under her guidance, the roads had been repaired, small health camps were organized, and farming techniques were upgraded. Yet, she realized that solving the problem of water shortage was the most urgent task. Wasting water when the village was already facing scarcity was something she could not allow to continue.\n\nDetermined to find a lasting solution, she decided to make use of technology. She discussed the matter with local experts and worked with young villagers who understood simple technical methods. Together, they developed an innovative system to save water. This system involved fitting a sensor in the water tank. The sensor was connected to a simple device that sent a message to mobile phones as soon as the water level reached the top.\n\nNow, whenever the tank filled with water, a clear message was displayed on the screen of the registered mobile numbers. The person operating the motor would receive the alert immediately and could turn off the motor without delay. This simple step stopped the overflow of water and saved a large quantity from being wasted every day.\n\nThe results were visible within a few weeks. The villagers noticed a big difference in the amount of water stored and the electricity bills also reduced. The message system became a habit for everyone. People began to check their phones regularly, and even children reminded the elders to turn off the motor when the message arrived, leading to a significant saving of both water and electricity in the village.\n\nThis example of using technology for a common good quickly ______ attention in nearby areas. Akshara's bold move proved that even a simple idea can create a strong impact. By introducing this method, she not only saved water but also inspired the entire village to value and protect their natural resources for the future."
+}
+],
+"questions": [
+{
+"id": "e1",
+"passageId": "p1",
+"text": "Which of the following statement is the FIRST sentence after the rearrangement?",
+"options": ["A", "B", "C", "D", "E"],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e2",
+"passageId": "p1",
+"text": "Which of the following statement is the SECOND sentence after the rearrangement?",
+"options": ["A", "B", "C", "D", "E"],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e3",
+"passageId": "p1",
+"text": "Which of the following statement is the THIRD sentence after the rearrangement?",
+"options": ["A", "B", "C", "D", "E"],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e4",
+"passageId": "p1",
+"text": "Which of the following statement is the FOURTH sentence after the rearrangement?",
+"options": ["A", "B", "C", "D", "E"],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e5",
+"passageId": "p1",
+"text": "Which of the following statement is the FIFTH sentence after the rearrangement?",
+"options": ["A", "B", "C", "D", "E"],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e6",
+"passageId": "p2",
+"text": "Which of the following best captures the primary reason Akshara decided to introduce technology in the village?",
+"options": [
+"To reduce the rising electricity bills caused by the motor.",
+"To inspire children to be more responsible about checking their phones.",
+"To prevent the continuous overflow of water despite a common water tank.",
+"To attract the attention of nearby areas by becoming a model village.",
+"To modernize farming techniques in the village."
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e7",
+"passageId": "p2",
+"text": "According to the passage which of the following statement(s) are false?\n\n(A) Akshara's initiative directly influenced the villagers' daily habits.\n(B) The village had never faced any other form of development before the water-saving idea.\n(C) Children played a role in ensuring the motor was turned off on time.",
+"options": ["Only B", "Both B and C", "Only C", "Both A and B", "All A, B, C"],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e8",
+"passageId": "p2",
+"text": "According to the passage, which factor MOST contributed to the successful implementation of the water-saving system?",
+"options": [
+"Installation of the sensor and alert device",
+"Previous improvements in farming techniques",
+"Government incentives for rural technology",
+"Children reminding elders to check their phones",
+"Seasonal rainfall improving water supply"
+],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e9",
+"passageId": "p2",
+"text": "Why can the villagers' habit of checking their phones be seen as a significant development?",
+"options": [
+"It shows their dependence on mobile entertainment.",
+"It reflects their growing awareness of resource conservation.",
+"It indicates their interest in learning new languages.",
+"It proves the failure of traditional farming techniques.",
+"It demonstrates their shift to urban lifestyles."
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e10",
+"passageId": "p2",
+"text": "Which of the following is TRUE according to the passage?\n\n(A) Children independently managed the motor operations.\n(B) The message system was funded by the state government.\n(C) Akshara's previous projects included upgrading farming techniques.",
+"options": ["Only B", "Both B and C", "Only C", "Both A and B", "All A, B, C"],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e11",
+"passageId": "p2",
+"text": "How did the neighbouring areas respond to the success of Akshara's project?",
+"options": [
+"They approached the village authorities for technical details, hoping to replicate the idea in their own areas.",
+"They requested government intervention to fund a new network of water tanks across the district.",
+"They admired the innovation and were motivated to try a similar water-saving method in their own villages.",
+"They complained that Akshara's plan increased competition for limited government resources.",
+"They visited the village only to study the mobile technology but made no plans to implement it themselves."
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e12",
+"passageId": "p2",
+"text": "Choose the most suitable word that fill the given blank in the passage.",
+"options": ["gone", "rejected", "avoided", "drew", "deflected"],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e13",
+"passageId": "p2",
+"text": "Which of the following words is same in meaning to "leading" as used in the passage?",
+"options": ["Resulting", "Misleading", "Inferior", "Following", "Ambiguous"],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e14",
+"passageId": "p2",
+"text": "Which of the following words is same in meaning to "move" as used in the passage?",
+"options": ["Gesture", "Relocation", "Action", "Impulse", "Migration"],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e15",
+"passageId": null,
+"text": "In the question below, a part is omitted which is then replaced by a blank. Choose the word from the given options that will fit into the blank most appropriately.\n\nHe checked the settings again to prevent another system ______",
+"options": ["break", "update", "crash", "click", "login"],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e16",
+"passageId": null,
+"text": "In the question below, a part is omitted which is then replaced by a blank. Choose the word from the given options that will fit into the blank most appropriately.\n\nDespite the warning signs, the company continued its risky financial ______",
+"options": ["borrow", "expand", "return", "venture", "balance"],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e17",
+"passageId": null,
+"text": "In the question below, a part is omitted which is then replaced by a blank. Choose the word from the given options that will fit into the blank most appropriately.\n\nThe committee delayed the vote to allow time for further ______",
+"options": ["assertion", "revision", "mention", "division", "collection"],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e18",
+"passageId": null,
+"text": "In the question below, a part is omitted which is then replaced by a blank. Choose the word from the given options that will fit into the blank most appropriately.\n\nThe researcher's findings directly challenged the existing scientific ______",
+"options": ["forums", "context", "framework", "dispute", "featured"],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e19",
+"passageId": null,
+"text": "In the question below, a part is omitted which is then replaced by a blank. Choose the word from the given options that will fit into the blank most appropriately.\n\nThe software update resolved the bug without affecting system ______",
+"options": ["protocol", "operational", "excess", "integrity", "liable"],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e20",
+"passageId": null,
+"text": "The sentence is divided into four segments: (A), (B), (C), and (D). Identify the segment that contains a grammatical error. If the sentence is both grammatically and contextually correct, select "No error" as the correct answer.\n\nThe tourists was informed (A)/ that the ferry service (B)/ would resume operation (C)/ after the storm passed. (D)",
+"options": ["A", "B", "C", "D", "No error"],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e21",
+"passageId": null,
+"text": "The sentence is divided into four segments: (A), (B), (C), and (D). Identify the segment that contains a grammatical error. If the sentence is both grammatically and contextually correct, select "No error" as the correct answer.\n\nHe described the plan (A)/ as both effective (B)/ and was easy to implement (C)/ within the current budget. (D)",
+"options": ["A", "B", "C", "D", "No error"],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e22",
+"passageId": null,
+"text": "The sentence is divided into four segments: (A), (B), (C), and (D). Identify the segment that contains a grammatical error. If the sentence is both grammatically and contextually correct, select "No error" as the correct answer.\n\nShe took the wrong train (A)/ and ended up in (B)/ an unfamiliar station (C)/ she had never been in before. (D)",
+"options": ["A", "B", "C", "D", "No error"],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e23",
+"passageId": null,
+"text": "The sentence is divided into four segments: (A), (B), (C), and (D). Identify the segment that contains a grammatical error. If the sentence is both grammatically and contextually correct, select "No error" as the correct answer.\n\nA number of rare birds (A)/ has been spotted (B)/ near the riverbank (C)/ over the past few days. (D)",
+"options": ["A", "B", "C", "D", "No error"],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e24",
+"passageId": null,
+"text": "The sentence is divided into four segments: (A), (B), (C), and (D). Identify the segment that contains a grammatical error. If the sentence is both grammatically and contextually correct, select "No error" as the correct answer.\n\nThe players practiced hard (A)/ so that they can (B)/ perform well in the (C)/ upcoming regional tournament. (D)",
+"options": ["A", "B", "C", "D", "No error"],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e25",
+"passageId": null,
+"text": "In the following question, a sentence is provided with three highlighted words that may be incorrectly positioned. Choose the correct sequence to rearrange these words, ensuring the sentence is both grammatically and contextually correct.\n\nHimachal Pradesh improve (A) mobile use in government (B) schools to banned (C) focus and well-being.",
+"options": ["BAC", "CBA", "BCA", "ACB", "No rearrangement required"],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e26",
+"passageId": null,
+"text": "In the following question, a sentence is provided with three highlighted words that may be incorrectly positioned. Choose the correct sequence to rearrange these words, ensuring the sentence is both grammatically and contextually correct.\n\nKarnataka launched (A) the Deepika Scholarship, higher (B) ₹30,000 yearly to 37,000 schoolgirls in giving (C) education.",
+"options": ["CBA", "BCA", "BAC", "ACB", "No rearrangement required"],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e27",
+"passageId": null,
+"text": "In the following question, a sentence is provided with three highlighted words that may be incorrectly positioned. Choose the correct sequence to rearrange these words, ensuring the sentence is both grammatically and contextually correct.\n\nGurgaon's Ward 22 is composting (A) a zero-waste model with becoming (B), segregation, and community (C) efforts.",
+"options": ["CBA", "ACB", "BAC", "BCA", "No rearrangement required"],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e28",
+"passageId": null,
+"text": "A word has been given in the question and used in the sentences below. Identify the statements where the word has been used in a contextually and grammatically correct manner.\n\nCURSE\n(A) The heavy rain turned out to be a curse for the farmers who were hoping for a dry harvest.\n(B) After stepping on a nail, he let out a loud curse that echoed down the street.\n(C) She gave him a curse of appreciation for helping her with the heavy bags.",
+"options": ["Only C", "Both B and C", "Only B", "Both A and B", "All A, B, C"],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e29",
+"passageId": null,
+"text": "In the question below, a part is highlighted in bold, which may not be grammatically correct. Choose the correct alternative for the highlighted part to make the sentence grammatically correct.\n\nThe manager instructed the staff to took care of all client requests promptly and efficiently.",
+"options": [
+"to take care of all",
+"for taking care of all",
+"to taking care of all",
+"to takes care of all",
+"No improvement required"
+],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e30",
+"passageId": null,
+"text": "In the question below, a part is highlighted in bold, which may not be grammatically correct. Choose the correct alternative for the highlighted part to make the sentence grammatically correct.\n\nThe students were excited for attend the workshop on artificial intelligence applications.",
+"options": [
+"with attending the workshop",
+"to attend the workshop",
+"to attending the workshop",
+"in attend the workshop",
+"No improvement required"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+}
+]
+},
+{
+"id": "quantitative_aptitude",
+"name": "Quantitative Aptitude",
+"durationMinutes": 20,
+"passages": [
+{
+"id": "p3",
+"text": "The table given below shows the number of cheesecakes sold by two shops A and B on three different days (Saturday, Sunday, and Monday).\n\n| Day | Shop A | Shop B |\n|---|---|---|\n| Saturday | 125 | 325 |\n| Sunday | 175 | 275 |\n| Monday | 200 | 100 |"
+},
+{
+"id": "p4",
+"text": "The line graph shows the total number of students (girls + boys) in two different years (2018 and 2019) across four different schools (A, B, C, and D).\n\n| School | 2018 | 2019 |\n|---|---|---|\n| A | 120 | 110 |\n| B | 115 | 140 |\n| C | 100 | 135 |\n| D | 120 | 120 |"
+},
+{
+"id": "p5",
+"text": "A vessel contains 48 liters mixture of milk and water in the ratio of 5:3. X liters mixture removed from the vessel and mixed in another vessel which already contains 2 liters of milk and 2 liters of water. The ratio of milk to water becomes 3:2 in resultant mixture of second vessel."
+},
+{
+"id": "p6",
+"text": "Sunita spends 65% of her monthly salary on rent, grocery and food in the ratio of 3:1:1 respectively. Out of the remaining salary, she invests 50% in mutual funds and the rest she saves. The difference between her savings and the amount spent on food is Rs. 900."
+}
+],
+"questions": [
+{
+"id": "q31",
+"passageId": "p3",
+"text": "Cheesecake sold by A on Sunday and Monday is what percentage of total cheesecake sold by B on Saturday and Sunday.",
+"options": ["62.5", "90.5", "25.50", "120.25", "162.5"],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q32",
+"passageId": "p3",
+"text": "Find the ratio of cheesecake sold by B on Saturday to Monday.",
+"options": ["10:11", "13:4", "11:13", "4:13", "12:5"],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q33",
+"passageId": "p3",
+"text": "The average of cheesecake sold by A on Monday and Tuesday is 300. Find the cheesecake sold by A on Tuesday is what percentage less/more than cheesecake sold by B on Monday.",
+"options": ["100%", "200%", "300%", "400%", "500%"],
+"correctIndex": 2,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q34",
+"passageId": "p3",
+"text": "Find the average cheesecake sold by B on Saturday and A on Sunday.",
+"options": ["100", "350", "150", "250", "180"],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q35",
+"passageId": "p3",
+"text": "If A made 700 cheesecakes (sold + unsold) on all the given days. Find the unsold cheesecake of A is how many less than cheesecakes sold by B on Saturday and Sunday.",
+"options": ["400", "480", "150", "360", "380"],
+"correctIndex": 0,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q36",
+"passageId": "p4",
+"text": "Find the ratio of total students in 2018 to 2019 across all schools.",
+"options": ["100:101", "91:101", "50:51", "120:121", "80:81"],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q37",
+"passageId": "p4",
+"text": "Find the total students in B in both the years is what percentage more than total students in A in 2018.",
+"options": ["100.5", "100.25", "112.5", "120.25", "180.125"],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q38",
+"passageId": "p4",
+"text": "The average number of students in A in the year 2018, 2019 & 2020 is 120. Find the total students in A in the year 2020.",
+"options": ["100", "120", "150", "130", "80"],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q39",
+"passageId": "p4",
+"text": "In school E, total students in 2019 and 2018 together are 165 more than that of C. The ratio of students in 2019 to 2018 is 3:2, find the difference between students in 2019 and 2018 in E.",
+"options": ["100", "90", "50", "120", "80"],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q40",
+"passageId": "p4",
+"text": "If the ratio of girls to boys in school D in the year 2018 is 1:3, then find the number of boys in school D in the year 2018.",
+"options": ["100", "90", "50", "120", "80"],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q41",
+"passageId": "p5",
+"text": "Find the value of X.",
+"options": ["16", "8", "32", "12", "24"],
+"correctIndex": 0,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q42",
+"passageId": "p5",
+"text": "Find the difference between quantity of milk in both vessels remaining / present initially after transfer?",
+"options": ["10", "18", "15", "12", "8"],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q43",
+"passageId": "p6",
+"text": "Find the salary of Sunita (in Rs.)?",
+"options": ["10000", "20000", "15000", "12000", "80000"],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q44",
+"passageId": "p6",
+"text": "Find the difference between amount invested in mutual fund and amount spend on rent (in Rs.)?",
+"options": ["4100", "4200", "4300", "4400", "4800"],
+"correctIndex": 2,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q45",
+"passageId": null,
+"text": "A and B started a business with investment of Rs. 2000 and Rs. 6000 respectively. A invested for two more months than B. At the end of business, the total profit is Rs. 6600 and the profit share of A is Rs. 1800. Find for how many months A invested in the business?",
+"options": ["16", "14", "22", "18", "24"],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q46",
+"passageId": null,
+"text": "8 men can do a work in 3 days and (x + 10) women can do the same work in 4 days. If the ratio of efficiency of a man to a woman is 3:1, then find (x + 16) women can do the same work in how many days?",
+"options": ["2", "8", "6", "4", "3"],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q47",
+"passageId": null,
+"text": "The ratio of time taken by a boat to cover same distance downstream to upstream is 3:5. If the speed of stream is 3 km/hr then find the time taken by the boat to cover 72 km in upstream?",
+"options": ["3", "12", "9", "8", "6"],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q48",
+"passageId": null,
+"text": "The side of a square is equal to breadth of a rectangle and the perimeter of the square is 48 cm. If area of the rectangle is 216 cm square, then find the length of the rectangle (in cm)?",
+"options": ["20", "15", "16", "18", "24"],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q49",
+"passageId": null,
+"text": "The ratio of age of X ten years ago to Y six years ago 2:3. The ratio of age of X four years hence to Y six years hence will be 5:6. Find the difference between present age of X and Y (in years)?",
+"options": ["8", "6", "3", "4", "2"],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q50",
+"passageId": null,
+"text": "A shopkeeper marked up an article 50% above cost price. The shopkeeper allows a discount of Rs. 360 and difference between profit and cost price is Rs. 960. Find the marked price of the article (in Rs.)?",
+"options": ["2800", "1600", "1800", "2000", "2400"],
+"correctIndex": 2,
+"difficulty": "hard",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q51",
+"passageId": null,
+"text": "The ratio of two numbers A and B is 4:5 respectively. When 40 is added in each number, then the ratio between A and B becomes 5:6. If 10 is subtracted from each number, then find the ratio of A to that of B?",
+"options": ["15:19", "3:4", "7:9", "9:11", "11:13"],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q52",
+"passageId": null,
+"text": "A man invested Rs. X on simple interest at the rate of 16% p.a. for five years and received Rs. 2000 as interest. If he invests the same amount on compound interest at rate of 20% p.a. for two years, then find the amount received by him?",
+"options": ["Rs. 3000", "Rs. 3600", "Rs. 3200", "Rs. 4000", "Rs. 3260"],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q53",
+"passageId": null,
+"text": "The average of four consecutive odd numbers is 10 and average of four consecutive even number is 21. Find the sum of largest odd number and the smallest even number?",
+"options": ["37", "35", "33", "31", "29"],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q54",
+"passageId": null,
+"text": "A man goes to the gym with an average speed of 20 km/hr and returns with an average speed of 30 km/hr. Find the average speed of entire journey?",
+"options": ["24 km/hr", "18 km/hr", "20 km/hr", "16 km/hr", "28 km/hr"],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q55",
+"passageId": null,
+"text": "In 128 liters of pure milk, 40 liters of water is mixed and 25% of the mixture is taken out. When 'x' liters of water are added again, then ratio of milk to water becomes 2:1 of resulting mixture. Find value of 'x'?",
+"options": ["20", "16", "24", "12", "18"],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q56",
+"passageId": null,
+"text": "What should come in place of question mark (?) in the following question?\n\n12.5 × 80 + 37.5 × 16 - 6.25 × 112 = ?",
+"options": ["1000", "900", "2300", "600", "1300"],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q57",
+"passageId": null,
+"text": "What should come in place of question mark (?) in the following question?\n\n11075 ÷ 5 + √3025 - √2116 = ?",
+"options": ["2213", "2226", "2224", "2227", "2729"],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q58",
+"passageId": null,
+"text": "What should come in place of question mark (?) in the following question?\n\n? + √324 + √361 = 290 ÷ 5 + 1000",
+"options": ["1400", "1021", "1361", "1484", "1289"],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q59",
+"passageId": null,
+"text": "What should come in place of question mark (?) in the following question?\n\n1674 ÷ 27 × 9 + 18 = ?²",
+"options": ["26", "23", "24", "35", "18"],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q60",
+"passageId": null,
+"text": "What should come in place of question mark (?) in the following question?\n\n(1.2)² + (1.5)² + (2.1)² - (1.9)² = ?",
+"options": ["4.99", "5.69", "3.69", "6.79", "4.49"],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q61",
+"passageId": null,
+"text": "What should come in place of question mark (?) in the following question?\n\n9990 ÷ 10 + (7294 - 3241 + 716) - (3267 + 2425 - 961) = ?",
+"options": ["1035", "1048", "1043", "1037", "1047"],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q62",
+"passageId": null,
+"text": "What should come in place of question mark (?) in the following question?\n\n1217 + 841 - 724 + 819 = ? + 1843",
+"options": ["320", "310", "290", "270", "410"],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q63",
+"passageId": null,
+"text": "What should come in place of question mark (?) in the following question?\n\n0.06 × 0.84 = ? × 1.2 × 0.015",
+"options": ["8.2", "6.4", "2.6", "3.8", "2.8"],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q64",
+"passageId": null,
+"text": "What should come in place of question mark (?) in the following question?\n\n8.41 + 6.25 + 0.79 = ? - 0.55",
+"options": ["17", "14.9", "13.9", "16", "14.7"],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q65",
+"passageId": null,
+"text": "What should come in place of question mark (?) in the following question?\n\n616 + 472 - 811 + 317 = ? + 576",
+"options": ["28", "16", "24", "18", "14"],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+}
+]
+},
+{
+"id": "reasoning_ability",
+"name": "Reasoning Ability",
+"durationMinutes": 20,
+"passages": [
+{
+"id": "p7",
+"text": "Study the information carefully and answer the questions carefully:\n\nTen persons sit in two parallel rows with five persons in each row.\nP, Q, R, S, and T sit in row 2 and face north.\nA, B, C, D, and E sit in row 1 and face south, but not necessarily in the same order.\nThe one who sits second to the left of D faces S. T sits immediate right of S. Two persons sit between T and Q. The one who faces Q sits third to the right of E. One person sits between E and C who sits to the left of A. A doesn't face P."
+},
+{
+"id": "p8",
+"text": "Seven persons — A, B, C, D, E, F and G — are going to watch a show on different days of the week starting from Monday to Sunday, but not necessarily in the same order.\nG goes before B but after C. G goes three persons after A. B goes before E. Two persons go between E and D. C goes after F."
+},
+{
+"id": "p9",
+"text": "Study the following alphanumeric series carefully and answer the questions given below:\n\n83&74*^6%85@271#397$921658"
+},
+{
+"id": "p10",
+"text": "Six ropes — A, B, C, D, E, and F — are of different lengths, but not necessarily in the same order.\nLength of D is more than the length of A but less than the length of E. The second longest rope is of 71m. Length of E is more than the length of G. Length of F is less than A's length but is not the least. Length of G is more than B. Length of G is more than A but less than D. F's length is 63m."
+},
+{
+"id": "p11",
+"text": "Eight persons — P, Q, R, S, T, U, V, and W — go to the market one after another (not necessarily in the same order).\nP goes three persons before T. Two persons go to the market between T and V. W goes immediately before Q. One person goes between W and R. S goes after R who goes after U."
+},
+{
+"id": "p12",
+"text": "Carefully examine the information provided below and solve the questions that follow:\n\nA is the sister-in-law of O. C is the mother of A who is the daughter of D. E is the niece of O who is the son of F. One person is G. H is the grandson of F and has a sibling. O doesn't have a child. Only two married couples are there in the family. D is father of I. A is married. There are four male members in the family."
+}
+],
+"questions": [
+{
+"id": "r66",
+"passageId": "p7",
+"text": "Who among the following sits second to the left of the one who sits opposite to B?",
+"options": ["R", "Q", "P", "S", "T"],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r67",
+"passageId": "p7",
+"text": "Which of the following pairs sit at extreme ends?",
+"options": ["E, Q", "T, D", "R, E", "B, D", "P, E"],
+"correctIndex": 2,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r68",
+"passageId": "p7",
+"text": "The number of persons sitting to the left of D is same as the number of persons sitting to the left of ______",
+"options": ["B", "P", "T", "S", "R"],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r69",
+"passageId": "p7",
+"text": "Which of the following statements is true?\n\nI. E faces Q\nII. A and T sit diagonally opposite to each other.\nIII. R sits third to the left of S",
+"options": ["Only I", "Both II and III", "Only III", "Both I and III", "Only II"],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r70",
+"passageId": "p7",
+"text": "Four of the following five are alike in a certain way and thus form a group. Find the one which doesn't belong to the group?",
+"options": ["D-Q", "B-S", "E-T", "A-R", "P-A"],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r71",
+"passageId": null,
+"text": "In these questions, the relationship between different elements is shown in the statements. The statements are followed by two conclusions.\n\nStatements:\nC < D = E ≥ F = G; H ≤ G > I = J\n\nConclusions:\nI. D > J\nII. H ≤ E",
+"options": [
+"If only conclusion I is true",
+"If only conclusion II is true",
+"If either conclusion I or II is true",
+"If both conclusions I and II are true",
+"If neither conclusion I nor II is true"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r72",
+"passageId": null,
+"text": "In these questions, the relationship between different elements is shown in the statements. The statements are followed by two conclusions.\n\nStatements:\nA < Q = R ≥ C ≥ T ≥ X ≥ V > M\n\nConclusions:\nI. Q > V\nII. M < T",
+"options": [
+"If only conclusion I is true",
+"If only conclusion II is true",
+"If either conclusion I or II is true",
+"If both conclusions I and II are true",
+"If neither conclusion I nor II is true"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r73",
+"passageId": null,
+"text": "In these questions, the relationship between different elements is shown in the statements. The statements are followed by two conclusions.\n\nStatements:\nA > B < C = D ≥ E > F ≤ G = H\n\nConclusions:\nI. A < H\nII. B ≥ G",
+"options": [
+"If only conclusion I is true",
+"If only conclusion II is true",
+"If either conclusion I or II is true",
+"If both conclusions I and II are true",
+"If neither conclusion I nor II is true"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r74",
+"passageId": null,
+"text": "Find the odd-one out.",
+"options": ["MPR", "DGJ", "PSU", "SVX", "GJL"],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r75",
+"passageId": "p8",
+"text": "Who goes to watch the show on Thursday?",
+"options": ["G", "D", "A", "C", "None of these"],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r76",
+"passageId": "p8",
+"text": "How many persons go to watch the show between F and G?",
+"options": ["One", "Two", "Three", "None", "More than three"],
+"correctIndex": 2,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r77",
+"passageId": "p8",
+"text": "Which of the following statements is true?",
+"options": [
+"C goes on Tuesday.",
+"D goes immediately before B.",
+"F doesn't go on Monday.",
+"E goes two days after G.",
+"None is true"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r78",
+"passageId": "p8",
+"text": "Who among the following goes to watch the show on Saturday?",
+"options": ["G", "E", "A", "C", "B"],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r79",
+"passageId": "p8",
+"text": "As many persons watch the show before A as after ______",
+"options": ["C", "D", "E", "B", "F"],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r80",
+"passageId": "p9",
+"text": "Which element is ninth from the left end of the third symbol from the right end in the series?",
+"options": ["*", "5", "%", "8", "@"],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r81",
+"passageId": "p9",
+"text": "How many symbols are there between the eighth element from the right and the eighth element from the left?",
+"options": ["Two", "Four", "One", "Three", "None"],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r82",
+"passageId": "p9",
+"text": "If all even digits are removed, what will be the seventh element from the right end?",
+"options": ["#", "3", "9", "7", "5"],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r83",
+"passageId": "p9",
+"text": "How many digits are immediately followed and immediately preceded by a symbol?",
+"options": ["5", "4", "3", "2", "1"],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r84",
+"passageId": "p9",
+"text": "If all the symbols are replaced by some letters, then how many odd digits are immediately preceded by letters and immediately followed by prime digit?",
+"options": ["Two", "Four", "Three", "One", "None"],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r85",
+"passageId": null,
+"text": "In the question below some statements are given followed by two conclusions numbered I and II. Read all the conclusions and decide which logically follows.\n\nStatements:\nOnly a few melons are seeds\nAll seeds are plants\nAll plants are petal\n\nConclusions:\nI. All seeds are petal\nII. Some plants are melon",
+"options": [
+"If only conclusion I follows",
+"If only conclusion II follows",
+"If either conclusion I or II follows",
+"If neither conclusion I nor II follows",
+"If both conclusions I and II follow"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r86",
+"passageId": null,
+"text": "In the question below some statements are given followed by two conclusions numbered I and II. Read all the conclusions and decide which logically follows.\n\nStatements:\nOnly a few Apples are Citrus\nAll Citrus are Oranges\nSome Oranges are Lemons\n\nConclusions:\nI. Some Apples are Oranges\nII. A few lemons being Citrus is a possibility",
+"options": [
+"If only conclusion I follows",
+"If only conclusion II follows",
+"If either conclusion I or II follows",
+"If neither conclusion I nor II follows",
+"If both conclusions I and II follow"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r87",
+"passageId": null,
+"text": "In the question below some statements are given followed by two conclusions numbered I and II. Read all the conclusions and decide which logically follows.\n\nStatements:\nSome Pluto are Sun\nNo Pluto is Earth\nSome Sun are not Skin\n\nConclusions:\nI. No Sun is Earth\nII. Some Skin is not Pluto",
+"options": [
+"If only conclusion I follows",
+"If only conclusion II follows",
+"If either conclusion I or II follows",
+"If neither conclusion I nor II follows",
+"If both conclusions I and II follow"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r88",
+"passageId": "p10",
+"text": "Which rope is the third longest?",
+"options": ["A", "F", "G", "B", "D"],
+"correctIndex": 2,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r89",
+"passageId": "p10",
+"text": "What is the possible length of Rope A?",
+"options": ["62m", "73m", "75m", "65m", "79m"],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r90",
+"passageId": "p10",
+"text": "How many ropes are shorter than rope D?",
+"options": ["None", "Two", "Three", "One", "Four"],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r91",
+"passageId": "p11",
+"text": "If W is related to S and in the same way P is related to T, then R is related to whom?",
+"options": ["W", "S", "V", "Q", "U"],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r92",
+"passageId": "p11",
+"text": "Who goes to the market three persons after U?",
+"options": ["P", "V", "T", "R", "W"],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r93",
+"passageId": "p11",
+"text": "As many persons go to the market before T as between R and ______",
+"options": ["V", "U", "S", "Q", "P"],
+"correctIndex": 0,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r94",
+"passageId": "p11",
+"text": "Which of the following statements is/are false?",
+"options": [
+"W went after T.",
+"S was the last person to go to the market.",
+"Three persons went between U and S.",
+"Q went after P.",
+"All are true."
+],
+"correctIndex": 2,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r95",
+"passageId": "p11",
+"text": "How many persons go to the market between R and T?",
+"options": ["None", "One", "Two", "Three", "Four"],
+"correctIndex": 0,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r96",
+"passageId": null,
+"text": "If the second, fourth, sixth and eighth letters of the word "SUSPICIOUS" are combined to form a meaningful word, what will be the third letter from the right end of the word formed? If more than one such word can be formed, mark the answer as X and if no such word can be formed, mark the answer as Y.",
+"options": ["C", "O", "U", "Y", "X"],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r97",
+"passageId": "p12",
+"text": "How is G related to D?",
+"options": ["Son-in-law", "Mother-in-law", "Father-in-law", "Father", "Son"],
+"correctIndex": 0,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r98",
+"passageId": "p12",
+"text": "Which one of the following is true?",
+"options": [
+"H is the father of E",
+"A is the father of E",
+"O is the brother of I",
+"A is the niece of F",
+"None is true"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r99",
+"passageId": "p12",
+"text": "How is H related to O?",
+"options": ["Daughter", "Son", "Nephew", "Niece", "Brother"],
+"correctIndex": 2,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r100",
+"passageId": null,
+"text": "In the word 'PRIMEVAL', how many pairs of the letters have the same number of letters between them (both forward and backward direction) in the word as in the alphabet?",
+"options": ["Four", "Two", "One", "Three", "More than four"],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+}
+]
+}
+]
+}
