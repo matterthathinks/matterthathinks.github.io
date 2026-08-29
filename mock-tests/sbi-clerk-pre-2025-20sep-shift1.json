@@ -1,0 +1,1685 @@
+{
+  "id": "sbi-clerk-pre-2025-20sep-shift1",
+  "title": "SBI Clerk Prelims 2025 — 20th Sep, Shift 1 (Memory-Based)",
+  "instructions": [
+    "This test has 3 sections: English Language, Quantitative Aptitude, and Reasoning Ability.",
+    "Each section has its own 20-minute timer. When a section's time is up, it auto-submits and you move to the next section.",
+    "You cannot go back to a previous section once it is submitted.",
+    "Each correct answer gets +1 mark. Each wrong answer gets -0.25 mark. Unattempted questions get 0.",
+    "Some questions are based on a shared passage, table, or diagram shown on the left. It stays fixed while you move between its questions.",
+    "Use 'Mark for Review' if you want to flag a question to revisit later within the same section.",
+    "Click Submit Test at the end, or the section will auto-submit when time runs out."
+  ],
+  "sections": [
+    {
+      "id": "english",
+      "name": "English Language",
+      "durationMinutes": 20,
+      "passages": [
+        {
+          "id": "p1",
+          "text": "The Grand Oceanic Convention, held in Rio de Janeiro, brought together representatives from 72 countries to confront the alarming rise of ocean pollution. This global gathering highlighted the urgency of safeguarding marine ecosystems and presented facts that called for immediate action. Among the leading voices was Dr. Fernando, a marine biologist from Cairo, who shared the results of his extensive research on the destruction of coral reefs and the loss of biodiversity. He explained that untreated sewage and rising industrial waste have triggered large-scale bleaching of coral reefs, causing the disappearance of several marine species. His study revealed that a healthy coral ecosystem is vital for maintaining the delicate balance of marine life and for sustaining the deep connections between oceanic species.\n\nAlongside him, the Japanese scientist Dr. Huslu emphasized the necessity of drastically reducing plastic usage across the world. He presented startling facts showing that microscopic plastics—derived from single-use packaging and industrial debris—are entering the marine food chain, eventually reaching human diets. Dr. Huslu supported the global call for eliminating single-use plastics and replacing them with biodegradable materials, stressing that this approach is essential to protect both marine life and human health. Adding to the discussion, Dr. Eleanor Carter, a marine researcher from Australia, highlighted the deep impact of oil spills and chemical effluents. She explained how such pollutants have disrupted the breeding patterns of many marine species and have poisoned critical oceanic regions.\n\nThe research findings presented during the convention were striking. Over eight million metric tons of plastic waste are dumped into the oceans each year. Microscopic plastics have already been detected in more than eighty percent of marine species, and coral reefs across the globe have suffered a forty percent decline in health due to pollutants and rising sea temperatures. These facts underscored the need for a stronger, coordinated approach to ocean conservation.\n\nDelegates stressed the importance of adopting biodegradable alternatives to plastic, enforcing stricter regulations on industrial waste disposal, and promoting renewable energy sources to minimize marine contamination. From Mumbai to Oslo, world leaders took a solemn oath to face this challenge together and to protect the deep blue seas through __________________ and persistent efforts. The convention concluded with a pledge for innovative research and global educational campaigns, signalling a united approach to preserve the world's oceans and safeguard their resources for future generations."
+        },
+        {
+          "id": "p2",
+          "text": "Rearrange the following sentences to form a coherent paragraph:\n\n(A) Their innovative strategies and consistent upgrades quickly attracted a growing customer base across multiple regions.\n(B) Just a year later, in 1979, they introduced significant improvements that enhanced the product's quality and appeal.\n(C) In 1978, two ambitious co-founders launched a unique product called “Bleed Orange”, aiming to create a fresh impact in the market.\n(D) In less than fifty years, their efforts paid off as they achieved an impressive sale of 150 million dollars, marking a remarkable journey of growth and success.\n(E) As the years progressed, their reputation strengthened, and the brand became a trusted name in its category."
+        }
+      ],
+      "questions": [
+        {
+          "id": "e1",
+          "passageId": "p1",
+          "text": "What was the main focus of Dr. Fernando’s research that he presented at the Grand Oceanic Convention?",
+          "options": [
+            "The effect of industrial waste on coral reefs and marine biodiversity",
+            "The disruption of breeding patterns due to oil spills",
+            "The contamination of seafood with microscopic plastics",
+            "The role of rising sea temperatures in altering ocean currents",
+            "The impact of renewable energy projects on deep ocean ecosystems"
+          ],
+          "correctIndex": 0,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e2",
+          "passageId": "p1",
+          "text": "In which city was the Grand Oceanic Convention on ocean pollution organized?",
+          "options": [
+            "Cairo, where Dr. Fernando conducted his marine studies",
+            "Rio de Janeiro, where 72 countries gathered for the convention",
+            "Mumbai, where the global oath against pollution was announced",
+            "Oslo, which later pledged international cooperation",
+            "Sydney, the base of Dr. Eleanor Carter’s research"
+          ],
+          "correctIndex": 1,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e3",
+          "passageId": "p1",
+          "text": "What global action did the Japanese scientist Dr. Huslu support to tackle the problem of ocean pollution?",
+          "options": [
+            "Enforcing stricter regulations on industrial waste disposal",
+            "Promoting biodegradable alternatives to single-use plastics",
+            "Expanding the study of deep ocean ecosystems",
+            "Reducing oil spills through renewable energy projects",
+            "Developing artificial reefs to counter biodiversity loss"
+          ],
+          "correctIndex": 1,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e4",
+          "passageId": "p1",
+          "text": "Which fact from the convention highlighted the severity of microscopic plastic pollution?",
+          "options": [
+            "Coral reefs have faced a forty percent decline in health worldwide",
+            "Over eight million metric tons of plastic waste enter the oceans every year",
+            "Microscopic plastics have been found in more than eighty percent of marine species",
+            "Oil spills have disrupted the breeding patterns of marine life",
+            "Industrial waste has caused bleaching of coral reefs on a large scale"
+          ],
+          "correctIndex": 2,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e5",
+          "passageId": "p1",
+          "text": "What collective commitment did the delegates make from Mumbai to Oslo?",
+          "options": [
+            "To reduce oil spills by switching to renewable energy sources",
+            "To launch more research projects on deep-sea mining",
+            "To work together and face the challenge of ocean pollution",
+            "To establish marine breeding zones for endangered species",
+            "To create artificial islands to protect marine biodiversity"
+          ],
+          "correctIndex": 2,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e6",
+          "passageId": "p1",
+          "text": "According to the passage, which of the following statements is incorrect?\n(A) Dr. Fernando’s research explained how untreated sewage and industrial waste have caused the bleaching of coral reefs and the loss of marine biodiversity.\n(B) The Grand Oceanic Convention was held in Oslo where 72 countries pledged to fight ocean pollution.\n(C) Dr. Huslu supported a global reduction in plastic usage and encouraged the promotion of biodegradable materials.",
+          "options": [
+            "Only A",
+            "Both B and C",
+            "Only C",
+            "Only B",
+            "All A, B, C"
+          ],
+          "correctIndex": 3,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e7",
+          "passageId": "p1",
+          "text": "According to the passage, which of the following statements is correct?\n(A) Dr. Eleanor Carter highlighted how oil spills and chemical effluents have disrupted the breeding patterns of marine species.\n(B) Dr. Huslu focused on the impact of coral bleaching due to rising sea temperatures.\n(C) The delegates from Mumbai to Oslo pledged to work collectively to tackle ocean pollution.",
+          "options": [
+            "Only A",
+            "Both A and C",
+            "Only B",
+            "Only D",
+            "All A, B, C"
+          ],
+          "correctIndex": 1,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e8",
+          "passageId": "p1",
+          "text": "Which of the following words is same in meaning to “deep” as used in the passage?",
+          "options": [
+            "Profound",
+            "Bottomless",
+            "Distant",
+            "Immense",
+            "Dark"
+          ],
+          "correctIndex": 0,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e9",
+          "passageId": "p1",
+          "text": "Choose the most suitable word to fill the blank given in the passage.",
+          "options": [
+            "collective",
+            "isolated",
+            "fragmented",
+            "blend",
+            "personal"
+          ],
+          "correctIndex": 0,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e10",
+          "passageId": "p1",
+          "text": "Which of the following words is same in meaning to “approach” as used in the passage?",
+          "options": [
+            "Method",
+            "Arrival",
+            "Pathway",
+            "Entrance",
+            "Contact"
+          ],
+          "correctIndex": 0,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e11",
+          "passageId": null,
+          "text": "A word has been given in the question and used in the sentences below. Identify the statements where the word has been used in a contextually and grammatically correct manner.\nSOW\n(I) The farmer is sowing seeds in the field before the rainy season begins.\n(II) He promised to sow a button back onto his shirt after lunch.\n(III) She decided to sow flowers in her backyard garden for the spring.",
+          "options": [
+            "Only (I)",
+            "Only (II)",
+            "Both (I) and (III)",
+            "All of these",
+            "Both (II) and (III)"
+          ],
+          "correctIndex": 2,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e12",
+          "passageId": "p2",
+          "text": "Which of the following statement is the FIRST sentence after the rearrangement?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "correctIndex": 2,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e13",
+          "passageId": "p2",
+          "text": "Which of the following statement is the SECOND sentence after the rearrangement?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "correctIndex": 1,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e14",
+          "passageId": "p2",
+          "text": "Which of the following statement is the THIRD sentence after the rearrangement?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "correctIndex": 0,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e15",
+          "passageId": "p2",
+          "text": "Which of the following statement is the FOURTH sentence after the rearrangement?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "correctIndex": 4,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e16",
+          "passageId": "p2",
+          "text": "Which of the following statement is the FIFTH sentence after the rearrangement?",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "correctIndex": 3,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e17",
+          "passageId": null,
+          "text": "He agreed (A)/ to repair the broken handle (B)/ before the (C)/ guests was supposed to arrive. (D)",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "No error"
+          ],
+          "correctIndex": 3,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e18",
+          "passageId": null,
+          "text": "The dog chased the ball (A)/ into the street, (B)/ but it rolled too far (C)/ to being caught. (D)",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "No error"
+          ],
+          "correctIndex": 3,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e19",
+          "passageId": null,
+          "text": "After completing (A)/ the application, (B)/ you must submitting it (C)/ and pay the fees at the counter. (D)",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "No error"
+          ],
+          "correctIndex": 2,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e20",
+          "passageId": null,
+          "text": "Neither the manager (A)/ nor the assistants was (B)/ informed about (C)/ the meeting this morning. (D)",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "No error"
+          ],
+          "correctIndex": 1,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e21",
+          "passageId": null,
+          "text": "She was surprised (A)/ that the package had arrived (B)/ so quick despite (C)/ the delay in shipping. (D)",
+          "options": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "No error"
+          ],
+          "correctIndex": 2,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e22",
+          "passageId": null,
+          "text": "He _____________ to the doctor’s clinic last night.",
+          "options": [
+            "gone",
+            "going",
+            "goes",
+            "go",
+            "went"
+          ],
+          "correctIndex": 4,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e23",
+          "passageId": null,
+          "text": "Madhu Suban handled the tough question with ease and __________.",
+          "options": [
+            "gravity",
+            "doubt",
+            "grace",
+            "repeat",
+            "cease"
+          ],
+          "correctIndex": 2,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e24",
+          "passageId": null,
+          "text": "The striker missed the goal but still earned loud __________.",
+          "options": [
+            "practice",
+            "applause",
+            "regards",
+            "advice",
+            "punish"
+          ],
+          "correctIndex": 1,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e25",
+          "passageId": null,
+          "text": "The professor ended the lecture after a long class __________.",
+          "options": [
+            "raise",
+            "record",
+            "discuss",
+            "debate",
+            "break"
+          ],
+          "correctIndex": 3,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e26",
+          "passageId": null,
+          "text": "He ___________ sold his Ferrari car after months of consideration.",
+          "options": [
+            "previously",
+            "finally",
+            "scarcely",
+            "extremely",
+            "extraneous"
+          ],
+          "correctIndex": 1,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e27",
+          "passageId": null,
+          "text": "After finishing (A) her dishes (B), the maid (C) put the chores (D) neatly in the kitchen (E).",
+          "options": [
+            "A-E",
+            "A-E & B-C",
+            "B-D",
+            "A-C & B-D",
+            "No interchange required"
+          ],
+          "correctIndex": 2,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e28",
+          "passageId": null,
+          "text": "Before starting (A) his writer (B), the notes (C) book lecture (D) revised his research (E) carefully.",
+          "options": [
+            "B-C & D-E",
+            "A-C",
+            "D-E",
+            "B-D & C-E",
+            "No interchange required"
+          ],
+          "correctIndex": 3,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e29",
+          "passageId": null,
+          "text": "He realized (A) he lost his book (B) at school (C) when the teacher (D) asked him to read (E).",
+          "options": [
+            "B-D and A-C",
+            "A-D",
+            "A-E",
+            "A-E & C-D",
+            "No interchange required"
+          ],
+          "correctIndex": 4,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e30",
+          "passageId": null,
+          "text": "He arrived morning (A) at the heavy (B) because of airport (C) traffic and missed (D) his important late (E) flight.",
+          "options": [
+            "A-E",
+            "A-E & B-C",
+            "B-D",
+            "A-C & B-D",
+            "No interchange required"
+          ],
+          "correctIndex": 1,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        }
+      ]
+    },
+    {
+      "id": "quant",
+      "name": "Quantitative Aptitude",
+      "durationMinutes": 20,
+      "passages": [
+        {
+          "id": "p3",
+          "text": "The data below shows the runs scored by two teams, X and Y, on three different days of a week — Monday, Tuesday, and Wednesday.\n\nDay        | X   | Y\nMonday     | 375 | 300\nTuesday    | 250 | 175\nWednesday  | 400 | 325"
+        },
+        {
+          "id": "p4",
+          "text": "The table below shows the number of books sold by four stores — A, B, C, and D — in January and February.\n\nStore | January | February\nA     | 150     | 264\nB     | 224     | 280\nC     | 216     | 175\nD     | 156     | 128"
+        },
+        {
+          "id": "p5",
+          "text": "The data below shows the orders delivered by two companies (Super Eat and Food Mart) in three different cities, A, B, and C.\n\nFood Mart delivers 40% more orders than Super Eat in city A. Orders delivered by Super Eat in city B is one more than orders delivered by Food Mart in city A. Orders delivered by Super Eat in city C is twice that of city A. The ratio of orders delivered by Food Mart in B to C is 3:4. Super Eat delivers a total of 1211 orders while Food Mart delivers 1141 orders."
+        }
+      ],
+      "questions": [
+        {
+          "id": "q31",
+          "passageId": null,
+          "text": "The cost price of article B is Rs. 200 more than that of article A. Article A sold at 20% profit and article B sold at 20% loss. If total selling price of A and B together is Rs. 760, then find the cost price of the article A (in Rs.)?",
+          "options": [
+            "200",
+            "400",
+            "500",
+            "300",
+            "350"
+          ],
+          "correctIndex": 3,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q32",
+          "passageId": null,
+          "text": "A bus covers 320 km distance in 5 hours, and speed of a car is 3/8 of the speed of bus. Find the ratio of distance covered by bus in 6 hours to distance covered by car in five hours?",
+          "options": [
+            "16 : 7",
+            "16 : 5",
+            "16 : 9",
+            "5 : 16",
+            "17 : 5"
+          ],
+          "correctIndex": 1,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q33",
+          "passageId": null,
+          "text": "Scheme A offers simple interest at rate of 5% p.a. for 8 years and amount invested in scheme A is Rs. 2000. Scheme B offers simple interest at rate of 10% p.a. for five years and amount invested in scheme B is Rs. P. If the ratio of interest received from scheme A to B is 16:15, then find P?",
+          "options": [
+            "1500",
+            "2500",
+            "1000",
+            "3000",
+            "1200"
+          ],
+          "correctIndex": 0,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q34",
+          "passageId": null,
+          "text": "Three pipes A, B, C can fill a tank alone in 5 hours, 6 hours and 30 hours, respectively. Find the time taken by all three pipes to fill the tank together (in hours)?",
+          "options": [
+            "3.5",
+            "1.5",
+            "4.5",
+            "3",
+            "2.5"
+          ],
+          "correctIndex": 4,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q35",
+          "passageId": null,
+          "text": "Time taken by a boat to cover 90 km upstream is 2.5 hours more than that of same distance covered in downstream. If the ratio of Speed of boat in still water to stream is 5 : 1, then find the still water speed of the boat (in km/hr)?",
+          "options": [
+            "10",
+            "25",
+            "15",
+            "30",
+            "45"
+          ],
+          "correctIndex": 2,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q36",
+          "passageId": null,
+          "text": "For an event A, B, C, D each contributed Rs. 400. If E contributed Rs. 200 more than the average amount contributed by all four, then find the total amount contributed by all five (in Rs.)?",
+          "options": [
+            "2000",
+            "2200",
+            "3200",
+            "4000",
+            "4800"
+          ],
+          "correctIndex": 1,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q37",
+          "passageId": null,
+          "text": "On Sunday, 70 Adults and children visited a zoo. The ticket price for each adult is Rs. 50 and for each child is Rs. 25. If Total amount collected by zoo on Sunday is Rs. 2850, then find the number of adults?",
+          "options": [
+            "42",
+            "48",
+            "52",
+            "44",
+            "54"
+          ],
+          "correctIndex": 3,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q38",
+          "passageId": null,
+          "text": "200 liters mixture of milk and water contains 40% water. 20 liters of mixture is removed and x liters of water is added in the remaining mixture. If in the resultant mixture water becomes 50%, then find x?",
+          "options": [
+            "48",
+            "32",
+            "40",
+            "36",
+            "54"
+          ],
+          "correctIndex": 3,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q39",
+          "passageId": null,
+          "text": "Phool and Jaya started a business with investment of Rs. 6400 & Rs. 11200 respectively. After X months, Phool left the business. At the end of year, the total profit is twice the investment of Phool and profit share of Phool is Rs. 3840. Find X?",
+          "options": [
+            "9",
+            "7",
+            "8",
+            "6",
+            "10"
+          ],
+          "correctIndex": 0,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q40",
+          "passageId": null,
+          "text": "In a School, 35% of students participated in athletics, 20% participated in quiz and the remaining participated in arts. If total students participated in art are 378, then find the difference between students participated in athletics and quiz?",
+          "options": [
+            "112",
+            "96",
+            "126",
+            "116",
+            "112"
+          ],
+          "correctIndex": 2,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q41",
+          "passageId": null,
+          "text": "The ratio of present age of Sarah and Farah is 4:7. Marah is 12 years older than Sarah and 6 years younger than Farah. Find the age of Farah four years ago (in years)?",
+          "options": [
+            "38 years",
+            "32 years",
+            "24 years",
+            "30 years",
+            "56 years"
+          ],
+          "correctIndex": 0,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q42",
+          "passageId": null,
+          "text": "The ratio of X to X+50 is 5 : 7 respectively. And, the ratio of X+25 and Y+5 is 3 : 4 respectively. Find the value of sum of X and Y?",
+          "options": [
+            "300",
+            "360",
+            "240",
+            "280",
+            "320"
+          ],
+          "correctIndex": 4,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q43",
+          "passageId": "p3",
+          "text": "Find the difference between run scored by X and Y on Monday together and run scored by X on Wednesday.",
+          "options": [
+            "275",
+            "300",
+            "175",
+            "200",
+            "250"
+          ],
+          "correctIndex": 0,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q44",
+          "passageId": "p3",
+          "text": "Find the ratio of run scored by Y on Tuesday to 1/5 of the run scored by Y on Monday and Wednesday together.",
+          "options": [
+            "2:5",
+            "7:5",
+            "1:5",
+            "2:1",
+            "3:5"
+          ],
+          "correctIndex": 1,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q45",
+          "passageId": "p3",
+          "text": "If run scored by X on Sunday is 2/5th less than the number of runs scored by X on Wednesday, then find the run scored by X on Sunday.",
+          "options": [
+            "250",
+            "300",
+            "175",
+            "240",
+            "250"
+          ],
+          "correctIndex": 3,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q46",
+          "passageId": "p3",
+          "text": "Average of run scored by Y on Wednesday and Saturday is 330. Find the run scored by Y on Saturday is what percentage more or less than run scored by X on Tuesday?",
+          "options": [
+            "25%",
+            "30%",
+            "15%",
+            "20%",
+            "34%"
+          ],
+          "correctIndex": 4,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q47",
+          "passageId": "p3",
+          "text": "Find the sum of total runs scored by Y in all the given days.",
+          "options": [
+            "775",
+            "700",
+            "875",
+            "800",
+            "650"
+          ],
+          "correctIndex": 3,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q48",
+          "passageId": "p4",
+          "text": "30% of books sold in January and 25% of books sold in February by store A are in foreign language. Find the total number of foreign language books sold by A.",
+          "options": [
+            "111",
+            "113",
+            "115",
+            "110",
+            "150"
+          ],
+          "correctIndex": 0,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q49",
+          "passageId": "p4",
+          "text": "Store D sold only fiction and non-fiction books. The ratio of fiction to non-fiction books sold by D in the months of January and February is 3 : 1. Find the difference between fiction books sold by D and total books sold by A in January.",
+          "options": [
+            "75",
+            "63",
+            "15",
+            "20",
+            "49"
+          ],
+          "correctIndex": 1,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q50",
+          "passageId": "p4",
+          "text": "Find the ratio of books sold by B and C in February.",
+          "options": [
+            "2:5",
+            "3:1",
+            "1:5",
+            "2:1",
+            "8:5"
+          ],
+          "correctIndex": 4,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q51",
+          "passageId": "p4",
+          "text": "Books sold by A in February is what percent less than total books sold by B and C together in the month of January.",
+          "options": [
+            "25",
+            "30",
+            "40",
+            "20",
+            "50"
+          ],
+          "correctIndex": 2,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q52",
+          "passageId": "p4",
+          "text": "In January, store E sold 20% more books than A in January and total books sold by E is 500. Find the books sold by E in February.",
+          "options": [
+            "180",
+            "320",
+            "175",
+            "200",
+            "250"
+          ],
+          "correctIndex": 1,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q53",
+          "passageId": "p5",
+          "text": "Find the total orders delivered by both the companies in city A.",
+          "options": [
+            "660",
+            "630",
+            "615",
+            "620",
+            "649"
+          ],
+          "correctIndex": 0,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q54",
+          "passageId": "p5",
+          "text": "Find the ratio of orders delivered by Super Eat in B to orders delivered by Food Mart in B.",
+          "options": [
+            "92:95",
+            "92:81",
+            "91:90",
+            "21:11",
+            "81:50"
+          ],
+          "correctIndex": 1,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q55",
+          "passageId": "p5",
+          "text": "Find the difference between orders delivered by Super Eat in A and C.",
+          "options": [
+            "180",
+            "320",
+            "275",
+            "200",
+            "250"
+          ],
+          "correctIndex": 2,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q56",
+          "passageId": "p5",
+          "text": "In city E, orders delivered by Super Eat is 25% more than orders delivered by Food Mart in B. Find the orders delivered by Super Eat in E as what percentage of total orders delivered by both companies in A.",
+          "options": [
+            "61.25",
+            "61.36",
+            "40.11",
+            "20.11",
+            "66.66"
+          ],
+          "correctIndex": 1,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q57",
+          "passageId": null,
+          "text": "11² + 338÷26 = ? -3",
+          "options": [
+            "137",
+            "130",
+            "115",
+            "120",
+            "149"
+          ],
+          "correctIndex": 0,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q58",
+          "passageId": null,
+          "text": "√144 + 1340÷134 + 1639 = 1463 - ? + 613",
+          "options": [
+            "460",
+            "430",
+            "615",
+            "415",
+            "449"
+          ],
+          "correctIndex": 3,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q59",
+          "passageId": null,
+          "text": "10 × 46 - 2346 + ? = 448",
+          "options": [
+            "2334",
+            "2235",
+            "2275",
+            "2200",
+            "2250"
+          ],
+          "correctIndex": 0,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q60",
+          "passageId": null,
+          "text": "1133 ÷ 11 + 1450 ÷ 10 = 310 - ?",
+          "options": [
+            "60",
+            "62",
+            "75",
+            "100",
+            "50"
+          ],
+          "correctIndex": 1,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q61",
+          "passageId": null,
+          "text": "2100 ÷ 21 + 12 + 2123 = ?",
+          "options": [
+            "2180",
+            "2235",
+            "2275",
+            "2200",
+            "2250"
+          ],
+          "correctIndex": 1,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q62",
+          "passageId": null,
+          "text": "? of 3/4 of 5/7 of 1715 = 735",
+          "options": [
+            "3/5",
+            "4/5",
+            "2/5",
+            "1/5",
+            "5/6"
+          ],
+          "correctIndex": 1,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q63",
+          "passageId": null,
+          "text": "62.5% of ?² = 38² – 804",
+          "options": [
+            "30",
+            "36",
+            "32",
+            "40",
+            "28"
+          ],
+          "correctIndex": 2,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q64",
+          "passageId": null,
+          "text": "24% of 125 + 48% of 150 = ?",
+          "options": [
+            "106",
+            "108",
+            "104",
+            "112",
+            "102"
+          ],
+          "correctIndex": 4,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q65",
+          "passageId": null,
+          "text": "2⅓ of 4⁲⁄₇ of 3⅓ of 81 = ?",
+          "options": [
+            "2900",
+            "2500",
+            "2700",
+            "2300",
+            "2400"
+          ],
+          "correctIndex": 2,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        }
+      ]
+    },
+    {
+      "id": "reasoning",
+      "name": "Reasoning Ability",
+      "durationMinutes": 20,
+      "passages": [
+        {
+          "id": "p6",
+          "text": "Eight persons A, B, C, D, E, F, G, and H live on different floors of an eight-floor building, but not necessarily in the same order. The lowermost floor is numbered 1, the floor immediately above it is numbered 2, and the topmost floor is numbered 8.\n\nG lives on a prime numbered floor two floors above A. Four floors are there between the floors of A and E. As many floors are there above A as below H. More than three floors are there between the floors of H and D. F lives above B’s floor but below C’s floor. B doesn’t live immediately above D."
+        },
+        {
+          "id": "p7",
+          "text": "Point F is 13m east of point Q. Point R is 5m south of point P. Point S is 8m west of point R. Point J is 12m south of point S. Point M is 2m west of point J. Point N is 11m south of point Q. Point T is 6m north of point F and 10m west of point P."
+        },
+        {
+          "id": "p8",
+          "text": "HIT OPZ EHD SRG MAP"
+        },
+        {
+          "id": "p9",
+          "text": "Eight persons – A, B, C, D, E, F, G, and H – were born on two different dates, i.e., 7th and 20th, in the months of January, March, July, and September of the same year, but not necessarily in the same order.\n\nD was born in the month having an even number of days. Two persons were born between D and F. C was born in July immediately before H. A was born on an even date immediately before G. A and G were not born in the same month. E was born after B but not in September."
+        },
+        {
+          "id": "p10",
+          "text": "Eight persons – A, B, C, D, E, F, G and H – bought gifts one after another (not necessarily in the same order). Four persons bought gifts after G. Two persons bought gifts between G and C. A bought a gift immediately after C. Five persons bought gifts between A and E. F bought a gift three persons before H. At least one person bought a gift between D and H."
+        },
+        {
+          "id": "p11",
+          "text": "A certain number of persons sit in a linear row and face north. N sits fifth to the right of P. Two persons sit between N and G. P sits at an extreme left end of the row. G sits third to the left of K who sits second from an extreme end of the row. One person sits between K and Q. As many persons sit between N and Q as between P and R."
+        }
+      ],
+      "questions": [
+        {
+          "id": "r66",
+          "passageId": null,
+          "text": "Statements: A > I > S = E < O ≤ P = Q < R = L ≥ T\nConclusions:\nI. S < L\nII. P > S",
+          "options": [
+            "If only conclusion I is true",
+            "If only conclusion II is true",
+            "If either conclusion I or II is true",
+            "If both conclusions I and II are true",
+            "If neither conclusion I nor II is true"
+          ],
+          "correctIndex": 3,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r67",
+          "passageId": null,
+          "text": "Statements: J > K ≤ L < O = I < R ≥ P = Q < T\nConclusions:\nI. K < R\nII. O > Q",
+          "options": [
+            "If only conclusion I is true",
+            "If only conclusion II is true",
+            "If either conclusion I or II is true",
+            "If both conclusions I and II are true",
+            "If neither conclusion I nor II is true"
+          ],
+          "correctIndex": 0,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r68",
+          "passageId": null,
+          "text": "Statements: X ≥ V = S < P; V < Q ≤ W = R\nConclusions:\nI. X ≥ R\nII. S < R",
+          "options": [
+            "If only conclusion I is true",
+            "If only conclusion II is true",
+            "If either conclusion I or II is true",
+            "If both conclusions I and II are true",
+            "If neither conclusion I nor II is true"
+          ],
+          "correctIndex": 1,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r69",
+          "passageId": "p6",
+          "text": "Who among the following lives on the sixth floor?",
+          "options": [
+            "H",
+            "E",
+            "C",
+            "F",
+            "None of these"
+          ],
+          "correctIndex": 1,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r70",
+          "passageId": "p6",
+          "text": "Between which among the following persons is there a gap of one floor?",
+          "options": [
+            "C and E",
+            "A and G",
+            "F and D",
+            "H and B",
+            "E and F"
+          ],
+          "correctIndex": 1,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r71",
+          "passageId": "p6",
+          "text": "How many floors are there between H’s floor and F’s floor?",
+          "options": [
+            "Five",
+            "Four",
+            "Three",
+            "Two",
+            "One"
+          ],
+          "correctIndex": 3,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r72",
+          "passageId": "p6",
+          "text": "Which of the following statement(s) is/are false?\nI. H lives on a floor above E’s floor.\nII. D lives on the bottommost floor.\nIII. F lives on the fourth floor.",
+          "options": [
+            "Only I",
+            "Both II and III",
+            "Only III",
+            "Both I and III",
+            "Only II"
+          ],
+          "correctIndex": 1,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r73",
+          "passageId": "p6",
+          "text": "Four of the following five are alike in a certain way and thus form a group. Find the one which doesn’t belong to the group.",
+          "options": [
+            "H",
+            "D",
+            "E",
+            "C",
+            "B"
+          ],
+          "correctIndex": 3,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r74",
+          "passageId": "p7",
+          "text": "In which direction is point T with respect to point M?",
+          "options": [
+            "East",
+            "North-east",
+            "South",
+            "North-west",
+            "North"
+          ],
+          "correctIndex": 4,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r75",
+          "passageId": "p7",
+          "text": "What is the shortest distance between point R and point M?",
+          "options": [
+            "12m",
+            "√245m",
+            "13m",
+            "√244m",
+            "244m"
+          ],
+          "correctIndex": 3,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r76",
+          "passageId": "p7",
+          "text": "If Point G is 4m to the north of Point M then what is the total distance between Point G and Point Q?",
+          "options": [
+            "43m",
+            "50m",
+            "59m",
+            "60m",
+            "55m"
+          ],
+          "correctIndex": 3,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r77",
+          "passageId": "p8",
+          "text": "If we arrange all the words in dictionary order then which word is second from the right end in the series?",
+          "options": [
+            "HIT",
+            "OPZ",
+            "EHD",
+            "SRG",
+            "MAP"
+          ],
+          "correctIndex": 1,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r78",
+          "passageId": "p8",
+          "text": "If the first letter of each word is dropped and is replaced by “N” then how many meaningful words will be formed?",
+          "options": [
+            "One",
+            "Three",
+            "Two",
+            "None",
+            "Four"
+          ],
+          "correctIndex": 2,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r79",
+          "passageId": "p8",
+          "text": "If all the letters within the word are arranged in reverse alphabetical order, then how many words remain unchanged?",
+          "options": [
+            "One",
+            "Three",
+            "Two",
+            "None",
+            "Four"
+          ],
+          "correctIndex": 0,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r80",
+          "passageId": "p8",
+          "text": "If the first and second letters from the left end in each word are changed to their immediately succeeding letters in the English alphabet, then how many words will have more than one vowel?",
+          "options": [
+            "One",
+            "Three",
+            "Two",
+            "None",
+            "Four"
+          ],
+          "correctIndex": 3,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r81",
+          "passageId": "p8",
+          "text": "If the first and third letters of each word are interchanged then how many words end with a consonant?",
+          "options": [
+            "None",
+            "Three",
+            "Two",
+            "Four",
+            "One"
+          ],
+          "correctIndex": 1,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r82",
+          "passageId": "p9",
+          "text": "Who among the following was born on 7th of September?",
+          "options": [
+            "A",
+            "D",
+            "F",
+            "H",
+            "None of these"
+          ],
+          "correctIndex": 3,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r83",
+          "passageId": "p9",
+          "text": "The number of persons born before G is the same as the number of persons born after _____.",
+          "options": [
+            "E",
+            "F",
+            "C",
+            "A",
+            "B"
+          ],
+          "correctIndex": 2,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r84",
+          "passageId": "p9",
+          "text": "Four of the following five are alike in a certain way and thus form a group. Find the odd one out.",
+          "options": [
+            "B",
+            "D",
+            "A",
+            "G",
+            "E"
+          ],
+          "correctIndex": 1,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r85",
+          "passageId": "p9",
+          "text": "Who was born three persons before E?",
+          "options": [
+            "B",
+            "F",
+            "G",
+            "D",
+            "A"
+          ],
+          "correctIndex": 0,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r86",
+          "passageId": "p9",
+          "text": "How many persons were born between A and D?",
+          "options": [
+            "One",
+            "Two",
+            "Three",
+            "Four",
+            "More than four"
+          ],
+          "correctIndex": 4,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r87",
+          "passageId": null,
+          "text": "In a certain coded language, “BLOCKS” is coded as “AMNDJT” and “MIGHTY” is coded as “LJFISZ”. Then how will the word “USEFUL” be coded?",
+          "options": [
+            "TRDGVK",
+            "TRDGVM",
+            "TTDGTM",
+            "TTDHVL",
+            "TQDFVL"
+          ],
+          "correctIndex": 2,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r88",
+          "passageId": null,
+          "text": "Statements: Only a few apples are sweet. Some sweet is sugar. All sugar is cherries.\nConclusions:\nI. Some sugar being apples is a possibility\nII. Some sweet are not cherries",
+          "options": [
+            "If only conclusion I follows",
+            "If only conclusion II follows",
+            "If either conclusion I or II follows",
+            "If neither conclusion I nor II follows",
+            "If both conclusions I and II follow"
+          ],
+          "correctIndex": 0,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r89",
+          "passageId": null,
+          "text": "Statements: Only a few brilliant are smart. All intelligent are sharp. Some smart is not intelligent.\nConclusions:\nI. Some brilliant are not smart\nII. No smart is intelligent",
+          "options": [
+            "If only conclusion I follows",
+            "If only conclusion II follows",
+            "If either conclusion I or II follows",
+            "If neither conclusion I nor II follows",
+            "If both conclusions I and II follow"
+          ],
+          "correctIndex": 0,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r90",
+          "passageId": null,
+          "text": "Statements: Only a few melons are seeds. All seeds are plants. All plants are petal.\nConclusions:\nI. All seeds are petal\nII. Some plants are melon",
+          "options": [
+            "If only conclusion I follows",
+            "If only conclusion II follows",
+            "If either conclusion I or II follows",
+            "If neither conclusion I nor II follows",
+            "If both conclusions I and II follow"
+          ],
+          "correctIndex": 4,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r91",
+          "passageId": "p10",
+          "text": "If H is related to G and in the same way F is related to D, then C is related to who among the following?",
+          "options": [
+            "D",
+            "F",
+            "E",
+            "B",
+            "G"
+          ],
+          "correctIndex": 3,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r92",
+          "passageId": "p10",
+          "text": "Who bought a gift exactly between D and C?",
+          "options": [
+            "B",
+            "E",
+            "H",
+            "F",
+            "G"
+          ],
+          "correctIndex": 4,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r93",
+          "passageId": "p10",
+          "text": "Who bought a gift three persons before B?",
+          "options": [
+            "E",
+            "No one",
+            "F",
+            "G",
+            "D"
+          ],
+          "correctIndex": 0,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r94",
+          "passageId": "p10",
+          "text": "Which of the following statements is true?\n(a) H bought gift after A.\n(b) A was not the last person to buy gift.\n(c) Two persons bought gift between D and G.\n(d) F was the fifth person to buy gift.\n(e) All the statements are true",
+          "options": [
+            "H bought gift after A",
+            "A was not the last person to buy gift",
+            "Two persons bought gift between D and G",
+            "F was the fifth person to buy gift",
+            "All the statements are true"
+          ],
+          "correctIndex": 2,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r95",
+          "passageId": "p10",
+          "text": "How many persons bought gifts between C and E?",
+          "options": [
+            "None",
+            "One",
+            "Two",
+            "Three",
+            "Four"
+          ],
+          "correctIndex": 4,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r96",
+          "passageId": null,
+          "text": "If in the given word “IMPACTFUL” all the letters are arranged in ascending order from the left end then position of how many letters remain unchanged. If the position of no letter remains unchanged, mark the answer as X.",
+          "options": [
+            "X",
+            "One",
+            "Two",
+            "Three",
+            "Four"
+          ],
+          "correctIndex": 0,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r97",
+          "passageId": null,
+          "text": "In the word “POWERFUL”, if we use the third, fourth, sixth and eighth letters from the left end to form a four-letter meaningful word, then which of the following will be the third letter from the left end of the meaningful word thus formed. If more than one such meaningful word is formed, mark X. If no meaningful word is formed, mark Z.",
+          "options": [
+            "X",
+            "Z",
+            "W",
+            "E",
+            "F"
+          ],
+          "correctIndex": 3,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r98",
+          "passageId": "p11",
+          "text": "Who among the following persons sits seventh to the right of R?",
+          "options": [
+            "G",
+            "Q",
+            "K",
+            "P"
+          ],
+          "correctIndex": 2,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r99",
+          "passageId": "p11",
+          "text": "What is the position of N in the row?",
+          "options": [
+            "Ninth from the left end of the row",
+            "Seventh from the right end of the row",
+            "Fifth from the right end of the row",
+            "Eighth from the left end of the row",
+            "Eighth from the right end of the row"
+          ],
+          "correctIndex": 4,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r100",
+          "passageId": "p11",
+          "text": "How many persons sit in the row?",
+          "options": [
+            "12",
+            "14",
+            "11",
+            "13",
+            "10"
+          ],
+          "correctIndex": 0,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        }
+      ]
+    }
+  ]
+}

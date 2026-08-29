@@ -1,0 +1,126 @@
+{
+  "id": "sample-test",
+  "title": "Sample Test — SBI PO Prelims Format",
+  "instructions": [
+    "This test has 3 sections: English Language, Quantitative Aptitude, and Reasoning Ability.",
+    "Each section has its own 20-minute timer. When a section's time is up, it auto-submits and you move to the next section.",
+    "You cannot go back to a previous section once it is submitted — this matches the real SBI exam interface.",
+    "Each correct answer gets +1 mark. Each wrong answer gets -0.25 mark. Unattempted questions get 0.",
+    "Some questions are based on a shared passage or data set shown on the left. The passage stays fixed while you move between its questions.",
+    "Use 'Mark for Review' if you want to flag a question to revisit later within the same section.",
+    "Click Submit Test at the end, or the section will auto-submit when time runs out."
+  ],
+  "sections": [
+    {
+      "id": "english",
+      "name": "English Language",
+      "durationMinutes": 1,
+      "passages": [
+        {
+          "id": "p1",
+          "text": "Read the passage and answer the questions based on it.\n\nIndia's banking sector has undergone significant digital transformation over the past decade. The introduction of Unified Payments Interface (UPI) has fundamentally altered how retail transactions occur, moving a cash-heavy economy toward digital rails at a pace few anticipated. Public sector banks, once seen as slow to modernize, have had to accelerate technology adoption to remain competitive against private banks and fintech entrants."
+        }
+      ],
+      "questions": [
+        {
+          "id": "e1",
+          "passageId": "p1",
+          "text": "According to the passage, what has driven public sector banks to modernize faster?",
+          "options": [
+            "Government regulation alone",
+            "Competition from private banks and fintechs",
+            "A decline in cash transactions",
+            "Reduced customer base",
+            "None of the above"
+          ],
+          "correctIndex": 1,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e2",
+          "passageId": "p1",
+          "text": "The phrase 'digital rails' in the passage most nearly means:",
+          "options": [
+            "Physical railway digitization",
+            "Digital payment infrastructure",
+            "Online banking complaints",
+            "ATM networks",
+            "None of the above"
+          ],
+          "correctIndex": 1,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "e3",
+          "passageId": null,
+          "text": "Choose the correctly spelled word.",
+          "options": ["Accomodate", "Acommodate", "Accommodate", "Acomodate", "Accommadate"],
+          "correctIndex": 2,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        }
+      ]
+    },
+    {
+      "id": "quant",
+      "name": "Quantitative Aptitude",
+      "durationMinutes": 1,
+      "passages": [],
+      "questions": [
+        {
+          "id": "q1",
+          "passageId": null,
+          "text": "A sum of ₹12,000 becomes ₹15,000 in 2 years at simple interest. What is the rate of interest per annum?",
+          "options": ["10%", "12.5%", "15%", "8%", "None of the above"],
+          "correctIndex": 1,
+          "difficulty": "medium",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "q2",
+          "passageId": null,
+          "text": "If 20% of a number is 50, what is 45% of that number?",
+          "options": ["112.5", "100", "125", "90", "None of the above"],
+          "correctIndex": 0,
+          "difficulty": "easy",
+          "marks": 1,
+          "negativeMarks": 0.25
+        }
+      ]
+    },
+    {
+      "id": "reasoning",
+      "name": "Reasoning Ability",
+      "durationMinutes": 1,
+      "passages": [],
+      "questions": [
+        {
+          "id": "r1",
+          "passageId": null,
+          "text": "In a certain code, MOBILE is written as NPCJMF. How is TABLET written in that code?",
+          "options": ["UBCMFU", "UBCMFT", "UBDMFU", "SZAKDS", "None of the above"],
+          "correctIndex": 0,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        },
+        {
+          "id": "r2",
+          "passageId": null,
+          "text": "Pointing to a photograph, a man said, 'I have no brother or sister, but that man's father is my father's son.' Whose photograph was it?",
+          "options": ["His own", "His son's", "His father's", "His nephew's", "None of the above"],
+          "correctIndex": 1,
+          "difficulty": "hard",
+          "marks": 1,
+          "negativeMarks": 0.25
+        }
+      ]
+    }
+  ]
+}
