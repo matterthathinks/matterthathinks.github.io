@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mock Test JSON Validator</title>
+<style>
+  :root{
+    --navy:#132a4c; --navy-dark:#0c1d38; --bg:#eef1f6; --panel:#ffffff; --border:#dbe1ea;
+    --text:#1b2433; --muted:#6b7688; --green:#1f9254; --green-bg:#e5f5ec;
+    --red:#d64545; --red-bg:#fdeaea; --amber:#b8873a; --amber-bg:#fbf1e1;
+    --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:var(--sans);background:var(--bg);color:var(--text);}
+  .wrap{max-width:900px;margin:0 auto;padding:36px 20px 80px;}
+  h1{font-size:22px;color:var(--navy-dark);margin:0 0 4px;}
+  .sub{color:var(--muted);font-size:13.5px;margin:0 0 22px;line-height:1.6;}
+  textarea{width:100%;min-height:260px;font-family:var(--mono);font-size:12.5px;padding:14px;border:1px solid var(--border);
+    border-radius:8px;resize:vertical;background:#fff;line-height:1.5;}
+  .row{display:flex;gap:10px;margin:14px 0;flex-wrap:wrap;}
+  button{border:none;border-radius:7px;padding:11px 20px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--sans);background:var(--navy);color:#fff;}
+  button:hover{background:var(--navy-dark);}
+  button.ghost{background:transparent;border:1px solid var(--border);color:var(--text);}
+  input[type=file]{display:none;}
+  .filelabel{border:1px solid var(--border);border-radius:7px;padding:10px 18px;font-size:13.5px;cursor:pointer;background:#fff;}
+  .result{margin-top:22px;}
+  .banner{border-radius:9px;padding:16px 18px;font-size:14.5px;font-weight:600;margin-bottom:16px;}
+  .banner.ok{background:var(--green-bg);color:var(--green);}
+  .banner.fail{background:var(--red-bg);color:var(--red);}
+  .snippet{background:#1b2433;color:#f0f3f8;font-family:var(--mono);font-size:12.5px;padding:14px 16px;border-radius:8px;
+    overflow-x:auto;white-space:pre-wrap;word-break:break-word;margin-top:10px;}
+  .caret{color:#ff8a8a;font-weight:700;}
+  .check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);font-size:13.5px;}
+  .check:last-child{border-bottom:none;}
+  .icon{width:18px;flex-shrink:0;font-weight:700;}
+  .icon.pass{color:var(--green);}
+  .icon.warn{color:var(--amber);}
+  .icon.fail{color:var(--red);}
+  .stat-row{display:flex;gap:24px;flex-wrap:wrap;margin:14px 0 6px;font-size:13px;color:var(--muted);}
+  .stat-row b{color:var(--text);}
+  .section-title{font-size:13px;font-weight:700;color:var(--navy);margin:20px 0 4px;text-transform:uppercase;letter-spacing:.03em;}
+  ul.issue-list{margin:6px 0 0;padding-left:20px;font-size:13px;}
+  ul.issue-list li{margin-bottom:4px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Mock Test JSON Validator</h1>
+  <p class="sub">Paste anything Gemini (or Claude) gives you here before it goes into <code>data/</code>. Checks for JSON
+  syntax errors (with the exact bad spot highlighted), leftover LaTeX/math markup, and schema problems like bad
+  option counts or dangling passage references. Runs entirely in your browser — nothing is uploaded anywhere.</p>
+
+  <label class="filelabel" for="fileInput">Choose a .json file&hellip;</label>
+  <input type="file" id="fileInput" accept=".json,application/json">
+  <textarea id="input" placeholder="...or paste the JSON text here"></textarea>
+  <div class="row">
+    <button id="validateBtn">Validate</button>
+    <button class="ghost" id="clearBtn">Clear</button>
+  </div>
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+$("fileInput").addEventListener("change", (e) => {
+  const f = e.target.files[0];
+  if(!f) return;
+  const reader = new FileReader();
+  reader.onload = () => { $("input").value = reader.result; runValidation(); };
+  reader.readAsText(f);
+});
+$("clearBtn").onclick = () => { $("input").value = ""; $("result").innerHTML = ""; };
+$("validateBtn").onclick = runValidation;
+
+function esc(s){
+  return String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+}
+
+function lineColFromPos(text, pos){
+  const before = text.slice(0, pos);
+  const line = (before.match(/\n/g) || []).length + 1;
+  const col = pos - before.lastIndexOf("\n");
+  return {line, col};
+}
+
+function snippetAround(text, pos, radius=90){
+  const start = Math.max(0, pos - radius);
+  const end = Math.min(text.length, pos + radius);
+  const rel = pos - start;
+  let s = esc(text.slice(start, rel));
+  let bad = esc(text.slice(rel, rel+1) || " ");
+  let after = esc(text.slice(rel+1, end - start + start));
+  return (start > 0 ? "&hellip;" : "") + s + '<span class="caret">' + bad + "&#9650;</span>" + after + (end < text.length ? "&hellip;" : "");
+}
+
+function findLatexLeaks(text){
+  const issues = [];
+  const patterns = [
+    [/\\+times|\\+div|\\+cdot|\\+pm|\\+sqrt|\\+frac|\\+text\{/g, "LaTeX command (e.g. \\\\times, \\\\div, \\\\sqrt{}) found — replace with plain characters (\u00d7 \u00f7 \u221a etc.)"],
+    [/\$[^$\n]{1,120}\$/g, "Dollar-sign math delimiters ($...$) found — these should be removed, not part of this app's plain-text format"],
+  ];
+  for(const [re, msg] of patterns){
+    const m = text.match(re);
+    if(m) issues.push(msg + " \u2014 " + m.length + " occurrence(s), e.g. \u201c" + esc(m[0].slice(0,40)) + "\u2026\u201d");
+  }
+  return issues;
+}
+
+function runValidation(){
+  const raw = $("input").value;
+  const resultEl = $("result");
+  resultEl.innerHTML = "";
+  if(!raw.trim()){
+    resultEl.innerHTML = '<div class="banner fail">Paste some JSON first.</div>';
+    return;
+  }
+
+  // Always scan for LaTeX leaks regardless of parse success, since it's the most common recent failure
+  const leaks = findLatexLeaks(raw);
+
+  let data;
+  try{
+    data = JSON.parse(raw);
+  }catch(err){
+    const msg = err.message;
+    const m = msg.match(/position (\d+)/);
+    let html = '<div class="banner fail">&#10007; Not valid JSON \u2014 this file will fail to load silently in the app.</div>';
+    html += '<div class="section-title">Parse error</div><div class="check"><div class="icon fail">&#10007;</div><div>' + esc(msg) + '</div></div>';
+    if(m){
+      const pos = parseInt(m[1], 10);
+      const {line, col} = lineColFromPos(raw, pos);
+      html += '<div class="stat-row"><span>Approx. location: <b>line ' + line + ', column ' + col + '</b></span></div>';
+      html += '<div class="snippet">' + snippetAround(raw, pos) + '</div>';
+      html += '<p class="sub" style="margin-top:8px;">The highlighted character (with the red triangle) is roughly where the parser gave up. Common causes: an unescaped " inside a text value, a stray backslash, or a trailing comma.</p>';
+    }
+    if(leaks.length){
+      html += '<div class="section-title">Also found</div><ul class="issue-list">' + leaks.map(l => '<li>' + l + '</li>').join('') + '</ul>';
+    }
+    resultEl.innerHTML = html;
+    return;
+  }
+
+  // Valid JSON -- now run schema checks
+  const problems = [];
+  const warnings = [];
+  let totalQuestions = 0;
+  const sectionSummaries = [];
+
+  if(!data.id) problems.push("Missing top-level \"id\" field.");
+  if(!data.title) problems.push("Missing top-level \"title\" field.");
+  if(!Array.isArray(data.sections) || data.sections.length === 0){
+    problems.push("Missing or empty \"sections\" array.");
+  } else {
+    const seenIds = new Set();
+    data.sections.forEach((sec, si) => {
+      const pids = new Set((sec.passages || []).map(p => p.id));
+      const qs = sec.questions || [];
+      totalQuestions += qs.length;
+      sectionSummaries.push((sec.name || sec.id || ("section " + si)) + ": " + qs.length + " questions, " + (sec.passages || []).length + " passages");
+      qs.forEach(q => {
+        if(!q.id) problems.push("A question in section \"" + sec.id + "\" is missing an id.");
+        else if(seenIds.has(q.id)) problems.push("Duplicate question id: \"" + q.id + "\".");
+        else seenIds.add(q.id);
+
+        if(!Array.isArray(q.options) || q.options.length < 2 || q.options.length > 5){
+          problems.push("Question \"" + q.id + "\" has " + (q.options ? q.options.length : 0) + " options (expected 2\u20135).");
+        }
+        if(typeof q.correctIndex !== "number" || q.correctIndex < 0 || (q.options && q.correctIndex >= q.options.length)){
+          problems.push("Question \"" + q.id + "\" has correctIndex out of range.");
+        }
+        if(q.passageId && !pids.has(q.passageId)){
+          problems.push("Question \"" + q.id + "\" references passageId \"" + q.passageId + "\" which doesn't exist in this section's passages.");
+        }
+        if(typeof q.text === "string" && /\$[^$\n]{1,80}\$|\\times|\\div|\\sqrt|\\frac/.test(q.text)){
+          warnings.push("Question \"" + q.id + "\" still contains what looks like LaTeX/math markup.");
+        }
+      });
+    });
+  }
+
+  const ok = problems.length === 0;
+  let html = '<div class="banner ' + (ok ? "ok" : "fail") + '">' +
+    (ok ? "&#10003; Valid JSON and schema looks correct." : "&#10007; Valid JSON, but " + problems.length + " schema problem(s) found.") +
+    '</div>';
+
+  html += '<div class="stat-row"><span><b>' + totalQuestions + '</b> total questions</span>' +
+    (data.id ? '<span>id: <b>' + esc(data.id) + '</b></span>' : '') + '</div>';
+  html += '<ul class="issue-list">' + sectionSummaries.map(s => '<li>' + esc(s) + '</li>').join('') + '</ul>';
+
+  if(problems.length){
+    html += '<div class="section-title">Problems</div>';
+    problems.forEach(p => {
+      html += '<div class="check"><div class="icon fail">&#10007;</div><div>' + esc(p) + '</div></div>';
+    });
+  }
+  if(warnings.length){
+    html += '<div class="section-title">Warnings</div>';
+    warnings.forEach(w => {
+      html += '<div class="check"><div class="icon warn">!</div><div>' + esc(w) + '</div></div>';
+    });
+  }
+  if(!problems.length && !warnings.length){
+    html += '<div class="check"><div class="icon pass">&#10003;</div><div>No structural issues, no leftover math markup, no dangling passage references.</div></div>';
+  }
+
+  resultEl.innerHTML = html;
+}
+</script>
+</body>
+</html>
