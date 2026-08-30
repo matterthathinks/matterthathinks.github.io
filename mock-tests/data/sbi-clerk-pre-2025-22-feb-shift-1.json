@@ -1,0 +1,1682 @@
+{
+"id": "sbi-clerk-pre-2025-22-feb-shift-1",
+"title": "SBI Clerk Prelims 2025 — 22nd Feb, Shift 1 (Memory-Based)",
+"instructions": [
+"This test has 3 sections: English Language, Quantitative Aptitude, and Reasoning Ability.",
+"Each section has its own 20-minute timer. When a section's time is up, it auto-submits and you move to the next section.",
+"You cannot go back to a previous section once it is submitted.",
+"Each correct answer gets +1 mark. Each wrong answer gets -0.25 mark. Unattempted questions get 0.",
+"Some questions are based on a shared passage, table, or diagram shown on the left. It stays fixed while you move between its questions.",
+"Use 'Mark for Review' if you want to flag a question to revisit later within the same section.",
+"Click Submit Test at the end, or the section will auto-submit when time runs out."
+],
+"sections": [
+{
+"id": "english",
+"name": "English Language",
+"durationMinutes": 20,
+"passages": [
+{
+"id": "p_rc_traffic",
+"text": "Road traffic is an essential part of modern life, enabling transportation and commerce. However, it also poses serious risks, including rising accidents, life-threatening injuries, and increasing road rage. Reckless driving, poor infrastructure, and inadequate law enforcement have turned roads into dangerous spaces where lives are lost every day. Addressing these issues requires collective action to restore discipline and ensure safer travel for all.\n\nOne of the most alarming consequences of uncontrolled traffic is the high _____ of accidents. Speeding, distracted driving, and driving under the influence are major contributors to fatal crashes. Many drivers neglect basic safety rules, such as wearing seat belts or maintaining safe distances, further increasing risks. Poorly maintained roads and insufficient traffic signals worsen the situation. Victims often suffer severe injuries, including fractures, paralysis, and brain trauma, leaving them permanently disabled. The financial burden of medical treatment and loss of livelihood devastates many families. Hit-and-run cases, where offenders escape accountability, highlight the urgent need for stricter enforcement.\n\nRoad rage is another growing issue threatening public safety. Frustration due to traffic congestion often leads to aggressive behavior. In extreme cases, individuals resort to violence, sometimes resulting in physical assaults or even shooting incidents. What begins as a minor dispute can escalate into a crime, endangering both motorists and pedestrians. A lack of emotional control and failure to resolve conflicts peacefully worsen the situation.\n\nTraffic police play a crucial role in addressing these challenges. Beyond issuing fines, they regulate traffic, prevent violations, and promote road safety. Regular patrolling, strict penalties, and increased surveillance through cameras can help reduce accidents. Public awareness campaigns on responsible driving are also necessary.\n\nAn effective way to restore safe driving habits is through celebrity-endorsed road safety campaigns. Celebrities influence public behavior, and their involvement can encourage drivers to follow traffic rules. Their participation in awareness programs and social media campaigns reinforces responsible driving.\n\nTo combat road dangers, a combined effort from the government, law enforcement, and the public is essential. By improving infrastructure, enforcing laws, and promoting responsible driving through celebrity campaigns, society can work toward safer roads for everyone."
+},
+{
+"id": "p_cloze_bees",
+"text": "Bees are not only important for producing honey but also play a crucial role in pollination. They fly **(A)** flowers, collecting nectar and pollen. This process helps **(B)** the reproduction of many plants. Bees transfer pollen **(C)** one flower to another, allowing plants to grow fruits and seeds. Without bees, many crops would struggle to grow, which would have a serious impact **(D)** food production. Farmers depend **(E)** bees to increase their harvest. It is important to take care **(F)** these pollinators to maintain a healthy environment."
+}
+],
+"questions": [
+{
+"id": "e1",
+"passageId": null,
+"text": "In the sentence below, four words have been highlighted which may be misspelt or inappropriate in their usage. Mark the erroneous word as the answer and if all the words are correct in their spellings and usage, choose 'All are correct' as the answer.\n\nShe asked her brother to acompany her to the market so she wouldn't have to carry all the heavy bags alone.",
+"options": [
+"asked",
+"heavy",
+"market",
+"acompany",
+"All are correct"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e2",
+"passageId": null,
+"text": "In the sentence below, four words have been highlighted which may be misspelt or inappropriate in their usage. Mark the erroneous word as the answer and if all the words are correct in their spellings and usage, choose 'All are correct' as the answer.\n\nEveryone attended the meeting expect John, who was feeling unwell.",
+"options": [
+"attended",
+"expect",
+"meeting",
+"feeling",
+"All are correct"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e3",
+"passageId": null,
+"text": "In the sentence below, four words have been highlighted which may be misspelt or inappropriate in their usage. Mark the erroneous word as the answer and if all the words are correct in their spellings and usage, choose 'All are correct' as the answer.\n\nWe decided to have dinner at a new Italian restuarant that recently opened in the city.",
+"options": [
+"dinner",
+"opened",
+"restuarant",
+"recently",
+"All are correct"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e4",
+"passageId": null,
+"text": "In the sentence below, four words have been highlighted which may be misspelt or inappropriate in their usage. Mark the erroneous word as the answer and if all the words are correct in their spellings and usage, choose 'All are correct' as the answer.\n\nShe received a beautiful gift form her best friend on her birthday.",
+"options": [
+"friend",
+"beautiful",
+"received",
+"form",
+"All are correct"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e5",
+"passageId": null,
+"text": "In the sentence below, four words have been highlighted which may be misspelt or inappropriate in their usage. Mark the erroneous word as the answer and if all the words are correct in their spellings and usage, choose 'All are correct' as the answer.\n\nShe felt a deep sense of contantment as she sat by the fireplace, sipping tea and reading her favorite book.",
+"options": [
+"contantment",
+"fireplace",
+"sipping",
+"sense",
+"All are correct"
+],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e6",
+"passageId": null,
+"text": "In the question, one word is given in bold and correspondence to that, three sentences are given each containing that word. Choose the option depicting the sentence(s) that have/has the correct usage of the word.\n\nBATCH\n(I) The bakery prepared a fresh batch of cookies every morning to satisfy its customers.\n(II) She earned a batch for completing the advanced level of the training program.\n(III) The professor graded the first batch of exam papers before taking a break.",
+"options": [
+"Only (I)",
+"Both (I) and (III)",
+"Only (III)",
+"All (I), (II) and (III)",
+"Only (II)"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e7",
+"passageId": null,
+"text": "In the question, one word is given in bold and correspondence to that, three sentences are given each containing that word. Choose the option depicting the sentence(s) that have/has the correct usage of the word.\n\nSLIP\n(I) She tried to walk carefully on the icy road, but she couldn't avoid a slip and fell.\n(II) He wrote his phone number on a small slip of paper and handed it to her.\n(III) She couldn't slip well last night because of the loud thunderstorm.",
+"options": [
+"Only (III)",
+"Only (II)",
+"Both (I) and (III)",
+"Both (I) and (II)",
+"All (I), (II) and (III)"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e8",
+"passageId": null,
+"text": "In the question, one word is given in bold and correspondence to that, three sentences are given each containing that word. Choose the option depicting the sentence(s) that have/has the correct usage of the word.\n\nRATE\n(I) The interest rate on home loans has increased significantly this year.\n(II) Doctors rate this hospital as one of the best in the country.\n(III) The birth rate in many developed countries has been declining over the years.",
+"options": [
+"Only (I)",
+"Both (I) and (III)",
+"Only (III)",
+"All (I), (II) and (III)",
+"Only (II)"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e9",
+"passageId": null,
+"text": "The following question contains a sentence which has been divided into four parts which might not be in their correct order of narrative. The sentence is then followed by five options, one of which gives the sequence of the rearranged parts to make the sentence meaningful. Choose the option which gives the correct sequence of the parts. If the sentence is already arranged in the correct sequence, then mark option 'No rearrangement required' as the answer.\n\n(A) began, 12 jurors were\n(B) before the trial\n(C) a pool of candidates\n(D) randomly selected from",
+"options": [
+"BDCA",
+"BADC",
+"ADCB",
+"ABDC",
+"No rearrangement required"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e10",
+"passageId": null,
+"text": "The following question contains a sentence which has been divided into four parts which might not be in their correct order of narrative. The sentence is then followed by five options, one of which gives the sequence of the rearranged parts to make the sentence meaningful. Choose the option which gives the correct sequence of the parts. If the sentence is already arranged in the correct sequence, then mark option 'No rearrangement required' as the answer.\n\n(A) useless stuff, and imaginary\n(B) things, so we can't\n(C) the world is full of nonsense,\n(D) believe everything",
+"options": [
+"ABDC",
+"ADCB",
+"CABD",
+"DBCA",
+"No rearrangement required"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e11",
+"passageId": null,
+"text": "The following question contains a sentence which has been divided into four parts which might not be in their correct order of narrative. The sentence is then followed by five options, one of which gives the sequence of the rearranged parts to make the sentence meaningful. Choose the option which gives the correct sequence of the parts. If the sentence is already arranged in the correct sequence, then mark option 'No rearrangement required' as the answer.\n\n(A) and singing to the music\n(B) have a gregarious time dancing\n(C) rushed into the nightclub to\n(D) crowds of people",
+"options": [
+"BDCA",
+"DABC",
+"BACD",
+"DCBA",
+"No rearrangement required"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e12",
+"passageId": null,
+"text": "The following question contains a sentence which has been divided into four parts which might not be in their correct order of narrative. The sentence is then followed by five options, one of which gives the sequence of the rearranged parts to make the sentence meaningful. Choose the option which gives the correct sequence of the parts. If the sentence is already arranged in the correct sequence, then mark option 'No rearrangement required' as the answer.\n\n(A) that many of his\n(B) citizens lacked food\n(C) the dictator was\n(D) inhumane and unconcerned",
+"options": [
+"CBAD",
+"CBDA",
+"CDAB",
+"CADB",
+"No rearrangement required"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e13",
+"passageId": "p_rc_traffic",
+"text": "Select the most appropriate word to replace 'shooting' in the following sentence from the passage:\n'In extreme cases, individuals resort to violence, sometimes resulting in physical assaults or even shooting incidents.'",
+"options": [
+"Stabbing",
+"Firing",
+"Striking",
+"Beating",
+"Kicking"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e14",
+"passageId": "p_rc_traffic",
+"text": "According to the passage, which of the following are primary causes of road accidents?\n(I) Speeding, distracted driving, and driving under the influence.\n(II) Poorly maintained roads and lack of proper traffic signals.\n(III) The increasing number of vehicles on the road.",
+"options": [
+"Only (I)",
+"Both (I) and (II)",
+"Only (III)",
+"Both (II) and (III)",
+"All (I), (II), and (III)"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e15",
+"passageId": "p_rc_traffic",
+"text": "Select the most appropriate word to replace 'restore' in the following sentence from the passage:\n'Addressing these issues requires collective action to restore discipline and ensure safer travel for all.'",
+"options": [
+"Reinstate",
+"Abandon",
+"Destroy",
+"Rejuvenate",
+"Replicate"
+],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e16",
+"passageId": "p_rc_traffic",
+"text": "Select the most appropriate word to fill in the blank in the following sentence from the passage:\n'One of the most alarming consequences of uncontrolled traffic is the high _____ of accidents.'",
+"options": [
+"Decline",
+"Rate",
+"Solution",
+"Reduction",
+"Prevention"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e17",
+"passageId": "p_rc_traffic",
+"text": "According to the passage, what role do celebrities play in promoting road safety?\n(I) They encourage safe driving habits through public awareness campaigns.\n(II) Their influence can help restore discipline among drivers.\n(III) They have successfully eliminated reckless driving in several regions.",
+"options": [
+"Only (I)",
+"Both (I) and (II)",
+"Only (III)",
+"Both (II) and (III)",
+"All (I), (II), and (III)"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e18",
+"passageId": "p_rc_traffic",
+"text": "Which of the following statements is/are TRUE according to the passage?\n(I) Poorly maintained roads and a lack of proper traffic signals contribute to the rising number of accidents.\n(II) Road rage incidents are primarily caused by the presence of strict traffic police officers.\n(III) Celebrity endorsements in road safety campaigns can help encourage responsible driving behavior.",
+"options": [
+"Only (I)",
+"Both (II) and (III)",
+"Only (III)",
+"Both (I) and (III)",
+"All (I), (II), and (III)"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e19",
+"passageId": "p_rc_traffic",
+"text": "Which of the following statements is/are FALSE according to the passage?\n(I) Installing traffic cameras has completely eliminated reckless driving.\n(II) Road rage incidents never escalate into violent confrontations.\n(III) The passage suggests that reducing the number of vehicles is the best way to prevent accidents.",
+"options": [
+"Only (I)",
+"Both (I) and (II)",
+"Only (III)",
+"Both (II) and (III)",
+"All (I), (II), and (III)"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e20",
+"passageId": null,
+"text": "Read the sentence to find out whether there is any grammatical or idiomatic error in it. The error, if any, will be in one part of the sentence. The letter of that part is the answer. If the given sentence is grammatically and contextually correct, then choose option 'No error' as your answer response. (Ignore errors of punctuation, if any).\n\nIndustrial waste and (A)/ sewage has heavily polluted (B)/ the Ganga, endangering (C)/ aquatic life and human health. (D)",
+"options": [
+"A",
+"B",
+"C",
+"D",
+"No error"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e21",
+"passageId": null,
+"text": "Read the sentence to find out whether there is any grammatical or idiomatic error in it. The error, if any, will be in one part of the sentence. The letter of that part is the answer. If the given sentence is grammatically and contextually correct, then choose option 'No error' as your answer response. (Ignore errors of punctuation, if any).\n\nIndia's cities must (A)/ build inclusive climate (B)/ resilient to protect (C)/ vulnerable communities. (D)",
+"options": [
+"A",
+"B",
+"C",
+"D",
+"No error"
+],
+"correctIndex": 2,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e22",
+"passageId": null,
+"text": "Read the sentence to find out whether there is any grammatical or idiomatic error in it. The error, if any, will be in one part of the sentence. The letter of that part is the answer. If the given sentence is grammatically and contextually correct, then choose option 'No error' as your answer response. (Ignore errors of punctuation, if any).\n\nThe UGC draft regulations have (A)/ sparked concerns in southern states (B)/, highlight regional disparities and the need (C)/ for a more inclusive policy framework. (D)",
+"options": [
+"A",
+"B",
+"C",
+"D",
+"No error"
+],
+"correctIndex": 2,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e23",
+"passageId": null,
+"text": "Read the sentence to find out whether there is any grammatical or idiomatic error in it. The error, if any, will be in one part of the sentence. The letter of that part is the answer. If the given sentence is grammatically and contextually correct, then choose option 'No error' as your answer response. (Ignore errors of punctuation, if any).\n\nThe escaped prisoner (A)/ showed compassion (B)/ when him assisted the (C)/ wounded police officer. (D)",
+"options": [
+"A",
+"B",
+"C",
+"D",
+"No error"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e24",
+"passageId": null,
+"text": "Read the sentence to find out whether there is any grammatical or idiomatic error in it. The error, if any, will be in one part of the sentence. The letter of that part is the answer. If the given sentence is grammatically and contextually correct, then choose option 'No error' as your answer response. (Ignore errors of punctuation, if any).\n\nMost teachers in (A)/ school expect you to being (B)/ polite to both the (C)/ teachers and the other students. (D)",
+"options": [
+"A",
+"B",
+"C",
+"D",
+"No error"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e25",
+"passageId": "p_cloze_bees",
+"text": "Which of the following word best fits in blank A?",
+"options": [
+"near",
+"happy",
+"strong",
+"cold",
+"bright"
+],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e26",
+"passageId": "p_cloze_bees",
+"text": "Which of the following word best fits in blank B?",
+"options": [
+"grow",
+"jump",
+"sleep",
+"dry",
+"heavy"
+],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e27",
+"passageId": "p_cloze_bees",
+"text": "Which of the following word best fits in blank C?",
+"options": [
+"tall",
+"water",
+"from",
+"soft",
+"long"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e28",
+"passageId": "p_cloze_bees",
+"text": "Which of the following word best fits in blank D?",
+"options": [
+"on",
+"fast",
+"warm",
+"loud",
+"short"
+],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e29",
+"passageId": "p_cloze_bees",
+"text": "Which of the following word best fits in blank E?",
+"options": [
+"over",
+"under",
+"upper",
+"on",
+"open"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e30",
+"passageId": "p_cloze_bees",
+"text": "Which of the following word best fits in blank F?",
+"options": [
+"in",
+"kind",
+"of",
+"slow",
+"clean"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+}
+]
+},
+{
+"id": "quant",
+"name": "Quantitative Aptitude",
+"durationMinutes": 20,
+"passages": [
+{
+"id": "p_di_tickets",
+"text": "The table given below shows the information about the movie tickets sold by three malls A, B and C in the months of January, February, and March.\n\n| Month | Mall A | Mall B | Mall C |\n| :--- | :--- | :--- | :--- |\n| January | 120 | 125 | 110 |\n| February | 150 | 90 | 100 |\n| March | 140 | 100 | 150 |"
+},
+{
+"id": "p_di_sweets",
+"text": "The bar graph given below shows the number of sweets sold by the shopkeeper A from Monday to Friday.\n\n| Day | Sweets Sold |\n| :--- | :--- |\n| Monday | 150 |\n| Tuesday | 90 |\n| Wednesday | 120 |\n| Thursday | 100 |\n| Friday | 80 |"
+}
+],
+"questions": [
+{
+"id": "q31",
+"passageId": null,
+"text": "What will come in the place of question (?) mark in the following question?\n\n$156 \times 5 - 16 \times 9 = ? \times 318$",
+"options": [
+"1",
+"4",
+"3",
+"2",
+"5"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q32",
+"passageId": null,
+"text": "What will come in the place of question (?) mark in the following question?\n\n$254 + 312 - ? = 420$",
+"options": [
+"166",
+"156",
+"126",
+"136",
+"146"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q33",
+"passageId": null,
+"text": "What will come in the place of question (?) mark in the following question?\n\n$450 - 60\\% \text{ of } 225 = ? - 8^{3}$",
+"options": [
+"830",
+"827",
+"780",
+"770",
+"800"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q34",
+"passageId": null,
+"text": "What will come in the place of question (?) mark in the following question?\n\n$120 \times 20 \div 5 - 80 = ?$",
+"options": [
+"400",
+"100",
+"200",
+"300",
+"500"
+],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q35",
+"passageId": null,
+"text": "What will come in the place of question (?) mark in the following question?\n\n$\sqrt{625} + ?^{2} = 13^{2}$",
+"options": [
+"10",
+"16",
+"8",
+"12",
+"14"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q36",
+"passageId": null,
+"text": "What will come in the place of question (?) mark in the following question?\n\n$(7 \times 5 - 8) \div 9 + 3 = ?$",
+"options": [
+"6",
+"0",
+"1",
+"2",
+"7"
+],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q37",
+"passageId": null,
+"text": "What will come in the place of question (?) mark in the following question?\n\n$245 + \sqrt{225} \times 2 - ? = 200$",
+"options": [
+"95",
+"90",
+"85",
+"80",
+"75"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q38",
+"passageId": null,
+"text": "What will come in the place of question (?) mark in the following question?\n\n$36 + 30\\% \text{ of } 750 - 136 = ?^{3}$",
+"options": [
+"7",
+"3",
+"4",
+"5",
+"1"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q39",
+"passageId": null,
+"text": "What will come in the place of question (?) mark in the following question?\n\n$45\\% \text{ of } 220 + 15 \times ? = 129$",
+"options": [
+"4",
+"3",
+"2",
+"5",
+"6"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q40",
+"passageId": null,
+"text": "What will come in the place of question (?) mark in the following question?\n\n$? \times 4 - 177 = 171$",
+"options": [
+"86",
+"84",
+"88",
+"85",
+"87"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q41",
+"passageId": "p_di_tickets",
+"text": "If the ratio of movie ticket sold by B in April to movie ticket sold by C in February is 4:1, then find the movie ticket sold by B in April.",
+"options": [
+"400",
+"500",
+"240",
+"480",
+"800"
+],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q42",
+"passageId": "p_di_tickets",
+"text": "Find the average number of tickets sold by B in February, C in March and A in January.",
+"options": [
+"140",
+"120",
+"200",
+"180",
+"100"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q43",
+"passageId": "p_di_tickets",
+"text": "The movie ticket sold by A and B together in February is what percentage of movie ticket sold by C in March?",
+"options": [
+"100%",
+"120%",
+"40%",
+"160%",
+"150%"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q44",
+"passageId": "p_di_tickets",
+"text": "Find the ratio of tickets sold by B in March to tickets sold by A in February.",
+"options": [
+"1:4",
+"2:3",
+"2:5",
+"8:1",
+"1:1"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q45",
+"passageId": "p_di_tickets",
+"text": "Movie ticket sold by B in March is what percent more or less than movie ticket sold by C in February?",
+"options": [
+"20%",
+"190%",
+"40%",
+"0%",
+"150%"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q46",
+"passageId": "p_di_sweets",
+"text": "If 40% total sweets sold on Friday, then find the number of sweets unsold on Friday.",
+"options": [
+"140",
+"120",
+"200",
+"180",
+"100"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q47",
+"passageId": "p_di_sweets",
+"text": "Find a difference between sweets sold on Monday & Tuesday together and sweets sold on Friday.",
+"options": [
+"140",
+"160",
+"200",
+"180",
+"100"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q48",
+"passageId": "p_di_sweets",
+"text": "Sweets sold on Tuesday is what percentage more or less than sweets sold on Thursday",
+"options": [
+"20%",
+"19%",
+"10%",
+"5%",
+"15%"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q49",
+"passageId": "p_di_sweets",
+"text": "Find the average number of sweets sold all days except Wednesday.",
+"options": [
+"105",
+"120",
+"200",
+"180",
+"100"
+],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q50",
+"passageId": "p_di_sweets",
+"text": "Find the ratio of total sweets sold on Tuesday to total sweets sold on Friday.",
+"options": [
+"8:9",
+"8:3",
+"9:5",
+"1:1",
+"9:8"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q51",
+"passageId": null,
+"text": "A man invested certain amount in two schemes A and B, he invested 30% of the amount in scheme A at rate of 10% p.a. and rest in scheme B at rate of 5% p.a. If after four years the man received total interest of Rs 1300, then find the amount invested by man in scheme B (in Rs.)?",
+"options": [
+"5000",
+"1500",
+"3000",
+"3500",
+"4500"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q52",
+"passageId": null,
+"text": "A man invested 25% of his monthly income on food. From the remaining, he spends 20% on rent. If the man spends 20% of the remaining income on education and saved Rs 19200, then find the monthly income of man?",
+"options": [
+"30000 Rs.",
+"50000 Rs.",
+"60000 Rs.",
+"40000 Rs.",
+"48000 Rs."
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q53",
+"passageId": null,
+"text": "A car covers 120 km distance in 5 hours. If the car covers 84 km distance with original speed and 135 km distance with 25% increased speed, then find the total time taken by the car to cover the total distance (in hours)?",
+"options": [
+"6",
+"8",
+"4",
+"12",
+"9"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q54",
+"passageId": null,
+"text": "In a town 40% are male and rest are female. If 40% of total female are graduate and total non-graduate female are 540, then find the number of males in the town?",
+"options": [
+"900",
+"500",
+"400",
+"600",
+"1200"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q55",
+"passageId": null,
+"text": "Reema and Seema started a business with an investment of Rs X and Rs X+500 for a year. If the profit share of Reema is 1/6 less than that of Seema, then find the value of X.",
+"options": [
+"3000",
+"2500",
+"2000",
+"3500",
+"1500"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q56",
+"passageId": null,
+"text": "A shopkeeper sold an article for Rs 2400 at a 20% profit. The discount allowed on the article is 20%. If he allowed 10% discount on the article, then find the profit on the article.",
+"options": [
+"Rs 690",
+"Rs 380",
+"Rs 560",
+"Rs 240",
+"Rs 700"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q57",
+"passageId": null,
+"text": "The present age of Sunita to Mohit is 6:5, respectively, and the present age of Vinita is 11 years more than that of Mohit. If the present age of Vinita is twice the age of Sunita five years ago, then find the present age of Vinita.",
+"options": [
+"27 years",
+"20 years",
+"22 years",
+"24 years",
+"26 years"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q58",
+"passageId": null,
+"text": "A vessel contains 70 liters of milk and water in the ratio of 3:7. If the X liters of milk and 56 liters of water are added to the mixture, then the ratio of the milk to water becomes 3:5. Find X.",
+"options": [
+"48",
+"42",
+"35",
+"56",
+"63"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q59",
+"passageId": null,
+"text": "A, B and C can do a work in 48 days, 72 days and 54 days respectively. If A and B together can do a work for 8 days, then find the time taken (in days) by C to complete the remaining work.",
+"options": [
+"44",
+"31",
+"43",
+"34",
+"39"
+],
+"correctIndex": 4,
+"difficulty": "hard",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q60",
+"passageId": null,
+"text": "The total time taken by a boat to cover 105 km upstream and 105 km downstream in 7.5 hours. If the ratio of the speed of boat in downstream to upstream is 2:1 respectively, then find the speed of the boat in still water?",
+"options": [
+"44.5",
+"31.5",
+"43.5",
+"34.5",
+"39.5"
+],
+"correctIndex": 1,
+"difficulty": "hard",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q61",
+"passageId": null,
+"text": "A train takes 30 seconds to cross a pole and 45 seconds to cross a 350 meters long bridge. Find the length of the train.",
+"options": [
+"840 m",
+"600 m",
+"800 m",
+"700 m",
+"900 m"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q62",
+"passageId": null,
+"text": "The circumference of two circles is 88 meters and 132 meters. What is sum of the radius of both the circles.",
+"options": [
+"14 meters",
+"35 meters",
+"7 meters",
+"21 meters",
+"42 meters"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q63",
+"passageId": null,
+"text": "What will come in the place of question (?) mark in the following number series?\n\n91, 112, 136, 164, 197, ?",
+"options": [
+"227",
+"229",
+"231",
+"236",
+"235"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q64",
+"passageId": null,
+"text": "What will come in the place of question (?) mark in the following number series?\n\n12, 39, 120, 363, ?, 3279",
+"options": [
+"1092",
+"1089",
+"1096",
+"1192",
+"1082"
+],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q65",
+"passageId": null,
+"text": "What will come in the place of question (?) mark in the following number series?\n\n5040, 840, ?, 42, 14, 7",
+"options": [
+"125",
+"132",
+"129",
+"168",
+"120"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+}
+]
+},
+{
+"id": "reasoning",
+"name": "Reasoning Ability",
+"durationMinutes": 20,
+"passages": [
+{
+"id": "p_puzzle_months",
+"text": "Eight persons - A, B, C, D, E, F, G and H - were born (but not necessarily in the same order as given) on two different dates - either 8 or 27 of four different months - January, May, June and November. No two persons were born on the same date.\n\nD was born on an even date in May. A was born in the month before D. A and D were born on same dates. Four persons were born between A and E. H was born in the same month as E. G was born just after B. Two persons were born between B and C."
+},
+{
+"id": "p_seating_linear",
+"text": "Eight persons - A, B, C, D, E, F, G and H - sit in a row facing north, but not necessarily in the same order.\n\nD sits third to the right of C. Three persons sit between C and E. A sits second to the right of E. F sits fourth to the left of H. C is not an immediate neighbour of G. More than one person sit between H and G. B sits to the right of G."
+},
+{
+"id": "p_numeric_series",
+"text": "Read the given numeric series carefully and answer the related questions:\n\n3 7 4 9 8 6 5 2 1 3 4 7 9 6 2 5 3 4 6 8 2 7 4 3 5 8 9 3 2 7 4"
+},
+{
+"id": "p_square_seating",
+"text": "Eight persons - H, M, A, G, K, O, C and D are sitting around a square shaped table in such a way that four of them sit at four corners of the table while remaining four sit in the middle of the four sides, but not necessarily in the same order. The one who sits at the four corners faces the center while those who sits in the middle of the sides face outside.\n\nK sits immediate left of H. G sits second to the left of K. Three persons sit between A and M. M sits immediate left of G. Only two persons sit between H and O. O sits at one of the corners but does not sit adjacent to M. D sits third to the left of G."
+},
+{
+"id": "p_seating_uncertain",
+"text": "A certain number of people are sitting in a row facing north. A sits fifth to the left of B. E is an immediate neighbour of B. F sits second to the left of A and second from one of the extreme ends of the row. Only one person sits between B and G. E is not an immediate neighbour of G. K sits fourth to the right of G. No one sits to the right of K. Five persons sit between K and T."
+},
+{
+"id": "p_blood_relations",
+"text": "There are eight persons in a three-generation family with three married couples. M is father of O. Q is the daughter-in-law of G. Q is the mother of S. S is the grandchild of M. P is the sister of M. S and T are siblings. T is the only son of O. L and P are married."
+}
+],
+"questions": [
+{
+"id": "r66",
+"passageId": "p_puzzle_months",
+"text": "F was born on which date and month?",
+"options": [
+"8 May",
+"8 November",
+"27 June",
+"27 January",
+"8 June"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r67",
+"passageId": "p_puzzle_months",
+"text": "How many persons were born after C?",
+"options": [
+"Five",
+"One",
+"Two",
+"Three",
+"Four"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r68",
+"passageId": "p_puzzle_months",
+"text": "Who among the following was born on 8 November?",
+"options": [
+"C",
+"H",
+"G",
+"B",
+"E"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r69",
+"passageId": "p_puzzle_months",
+"text": "Four of the following five are similar in a certain pattern, who among the following is dissimilar to others?",
+"options": [
+"A",
+"D",
+"H",
+"B",
+"G"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r70",
+"passageId": "p_puzzle_months",
+"text": "Which of the following statement is correct?\nI. D was born after A\nII. G and C were born in same month\nIII. H was born on 8 June",
+"options": [
+"Only I",
+"Only I and II",
+"Only II",
+"Only I and III",
+"Only III"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r71",
+"passageId": "p_seating_linear",
+"text": "Who among the following persons sits fourth to the left of B?",
+"options": [
+"G",
+"D",
+"E",
+"F",
+"None of these"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r72",
+"passageId": "p_seating_linear",
+"text": "Which among the following statement is/are false?",
+"options": [
+"E sits at one of the extreme ends of the row",
+"F and G are immediate neighbours",
+"Only one person sits between G and C",
+"A sits immediate left of B",
+"H and E are immediate neighbours"
+],
+"correctIndex": 0,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r73",
+"passageId": "p_seating_linear",
+"text": "If F and A interchange their positions, who will sit to the immediate right of A?",
+"options": [
+"B",
+"G",
+"D",
+"H",
+"None of these"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r74",
+"passageId": "p_seating_linear",
+"text": "Which of the following pairs represents the persons sitting at the extreme ends?",
+"options": [
+"E and C",
+"E and D",
+"C and B",
+"B and D",
+"None of these"
+],
+"correctIndex": 2,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r75",
+"passageId": "p_seating_linear",
+"text": "What is the position of C with respect to D?",
+"options": [
+"Third to the right",
+"Fourth to the left",
+"Immediate right",
+"Third to the left",
+"Immediate left"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r76",
+"passageId": "p_numeric_series",
+"text": "Which element is 11th from the right end in the given series?",
+"options": [
+"7",
+"8",
+"2",
+"4",
+"3"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r77",
+"passageId": "p_numeric_series",
+"text": "How many square numbers are immediately preceded by an odd number?",
+"options": [
+"One",
+"Two",
+"Three",
+"Four",
+"More than four"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r78",
+"passageId": "p_numeric_series",
+"text": "Which element is 6th to the right of the 9th odd number from the left end?",
+"options": [
+"3",
+"4",
+"8",
+"2",
+"7"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r79",
+"passageId": "p_numeric_series",
+"text": "How many even numbers are immediately preceded by an odd number and immediately followed by an even number?",
+"options": [
+"One",
+"Two",
+"Three",
+"Four",
+"Five"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r80",
+"passageId": "p_numeric_series",
+"text": "What will the sum of 7th element from left end and 4th even number from right end?",
+"options": [
+"11",
+"10",
+"13",
+"8",
+"9"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r81",
+"passageId": null,
+"text": "In these questions, the relationship between different elements is shown in the statements. The statements are followed by two conclusions. Study the conclusions based on the given statements and select the appropriate answer:\n\nStatements: B >= O > M = E > L < D > Z\nConclusions:\nI. O <= Z\nII. B > D",
+"options": [
+"If only conclusion I is true",
+"If only conclusion II is true",
+"If either conclusion I or II is true",
+"If both conclusions I and II are true",
+"If neither conclusion I nor II is true"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r82",
+"passageId": null,
+"text": "In these questions, the relationship between different elements is shown in the statements. The statements are followed by two conclusions. Study the conclusions based on the given statements and select the appropriate answer:\n\nStatements: E < G < J >= N = B > U < P\nConclusions:\nI. J > U\nII. P > G",
+"options": [
+"If only conclusion I is true",
+"If only conclusion II is true",
+"If either conclusion I or II is true",
+"If both conclusions I and II are true",
+"If neither conclusion I nor II is true"
+],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r83",
+"passageId": null,
+"text": "In these questions, the relationship between different elements is shown in the statements. The statements are followed by two conclusions. Study the conclusions based on the given statements and select the appropriate answer:\n\nStatements: Y < K = S >= J < I > E < C <= D\nConclusions:\nI. K < D\nII. S >= D",
+"options": [
+"If only conclusion I is true",
+"If only conclusion II is true",
+"If either conclusion I or II is true",
+"If both conclusions I and II are true",
+"If neither conclusion I nor II is true"
+],
+"correctIndex": 2,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r84",
+"passageId": "p_square_seating",
+"text": "Who among the following person sits opposite to G?",
+"options": [
+"D",
+"C",
+"O",
+"M",
+"A"
+],
+"correctIndex": 2,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r85",
+"passageId": "p_square_seating",
+"text": "What is the position of O with respect to M?",
+"options": [
+"Third to the left",
+"Third to the right",
+"Fourth to the right",
+"Fifth to the right",
+"Second to the right"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r86",
+"passageId": "p_square_seating",
+"text": "How many persons sit between A and G when counted from the right of A?",
+"options": [
+"One",
+"Two",
+"Five",
+"Three",
+"Four"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r87",
+"passageId": "p_square_seating",
+"text": "Four of the following five are alike in a certain way and thus form a group. Find the one who doesn't belong to the group?",
+"options": [
+"M",
+"H",
+"A",
+"D",
+"K"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r88",
+"passageId": "p_square_seating",
+"text": "Which among the following statement(s) is/are true?\nI. C sits second to the left of G\nII. G sits opposite to A\nIII. Two persons sit between M and K when counting from left of M.",
+"options": [
+"Only I",
+"Only III",
+"Only II",
+"Both I and III",
+"All I, II and III"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r89",
+"passageId": null,
+"text": "In the questions below, some statements are given followed by two conclusions. You have to take the given statements to be true even if they seem to be at variance with commonly known facts. Read all the statements and decide which of the given conclusion logically follows from the statements. Give answer:\n\nStatement:\nAll key is rubber.\nOnly a few rubber is dot.\nSome Dot is paper.\n\nConclusions:\nI. Some key is not paper.\nII. No paper being rubber is a possibility.",
+"options": [
+"Only I follows",
+"Only II follows",
+"Either I or II follow",
+"Neither I nor II follow",
+"Both I and II follow"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r90",
+"passageId": null,
+"text": "In the questions below, some statements are given followed by two conclusions. You have to take the given statements to be true even if they seem to be at variance with commonly known facts. Read all the statements and decide which of the given conclusion logically follows from the statements. Give answer:\n\nStatement:\nOnly soil is plant.\nSome soil is feather.\nNo feather is color.\n\nConclusions:\nI. All feather being soil is a possibility.\nII. Some soil is not color.",
+"options": [
+"Only I follows",
+"Only II follows",
+"Either I or II follow",
+"Neither I nor II follow",
+"Both I and II follow"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r91",
+"passageId": null,
+"text": "In the questions below, some statements are given followed by two conclusions. You have to take the given statements to be true even if they seem to be at variance with commonly known facts. Read all the statements and decide which of the given conclusion logically follows from the statements. Give answer:\n\nStatement:\nOnly a few money is scale.\nAll scale is graph.\nSome graph is brick.\n\nConclusions:\nI. No brick is scale.\nII. All money is graph.",
+"options": [
+"Only I follows",
+"Only II follows",
+"Either I or II follow",
+"Neither I nor II follow",
+"Both I and II follow"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r92",
+"passageId": "p_seating_uncertain",
+"text": "Who among the following person sits fourth to the right of T?",
+"options": [
+"E",
+"G",
+"A",
+"F",
+"B"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r93",
+"passageId": "p_seating_uncertain",
+"text": "Who among the following sits seventh from the left end of the row?",
+"options": [
+"B",
+"G",
+"E",
+"T",
+"Unknown person"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r94",
+"passageId": "p_seating_uncertain",
+"text": "How many persons are sitting in the row?",
+"options": [
+"13",
+"14",
+"15",
+"11",
+"12"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r95",
+"passageId": "p_blood_relations",
+"text": "How is G related to T?",
+"options": [
+"Mother",
+"Granddaughter",
+"Grandmother",
+"Grandfather",
+"None of these"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r96",
+"passageId": "p_blood_relations",
+"text": "How many female members are there in the family?",
+"options": [
+"Three",
+"Five",
+"Four",
+"Two",
+"None of these"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r97",
+"passageId": "p_blood_relations",
+"text": "Who among the following is the aunt of O?",
+"options": [
+"G",
+"P",
+"Q",
+"T",
+"Can't be determined"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r98",
+"passageId": null,
+"text": "How many pair of digits are in the number '275849136', each of which have as many digits between them as in the number series (both forward and backward order)?",
+"options": [
+"One",
+"Two",
+"Three",
+"Four",
+"More than four"
+],
+"correctIndex": 2,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r99",
+"passageId": null,
+"text": "In the word 'HUNGARILY', if all the letters are arranged in alphabetical order from left to right, then, how many letters will remain same on their positions?",
+"options": [
+"None",
+"Two",
+"Four",
+"Three",
+"One"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r100",
+"passageId": null,
+"text": "If a meaningful word is formed by using the second, fourth, fifth and tenth letters (from the left end) of the word 'RENOVATION', then which of the following will be the second letter from the left end of the meaningful word thus formed. If more than one such meaningful word is formed mark Y as your answer. If no meaningful word is formed, mark Z as your answer?",
+"options": [
+"N",
+"Y",
+"E",
+"Z",
+"V"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+}
+]
+}
+]
+}
