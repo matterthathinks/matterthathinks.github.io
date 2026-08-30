@@ -1,0 +1,1686 @@
+{
+"id": "sbi-clerk-pre-2025-22-feb-shift-2",
+"title": "SBI Clerk Prelims 2025 — 22nd Feb, Shift 2 (Memory-Based)",
+"instructions": [
+"This test has 3 sections: English Language, Quantitative Aptitude, and Reasoning Ability.",
+"Each section has its own 20-minute timer. When a section's time is up, it auto-submits and you move to the next section.",
+"You cannot go back to a previous section once it is submitted.",
+"Each correct answer gets +1 mark. Each wrong answer gets -0.25 mark. Unattempted questions get 0.",
+"Some questions are based on a shared passage, table, or diagram shown on the left. It stays fixed while you move between its questions.",
+"Use 'Mark for Review' if you want to flag a question to revisit later within the same section.",
+"Click Submit Test at the end, or the section will auto-submit when time runs out."
+],
+"sections": [
+{
+"id": "english",
+"name": "English Language",
+"durationMinutes": 20,
+"passages": [
+{
+"id": "p_cloze_us_orgs",
+"text": "The United States is home to several influential organizations that shape domestic and global affairs. One of the most important is the Federal Reserve, which regulates the nation's monetary policy to ensure economic (A). Another key institution is the Securities and Exchange Commission (SEC), responsible for overseeing the (B) of financial markets and protecting investors. The Department of Homeland Security (DHS) plays a crucial role in safeguarding the nation from various threats, including cyberattacks and terrorism, ensuring national (C). Additionally, organizations like the Environmental Protection Agency (EPA) work towards addressing issues such as climate change and pollution by enforcing (D) regulations. Finally, the National Aeronautics and Space Administration (NASA) continues to lead advancements in space exploration and scientific discovery, contributing to America's reputation for (E) in technology."
+},
+{
+"id": "p_rc_organic_farming",
+"text": "In a quiet village nestled between rolling green hills, a father and his daughter embarked on an ambitious journey—organic farming. Unlike the traditional farming methods that had been followed for generations, their approach rejected chemical fertilizers and pesticides, focusing instead on natural compost, crop rotation, and biological pest control. Their vision was clear: to cultivate healthier food while preserving the environment.\n\nHowever, their decision was met with resistance. The villagers scoffed at their efforts, claiming that such methods were _____ and doomed to fail. 'The soil needs chemicals to yield good crops,' they warned. 'Your harvest will be weak, and your time will be wasted.' But the father and daughter persisted, refusing to abandon their dream. Each day, they toiled under the sun, carefully nurturing their crops with organic fertilizers made from decomposed leaves and cow dung.\n\nAt first, progress was slow. The seeds of their labor did not show immediate results, and doubts percolated even in their own minds. Whispers of failure spread through the village, reinforcing the skepticism of those who had dismissed their efforts. Yet, they held firm, drawing strength from their shared conviction. Months passed, and slowly, their farm transformed. The soil became richer, earthworms flourished, and their plants grew robust without a trace of chemical intervention. Their once skeptical neighbors watched in astonishment as their fields produced a bountiful harvest.\n\nOver time, the father and daughter not only proved their critics wrong but also gained widespread recognition. Their farm became a model for sustainable agriculture, drawing interest from environmental organizations. They received awards for their eco-friendly initiatives, and the same villagers who once doubted them now sought their advice.\n\nTheir story became an inspiration, proving that with persistence and faith in one's principles, even the most rigid mindsets can change. The land they had nurtured was not just a testament to their hard work but also a symbol of resilience and vision."
+}
+],
+"questions": [
+{
+"id": "e1",
+"passageId": "p_cloze_us_orgs",
+"text": "Which of the following word best fits in blank (A)?",
+"options": [
+"indifference",
+"hostility",
+"turbulence",
+"fragility",
+"stability"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e2",
+"passageId": "p_cloze_us_orgs",
+"text": "Which of the following word best fits in blank (B)?",
+"options": [
+"disruption",
+"regulation",
+"evasion",
+"distortion",
+"negligence"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e3",
+"passageId": "p_cloze_us_orgs",
+"text": "Which of the following word best fits in blank (C)?",
+"options": [
+"exposure",
+"vacancy",
+"security",
+"anxiety",
+"indecision"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e4",
+"passageId": "p_cloze_us_orgs",
+"text": "Which of the following word best fits in blank (D)?",
+"options": [
+"voluntary",
+"lax",
+"irrelevant",
+"environmental",
+"arbitrary"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e5",
+"passageId": "p_cloze_us_orgs",
+"text": "Which of the following word best fits in blank (E)?",
+"options": [
+"stagnation",
+"backwardness",
+"redundancy",
+"incompetence",
+"innovation"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e6",
+"passageId": null,
+"text": "Read the sentence to find out whether there is any grammatical or idiomatic error in it. The error, if any, will be in one part of the sentence. The corresponding letter of that part is the answer. If the given sentence is grammatically and contextually correct, then choose option 'No error' as your answer response. (Ignore errors of punctuation, if any).\n\nKoraput's tribal food basket (A)/ is evolve with sustainable (B)/ farming, diverse nutrition, (C)/ and a revival of indigenous crops. (D)",
+"options": [
+"A",
+"B",
+"C",
+"D",
+"No error"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e7",
+"passageId": null,
+"text": "Read the sentence to find out whether there is any grammatical or idiomatic error in it. The error, if any, will be in one part of the sentence. The corresponding letter of that part is the answer. If the given sentence is grammatically and contextually correct, then choose option 'No error' as your answer response. (Ignore errors of punctuation, if any).\n\nThe cost of urban expansion includes (A)/ environmental degradation, loss (B)/ of agriculture land, increased (C)/ infrastructure expenses, and socio-economic displacement. (D)",
+"options": [
+"A",
+"B",
+"C",
+"D",
+"No error"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e8",
+"passageId": null,
+"text": "Read the sentence to find out whether there is any grammatical or idiomatic error in it. The error, if any, will be in one part of the sentence. The corresponding letter of that part is the answer. If the given sentence is grammatically and contextually correct, then choose option 'No error' as your answer response. (Ignore errors of punctuation, if any).\n\nApple cider vinegar's (A)/ wellness claims often (B)/ rely in pseudoscience, creating (C)/ a false sense of health benefits. (D)",
+"options": [
+"A",
+"B",
+"C",
+"D",
+"No error"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e9",
+"passageId": null,
+"text": "Read the sentence to find out whether there is any grammatical or idiomatic error in it. The error, if any, will be in one part of the sentence. The corresponding letter of that part is the answer. If the given sentence is grammatically and contextually correct, then choose option 'No error' as your answer response. (Ignore errors of punctuation, if any).\n\nBuilding resilient telecom infrastructure (A)/ ensures reliable connectivity, (B)/ mitigates disruptions, and supports digital (C)/ growth in an increasingly connect world. (D)",
+"options": [
+"A",
+"B",
+"C",
+"D",
+"No error"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e10",
+"passageId": null,
+"text": "Read the sentence to find out whether there is any grammatical or idiomatic error in it. The error, if any, will be in one part of the sentence. The corresponding letter of that part is the answer. If the given sentence is grammatically and contextually correct, then choose option 'No error' as your answer response. (Ignore errors of punctuation, if any).\n\nThe Centre has approved (A)/ relief assistance for five (B)/ state affected by floods, (C)/ landslides, and cyclones. (D)",
+"options": [
+"A",
+"B",
+"C",
+"D",
+"No error"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e11",
+"passageId": null,
+"text": "In the following question, a sentence contains a highlighted phrase that may be grammatically incorrect. Choose the most appropriate option from the given alternatives to replace the highlighted phrase and correct the sentence. If the highlighted phrase is correct as it is, then choose 'No replacement required' as the correct answer.\n\nI put off an old diary while cleaning my attic.",
+"options": [
+"give up",
+"break down",
+"take after",
+"came across",
+"No replacement required"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e12",
+"passageId": null,
+"text": "In the following question, a sentence contains a highlighted phrase that may be grammatically incorrect. Choose the most appropriate option from the given alternatives to replace the highlighted phrase and correct the sentence. If the highlighted phrase is correct as it is, then choose 'No replacement required' as the correct answer.\n\nProper financial planning, on addition of keeping us by falling into debt, helps us achieve long-term financial goals and stability.",
+"options": [
+"by addition in keeping us from",
+"in addition for keeping us of",
+"on addition to keeping us by",
+"in addition to keeping us from",
+"No replacement required"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e13",
+"passageId": null,
+"text": "In the following question, a sentence contains a highlighted phrase that may be grammatically incorrect. Choose the most appropriate option from the given alternatives to replace the highlighted phrase and correct the sentence. If the highlighted phrase is correct as it is, then choose 'No replacement required' as the correct answer.\n\nThe unexpected changes in the travel itinerary made it difficult for me to coordinate my meetings and appointments.",
+"options": [
+"making it difficult for me for",
+"made it difficult to me to",
+"make it difficult from me to",
+"make it difficult for me to",
+"No replacement required"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e14",
+"passageId": null,
+"text": "In the following question, a sentence is given with a blank in it. Following each sentence some words are suggested. Choose the option reflecting the word(s) that can fit the given blank both contextually and grammatically as your answer.\n\nShe joined the community program to _____ a spirit of collaboration and mutual support among the members.\n(I) expel\n(II) foster\n(III) encourage",
+"options": [
+"Only (I)",
+"Only (III)",
+"Both (II) and (III)",
+"Both (I) and (II)",
+"Both (I) and (III)"
+],
+"correctIndex": 2,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e15",
+"passageId": null,
+"text": "In the following question, a sentence is given with a blank in it. Following each sentence some words are suggested. Choose the option reflecting the word(s) that can fit the given blank both contextually and grammatically as your answer.\n\nHeavy traffic can _____ the timely arrival of emergency services.\n(I) hinder\n(II) revive\n(III) delay",
+"options": [
+"Only (I)",
+"Only (III)",
+"Both (II) and (III)",
+"Both (I) and (II)",
+"Both (I) and (III)"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e16",
+"passageId": null,
+"text": "In the following question, a sentence is given with a blank in it. Following each sentence some words are suggested. Choose the option reflecting the word(s) that can fit the given blank both contextually and grammatically as your answer.\n\nShe took every _____ to ensure the safety of her children before the storm arrived.\n(I) ambition\n(II) restriction\n(III) precaution",
+"options": [
+"Only (I)",
+"Only (III)",
+"Both (II) and (III)",
+"Both (I) and (II)",
+"Both (I) and (III)"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e17",
+"passageId": null,
+"text": "For the following question, a sentence is provided with three highlighted words that may be incorrectly positioned. Choose the correct sequence to rearrange these words, ensuring the sentence is both grammatically and contextually correct.\n\nrevealing (A) matter physics studies (B) solids and liquids, condensed (C) key phenomena such as superconductivity and magnetism.",
+"options": [
+"CBA",
+"BAC",
+"ACB",
+"BCA",
+"No rearrangement required"
+],
+"correctIndex": 0,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e18",
+"passageId": null,
+"text": "For the following question, a sentence is provided with three highlighted words that may be incorrectly positioned. Choose the correct sequence to rearrange these words, ensuring the sentence is both grammatically and contextually correct.\n\nA sudden wind (A) of gust (B) sent the papers (C) flying across the room.",
+"options": [
+"ACB",
+"BAC",
+"CBA",
+"BCA",
+"No rearrangement required"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e19",
+"passageId": null,
+"text": "For the following question, a sentence is provided with three highlighted words that may be incorrectly positioned. Choose the correct sequence to rearrange these words, ensuring the sentence is both grammatically and contextually correct.\n\nThe little boy walked (A) his mother's hand tightly as they clutched (B) through the bustling (C) marketplace, his eyes wide with curiosity.",
+"options": [
+"CBA",
+"CAB",
+"ACB",
+"BAC",
+"No rearrangement required"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e20",
+"passageId": null,
+"text": "The following question contains a sentence which has been divided into four parts which might not be in their correct order of narrative. The sentence is then followed by five options, one of which gives the sequence of the rearranged parts to make the sentence meaningful. Choose the option which gives the correct sequence of the parts. If the sentence is already arranged in the correct sequence, then mark option 'No rearrangement required' as the answer.\n\n(A) residents, he still had to\n(B) although the policeman was\n(C) issue them both a citation\n(D) friendly toward the two",
+"options": [
+"BDAC",
+"DABC",
+"BACD",
+"DCBA",
+"No rearrangement required"
+],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e21",
+"passageId": null,
+"text": "The following question contains a sentence which has been divided into four parts which might not be in their correct order of narrative. The sentence is then followed by five options, one of which gives the sequence of the rearranged parts to make the sentence meaningful. Choose the option which gives the correct sequence of the parts. If the sentence is already arranged in the correct sequence, then mark option 'No rearrangement required' as the answer.\n\n(A) countryside, creating a\n(B) peaceful atmosphere.\n(C) the sunset cast a mellow\n(D) glow over the tranquil",
+"options": [
+"ABDC",
+"ADCB",
+"CABD",
+"CDAB",
+"No rearrangement required"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e22",
+"passageId": null,
+"text": "The following question contains a sentence which has been divided into four parts which might not be in their correct order of narrative. The sentence is then followed by five options, one of which gives the sequence of the rearranged parts to make the sentence meaningful. Choose the option which gives the correct sequence of the parts. If the sentence is already arranged in the correct sequence, then mark option 'No rearrangement required' as the answer.\n\n(A) it is hard to make\n(B) friends if you don't have a\n(C) jovial personality that\n(D) exudes welcoming vibes",
+"options": [
+"BDCA",
+"BADC",
+"ADBC",
+"ABDC",
+"No rearrangement required"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e23",
+"passageId": "p_rc_organic_farming",
+"text": "Based on the passage, which of the following statements can be inferred?\n(I) The villagers' opposition was based on a belief in traditional farming methods.\n(II) The father and daughter had prior experience in organic farming before they started.\n(III) The farm's transformation convinced the villagers to reconsider their stance on organic farming.",
+"options": [
+"Only (I)",
+"Both (I) and (II)",
+"Only (III)",
+"Both (I) and (III)",
+"All (I), (II), and (III)"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e24",
+"passageId": "p_rc_organic_farming",
+"text": "Identify the statement that is FALSE based on the passage.\n(I) The father and daughter's progress was immediate and did not face any setbacks.\n(II) The villagers were hesitant at first but quickly supported their organic farming methods.\n(III) The father and daughter relied on chemical fertilizers initially but later switched to organic farming.",
+"options": [
+"Only (I)",
+"Both (I) and (III)",
+"Only (II)",
+"Both (II) and (III)",
+"All (I), (II), and (III)"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e25",
+"passageId": "p_rc_organic_farming",
+"text": "What does the passage suggest about changing societal perceptions?\n(I) Immediate results are necessary for people to change their minds.\n(II) Success often leads to a shift in public opinion.\n(III) Hard work and persistence can challenge existing beliefs.",
+"options": [
+"Only (I)",
+"Both (I) and (III)",
+"Only (II)",
+"Both (II) and (III)",
+"All (I), (II), and (III)"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e26",
+"passageId": "p_rc_organic_farming",
+"text": "Choose the most appropriate word to replace 'persisted' in the sentence below without changing its meaning:\n'But the father and daughter persisted, refusing to abandon their dream.'",
+"options": [
+"Conceded",
+"Persevered",
+"Relented",
+"Surrendered",
+"Hesitated"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e27",
+"passageId": "p_rc_organic_farming",
+"text": "Choose the most appropriate word to replace 'percolated' in the sentence below without changing its meaning:\n'The seeds of their labor did not show immediate results, and doubts percolated even in their own minds.'",
+"options": [
+"Dissipated",
+"Spread",
+"Evaporated",
+"Diminished",
+"Contaminated"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e28",
+"passageId": "p_rc_organic_farming",
+"text": "Choose the most appropriate word to complete the sentence meaningfully:\n'The villagers scoffed at their efforts, claiming that such methods were _____ and doomed to fail.'",
+"options": [
+"Revolutionary",
+"Sustainable",
+"Negligent",
+"Impractical",
+"Promising"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e29",
+"passageId": "p_rc_organic_farming",
+"text": "Identify the statement that is TRUE based on the passage.\n(I) The father and daughter rejected chemical fertilizers and pesticides in favor of organic methods.\n(II) Over time, the success of their organic farm changed the villagers' perception.\n(III) The villagers immediately supported the father and daughter's farming efforts.",
+"options": [
+"Only (I)",
+"Both (I) and (III)",
+"Only (II)",
+"Both (I) and (II)",
+"All (I), (II), and (III)"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "e30",
+"passageId": "p_rc_organic_farming",
+"text": "What role did doubt play in the journey of the father and daughter?\n(I) It was present among the villagers who strongly opposed their farming methods.\n(II) The father and daughter never had any doubts about their methods.\n(III) Doubts even emerged in their own minds as progress was slow.",
+"options": [
+"Only (I)",
+"Both (I) and (III)",
+"Only (II)",
+"Both (II) and (III)",
+"All (I), (II), and (III)"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+}
+]
+},
+{
+"id": "quant",
+"name": "Quantitative Aptitude",
+"durationMinutes": 20,
+"passages": [
+{
+"id": "p_di_library_books",
+"text": "The table given below shows the number of books read by three people in three different libraries (P, Q and R). Read the data carefully and answer the questions given below.\n\n| People | Library P | Library Q | Library R |\n| :--- | :--- | :--- | :--- |\n| Ziyan | 60 | 96 | 50 |\n| Riyan | 72 | 80 | 54 |\n| Priyan | 84 | 90 | 64 |"
+},
+{
+"id": "p_di_items_sold",
+"text": "The bar graph given below shows the number of items sold by A and B in three different years (2015, 2016, and 2017). Read the data carefully and answer the questions given below.\n\n| Year | Items sold by A | Items sold by B |\n| :--- | :--- | :--- |\n| 2015 | 84 | 80 |\n| 2016 | 72 | 60 |\n| 2017 | 96 | 48 |"
+}
+],
+"questions": [
+{
+"id": "q31",
+"passageId": null,
+"text": "A boat covers 120 km downstream in five hours and difference between downstream and upstream speed is 3 km/hr. Find the ratio of the speed of boat in still water to the speed of stream?",
+"options": [
+"12:1",
+"15:2",
+"7:1",
+"15:1",
+"15:4"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q32",
+"passageId": null,
+"text": "B is x more than C and A is x more than B. If A = 1000 and the average of A and C is 960, then what is the value of x?",
+"options": [
+"60",
+"80",
+"120",
+"40",
+"30"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q33",
+"passageId": null,
+"text": "Six years ago, the ratio of age of A to that of B was 4:1. Two years hence from present, the average age of A and B will be 33 years. Find the present age of A (in years)?",
+"options": [
+"16",
+"42",
+"48",
+"46",
+"52"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q34",
+"passageId": null,
+"text": "Akash spends 5% of his monthly salary on rent and he lends 35% to Vikas. Out of remaining, he spends 30% on food and remaining he saved. If saving of Akash is Rs 25200, then find the monthly salary of Akash?",
+"options": [
+"40000 Rs.",
+"30000 Rs",
+"50000 Rs.",
+"60000 Rs.",
+"75000 Rs."
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q35",
+"passageId": null,
+"text": "A car and a bike can cover a distance of 'd' km in X hours and Y hours respectively, and the ratio of X to Y is 9:8. If the speeds of car and bike is 80 km/hr & 90 km/hr respectively, then find the value of 'd'?",
+"options": [
+"720",
+"840",
+"Can't be determined",
+"360",
+"540"
+],
+"correctIndex": 2,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q36",
+"passageId": null,
+"text": "20 men can do a work in 24 days and 24 women can do the same work in 48 days. 20 men started the work and after 12 days all 20 men left the work. Find how many women are required to complete the remaining work in 8 days?",
+"options": [
+"36",
+"48",
+"64",
+"72",
+"60"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q37",
+"passageId": null,
+"text": "The sum of four consecutive even numbers and three consecutive odd numbers is 175. If the smallest odd number is 15 more than the smallest even number, then find the smallest even number?",
+"options": [
+"18",
+"14",
+"20",
+"16",
+"22"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q38",
+"passageId": null,
+"text": "There are two numbers X and Y, while the sum of X and Y is equal to 160% of X. If the average of X and Y is 160, then find the value of 60% of (X-Y)?",
+"options": [
+"24",
+"60",
+"32",
+"48",
+"80"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q39",
+"passageId": null,
+"text": "In a mixture, the ratio of milk to water is 4:1. In the mixture, 24 litres water is added and the difference between milk and water in final mixture becomes 84 litres. Find the initial quantity of the mixture?",
+"options": [
+"144",
+"180",
+"72",
+"240",
+"96"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q40",
+"passageId": null,
+"text": "A man invested Rs. X at rate of 10% p.a. on compound interest for two years and received an interest of Rs. 1008. If man invested Rs X+1200 (on compound interest) at same rate of interest for same period of time, then find the amount obtained by the man (in Rs.)?",
+"options": [
+"5808",
+"7260",
+"7220",
+"1260",
+"None of these"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q41",
+"passageId": null,
+"text": "The total number of boys in two schools A and B together is 800. The ratio of total number of boys in A & B together to total number of girls in A & B together is 40:11. If the ratio of total girls in A and B is 6:5 respectively, then find the difference between total girls in schools A and B?",
+"options": [
+"10",
+"20",
+"30",
+"15",
+"25"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q42",
+"passageId": null,
+"text": "A certain amount is distributed between P and Q in the ratio of 5:7 respectively. If P had received 16 2/3% more amount, then he would receive Rs. 4200. Find the amount received by Q (in Rs.)?",
+"options": [
+"3600",
+"4080",
+"5020",
+"5040",
+"4480"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q43",
+"passageId": null,
+"text": "The sum of three numbers A, B and C is 975, and B is 5/8th more than that of A. If C is 125 more than B, then find the value of C?",
+"options": [
+"200",
+"325",
+"400",
+"450",
+"Can't be determined"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q44",
+"passageId": null,
+"text": "In 2017, a village population is X and the population of the village is increased by x% annually. If increase in population from 2017 to 2019 is 12000, which is 125% of 2017 population of the village, then find the value of 'x'?",
+"options": [
+"40",
+"60",
+"50",
+"100",
+"Can't be determined"
+],
+"correctIndex": 2,
+"difficulty": "hard",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q45",
+"passageId": null,
+"text": "A invested Rs 6000 in a business and after 4 months, B joined him with Rs. X more amount than A. At the end of a year, the total profit of the business is Rs. 4400 and the profit share of A is Rs. 2400. Find the investment of B (in Rs.)?",
+"options": [
+"1500",
+"7500",
+"8000",
+"7200",
+"8400"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q46",
+"passageId": "p_di_library_books",
+"text": "Find the ratio of number of books read by Ziyan from P and R together number of books read by Priyan from Q and R together?",
+"options": [
+"5:6",
+"5:7",
+"5:8",
+"4:7",
+"3:5"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q47",
+"passageId": "p_di_library_books",
+"text": "Find the difference between of number of books read by Riyan from P & Q together and number of books read by Priyan from P?",
+"options": [
+"48",
+"54",
+"64",
+"58",
+"68"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q48",
+"passageId": "p_di_library_books",
+"text": "Siyan reads 20% more books from library R which read by Ziyan from the same library and total books read by Siyan from libraries P is 44. If the average number of books read by Siyan from all three libraries is 48, then find the number of books read by Siyan from library Q?",
+"options": [
+"48",
+"36",
+"20",
+"30",
+"40"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q49",
+"passageId": "p_di_library_books",
+"text": "Total books read by Riyan from P and Q together is what percent more than total books read by Ziyan from R?'",
+"options": [
+"208%",
+"200%",
+"184%",
+"202%",
+"204%"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q50",
+"passageId": "p_di_library_books",
+"text": "Find the average number of books read by Ziyan from Q, Riyan from R and Priyan from P?",
+"options": [
+"88",
+"68",
+"78",
+"72",
+"64"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q51",
+"passageId": "p_di_items_sold",
+"text": "If number of items sold by A in 2018 are 40% more than number of items sold by B in 2015, then find the difference between number of items sold by A in 2018 and number of items sold by B in 2017?",
+"options": [
+"88",
+"72",
+"84",
+"54",
+"64"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q52",
+"passageId": "p_di_items_sold",
+"text": "Find the ratio of number of items sold by A in 2016 to total items sold by A and B together in 2015?",
+"options": [
+"16:41",
+"18:31",
+"14:41",
+"18:41",
+"18:43"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q53",
+"passageId": "p_di_items_sold",
+"text": "If B sold each item for Rs. 40 in 2017, then find the total amount received by B in 2017?",
+"options": [
+"3840 Rs.",
+"1920 Rs.",
+"2020 Rs.",
+"1840 Rs.",
+"1960 Rs."
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q54",
+"passageId": "p_di_items_sold",
+"text": "Total items sold by B in 2016 is what percent more or less than total of total items sold by A in 2017?",
+"options": [
+"60%",
+"40%",
+"62.5%",
+"48%",
+"37.5%"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q55",
+"passageId": "p_di_items_sold",
+"text": "Find the difference between total items sold by B in 2015 & 2016 together and total items sold by A in 2017?",
+"options": [
+"40",
+"48",
+"54",
+"34",
+"44"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q56",
+"passageId": null,
+"text": "What will come in the place of question mark (?) in the following question.\n\n(27 × 12 + 11 × 20) ÷ 17 = 8 × ?",
+"options": [
+"8",
+"3",
+"6",
+"4",
+"2"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q57",
+"passageId": null,
+"text": "What will come in the place of question mark (?) in the following question.\n\n28 × 5 + 8 × 5 = ?% of 300",
+"options": [
+"40",
+"60",
+"80",
+"45",
+"70"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q58",
+"passageId": null,
+"text": "What will come in the place of question mark (?) in the following question.\n\n√625 + √1296 + ? = 13²",
+"options": [
+"102",
+"118",
+"108",
+"98",
+"128"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q59",
+"passageId": null,
+"text": "What will come in the place of question mark (?) in the following question.\n\n? × 15 + 30% of 400 = 8 × 30",
+"options": [
+"12",
+"6",
+"8",
+"4",
+"14"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q60",
+"passageId": null,
+"text": "What will come in the place of question mark (?) in the following question.\n\n(276 + 12²) ÷ ? = 84",
+"options": [
+"4",
+"3",
+"5",
+"7",
+"21"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q61",
+"passageId": null,
+"text": "What will come in the place of question mark (?) in the following question.\n\n16 × 50 + ?² = 281 × 4",
+"options": [
+"8",
+"12",
+"16",
+"24",
+"None of these"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q62",
+"passageId": null,
+"text": "What will come in the place of question mark (?) in the following question.\n\n(76 × 5 × √64) / ? = 190",
+"options": [
+"12",
+"4",
+"6",
+"8",
+"16"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q63",
+"passageId": null,
+"text": "What will come in the place of question mark (?) in the following question.\n\n(204 × 7 + 1500 ÷ 5) ÷ 144 = ?",
+"options": [
+"6",
+"144",
+"18",
+"16",
+"12"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q64",
+"passageId": null,
+"text": "What will come in the place of question mark (?) in the following question.\n\n(337 × 5) - 115 + 60 - ∛8 = ?",
+"options": [
+"1632",
+"1670",
+"1628",
+"1630",
+"1638"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "q65",
+"passageId": null,
+"text": "What will come in the place of question mark (?) in the following question.\n\n180% of 80 - (20² + 22) = ? × (2/5)",
+"options": [
+"1005",
+"1205",
+"1150",
+"1105",
+"1050"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+}
+]
+},
+{
+"id": "reasoning",
+"name": "Reasoning Ability",
+"durationMinutes": 20,
+"passages": [
+{
+"id": "p_alphanumeric_series",
+"text": "Read the given series carefully and answer the related questions:\n\n& 7 A 6 M $ 9 S 8 G # D % 3 N 2 @ 5 T 4 + 3 V 5 ! Y 2 K"
+},
+{
+"id": "p_coding_decoding",
+"text": "Read the given information carefully and answer the related questions:\n\nIn a certain code language:\n'digital strong data file' is written as 'xo ul in ro'\n'secure strong internet code' is written as 'tr in lu mr'\n'file protect secure backup' is written as 'ro ek lu km'\n'internet digital access' is written as 'mr xo em'"
+},
+{
+"id": "p_direction_sense",
+"text": "Read the given information carefully and answer the related questions:\n\nPoint A is 6m west of Point B. Point B is 10m north of Point C. Point C is 7m west of point D. Point E is 5m south of point D. Point E is 13m east of point F."
+},
+{
+"id": "p_square_seating_8",
+"text": "Read the given information carefully and answer the questions below:\n\nEight persons - M, N, O, P, Q, R, S and T - sit around a square table but not in same order as given. Four persons sit at corners and face inside while rest four sit at the middle of the sides and face outside.\n\nS sits third to the left of P. One person sits between S and M. O sits immediate right of the one who sits second to the right of M. T faces the same direction as O but T does not sit at the corners. N sits immediate left of R but N does not sit opposite to T."
+},
+{
+"id": "p_box_puzzle",
+"text": "Read the given information carefully and answer the related questions:\n\nEight boxes are placed one above the other. Two boxes are placed between box B and box G. Box B is placed four places above box A. Box A and box C placed adjacent to each other but none of them is bottommost box. Number of boxes placed above box C and below box F are same. Box E is placed above box H and below box D."
+},
+{
+"id": "p_designations_8",
+"text": "Read the given information carefully and answer the questions below:\n\nEight persons - A, B, C, D, E, F, G and H - work on different designations (but not necessarily in the same order as given) in a company. The designations are - ED, GM, DGM, AM, Manager, Assistant, PO, Clerk (the hierarchy is given in the decreasing order of seniority from ED to Clerk respectively).\n\nB is junior to manager. Three designations are in between B and E. F is two designations senior to E. G is just junior to D. Number of persons junior to G is same as the number of persons senior to C. A is senior to H."
+},
+{
+"id": "p_weight_comparison",
+"text": "Read the given information carefully and answer the related questions:\n\nSix persons - P, Q, R, S, T and U - have different weights but not necessarily in the same order as given.\n\nT is heavier than only one person. Weight of 2nd heaviest person is 59kg. Two persons are in between T and U. Difference between the weight of U and R is 19kg. Q is just heavier to R but lighter to S."
+}
+],
+"questions": [
+{
+"id": "r66",
+"passageId": "p_alphanumeric_series",
+"text": "How many symbols are immediately followed by a letter?",
+"options": [
+"None",
+"One",
+"Two",
+"Three",
+"Four"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r67",
+"passageId": "p_alphanumeric_series",
+"text": "What is the sum of the numbers which are to the left of '@'?",
+"options": [
+"22",
+"28",
+"19",
+"33",
+"35"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r68",
+"passageId": "p_alphanumeric_series",
+"text": "Which of the following element is 13th from the left end?",
+"options": [
+"N",
+"3",
+"D",
+"%",
+"@"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r69",
+"passageId": "p_alphanumeric_series",
+"text": "How many letters are immediately preceded by a symbol and immediately followed by a number?",
+"options": [
+"Four",
+"Three",
+"Two",
+"One",
+"None"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r70",
+"passageId": "p_alphanumeric_series",
+"text": "How many symbols are there between G and V, in the series?",
+"options": [
+"One",
+"Two",
+"Three",
+"Four",
+"Five"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r71",
+"passageId": "p_coding_decoding",
+"text": "What is the code of 'Secure'?",
+"options": [
+"in",
+"tr",
+"lu",
+"mr",
+"ro"
+],
+"correctIndex": 2,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r72",
+"passageId": "p_coding_decoding",
+"text": "Which of the following word is coded as 'ro'?",
+"options": [
+"Protect",
+"File",
+"Secure",
+"Strong",
+"Data"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r73",
+"passageId": "p_coding_decoding",
+"text": "What is the code of 'backup'?",
+"options": [
+"ro",
+"ek",
+"lu",
+"km",
+"Can't be determined"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r74",
+"passageId": "p_coding_decoding",
+"text": "Which of the following pair is incorrect?",
+"options": [
+"Strong - tr",
+"File - ro",
+"Internet - mr",
+"Access - em",
+"Data - ul"
+],
+"correctIndex": 0,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r75",
+"passageId": "p_coding_decoding",
+"text": "Which of the following words are coded as 'mr ro'?",
+"options": [
+"Strong Access",
+"Data Access",
+"Digital Secure",
+"Internet File",
+"Digital File"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r76",
+"passageId": null,
+"text": "If a meaningful word is formed by using the fourth, fifth, seventh and eight letters (from the left end) of the word 'COMPONENT', then which of the following will be the third letter from the right end of the meaningful word thus formed. If more than one such meaningful word is formed mark Z as your answer. If no meaningful word is formed, mark X as your answer?",
+"options": [
+"P",
+"O",
+"E",
+"Z",
+"X"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r77",
+"passageId": null,
+"text": "How many pair of letters are in the word 'COMPOUND', each of which has as many letters between them as in the English alphabet (both forward and backward direction)?",
+"options": [
+"One",
+"Two",
+"Three",
+"Four",
+"More than four"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r78",
+"passageId": "p_direction_sense",
+"text": "In which direction is point A with respect to Point F?",
+"options": [
+"North-west",
+"South-west",
+"North-east",
+"North",
+"South"
+],
+"correctIndex": 3,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r79",
+"passageId": "p_direction_sense",
+"text": "What is the shortest distance between Point F and point D?",
+"options": [
+"11m",
+"17m",
+"√225m",
+"10m",
+"√194m"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r80",
+"passageId": "p_direction_sense",
+"text": "What is the total distance between Point B and point E?",
+"options": [
+"21m",
+"22m",
+"23m",
+"24m",
+"25m"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r81",
+"passageId": "p_square_seating_8",
+"text": "What is the position of Q with respect to P?",
+"options": [
+"Immediate right",
+"Second to the left",
+"Third to the right",
+"Fourth to the left",
+"Immediate left"
+],
+"correctIndex": 2,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r82",
+"passageId": "p_square_seating_8",
+"text": "Who among the following five persons faces the same direction as R?",
+"options": [
+"N",
+"M",
+"S",
+"Q",
+"T"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r83",
+"passageId": "p_square_seating_8",
+"text": "How many persons sit between N and O, when counted from the left of O?",
+"options": [
+"None",
+"One",
+"Two",
+"Three",
+"More than three"
+],
+"correctIndex": 2,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r84",
+"passageId": "p_square_seating_8",
+"text": "Who among the following sits opposite to M?",
+"options": [
+"N",
+"R",
+"S",
+"Q",
+"P"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r85",
+"passageId": "p_square_seating_8",
+"text": "Which of the following is true?\nI. O and Q sits immediate left to each other\nII. S sits opposite to R\nIII. N face outside",
+"options": [
+"Only I",
+"Only II",
+"Only III",
+"Only I and II",
+"Only II and III"
+],
+"correctIndex": 0,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r86",
+"passageId": "p_box_puzzle",
+"text": "How many boxes are placed above box E?",
+"options": [
+"Two",
+"Three",
+"Four",
+"Five",
+"More than five"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r87",
+"passageId": "p_box_puzzle",
+"text": "Which box is placed three boxes below box D?",
+"options": [
+"Box A",
+"Box G",
+"Box C",
+"Box B",
+"Box E"
+],
+"correctIndex": 0,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r88",
+"passageId": "p_box_puzzle",
+"text": "Which box is placed exactly between box H and box G?",
+"options": [
+"Box A",
+"Box C",
+"Box E",
+"Box F",
+"Box B"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r89",
+"passageId": "p_box_puzzle",
+"text": "If box B is related to box D, box F is related to box G, in the similar way box _____ is related to box _____ respectively.",
+"options": [
+"A, E",
+"G, C",
+"D, A",
+"E, H",
+"A, H"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r90",
+"passageId": "p_box_puzzle",
+"text": "Which of the following is incorrect?",
+"options": [
+"Box F is placed below box D",
+"Two boxes are placed between box G and E",
+"Box H is the bottommost box",
+"More than three boxes are placed above box A",
+"Box B and box C are placed adjacent to each other"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r91",
+"passageId": "p_designations_8",
+"text": "Which of the following pair is correct?",
+"options": [
+"E - DGM",
+"A - ED",
+"G - Manager",
+"H - Clerk",
+"B - PO"
+],
+"correctIndex": 1,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r92",
+"passageId": "p_designations_8",
+"text": "What is the designation of C?",
+"options": [
+"DGM",
+"GM",
+"AM",
+"ED",
+"Manager"
+],
+"correctIndex": 0,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r93",
+"passageId": "p_designations_8",
+"text": "Who among the following is designated as Assistant?",
+"options": [
+"C",
+"H",
+"B",
+"D",
+"G"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r94",
+"passageId": "p_designations_8",
+"text": "How many persons are designated between A and B?",
+"options": [
+"Two",
+"Three",
+"Four",
+"Five",
+"Six"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r95",
+"passageId": "p_designations_8",
+"text": "Who among the following is three designations junior to A?",
+"options": [
+"D",
+"C",
+"E",
+"G",
+"H"
+],
+"correctIndex": 2,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r96",
+"passageId": null,
+"text": "In the questions below, some statements are given followed by two conclusions. You have to take the given statements to be true even if they seem to be at variance with commonly known facts. Read all the statements and decide which of the given conclusion logically follows from the statements. Give answer:\n\nStatement:\nOnly a few apple are fruit.\nSome fruit are sweet.\nAll sweet is white.\n\nConclusions:\nI. Some sweet being apple is a possibility.\nII. All fruit is white.",
+"options": [
+"Only I follows",
+"Only II follows",
+"Either I or II follow",
+"Neither I nor II follow",
+"Both I and II follow"
+],
+"correctIndex": 0,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r97",
+"passageId": null,
+"text": "In the questions below, some statements are given followed by two conclusions. You have to take the given statements to be true even if they seem to be at variance with commonly known facts. Read all the statements and decide which of the given conclusion logically follows from the statements. Give answer:\n\nStatement:\nNo book is paper.\nOnly a few paper are notes.\nNo notes are flower.\n\nConclusions:\nI. Some paper are not flower.\nII. All book being notes is a possibility.",
+"options": [
+"Only I follows",
+"Only II follows",
+"Either I or II follow",
+"Neither I nor II follow",
+"Both I and II follow"
+],
+"correctIndex": 4,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r98",
+"passageId": null,
+"text": "In the questions below, some statements are given followed by two conclusions. You have to take the given statements to be true even if they seem to be at variance with commonly known facts. Read all the statements and decide which of the given conclusion logically follows from the statements. Give answer:\n\nStatement:\nAll bottle are small.\nOnly a few small are blue.\nAll blue are wire.\n\nConclusions:\nI. Some blue is bottle.\nII. No wire is bottle.",
+"options": [
+"Only I follows",
+"Only II follows",
+"Either I or II follow",
+"Neither I nor II follow",
+"Both I and II follow"
+],
+"correctIndex": 3,
+"difficulty": "medium",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r99",
+"passageId": "p_weight_comparison",
+"text": "How many persons are heavier to P?",
+"options": [
+"None",
+"One",
+"Two",
+"Three",
+"Five"
+],
+"correctIndex": 4,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+},
+{
+"id": "r100",
+"passageId": "p_weight_comparison",
+"text": "What will be the possible weight of Q?",
+"options": [
+"39kg",
+"48kg",
+"63kg",
+"31kg",
+"72kg"
+],
+"correctIndex": 1,
+"difficulty": "easy",
+"marks": 1,
+"negativeMarks": 0.25
+}
+]
+}
+]
+}
