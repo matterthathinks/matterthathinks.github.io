@@ -1,0 +1,103 @@
+{
+  "id": "algebra",
+  "chapter": "02",
+  "title": "Algebra",
+  "tagline": "Equations, progressions, and the binomial \u2014 patterns, not brute force.",
+  "subsections": [
+    {
+      "id": "linear-equations",
+      "title": "Linear Equations in Two Variables",
+      "trick": "Compare a/p, b/q, c/r before touching algebra \u2014 the ratio pattern tells you instantly whether it's one line, no solution, or a unique solution, without solving anything.",
+      "formulas": [
+        {"label": "System: ax+by=c, px+qy=r", "latex": "ax+by=c \\qquad px+qy=r"},
+        {"label": "Same line / infinite solutions", "latex": "\\dfrac{a}{p}=\\dfrac{b}{q}=\\dfrac{c}{r}"},
+        {"label": "Parallel lines / no solution", "latex": "\\dfrac{a}{p}=\\dfrac{b}{q}\\neq \\dfrac{c}{r}"},
+        {"label": "Intersecting lines / unique solution", "latex": "\\dfrac{a}{p}\\neq \\dfrac{b}{q}"}
+      ],
+      "pyqs": []
+    },
+    {
+      "id": "binomial-theorem",
+      "title": "Binomial Theorem",
+      "trick": "The (r+1)th term formula is your entry point for every \u2018find the coefficient of x^k\u2019 question \u2014 set the exponent of x equal to k and solve for r first, then plug back in.",
+      "formulas": [
+        {"label": "Binomial expansion", "latex": "(x+y)^n = K_0x^n + K_1x^{n-1}y^1 + K_2x^{n-2}y^2 + \\cdots + K_nx^0y^n"},
+        {"label": "Exponent sum in any term", "latex": "\\text{power of } x + \\text{power of } y = n"},
+        {"label": "General (r+1)th term", "latex": "T_{r+1} = K_r x^{n-r}y^r"},
+        {"label": "Binomial coefficient", "latex": "K_r = {}^nC_r = \\dfrac{n!}{r!(n-r)!}"}
+      ],
+      "pyqs": []
+    },
+    {
+      "id": "quadratic-equations",
+      "title": "Quadratic Equations",
+      "trick": "Almost every CAT quadratic question wants sum/product of roots, not the roots themselves \u2014 use \u2212b/a and c/a directly and skip the quadratic formula entirely. For max/min of ax\u00b2+bx+c, the vertex x = \u2212b/2a is also the average of the two roots.",
+      "formulas": [
+        {"label": "General form", "latex": "ax^2+bx+c=0,\\quad a\\neq 0"},
+        {"label": "Roots via quadratic formula", "latex": "\\alpha,\\beta = \\dfrac{-b \\pm \\sqrt{b^2-4ac}}{2a}"},
+        {"label": "Sum of roots", "latex": "\\alpha+\\beta = -\\dfrac{b}{a}"},
+        {"label": "Product of roots", "latex": "\\alpha\\beta = \\dfrac{c}{a}"},
+        {"label": "Min value when a > 0", "latex": "y_{min} = \\dfrac{4ac-b^2}{4a} \\quad \\text{at } x=\\dfrac{-b}{2a}=\\dfrac{\\alpha+\\beta}{2}"},
+        {"label": "Max value when a < 0", "latex": "y_{max} = \\dfrac{4ac-b^2}{4a} \\quad \\text{at } x=\\dfrac{-b}{2a}=\\dfrac{\\alpha+\\beta}{2}"},
+        {"label": "Reconstruct equation from roots", "latex": "x^2 - (\\alpha+\\beta)x + \\alpha\\beta = 0"}
+      ],
+      "pyqs": []
+    },
+    {
+      "id": "cubic-higher-degree",
+      "title": "Cubic & Higher Degree Equations",
+      "trick": "The sign of each root-sum formula alternates: +, +, \u2212 for a cubic\u2019s three symmetric sums. Remainder Theorem (plug in x=a) is almost always faster than long division for \u2018is (x\u2212a) a factor\u2019 questions.",
+      "formulas": [
+        {"label": "Cubic equation", "latex": "ax^3+bx^2+cx+d=0"},
+        {"label": "Sum of roots", "latex": "\\alpha+\\beta+\\gamma = -\\dfrac{b}{a}"},
+        {"label": "Sum of products, two at a time", "latex": "\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha = \\dfrac{c}{a}"},
+        {"label": "Product of roots", "latex": "\\alpha\\beta\\gamma = -\\dfrac{d}{a}"},
+        {"label": "n-degree \u2014 sum of roots", "latex": "\\text{Sum of roots} = -\\dfrac{\\text{coeff. of } x^{n-1}}{\\text{coeff. of } x^{n}}"},
+        {"label": "n-degree \u2014 sum of roots taken two at a time", "latex": "\\dfrac{\\text{coeff. of } x^{n-2}}{\\text{coeff. of } x^{n}}"},
+        {"label": "n-degree \u2014 sum of roots taken three at a time", "latex": "-\\dfrac{\\text{coeff. of } x^{n-3}}{\\text{coeff. of } x^{n}}"},
+        {"label": "n-degree \u2014 sum of roots taken r at a time", "latex": "(-1)^r \\dfrac{\\text{coeff. of } x^{n-r}}{\\text{coeff. of } x^{n}}"},
+        {"label": "n-degree \u2014 product of all roots", "latex": "(-1)^n \\dfrac{\\text{constant term}}{\\text{coeff. of } x^{n}}"},
+        {"label": "Remainder Theorem", "latex": "f(x) \\div (x-a) \\;\\Rightarrow\\; \\text{remainder} = f(a)"},
+        {"label": "Factor Theorem", "latex": "(x-a) \\text{ is a factor of } f(x) \\iff f(a)=0"}
+      ],
+      "pyqs": []
+    },
+    {
+      "id": "progressions",
+      "title": "AP, GP & HP",
+      "trick": "If a question mixes three numbers in AP, GP and HP, remember (GM)\u00b2 = AM \u00d7 HM \u2014 it often replaces two equations with one. For GP sums, check r<1 vs r>1 before picking the formula, and don\u2019t forget the infinite-sum formula only applies for |r|<1.",
+      "formulas": [
+        {"label": "AP \u2014 nth term", "latex": "T_n = a + (n-1)d"},
+        {"label": "AP \u2014 sum of n terms", "latex": "S_n = \\dfrac{n}{2}\\left[2a+(n-1)d\\right] = \\left(\\dfrac{a+\\ell}{2}\\right)n"},
+        {"label": "AP \u2014 nth term from sums", "latex": "T_n = S_n - S_{n-1}"},
+        {"label": "GP \u2014 nth term", "latex": "T_n = ar^{n-1}"},
+        {"label": "GP \u2014 sum of n terms, r<1", "latex": "S_n = a\\dfrac{1-r^n}{1-r}"},
+        {"label": "GP \u2014 sum of n terms, r>1", "latex": "S_n = a\\dfrac{r^n-1}{r-1}"},
+        {"label": "GP \u2014 sum to infinity", "latex": "S_\\infty = \\dfrac{a}{1-r} \\quad (|r|<1)"},
+        {"label": "HP \u2014 nth term", "latex": "T_n = \\dfrac{1}{a+(n-1)d}"},
+        {"label": "HM of two numbers", "latex": "HM = \\dfrac{2ab}{a+b}"},
+        {"label": "AM-GM-HM relation", "latex": "AM \\geq GM \\geq HM, \\qquad (GM)^2 = AM \\cdot HM"}
+      ],
+      "pyqs": []
+    },
+    {
+      "id": "logarithms",
+      "title": "Logarithms",
+      "trick": "Change of base (formula 10) is the escape hatch whenever a log question mixes different bases \u2014 route everything through a common base and the rest collapses. Base 10 is the default unless stated otherwise.",
+      "formulas": [
+        {"label": "Product rule", "latex": "\\log_a(XY) = \\log_a X + \\log_a Y"},
+        {"label": "Quotient rule", "latex": "\\log_a\\left(\\dfrac{X}{Y}\\right) = \\log_a X - \\log_a Y"},
+        {"label": "Power rule", "latex": "\\log_a(X^k) = k\\log_a X"},
+        {"label": "Root inside log", "latex": "\\log_{a^k} X = \\dfrac{1}{k}\\log_a X"},
+        {"label": "kth root of X", "latex": "\\log_a \\sqrt[k]{X} = \\dfrac{1}{k}\\log_a X"},
+        {"label": "Fractional base", "latex": "\\log_{a^{1/k}} X = k\\log_a X"},
+        {"label": "log of 1", "latex": "\\log_a 1 = 0"},
+        {"label": "log of base itself", "latex": "\\log_x X = 1"},
+        {"label": "Reciprocal base-argument swap", "latex": "\\log_a X = \\dfrac{1}{\\log_X a}"},
+        {"label": "Change of base", "latex": "\\log_a X = \\dfrac{\\log_b X}{\\log_b a}"},
+        {"label": "Exponentiating a log", "latex": "a^{\\log_a X} = X"}
+      ],
+      "pyqs": []
+    }
+  ]
+}

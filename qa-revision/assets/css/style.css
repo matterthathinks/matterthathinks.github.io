@@ -1,0 +1,445 @@
+/* ===========================================================
+   QA Revision — visual identity: a graph-paper study booklet.
+   Ink navy for text, red-pen accent for tricks/highlights.
+   =========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --paper: #fafaf8;
+  --paper-grid: #e2e7f0;
+  --ink: #1b2a4a;
+  --ink-soft: #4c5a74;
+  --ink-faint: #8894a8;
+  --rule: #c7cfdd;
+  --card: #ffffff;
+  --pen: #b23a2e;
+  --pen-soft: #f3e6e2;
+  --pen-line: #e4c9c3;
+  --focus: #2a5aa8;
+  --max-w: 880px;
+  --radius: 3px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background:
+    linear-gradient(var(--paper-grid) 1px, transparent 1px) 0 0 / 100% 32px,
+    var(--paper);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Masthead ---------- */
+
+.masthead {
+  border-bottom: 2px solid var(--ink);
+  padding: 28px 0 18px;
+}
+
+.masthead__brand {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.masthead__brand:hover { color: var(--pen); }
+
+.masthead__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.masthead__title {
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  margin: 0;
+  line-height: 1.1;
+}
+
+.masthead__title em {
+  font-style: italic;
+  color: var(--pen);
+}
+
+.masthead__sub {
+  margin: 6px 0 0;
+  color: var(--ink-soft);
+  font-size: 15px;
+  max-width: 55ch;
+}
+
+.countdown {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 8px 14px;
+  white-space: nowrap;
+}
+
+.countdown strong {
+  font-family: 'Lora', serif;
+  font-size: 17px;
+  color: var(--pen);
+  margin-right: 4px;
+}
+
+/* ---------- Table of contents (index) ---------- */
+
+.toc {
+  list-style: none;
+  margin: 34px 0 48px;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.toc__item {
+  border-bottom: 1px solid var(--rule);
+}
+
+.toc__link {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 22px 4px;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.toc__num {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--pen);
+  flex: 0 0 auto;
+}
+
+.toc__body { flex: 1 1 auto; min-width: 0; }
+
+.toc__title {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  font-size: 1.35rem;
+  margin: 0 0 3px;
+}
+
+.toc__tagline {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+.toc__count {
+  flex: 0 0 auto;
+  font-size: 13px;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.toc__link:hover .toc__title,
+.toc__link:focus-visible .toc__title { color: var(--pen); }
+
+/* ---------- Front page extras ---------- */
+
+.howto {
+  border: 1px solid var(--rule);
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 40px;
+  font-size: 14.5px;
+  color: var(--ink-soft);
+}
+
+.howto strong { color: var(--ink); }
+
+/* ---------- Chapter page ---------- */
+
+.chapter-head {
+  padding: 26px 0 20px;
+}
+
+.backlink {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  margin-bottom: 14px;
+}
+
+.backlink:hover { color: var(--pen); }
+
+.chapter-head__eyebrow {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  color: var(--pen);
+  font-size: 14px;
+  margin: 0 0 4px;
+}
+
+.chapter-head h1 {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem);
+  margin: 0 0 6px;
+}
+
+.chapter-head p {
+  margin: 0;
+  color: var(--ink-soft);
+  max-width: 60ch;
+}
+
+.jumpto {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin: 18px 0 0;
+  padding: 14px 0 0;
+  border-top: 1px dashed var(--rule);
+}
+
+.jumpto a {
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--ink-soft);
+  border-bottom: 1px solid transparent;
+}
+
+.jumpto a:hover { color: var(--pen); border-color: var(--pen-line); }
+
+/* ---------- Subsection accordion ---------- */
+
+.subsection {
+  border-top: 1px solid var(--rule);
+  padding: 22px 0;
+  scroll-margin-top: 16px;
+}
+
+.subsection:last-child { border-bottom: 1px solid var(--rule); margin-bottom: 40px; }
+
+.subsection__toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+
+.subsection__title {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.subsection__chevron {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  color: var(--ink-soft);
+  transition: transform 0.18s ease;
+}
+
+.subsection.is-open .subsection__chevron { transform: rotate(45deg); }
+
+.subsection__body {
+  display: none;
+  padding-top: 16px;
+}
+
+.subsection.is-open .subsection__body { display: block; }
+
+/* Trick callout — a red-pen margin note */
+
+.trick {
+  position: relative;
+  padding: 12px 16px 12px 18px;
+  margin: 0 0 20px;
+  background: var(--pen-soft);
+  border-left: 2px solid var(--pen);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.trick__label {
+  display: block;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--pen);
+  font-size: 12.5px;
+  margin-bottom: 3px;
+}
+
+/* Formula list */
+
+.formulas {
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0;
+  counter-reset: formula;
+}
+
+.formula {
+  counter-increment: formula;
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: 4px 12px;
+  padding: 12px 0;
+  border-bottom: 1px dotted var(--rule);
+}
+
+.formula:last-child { border-bottom: none; }
+
+.formula::before {
+  content: counter(formula) '.';
+  font-family: 'Lora', serif;
+  color: var(--ink-faint);
+  font-size: 13px;
+  padding-top: 2px;
+}
+
+.formula__label {
+  grid-column: 2;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  margin-bottom: 2px;
+}
+
+.formula__math {
+  grid-column: 2;
+  overflow-x: auto;
+  padding: 2px 0;
+}
+
+/* PYQ block */
+
+.pyqs {
+  margin-top: 6px;
+}
+
+.pyqs__label {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 0 0 10px;
+}
+
+.pyq-empty {
+  border: 1px dashed var(--rule);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-size: 13.5px;
+  color: var(--ink-faint);
+  background: rgba(255,255,255,0.5);
+}
+
+.pyq {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--card);
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.pyq__q {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  padding: 12px 14px;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  color: var(--ink);
+}
+
+.pyq__tag {
+  flex: 0 0 auto;
+  font-size: 10.5px;
+  letter-spacing: 0.02em;
+  color: var(--pen);
+  border: 1px solid var(--pen-line);
+  background: var(--pen-soft);
+  border-radius: 10px;
+  padding: 1px 8px;
+}
+
+.pyq__qtext { font-size: 14.5px; }
+
+.pyq__a {
+  display: none;
+  padding: 0 14px 14px 14px;
+  font-size: 14px;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--rule);
+  padding-top: 12px;
+}
+
+.pyq.is-open .pyq__a { display: block; }
+
+.pyq__a strong { color: var(--ink); }
+
+/* ---------- Footer ---------- */
+
+footer.site-footer {
+  border-top: 1px solid var(--rule);
+  padding: 20px 0 60px;
+  font-size: 12.5px;
+  color: var(--ink-faint);
+}
+
+/* ---------- KaTeX tone-down ---------- */
+
+.katex { font-size: 1.05em; color: var(--ink); }

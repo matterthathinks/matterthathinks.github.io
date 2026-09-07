@@ -1,0 +1,43 @@
+{
+  "id": "modern-maths",
+  "chapter": "05",
+  "title": "Modern Maths",
+  "tagline": "P&C and probability \u2014 counting carefully beats formula-hunting.",
+  "subsections": [
+    {
+      "id": "permutations-combinations",
+      "title": "Permutations & Combinations",
+      "trick": "Ask \u2018does order matter?\u2019 before picking P or C \u2014 arrangements/rankings/passwords = P, selections/groups/committees = C. For circular arrangements, it's (n\u22121)!, not n! \u2014 fixing one position removes the rotational duplicates.",
+      "formulas": [
+        {"label": "Permutations of n taken r at a time", "latex": "{}^nP_r = \\dfrac{n!}{(n-r)!}"},
+        {"label": "Combinations of n taken r at a time", "latex": "{}^nC_r = \\dfrac{n!}{(n-r)!\\,r!}"},
+        {"label": "Relation between P and C", "latex": "{}^nC_r = \\dfrac{{}^nP_r}{r!}"},
+        {"label": "Complementary combinations", "latex": "{}^nC_r = {}^nC_{n-r}"},
+        {"label": "Sum of all combinations", "latex": "{}^nC_0+{}^nC_1+\\cdots+{}^nC_n = 2^n"},
+        {"label": "Distributing n identical things among r persons (any number each)", "latex": "{}^{n+r-1}C_{r-1}"},
+        {"label": "Permutations with repeated items", "latex": "\\dfrac{n!}{p!\\,q!\\,r!}"},
+        {"label": "Selections from grouped items (some or all)", "latex": "\\{(p+1)(q+1)(r+1)\\cdots\\} - 1"},
+        {"label": "Circular arrangements of n distinct things", "latex": "(n-1)!"},
+        {"label": "Dividing (m+n) things into groups of m and n", "latex": "\\dfrac{(m+n)!}{m!\\,n!}"},
+        {"label": "Dividing 2m things into two equal groups of m", "latex": "\\dfrac{(2m)!}{2!\\,(m!)^2}"}
+      ],
+      "pyqs": []
+    },
+    {
+      "id": "probability",
+      "title": "Probability",
+      "trick": "Mutually exclusive vs independent are different conditions \u2014 don't apply P(E)+P(F) when you actually need P(E)\u00d7P(F). Complement rule (1\u2212P(E)) is usually faster than direct counting for \u2018at least one\u2019 questions.",
+      "formulas": [
+        {"label": "Probability of an event", "latex": "P(E) = \\dfrac{\\text{favourable outcomes}}{\\text{total outcomes}}"},
+        {"label": "Complement rule", "latex": "P(\\text{not } E) = 1-P(E)"},
+        {"label": "Odds in favour", "latex": "\\dfrac{\\text{favourable cases}}{\\text{unfavourable cases}}"},
+        {"label": "Odds against", "latex": "\\dfrac{\\text{unfavourable cases}}{\\text{favourable cases}}"},
+        {"label": "General addition law", "latex": "P(A \\text{ or } B) = P(A)+P(B)-P(A\\cap B)"},
+        {"label": "Mutually exclusive events", "latex": "P(A\\cap B) = 0 \\;\\Rightarrow\\; P(A \\text{ or } B) = P(A)+P(B)"},
+        {"label": "Independent events \u2014 intersection", "latex": "P(A\\cap B) = P(A)\\cdot P(B)"},
+        {"label": "Multiplication law (independent events)", "latex": "P(E \\text{ and } F) = P(E)\\times P(F)"}
+      ],
+      "pyqs": []
+    }
+  ]
+}

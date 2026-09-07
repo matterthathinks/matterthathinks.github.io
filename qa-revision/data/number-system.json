@@ -1,0 +1,41 @@
+{
+  "id": "number-system",
+  "chapter": "04",
+  "title": "Number System",
+  "tagline": "Factors, HCF-LCM, remainders \u2014 the topic most exams underestimate.",
+  "subsections": [
+    {
+      "id": "number-system-basics",
+      "title": "Factors, LCM-HCF & Divisibility",
+      "trick": "1 is not prime \u2014 examiners plant this constantly in \u2018how many prime factors\u2019 questions. For \u2018least number leaving remainder r with x, y, z\u2019, always compute LCM(x,y,z) first and add r \u2014 never r first.",
+      "formulas": [
+        {"label": "1 is not a prime number", "latex": "1 \\notin \\{\\text{primes}\\}"},
+        {"label": "LCM \u00d7 HCF relation (two numbers)", "latex": "L \\times H = a \\times b"},
+        {"label": "LCM of fractions", "latex": "\\dfrac{\\text{LCM of numerators}}{\\text{HCF of denominators}}"},
+        {"label": "HCF of fractions", "latex": "\\dfrac{\\text{HCF of numerators}}{\\text{LCM of denominators}}"},
+        {"label": "Least number leaving remainder r with x, y, z", "latex": "\\text{LCM}(x,y,z) + r"},
+        {"label": "General series of such numbers", "latex": "\\text{LCM}(x,y,z)\\times n + r"}
+      ],
+      "pyqs": []
+    },
+    {
+      "id": "factors-of-composite-numbers",
+      "title": "Factors of a Composite Number",
+      "trick": "Write N = a\u1d50\u00d7b\u207f\u00d7c\u1d56... first, always \u2014 every formula on this page is a one-line plug-in once you have the prime factorisation, so that's the only genuinely hard step.",
+      "formulas": [
+        {"label": "Composite number \u2014 prime factorised form", "latex": "C = a^m \\times b^n \\times c^p \\times \\cdots"},
+        {"label": "Number of factors", "latex": "(m+1)(n+1)(p+1)\\cdots"},
+        {"label": "Ways to write N as a product of 2 factors (N not a perfect square)", "latex": "\\tfrac{1}{2}\\{(p+1)(q+1)(r+1)\\cdots\\}"},
+        {"label": "Ways as a product of 2 different factors (N a perfect square)", "latex": "\\tfrac{1}{2}\\{(p+1)(q+1)(r+1)\\cdots -1\\}"},
+        {"label": "Ways as a product of 2 factors (N a perfect square)", "latex": "\\tfrac{1}{2}\\{(p+1)(q+1)(r+1)\\cdots +1\\}"},
+        {"label": "Sum of all factors", "latex": "\\left[\\dfrac{a^{p+1}-1}{a-1}\\right]\\left[\\dfrac{b^{q+1}-1}{b-1}\\right]\\left[\\dfrac{c^{r+1}-1}{c-1}\\right]\\cdots"},
+        {"label": "Euler's totient function", "latex": "\\phi(N) = N\\left(1-\\tfrac{1}{a}\\right)\\left(1-\\tfrac{1}{b}\\right)\\left(1-\\tfrac{1}{c}\\right)\\cdots"},
+        {"label": "Euler's theorem (remainder)", "latex": "P^{\\phi(N)} \\bmod N = 1 \\quad (\\gcd(P,N)=1)"},
+        {"label": "Sum of numbers < N and co-prime to N", "latex": "\\phi(N)\\times \\dfrac{N}{2}"},
+        {"label": "Ways to write N as a product of 2 co-prime numbers", "latex": "2^{n-1} \\quad (n = \\text{number of distinct prime factors})"},
+        {"label": "Product of all factors of N", "latex": "N^{\\left(\\frac{\\text{no. of factors}}{2}\\right)}"}
+      ],
+      "pyqs": []
+    }
+  ]
+}

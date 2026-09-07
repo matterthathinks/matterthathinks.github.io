@@ -1,0 +1,137 @@
+{
+  "id": "geometry",
+  "chapter": "03",
+  "title": "Geometry & Mensuration",
+  "tagline": "Triangles, circles, solids, trig, coordinate geometry \u2014 draw first, formula second.",
+  "subsections": [
+    {
+      "id": "triangles",
+      "title": "Triangles",
+      "trick": "Apollonius\u2019 Theorem is the fastest route to a median length \u2014 don\u2019t drop a perpendicular and use Pythagoras twice. For area, pick the formula that matches what\u2019s given: base+height, all 3 sides (Heron), two sides+included angle, or inradius+semi-perimeter.",
+      "formulas": [
+        {"label": "Area \u2014 base & height", "latex": "\\text{Area} = \\tfrac{1}{2}\\,b\\,h"},
+        {"label": "Area \u2014 Heron's formula", "latex": "\\text{Area} = \\sqrt{s(s-a)(s-b)(s-c)}, \\quad s=\\dfrac{a+b+c}{2}"},
+        {"label": "Area \u2014 two sides & included angle", "latex": "\\text{Area} = \\tfrac{1}{2}\\,ab\\sin\\theta"},
+        {"label": "Area \u2014 inradius & semi-perimeter", "latex": "\\text{Area} = r \\times s"},
+        {"label": "Cosine rule", "latex": "\\cos\\theta = \\dfrac{a^2+b^2-c^2}{2ab} \\quad\\Longleftrightarrow\\quad c^2=a^2+b^2-2ab\\cos\\theta"},
+        {"label": "Area \u2014 circumradius form", "latex": "\\text{Area} = \\dfrac{abc}{4R}"},
+        {"label": "Angle bisector theorem", "latex": "\\dfrac{BD}{DC} = \\dfrac{AB}{AC}"},
+        {"label": "Apollonius' theorem (median)", "latex": "b^2+c^2 = 2m^2+\\tfrac{1}{2}a^2"},
+        {"label": "Apollonius \u2014 isosceles special case", "latex": "m^2 = b^2 - \\dfrac{a^2}{4}"},
+        {"label": "Acute triangle relation", "latex": "AC^2 = AB^2+BC^2-2\\times BC\\times BD"},
+        {"label": "Obtuse triangle relation", "latex": "AC^2 = AB^2+BC^2+2\\times BC\\times BD"},
+        {"label": "Right angle at A, AD\u22a5BC \u2014 altitude", "latex": "AD^2 = BD \\times DC"},
+        {"label": "Right angle at A \u2014 leg AB", "latex": "AB^2 = BD \\times BC"},
+        {"label": "Right angle at A \u2014 leg AC", "latex": "AC^2 = CD \\times BC"}
+      ],
+      "pyqs": []
+    },
+    {
+      "id": "polygons",
+      "title": "Polygons",
+      "trick": "Exterior angles of any convex polygon always sum to 360\u00b0 regardless of the number of sides \u2014 use that before the interior-angle formula, it's one less step.",
+      "formulas": [
+        {"label": "Number of diagonals", "latex": "\\dfrac{n(n-3)}{2}"},
+        {"label": "Exterior angle (regular polygon)", "latex": "\\dfrac{360^\\circ}{n}"},
+        {"label": "Interior angle (convex polygon)", "latex": "180^\\circ - \\dfrac{360^\\circ}{n}"},
+        {"label": "Sum of exterior angles", "latex": "360^\\circ"},
+        {"label": "Sum of interior angles", "latex": "(n-2)\\times 180^\\circ"}
+      ],
+      "pyqs": []
+    },
+    {
+      "id": "circles",
+      "title": "Circles",
+      "trick": "Power-of-a-point (PA\u00d7PB = PC\u00d7PD, or PT\u00b2 for a tangent) solves almost every \u2018two chords/tangent meet outside a circle\u2019 question in one line \u2014 no need to find angles first. Count common tangents by picturing the two-circle case: apart \u21924, intersecting \u21922, internally touching \u21921, one inside the other \u21920.",
+      "formulas": [
+        {"label": "Intersecting chords / secants (power of a point)", "latex": "PA \\times PB = PC \\times PD"},
+        {"label": "Tangent\u2013secant relation", "latex": "PA \\times PB = PT^2"},
+        {"label": "Central vs inscribed angle", "latex": "\\angle AOB = 2\\times \\angle AXB"},
+        {"label": "Cyclic quadrilateral exterior angle", "latex": "\\angle BCE = \\angle DAB"},
+        {"label": "Length of a direct common tangent", "latex": "\\sqrt{d^2-(r_1-r_2)^2}"},
+        {"label": "Length of a transverse common tangent", "latex": "\\sqrt{d^2-(r_1+r_2)^2}"},
+        {"label": "Alternate segment theorem", "latex": "\\angle(\\text{tangent, chord}) = \\angle(\\text{inscribed angle, alternate segment})"},
+        {"label": "Ptolemy's theorem (cyclic quadrilateral)", "latex": "AB\\times CD + BC\\times DA = AC\\times BD"}
+      ],
+      "pyqs": []
+    },
+    {
+      "id": "mensuration-2d",
+      "title": "Mensuration \u2014 2D Figures",
+      "trick": "For a trapezium/quadrilateral with a diagonal + two altitudes given, split into two triangles rather than hunting for a single formula \u2014 the table formula is just that split pre-done.",
+      "formulas": [
+        {"label": "Rectangle", "latex": "P=2(a+b), \\quad A=ab"},
+        {"label": "Square", "latex": "P=4a, \\quad A=a^2"},
+        {"label": "Equilateral triangle \u2014 altitude", "latex": "h = \\dfrac{\\sqrt3}{2}a"},
+        {"label": "Equilateral triangle \u2014 area", "latex": "A = \\dfrac{\\sqrt3}{4}a^2"},
+        {"label": "Isosceles right triangle", "latex": "\\text{hyp} = a\\sqrt2, \\quad A=\\tfrac{1}{2}a^2"},
+        {"label": "Parallelogram", "latex": "P=2(a+b), \\quad A=ah"},
+        {"label": "Rhombus", "latex": "P=4a, \\quad A=\\tfrac{1}{2}d_1d_2"},
+        {"label": "Quadrilateral (via one diagonal)", "latex": "A = \\tfrac{1}{2}(AC)(h_1+h_2)"},
+        {"label": "Trapezium", "latex": "A = \\tfrac{1}{2}h(a+b)"},
+        {"label": "Circle", "latex": "C = 2\\pi r, \\quad A = \\pi r^2"},
+        {"label": "Semicircle", "latex": "P = \\pi r + 2r, \\quad A = \\tfrac{1}{2}\\pi r^2"},
+        {"label": "Ring (annulus)", "latex": "P = 2\\pi(R+r), \\quad A = \\pi(R^2-r^2)"},
+        {"label": "Sector of a circle", "latex": "\\ell = \\dfrac{\\theta}{360^\\circ}\\times 2\\pi r, \\quad A = \\dfrac{\\theta}{360^\\circ}\\times \\pi r^2"},
+        {"label": "Segment of a circle", "latex": "A = r^2\\left[\\dfrac{\\pi\\theta}{360^\\circ} - \\dfrac{\\sin\\theta}{2}\\right]"},
+        {"label": "Path across the middle of a rectangle", "latex": "A = w(\\ell+b-w)"},
+        {"label": "Path outside a rectangle", "latex": "P = 2[\\ell+b+4w], \\quad A = 2w(\\ell+b+2w)"},
+        {"label": "Path inside a rectangle", "latex": "P = 2[\\ell+b-4w], \\quad A = 2w(\\ell+b-2w)"}
+      ],
+      "pyqs": []
+    },
+    {
+      "id": "mensuration-solids",
+      "title": "Mensuration \u2014 Solids",
+      "trick": "Volume scales with the cube of linear size, surface area with the square \u2014 if a solid is scaled by k, volume \u00d7k\u00b3 and surface area \u00d7k\u00b2. Saves recomputing from scratch on \u2018melted and recast\u2019 questions.",
+      "formulas": [
+        {"label": "Cuboid", "latex": "TSA = 2(\\ell b+bh+\\ell h), \\quad V=\\ell bh"},
+        {"label": "Cube", "latex": "TSA = 6a^2, \\quad V=a^3"},
+        {"label": "Right prism", "latex": "LSA = (\\text{perimeter of base})\\times h, \\quad V = (\\text{area of base})\\times h"},
+        {"label": "Right circular cylinder", "latex": "LSA = 2\\pi rh, \\quad TSA = 2\\pi r(r+h), \\quad V = \\pi r^2 h"},
+        {"label": "Right pyramid", "latex": "LSA = \\tfrac{1}{2}(\\text{perimeter of base})\\times(\\text{slant height}), \\quad V = \\tfrac{1}{3}(\\text{area of base})\\times h"},
+        {"label": "Right circular cone", "latex": "LSA=\\pi r\\ell, \\quad TSA=\\pi r(\\ell+r), \\quad V=\\tfrac{1}{3}\\pi r^2h, \\quad \\ell=\\sqrt{r^2+h^2}"},
+        {"label": "Sphere", "latex": "TSA = 4\\pi r^2, \\quad V = \\tfrac{4}{3}\\pi r^3"},
+        {"label": "Hemisphere", "latex": "LSA=2\\pi r^2, \\quad TSA=3\\pi r^2, \\quad V=\\tfrac{2}{3}\\pi r^3"},
+        {"label": "Spherical shell", "latex": "TSA = 4\\pi(R^2+r^2), \\quad V = \\tfrac{4}{3}\\pi(R^3-r^3)"}
+      ],
+      "pyqs": []
+    },
+    {
+      "id": "trigonometry",
+      "title": "Trigonometry",
+      "trick": "\u201cSchool | After \u2014 To | College\u201d: reading the 2\u00d72 quadrant grid like a page, that's the order All / Sin / Tan / Cos are positive going anticlockwise from Q1. For standard angles, know sin\u00b7cos\u00b7tan at 0\u00b0/30\u00b0/45\u00b0/60\u00b0/90\u00b0 cold \u2014 deriving them costs too much time mid-exam.",
+      "formulas": [
+        {"label": "Basic ratios", "latex": "\\sin\\theta=\\dfrac{PB}{AP},\\;\\cos\\theta=\\dfrac{AB}{AP},\\;\\tan\\theta=\\dfrac{PB}{AB}"},
+        {"label": "Reciprocal ratios", "latex": "\\cot\\theta=\\dfrac{1}{\\tan\\theta},\\;\\sec\\theta=\\dfrac{1}{\\cos\\theta},\\;\\csc\\theta=\\dfrac{1}{\\sin\\theta}"},
+        {"label": "tan in terms of sin, cos", "latex": "\\tan\\theta = \\dfrac{\\sin\\theta}{\\cos\\theta}"},
+        {"label": "Pythagorean identity", "latex": "\\sin^2\\theta+\\cos^2\\theta = 1"},
+        {"label": "Pythagorean identity \u2014 tan/sec", "latex": "1+\\tan^2\\theta = \\sec^2\\theta"},
+        {"label": "Pythagorean identity \u2014 cot/cosec", "latex": "1+\\cot^2\\theta = \\csc^2\\theta"},
+        {"label": "Angle unit conversion", "latex": "\\pi \\text{ radians} = 180^\\circ"}
+      ],
+      "pyqs": []
+    },
+    {
+      "id": "coordinate-geometry",
+      "title": "Coordinate Geometry",
+      "trick": "The shoelace-style area formula works even when the triangle looks 'obviously' irregular \u2014 no need to identify base/height on a coordinate grid. For perpendicular distance from the origin specifically, skip x\u2081,y\u2081 entirely and use c/\u221a(a\u00b2+b\u00b2) directly.",
+      "formulas": [
+        {"label": "Distance between two points", "latex": "d = \\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}"},
+        {"label": "Area of a triangle (vertices)", "latex": "A = \\tfrac{1}{2}\\left[x_1(y_2-y_3)+x_2(y_3-y_1)+x_3(y_1-y_2)\\right]"},
+        {"label": "Section formula (internal/external)", "latex": "\\left(\\dfrac{mx_2\\pm nx_1}{m\\pm n}, \\dfrac{my_2\\pm ny_1}{m\\pm n}\\right)"},
+        {"label": "Midpoint", "latex": "\\left(\\dfrac{x_1+x_2}{2}, \\dfrac{y_1+y_2}{2}\\right)"},
+        {"label": "Centroid of a triangle", "latex": "\\left(\\dfrac{x_1+x_2+x_3}{3}, \\dfrac{y_1+y_2+y_3}{3}\\right)"},
+        {"label": "Slope between two points", "latex": "m = \\dfrac{y_2-y_1}{x_2-x_1}"},
+        {"label": "Parallel / perpendicular lines", "latex": "\\text{Parallel: } m_1=m_2 \\qquad \\text{Perpendicular: } m_1m_2=-1"},
+        {"label": "Slope-intercept form", "latex": "y = mx+c"},
+        {"label": "Point-slope form", "latex": "y-y_1 = m(x-x_1)"},
+        {"label": "Two-point form", "latex": "y-y_1 = \\dfrac{y_2-y_1}{x_2-x_1}(x-x_1)"},
+        {"label": "Perpendicular distance from a point to a line", "latex": "p = \\dfrac{|ax_1+by_1+c|}{\\sqrt{a^2+b^2}}"},
+        {"label": "Perpendicular distance from origin", "latex": "\\dfrac{|c|}{\\sqrt{a^2+b^2}}"},
+        {"label": "Distance between two parallel lines", "latex": "\\dfrac{|c_2-c_1|}{\\sqrt{a^2+b^2}}"}
+      ],
+      "pyqs": []
+    }
+  ]
+}

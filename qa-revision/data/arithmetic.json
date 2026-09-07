@@ -1,0 +1,113 @@
+{
+  "id": "arithmetic",
+  "chapter": "01",
+  "title": "Arithmetic",
+  "tagline": "Percentages, interest, P&L, ratios, mixtures, speed \u2014 the bulk of QA marks.",
+  "subsections": [
+    {
+      "id": "simplification",
+      "title": "Simplification \u2014 Core Identities",
+      "trick": "Spot (a+b)\u00b2 \u2212 (a\u2212b)\u00b2 = 4ab instantly \u2014 examiners hide this to force long multiplication. Also memorise a\u00b3\u00b1b\u00b3 factorisations cold; they show up inside \u201csimplify the fraction\u201d questions constantly.",
+      "formulas": [
+        {"label": "Square of a sum", "latex": "(a+b)^2 = a^2 + b^2 + 2ab"},
+        {"label": "Square of a difference", "latex": "(a-b)^2 = a^2 + b^2 - 2ab"},
+        {"label": "Sum of squares from (a+b), (a\u2212b)", "latex": "(a+b)^2 = (a-b)^2 + 4ab"},
+        {"label": "Difference of squares", "latex": "a^2 - b^2 = (a-b)(a+b)"},
+        {"label": "Sum of cubes", "latex": "a^3 + b^3 = (a+b)(a^2-ab+b^2)"},
+        {"label": "Difference of cubes", "latex": "a^3 - b^3 = (a-b)(a^2+ab+b^2)"},
+        {"label": "Sum of two squares (identity form)", "latex": "a^2+b^2 = \\tfrac{1}{2}\\left[(a+b)^2+(a-b)^2\\right]"},
+        {"label": "Sum of first n natural numbers", "latex": "1+2+\\cdots+n = \\dfrac{n(n+1)}{2}"},
+        {"label": "Sum of first n odd numbers", "latex": "1+3+\\cdots+(2n-1) = n^2"},
+        {"label": "Sum of first n even numbers", "latex": "2+4+\\cdots+2n = n(n+1)"},
+        {"label": "Sum of squares of first n numbers", "latex": "1^2+2^2+\\cdots+n^2 = \\dfrac{n(n+1)(2n+1)}{6}"},
+        {"label": "Sum of cubes of first n numbers", "latex": "1^3+2^3+\\cdots+n^3 = \\left[\\dfrac{n(n+1)}{2}\\right]^2"}
+      ],
+      "pyqs": []
+    },
+    {
+      "id": "percentages",
+      "title": "Percentages",
+      "trick": "Convert every percentage question into a fraction first (12.5% = 1/8, 16.67% = 1/6, 33.33% = 1/3, 37.5% = 3/8) \u2014 fraction arithmetic is faster than decimal arithmetic under time pressure.",
+      "formulas": [
+        {"label": "Effective % change (two successive changes)", "latex": "\\left(a+b+\\dfrac{ab}{100}\\right)\\%"},
+        {"label": "\u2018A is r% more/less than B\u2019 \u2192 B vs A", "latex": "B \\text{ is } \\dfrac{100r}{100 \\pm r}\\% \\text{ less/more than } A"}
+      ],
+      "pyqs": []
+    },
+    {
+      "id": "interest",
+      "title": "Simple & Compound Interest",
+      "trick": "For CI over 2\u20133 years, don\u2019t expand the binomial \u2014 use the CI\u2212SI shortcut formulas directly. For \u2018amounts to X times in T years\u2019 questions, decide SI vs CI first: SI scales linearly with time, CI does not.",
+      "formulas": [
+        {"label": "Simple Interest", "latex": "SI = \\dfrac{P \\times r \\times n}{100}"},
+        {"label": "Amount at Compound Interest", "latex": "A = P\\left(1+\\dfrac{r}{100}\\right)^n"},
+        {"label": "Amount \u2014 Principal relation", "latex": "A = P + I"},
+        {"label": "Population growth (same form as CI)", "latex": "P' = P\\left(1+\\dfrac{r}{100}\\right)^n"},
+        {"label": "CI \u2212 SI for 2 years", "latex": "(CI)_2 - (SI)_2 = Pa^2,\\quad a=\\dfrac{r}{100}"},
+        {"label": "CI \u2212 SI for 3 years", "latex": "(CI)_3 - (SI)_3 = Pa^2(a+3)"},
+        {"label": "Time to become Y times at SI, given X times in T years", "latex": "\\text{Years} = \\left(\\dfrac{Y-1}{X-1}\\right) \\times T"},
+        {"label": "Time to become Y times at CI, given X times in T years", "latex": "\\text{Years} = T \\times n,\\quad \\text{where } X^n = Y"}
+      ],
+      "pyqs": []
+    },
+    {
+      "id": "profit-loss",
+      "title": "Profit, Loss & Discount",
+      "trick": "\u2018Same SP, one at +X% one at \u2212X%\u2019 is always a net loss of X\u00b2/100 percent \u2014 never a wash. Keep CP as the base for profit% and MP as the base for discount% \u2014 mixing the two bases is the #1 error here.",
+      "formulas": [
+        {"label": "Profit percentage", "latex": "\\text{Profit\\%} = \\dfrac{\\text{Profit}}{CP}\\times 100"},
+        {"label": "Selling price from profit%", "latex": "SP = CP\\left(1+\\dfrac{P}{100}\\right)"},
+        {"label": "Discount", "latex": "\\text{Discount} = MP - SP"},
+        {"label": "Discount percentage", "latex": "\\text{Discount\\%} = \\dfrac{\\text{Discount}}{MP}\\times 100"},
+        {"label": "Same SP, +X% and \u2212X% \u2192 net loss", "latex": "\\text{Net loss} = \\dfrac{X^2}{100}\\%"}
+      ],
+      "pyqs": []
+    },
+    {
+      "id": "ratio-proportion",
+      "title": "Ratio & Proportion",
+      "trick": "Componendo\u2013Dividendo saves a full page of algebra on \u2018find x given a ratio equation\u2019 questions \u2014 recognise the a/b = c/d pattern immediately and jump straight to (c).",
+      "formulas": [
+        {"label": "Basic proportion", "latex": "a:b::c:d \\;\\Rightarrow\\; ad = bc"},
+        {"label": "a<b, adding a positive x", "latex": "\\dfrac{a}{b} < \\dfrac{a+x}{b+x} \\quad\\text{and}\\quad \\dfrac{a}{b} > \\dfrac{a-x}{b-x}"},
+        {"label": "a>b, adding a positive x", "latex": "\\dfrac{a}{b} > \\dfrac{a+x}{b+x} \\quad\\text{and}\\quad \\dfrac{a}{b} < \\dfrac{a-x}{b-x}"},
+        {"label": "Componendo Law", "latex": "\\dfrac{a}{b}=\\dfrac{c}{d} \\;\\Rightarrow\\; \\dfrac{a+b}{b}=\\dfrac{c+d}{d}"},
+        {"label": "Dividendo Law", "latex": "\\dfrac{a-b}{b}=\\dfrac{c-d}{d}"},
+        {"label": "Componendo & Dividendo", "latex": "\\dfrac{a+b}{a-b}=\\dfrac{c+d}{c-d}"},
+        {"label": "Equal ratios, general form", "latex": "\\dfrac{a\\pm c}{b\\pm d} = \\dfrac{a}{b} \\quad \\left(\\text{when } \\dfrac{a}{b}=\\dfrac{c}{d}\\right)"},
+        {"label": "Chain of equal ratios = K", "latex": "\\dfrac{a}{b}=\\dfrac{c}{d}=\\dfrac{e}{f}=K \\;\\Rightarrow\\; \\dfrac{a+c+e}{b+d+f}=K"},
+        {"label": "Weighted chain of ratios", "latex": "\\dfrac{pa+qc+re}{pb+qd+rf}=K \\quad (p,q,r \\text{ not all } 0)"}
+      ],
+      "pyqs": []
+    },
+    {
+      "id": "alligation",
+      "title": "Alligation, Mixtures & Means",
+      "trick": "Draw the alligation cross every time \u2014 it turns a two-line weighted average calculation into a single ratio read-off. Remember AM \u2265 GM \u2265 HM always, with equality only when all values are equal.",
+      "formulas": [
+        {"label": "Alligation rule", "latex": "\\dfrac{w_1}{w_2} = \\dfrac{x_2-x}{x-x_1}"},
+        {"label": "Arithmetic Mean", "latex": "AM = \\dfrac{x_1+x_2+\\cdots+x_n}{n}"},
+        {"label": "Geometric Mean", "latex": "GM = \\sqrt[n]{x_1 x_2 \\cdots x_n}"},
+        {"label": "Harmonic Mean", "latex": "HM = \\dfrac{n}{\\frac{1}{x_1}+\\frac{1}{x_2}+\\cdots+\\frac{1}{x_n}}"},
+        {"label": "Repeated dilution / replacement", "latex": "K = K_0\\left(\\dfrac{V-x}{V}\\right)^n"}
+      ],
+      "pyqs": []
+    },
+    {
+      "id": "time-speed-distance",
+      "title": "Time, Speed & Distance",
+      "trick": "Constant distance \u2192 average speed is the Harmonic Mean of the two speeds; constant time \u2192 it's the Arithmetic Mean. Mixing these up is the single most common TSD error. For boats: add for downstream, subtract for upstream \u2014 always solve for B and R from D and U, not the other way round.",
+      "formulas": [
+        {"label": "Unit conversion", "latex": "1\\ \\text{km/hr} = \\dfrac{5}{18}\\ \\text{m/s}, \\qquad 1\\ \\text{m/s} = \\dfrac{18}{5}\\ \\text{km/hr}"},
+        {"label": "Average speed (general)", "latex": "\\text{Avg. Speed} = \\dfrac{\\text{Total Distance}}{\\text{Total Time}}"},
+        {"label": "Average speed, constant distance (Harmonic Mean)", "latex": "S_{avg} = \\dfrac{2S_1S_2}{S_1+S_2}"},
+        {"label": "Average speed, constant time (Arithmetic Mean)", "latex": "S_{avg} = \\dfrac{S_1+S_2}{2}"},
+        {"label": "Boats & streams \u2014 downstream/upstream", "latex": "D = B+R, \\qquad U = B-R"},
+        {"label": "Boats & streams \u2014 solve for B and R", "latex": "B = \\dfrac{D+U}{2}, \\qquad R = \\dfrac{D-U}{2}"},
+        {"label": "Equal downstream/upstream distance \u2014 time ratio", "latex": "\\dfrac{\\text{Time downstream}}{\\text{Time upstream}} = \\dfrac{\\text{Upstream speed}}{\\text{Downstream speed}}"},
+        {"label": "Clock \u2014 angle between hour & minute hand", "latex": "\\theta = \\left|30H - \\dfrac{11}{2}M\\right|"}
+      ],
+      "pyqs": []
+    }
+  ]
+}
