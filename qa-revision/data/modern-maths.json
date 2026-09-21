@@ -2,42 +2,147 @@
   "id": "modern-maths",
   "chapter": "05",
   "title": "Modern Maths",
-  "tagline": "P&C and probability \u2014 counting carefully beats formula-hunting.",
+  "tagline": "P&C and probability — counting carefully beats formula-hunting.",
   "subsections": [
     {
       "id": "permutations-combinations",
       "title": "Permutations & Combinations",
-      "trick": "Ask \u2018does order matter?\u2019 before picking P or C \u2014 arrangements/rankings/passwords = P, selections/groups/committees = C. For circular arrangements, it's (n\u22121)!, not n! \u2014 fixing one position removes the rotational duplicates.",
+      "trick": "Ask ‘does order matter?’ before picking P or C — arrangements/rankings/passwords = P, selections/groups/committees = C. For circular arrangements, it's (n−1)!, not n! — fixing one position removes the rotational duplicates. Grid-path counting is really just ‘arrange m R's and n U's in a row’ — it's (m+n)Cm in disguise. If a question blocks off certain intersections, Pascal's-triangle-style running sums (add the count from the left neighbour and the neighbour below) survives even when the closed formula doesn't.",
       "formulas": [
-        {"label": "Permutations of n taken r at a time", "latex": "{}^nP_r = \\dfrac{n!}{(n-r)!}"},
-        {"label": "Combinations of n taken r at a time", "latex": "{}^nC_r = \\dfrac{n!}{(n-r)!\\,r!}"},
-        {"label": "Relation between P and C", "latex": "{}^nC_r = \\dfrac{{}^nP_r}{r!}"},
-        {"label": "Complementary combinations", "latex": "{}^nC_r = {}^nC_{n-r}"},
-        {"label": "Sum of all combinations", "latex": "{}^nC_0+{}^nC_1+\\cdots+{}^nC_n = 2^n"},
-        {"label": "Distributing n identical things among r persons (any number each)", "latex": "{}^{n+r-1}C_{r-1}"},
-        {"label": "Permutations with repeated items", "latex": "\\dfrac{n!}{p!\\,q!\\,r!}"},
-        {"label": "Selections from grouped items (some or all)", "latex": "\\{(p+1)(q+1)(r+1)\\cdots\\} - 1"},
-        {"label": "Circular arrangements of n distinct things", "latex": "(n-1)!"},
-        {"label": "Dividing (m+n) things into groups of m and n", "latex": "\\dfrac{(m+n)!}{m!\\,n!}"},
-        {"label": "Dividing 2m things into two equal groups of m", "latex": "\\dfrac{(2m)!}{2!\\,(m!)^2}"}
+        {
+          "label": "Permutations of n taken r at a time",
+          "latex": "{}^nP_r = \\dfrac{n!}{(n-r)!}"
+        },
+        {
+          "label": "Combinations of n taken r at a time",
+          "latex": "{}^nC_r = \\dfrac{n!}{(n-r)!\\,r!}"
+        },
+        {
+          "label": "Relation between P and C",
+          "latex": "{}^nC_r = \\dfrac{{}^nP_r}{r!}"
+        },
+        {
+          "label": "Complementary combinations",
+          "latex": "{}^nC_r = {}^nC_{n-r}"
+        },
+        {
+          "label": "Sum of all combinations",
+          "latex": "{}^nC_0+{}^nC_1+\\cdots+{}^nC_n = 2^n"
+        },
+        {
+          "label": "Distributing n identical things among r persons (any number each)",
+          "latex": "{}^{n+r-1}C_{r-1}"
+        },
+        {
+          "label": "Permutations with repeated items",
+          "latex": "\\dfrac{n!}{p!\\,q!\\,r!}"
+        },
+        {
+          "label": "Selections from grouped items (some or all)",
+          "latex": "\\{(p+1)(q+1)(r+1)\\cdots\\} - 1"
+        },
+        {
+          "label": "Circular arrangements of n distinct things",
+          "latex": "(n-1)!"
+        },
+        {
+          "label": "Dividing (m+n) things into groups of m and n",
+          "latex": "\\dfrac{(m+n)!}{m!\\,n!}"
+        },
+        {
+          "label": "Dividing 2m things into two equal groups of m",
+          "latex": "\\dfrac{(2m)!}{2!\\,(m!)^2}"
+        },
+        {
+          "label": "Grid paths (only Right/Up moves) from (0,0) to (m,n)",
+          "latex": "\\dbinom{m+n}{m} = \\dfrac{(m+n)!}{m!\\,n!}"
+        }
       ],
-      "pyqs": []
+      "pyqs": [
+        {
+          "tag": "CAT Blueprint · PYQ 5.1",
+          "q": "How many R/U paths go from (0,0) to (4,4) on a grid?",
+          "a": "It's 8 moves total, 4 of each type — 8!/(4!4!) = ×70. Or build Pascal's triangle on the grid (each point = sum of the point to its left + the point below it) and read off (4,4): 1,4,10,20,×35,70 down the rows — works even if some cells were blocked."
+        },
+        {
+          "tag": "CAT 2025 Slot I · Q56",
+          "q": "A cafeteria has 5 sandwich types, each customisable with 4 breads and 2 sizes. Find total distinct combinations.",
+          "a": "Independent choices multiply: 4 breads × 2 sizes = 8 options per sandwich type, and 5 types are separate menu items (not combined further), so total = 5×8 = ×40."
+        },
+        {
+          "tag": "CAT 2025 Slot II · Q68",
+          "q": "(m+2n)(2m+n) = 27 for integers m,n. Find the maximum possible value of (2m−3n).",
+          "a": "27 has only a few integer factor pairs: (1,27),(3,9),(9,3),(27,1) and their negatives. Test each pair as (m+2n, 2m+n), solve the resulting 2x2 linear system for integer m,n, and take the best (2m−3n) — works out to ×17."
+        }
+      ]
     },
     {
       "id": "probability",
       "title": "Probability",
-      "trick": "Mutually exclusive vs independent are different conditions \u2014 don't apply P(E)+P(F) when you actually need P(E)\u00d7P(F). Complement rule (1\u2212P(E)) is usually faster than direct counting for \u2018at least one\u2019 questions.",
+      "trick": "Mutually exclusive vs independent are different conditions — don't apply P(E)+P(F) when you actually need P(E)×P(F). Complement rule (1−P(E)) is usually faster than direct counting for ‘at least one’ questions.",
       "formulas": [
-        {"label": "Probability of an event", "latex": "P(E) = \\dfrac{\\text{favourable outcomes}}{\\text{total outcomes}}"},
-        {"label": "Complement rule", "latex": "P(\\text{not } E) = 1-P(E)"},
-        {"label": "Odds in favour", "latex": "\\dfrac{\\text{favourable cases}}{\\text{unfavourable cases}}"},
-        {"label": "Odds against", "latex": "\\dfrac{\\text{unfavourable cases}}{\\text{favourable cases}}"},
-        {"label": "General addition law", "latex": "P(A \\text{ or } B) = P(A)+P(B)-P(A\\cap B)"},
-        {"label": "Mutually exclusive events", "latex": "P(A\\cap B) = 0 \\;\\Rightarrow\\; P(A \\text{ or } B) = P(A)+P(B)"},
-        {"label": "Independent events \u2014 intersection", "latex": "P(A\\cap B) = P(A)\\cdot P(B)"},
-        {"label": "Multiplication law (independent events)", "latex": "P(E \\text{ and } F) = P(E)\\times P(F)"}
+        {
+          "label": "Probability of an event",
+          "latex": "P(E) = \\dfrac{\\text{favourable outcomes}}{\\text{total outcomes}}"
+        },
+        {
+          "label": "Complement rule",
+          "latex": "P(\\text{not } E) = 1-P(E)"
+        },
+        {
+          "label": "Odds in favour",
+          "latex": "\\dfrac{\\text{favourable cases}}{\\text{unfavourable cases}}"
+        },
+        {
+          "label": "Odds against",
+          "latex": "\\dfrac{\\text{unfavourable cases}}{\\text{favourable cases}}"
+        },
+        {
+          "label": "General addition law",
+          "latex": "P(A \\text{ or } B) = P(A)+P(B)-P(A\\cap B)"
+        },
+        {
+          "label": "Mutually exclusive events",
+          "latex": "P(A\\cap B) = 0 \\;\\Rightarrow\\; P(A \\text{ or } B) = P(A)+P(B)"
+        },
+        {
+          "label": "Independent events — intersection",
+          "latex": "P(A\\cap B) = P(A)\\cdot P(B)"
+        },
+        {
+          "label": "Multiplication law (independent events)",
+          "latex": "P(E \\text{ and } F) = P(E)\\times P(F)"
+        },
+        {
+          "label": "Binomial probability (exactly k successes in n trials)",
+          "latex": "P(X=k) = \\dbinom{n}{k}p^k(1-p)^{n-k}"
+        }
       ],
-      "pyqs": []
+      "pyqs": [
+        {
+          "tag": "CAT Blueprint · PYQ 5.2",
+          "q": "Three fair coins are tossed. Find P(at least 2 heads).",
+          "a": "Binomial shortcut: P(X≥2) = C(3,2)(½)²(½)¹ + C(3,3)(½)³ = ³⁄₈+₁⁄₈ = ⁴⁄₈ = ×½. Scales cleanly to 5 or 6 coins where listing outcomes by hand gets painful."
+        }
+      ]
+    },
+    {
+      "id": "set-theory",
+      "title": "Set Theory & Venn Diagrams",
+      "trick": "When a question asks for a maximum or minimum count under overlap constraints, draw the 3-circle Venn and push values to the boundary allowed by the constraints — CAT set questions are almost always optimisation problems in disguise, not direct counting.",
+      "formulas": [
+        {
+          "label": "Three-set union",
+          "latex": "|A\\cup B\\cup C| = |A|+|B|+|C|-|A\\cap B|-|B\\cap C|-|C\\cap A|+|A\\cap B\\cap C|"
+        }
+      ],
+      "pyqs": [
+        {
+          "tag": "CAT 2025 Slot III · Q53",
+          "q": "Students pick Physics, Chemistry, Maths. |P∩C| = |C∩M| = ½|P∩M|. Find the max possible number who chose Physics but not Maths.",
+          "a": "Push every overlap to its boundary value permitted by the |P∩C|=|C∩M|=½|P∩M| constraint, then maximise the 'Physics only + Physics∩Chemistry only' region while keeping Physics∩Maths as small as the constraint allows — gives ×55 students."
+        }
+      ]
     }
   ]
 }

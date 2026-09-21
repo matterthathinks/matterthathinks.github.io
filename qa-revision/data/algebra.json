@@ -1,49 +1,415 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Loading… — QA Revision</title>
-<meta name="description" content="CAT quant revision chapter — formulas, quick tricks and PYQs.">
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-</head>
-<body>
-
-<header class="masthead">
-  <div class="wrap">
-    <a class="masthead__brand" href="https://matterthathinks.github.io">Matter That Thinks</a>
-    <div class="masthead__row">
-      <div>
-        <a class="backlink" href="index.html">&larr; All chapters</a>
-      </div>
-      <div class="countdown" data-countdown>Loading…</div>
-    </div>
-  </div>
-</header>
-
-<main class="wrap">
-  <div class="chapter-head">
-    <p class="chapter-head__eyebrow" data-chapter-eyebrow>Chapter</p>
-    <h1 data-chapter-title>Loading…</h1>
-    <p data-chapter-tagline></p>
-    <nav class="jumpto" data-jumpto aria-label="Jump to topic"></nav>
-  </div>
-
-  <div data-chapter-root="data/algebra.json"></div>
-
-  <nav class="jumpto" style="margin-top:8px;">
-    <a href="arithmetic.html">&larr; Arithmetic</a>
-    <a href="geometry.html" style="margin-left:auto;">Geometry & Mensuration &rarr;</a>
-  </nav>
-</main>
-
-<footer class="site-footer">
-  <div class="wrap">Matter That Thinks — qa-revision — updated as new formulas and PYQs come in.</div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script src="assets/js/app.js"></script>
-<script src="assets/js/render.js"></script>
-</body>
-</html>
+{
+  "id": "algebra",
+  "chapter": "02",
+  "title": "Algebra",
+  "tagline": "Equations, progressions, and the binomial — patterns, not brute force.",
+  "subsections": [
+    {
+      "id": "linear-equations",
+      "title": "Linear Equations in Two Variables",
+      "trick": "Compare a/p, b/q, c/r before touching algebra — the ratio pattern tells you instantly whether it's one line, no solution, or a unique solution, without solving anything.",
+      "formulas": [
+        {
+          "label": "System: ax+by=c, px+qy=r",
+          "latex": "ax+by=c \\qquad px+qy=r"
+        },
+        {
+          "label": "Same line / infinite solutions",
+          "latex": "\\dfrac{a}{p}=\\dfrac{b}{q}=\\dfrac{c}{r}"
+        },
+        {
+          "label": "Parallel lines / no solution",
+          "latex": "\\dfrac{a}{p}=\\dfrac{b}{q}\\neq \\dfrac{c}{r}"
+        },
+        {
+          "label": "Intersecting lines / unique solution",
+          "latex": "\\dfrac{a}{p}\\neq \\dfrac{b}{q}"
+        }
+      ],
+      "pyqs": [
+        {
+          "tag": "CAT 2025 Slot I · Q62",
+          "q": "Given a−6b+6c=4 and 6a+3b−3c=50, find 2a+3b−3c.",
+          "a": "Group (b−c) as a single variable u: a−6u=4 and 6a+3u=50. Double the first equation's u-coefficient to match by scaling the second: 12a+6u=100; add to the first → 13a=104 → a=8, then 3u=2. So 2a+3u = 16+2 = ×18."
+        }
+      ]
+    },
+    {
+      "id": "binomial-theorem",
+      "title": "Binomial Theorem",
+      "trick": "The (r+1)th term formula is your entry point for every ‘find the coefficient of x^k’ question — set the exponent of x equal to k and solve for r first, then plug back in.",
+      "formulas": [
+        {
+          "label": "Binomial expansion",
+          "latex": "(x+y)^n = K_0x^n + K_1x^{n-1}y^1 + K_2x^{n-2}y^2 + \\cdots + K_nx^0y^n"
+        },
+        {
+          "label": "Exponent sum in any term",
+          "latex": "\\text{power of } x + \\text{power of } y = n"
+        },
+        {
+          "label": "General (r+1)th term",
+          "latex": "T_{r+1} = K_r x^{n-r}y^r"
+        },
+        {
+          "label": "Binomial coefficient",
+          "latex": "K_r = {}^nC_r = \\dfrac{n!}{r!(n-r)!}"
+        }
+      ],
+      "pyqs": [
+        {
+          "tag": "Classic CAT-style",
+          "q": "Find the term independent of x in the expansion of (x + 2/x²)¹⁵.",
+          "a": "General term: Tᵣ₊₁ = ¹⁵Cᵣ x^(15−r) (2/x²)ʳ = ¹⁵Cᵣ 2ʳ x^(15−3r). Term is independent of x when 15−3r=0 → r=5. So the term is ¹⁵C₅ × 2⁵ — set r from the exponent equation first, then plug in; don't expand the whole binomial."
+        }
+      ]
+    },
+    {
+      "id": "quadratic-equations",
+      "title": "Quadratic Equations",
+      "trick": "Almost every CAT quadratic question wants sum/product of roots, not the roots themselves — use −b/a and c/a directly and skip the quadratic formula entirely. For max/min of ax²+bx+c, the vertex x = −b/2a is also the average of the two roots. If roots differ by a fixed amount k, square it: (α−β)² = (α+β)² − 4αβ = k² — turns a 'roots differ by...' question into one substitution.",
+      "formulas": [
+        {
+          "label": "General form",
+          "latex": "ax^2+bx+c=0,\\quad a\\neq 0"
+        },
+        {
+          "label": "Roots via quadratic formula",
+          "latex": "\\alpha,\\beta = \\dfrac{-b \\pm \\sqrt{b^2-4ac}}{2a}"
+        },
+        {
+          "label": "Sum of roots",
+          "latex": "\\alpha+\\beta = -\\dfrac{b}{a}"
+        },
+        {
+          "label": "Product of roots",
+          "latex": "\\alpha\\beta = \\dfrac{c}{a}"
+        },
+        {
+          "label": "Min value when a > 0",
+          "latex": "y_{min} = \\dfrac{4ac-b^2}{4a} \\quad \\text{at } x=\\dfrac{-b}{2a}=\\dfrac{\\alpha+\\beta}{2}"
+        },
+        {
+          "label": "Max value when a < 0",
+          "latex": "y_{max} = \\dfrac{4ac-b^2}{4a} \\quad \\text{at } x=\\dfrac{-b}{2a}=\\dfrac{\\alpha+\\beta}{2}"
+        },
+        {
+          "label": "Reconstruct equation from roots",
+          "latex": "x^2 - (\\alpha+\\beta)x + \\alpha\\beta = 0"
+        },
+        {
+          "label": "Difference of roots",
+          "latex": "|\\alpha-\\beta| = \\dfrac{\\sqrt{b^2-4ac}}{|a|}"
+        },
+        {
+          "label": "Real & equal roots condition",
+          "latex": "D = b^2-4ac = 0"
+        }
+      ],
+      "pyqs": [
+        {
+          "tag": "CAT 2025 Slot I · Q58",
+          "q": "Find the number of non-negative integer values of k for which x²−5x+k=0 has only integer roots.",
+          "a": "Sum of roots is fixed at 5 (Vieta's). Since k=αβ≥0 and α+β=5>0, both roots must be non-negative integers. List pairs summing to 5: (0,5),(1,4),(2,3) → k=0,4,6 — ×3 values."
+        },
+        {
+          "tag": "CAT 2025 Slot II · Q47",
+          "q": "3x²−5x+p=0 and 2x²−2x+q=0 share exactly one root. Find the sum of the other two (non-common) roots.",
+          "a": "Write both equations' root-sum relations and eliminate the common root by combining them (multiply to match coefficients, subtract). The non-common roots' sum comes out to ×−⅔p+³⁄₂q."
+        },
+        {
+          "tag": "CAT Blueprint · PYQ 2.1",
+          "q": "Roots of x²−px+q=0 are real and differ by exactly 1. Which relation must hold?",
+          "a": "Shortcut: just invent a matching pair, e.g. roots 2 and 3 → x²−5x+6=0, so p=5, q=6. Test p²=4q+1: 25 = 24+1 ✓. — 15 seconds beats deriving (α−β)²=(α+β)²−4αβ from scratch under time pressure. Answer: ×p² = 4q+1."
+        },
+        {
+          "tag": "CAT 2025 Slot III · Q54",
+          "q": "f(x) = (x²+3x)(x²+3x+2). Find the sum of all real roots of f(x)+11 = 970.",
+          "a": "Substitute y = x²+3x: y(y+2)+11 = 970 → y²+2y−959 = 0 → (y+32)(y−30)=0. Only y=30 gives real x (y=−32 has negative discriminant for x). x²+3x−30=0 → sum of roots = −b/a = ×−3."
+        },
+        {
+          "tag": "CAT 2025 Slot I · Q63",
+          "q": "Find a c for which min of f(x)=x²−4cx+8c exceeds max of g(x)=−x²+3cx−2c.",
+          "a": "Use the vertex formulas directly: fₘᵢₙ = −4c²+8c (at x=2c), gₘₐₓ = ⁹⁄₄c²−2c (at x=³⁄₂c). Setting fₘᵢₙ > gₘₐₓ gives 0 < c < 1.6 — any option in that range works, e.g. ×c = ½."
+        }
+      ]
+    },
+    {
+      "id": "cubic-higher-degree",
+      "title": "Cubic & Higher Degree Equations",
+      "trick": "The sign of each root-sum formula alternates: +, +, − for a cubic’s three symmetric sums. Remainder Theorem (plug in x=a) is almost always faster than long division for ‘is (x−a) a factor’ questions.",
+      "formulas": [
+        {
+          "label": "Cubic equation",
+          "latex": "ax^3+bx^2+cx+d=0"
+        },
+        {
+          "label": "Sum of roots",
+          "latex": "\\alpha+\\beta+\\gamma = -\\dfrac{b}{a}"
+        },
+        {
+          "label": "Sum of products, two at a time",
+          "latex": "\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha = \\dfrac{c}{a}"
+        },
+        {
+          "label": "Product of roots",
+          "latex": "\\alpha\\beta\\gamma = -\\dfrac{d}{a}"
+        },
+        {
+          "label": "n-degree — sum of roots",
+          "latex": "\\text{Sum of roots} = -\\dfrac{\\text{coeff. of } x^{n-1}}{\\text{coeff. of } x^{n}}"
+        },
+        {
+          "label": "n-degree — sum of roots taken two at a time",
+          "latex": "\\dfrac{\\text{coeff. of } x^{n-2}}{\\text{coeff. of } x^{n}}"
+        },
+        {
+          "label": "n-degree — sum of roots taken three at a time",
+          "latex": "-\\dfrac{\\text{coeff. of } x^{n-3}}{\\text{coeff. of } x^{n}}"
+        },
+        {
+          "label": "n-degree — sum of roots taken r at a time",
+          "latex": "(-1)^r \\dfrac{\\text{coeff. of } x^{n-r}}{\\text{coeff. of } x^{n}}"
+        },
+        {
+          "label": "n-degree — product of all roots",
+          "latex": "(-1)^n \\dfrac{\\text{constant term}}{\\text{coeff. of } x^{n}}"
+        },
+        {
+          "label": "Remainder Theorem",
+          "latex": "f(x) \\div (x-a) \\;\\Rightarrow\\; \\text{remainder} = f(a)"
+        },
+        {
+          "label": "Factor Theorem",
+          "latex": "(x-a) \\text{ is a factor of } f(x) \\iff f(a)=0"
+        }
+      ],
+      "pyqs": [
+        {
+          "tag": "CAT 2025 Slot II · Q61",
+          "q": "P(x)=x⁴−2x³+ax²+bx+8 leaves remainder 5 on division by (x−1) and 20 by (x+2). Find a+b.",
+          "a": "Remainder Theorem, one substitution: P(1)=5 → 1−2+a+b+8=5 → ×a+b = −2. (You don't even need the second condition unless asked for a and b individually.)"
+        }
+      ]
+    },
+    {
+      "id": "progressions",
+      "title": "AP, GP & HP",
+      "trick": "If a question mixes three numbers in AP, GP and HP, remember (GM)² = AM × HM — it often replaces two equations with one. For GP sums, check r<1 vs r>1 before picking the formula, and don’t forget the infinite-sum formula only applies for |r|<1.",
+      "formulas": [
+        {
+          "label": "AP — nth term",
+          "latex": "T_n = a + (n-1)d"
+        },
+        {
+          "label": "AP — sum of n terms",
+          "latex": "S_n = \\dfrac{n}{2}\\left[2a+(n-1)d\\right] = \\left(\\dfrac{a+\\ell}{2}\\right)n"
+        },
+        {
+          "label": "AP — nth term from sums",
+          "latex": "T_n = S_n - S_{n-1}"
+        },
+        {
+          "label": "GP — nth term",
+          "latex": "T_n = ar^{n-1}"
+        },
+        {
+          "label": "GP — sum of n terms, r<1",
+          "latex": "S_n = a\\dfrac{1-r^n}{1-r}"
+        },
+        {
+          "label": "GP — sum of n terms, r>1",
+          "latex": "S_n = a\\dfrac{r^n-1}{r-1}"
+        },
+        {
+          "label": "GP — sum to infinity",
+          "latex": "S_\\infty = \\dfrac{a}{1-r} \\quad (|r|<1)"
+        },
+        {
+          "label": "HP — nth term",
+          "latex": "T_n = \\dfrac{1}{a+(n-1)d}"
+        },
+        {
+          "label": "HM of two numbers",
+          "latex": "HM = \\dfrac{2ab}{a+b}"
+        },
+        {
+          "label": "AM-GM-HM relation",
+          "latex": "AM \\geq GM \\geq HM, \\qquad (GM)^2 = AM \\cdot HM"
+        }
+      ],
+      "pyqs": [
+        {
+          "tag": "CAT 2025 Slot II · Q53",
+          "q": "A decreasing infinite GP has a₁+a₂+a₃=52 and a₁a₂+a₂a₃+a₃a₁=624. Find the sum to infinity.",
+          "a": "Solve the two symmetric equations for a₁=36, r=⅓. Sum to infinity = 36/(1−⅓) = ×54."
+        },
+        {
+          "tag": "CAT 2025 Slot III · Q60",
+          "q": "In an AP, t₄+t₇+t₁₀=99 and S₁₄=497. Find S₅.",
+          "a": "t₄+t₇+t₁₀ = 3a+18d = 99 → a+6d=33. S₁₄ = 7(2a+13d)=497 → 2a+13d=71. Solve simultaneously: d=5, a=3 → S₅ = ⁵⁄₂(2×3+4×5) = ×65."
+        },
+        {
+          "tag": "CAT 2025 Slot III · Q65",
+          "q": "In {1,3,5,...,57}, find k such that the sum of elements below k equals the sum of elements above k.",
+          "a": "Odd numbers up to the m-th term sum to m² — use that identity instead of summing manually. With 29 total terms (sum=29²=841), set (m−1)² = 841−m² → m(m−1)=420=21×20 → m=21 → k=2(21)−1 = ×41."
+        },
+        {
+          "tag": "CAT 2025 Slot I · Q68",
+          "q": "aₖ=3ᵏ. Find the smallest m for which (a₁)¹(a₂)²⋯(a₂₀)²⁰ < a₂₁a₂₂⋯a₂₀₊ₘ.",
+          "a": "Compare exponents only (same base 3): LHS exponent = Σk² for k=1..20 = 20·21·41/6 = 2870. RHS exponent = Σ from 21 to 20+m = m(41+m)/2. Need m(m+41) > 5740; testing m=58 gives 58×99=5742 (works), m=57 gives 5586 (fails) → ×m = 58."
+        }
+      ]
+    },
+    {
+      "id": "logarithms",
+      "title": "Logarithms",
+      "trick": "Change of base (formula 10) is the escape hatch whenever a log question mixes different bases — route everything through a common base and the rest collapses. Base 10 is the default unless stated otherwise.",
+      "formulas": [
+        {
+          "label": "Product rule",
+          "latex": "\\log_a(XY) = \\log_a X + \\log_a Y"
+        },
+        {
+          "label": "Quotient rule",
+          "latex": "\\log_a\\left(\\dfrac{X}{Y}\\right) = \\log_a X - \\log_a Y"
+        },
+        {
+          "label": "Power rule",
+          "latex": "\\log_a(X^k) = k\\log_a X"
+        },
+        {
+          "label": "Root inside log",
+          "latex": "\\log_{a^k} X = \\dfrac{1}{k}\\log_a X"
+        },
+        {
+          "label": "kth root of X",
+          "latex": "\\log_a \\sqrt[k]{X} = \\dfrac{1}{k}\\log_a X"
+        },
+        {
+          "label": "Fractional base",
+          "latex": "\\log_{a^{1/k}} X = k\\log_a X"
+        },
+        {
+          "label": "log of 1",
+          "latex": "\\log_a 1 = 0"
+        },
+        {
+          "label": "log of base itself",
+          "latex": "\\log_x X = 1"
+        },
+        {
+          "label": "Reciprocal base-argument swap",
+          "latex": "\\log_a X = \\dfrac{1}{\\log_X a}"
+        },
+        {
+          "label": "Change of base",
+          "latex": "\\log_a X = \\dfrac{\\log_b X}{\\log_b a}"
+        },
+        {
+          "label": "Exponentiating a log",
+          "latex": "a^{\\log_a X} = X"
+        }
+      ],
+      "pyqs": [
+        {
+          "tag": "CAT Blueprint · PYQ 2.2",
+          "q": "Solve log₃x + log₉x + log₂₇x = 11.",
+          "a": "Shortcut: since bases are powers of 3, guess x is a power of 3 and test options directly. x=3⁶=729: log₃(3⁶)+log₃²(3⁶)+log₃³(3⁶) = 6+3+2 = 11 ✓ in under 10 seconds. Answer: ×729."
+        },
+        {
+          "tag": "CAT 2025 Slot I · Q48",
+          "q": "Find the number of distinct integers n for which log₂(¼ + 1/(117n)) > 0.",
+          "a": "Removing the log: ¼ + 1/(117n) > 1 needs 1/(117n) > ¾, which forces n to be a tiny positive fraction — no integer n works, and checking the domain (argument > 0) for negative n never pushes the sum above 1 either. Answer: ×0 integers."
+        },
+        {
+          "tag": "CAT 2025 Slot II · Q49",
+          "q": "log₆₄x + log₈y + log₂z = 4. Find the minimum possible value of (x+y+z).",
+          "a": "Convert every term to base 2: ⁱ⁄₆log₂x + ⁱ⁄₃log₂y + log₂z = 4 → x^(1/6)y^(1/3)z = 16. Apply weighted AM-GM with weights 1/6, 1/3, 1 (summing to 3/2) on x, y, z to get the minimum sum directly: ×24."
+        }
+      ]
+    },
+    {
+      "id": "algebraic-manipulation",
+      "title": "Algebraic Manipulation — x + 1/x Family",
+      "trick": "Every power sum xⁿ+1/xⁿ builds from the one below it — never expand from scratch. Get (x+1/x), then square/cube it to reach x²+1/x² and x³+1/x³, then multiply pairs of known power-sums together to reach higher ones.",
+      "formulas": [
+        {
+          "label": "Square identity",
+          "latex": "\\left(x+\\dfrac{1}{x}\\right)^2 = x^2+\\dfrac{1}{x^2}+2"
+        },
+        {
+          "label": "Cube identity",
+          "latex": "x^3+\\dfrac{1}{x^3} = \\left(x+\\dfrac{1}{x}\\right)^3 - 3\\left(x+\\dfrac{1}{x}\\right)"
+        },
+        {
+          "label": "Fourth power from the square",
+          "latex": "x^4+\\dfrac{1}{x^4} = \\left(x^2+\\dfrac{1}{x^2}\\right)^2 - 2"
+        },
+        {
+          "label": "Combining power-sums (e.g. to reach the 7th)",
+          "latex": "x^7+\\dfrac{1}{x^7} = \\left(x^3+\\dfrac{1}{x^3}\\right)\\left(x^4+\\dfrac{1}{x^4}\\right) - \\left(x+\\dfrac{1}{x}\\right)"
+        }
+      ],
+      "pyqs": [
+        {
+          "tag": "CAT 2025 Slot III · Q47",
+          "q": "Given x²+1/x² = 25 for x > 0, find x⁷+1/x⁷.",
+          "a": "x+1/x = √27 = 3√3. Then x³+1/x³ = (3√3)³−3(3√3) = 18√3, and x⁴+1/x⁴ = 25²−2 = 623. Multiply the 3rd and 4th power-sums and subtract the 1st: (18√3)(623) − 3√3 = ×344,856."
+        }
+      ]
+    },
+    {
+      "id": "functions-inequalities",
+      "title": "Functions, Domain/Range & Inequalities",
+      "trick": "For range-of-a-rational-function questions, set y=f(x), cross-multiply into a quadratic in x, and demand discriminant ≥0 — this converts almost any range question into a simple quadratic inequality in y. For integer-count inequality questions, fix the smaller variable and count the window for the other one, rather than searching blindly.",
+      "formulas": [
+        {
+          "label": "Range of a rational function via discriminant",
+          "latex": "y=f(x) \\Rightarrow \\text{quadratic in } x, \\quad D \\geq 0"
+        },
+        {
+          "label": "AM-GM inequality (n terms)",
+          "latex": "\\dfrac{a_1+a_2+\\cdots+a_n}{n} \\geq \\sqrt[n]{a_1a_2\\cdots a_n}"
+        }
+      ],
+      "pyqs": [
+        {
+          "tag": "CAT 2025 Slot I · Q52",
+          "q": "Find the number of integer pairs (x,y) with x > y ≥ 3 and x+y < 14.",
+          "a": "Fix y and count the valid x window for each: y=3→7 values, y=4→5, y=5→3, y=6→1. Total = 7+5+3+1 = ×16 pairs."
+        },
+        {
+          "tag": "CAT 2025 Slot I · Q53",
+          "q": "For 3≤x≤6, find the set where [x²] = [x]² (greatest integer function).",
+          "a": "Break into unit intervals by [x]: on [3,4), need 9≤x²<10 → x∈[3,√10); similarly [4,5)→[4,√17), [5,6)→[5,√26); and x=6 works exactly. Union these interval pieces — don't try to solve it as one continuous inequality."
+        },
+        {
+          "tag": "CAT 2025 Slot II · Q50",
+          "q": "Find real x satisfying x²−|x+9|+x > 0.",
+          "a": "Split strictly at the sign-change point x=−9, not at 0. For x≥−9: reduces to x²−9>0 → x∈(−9,−3)∪(3,∞). For x<−9: reduces to x²+2x+9>0, true everywhere (discriminant<0). Union: ×(−∞,−3)∪(3,∞)."
+        },
+        {
+          "tag": "CAT 2025 Slot II · Q54",
+          "q": "f(x)=x/(2x−1), g(x)=x/(x−1). Find points excluded from the domain of h(x)=f(g(x))+g(f(x)).",
+          "a": "Track every denominator that can hit zero through the composition (x−1 in g, 2x−1 in f, and whatever makes the composed denominators vanish) — gives the excluded set ×{−1, ½, 1}."
+        },
+        {
+          "tag": "CAT 2025 Slot II · Q58",
+          "q": "Integers a,b,c,d sum to 46. Find the minimum possible (a−b)²+(a−c)²+(a−d)².",
+          "a": "Sum-of-squared-differences is minimized by making all four values as close to equal as possible (46/4=11.5 → use 12,12,11,11). If a itself can be chosen equal to b,c,d it drops to ×0 — check exactly what the question fixes before assuming a nonzero answer."
+        },
+        {
+          "tag": "CAT 2025 Slot III · Q48",
+          "q": "Find the range of f(x) = (2x²−4x+6)/(x²−2x+4) for real x.",
+          "a": "Set y=f(x), cross-multiply to (y−2)x²−2(y−2)x+(4y−6)=0, and demand D≥0: 4(y−2)[(y−2)−(4y−6)]≥0 → (y−2)(3y−4)≤0 → ×[4/3, 2]."
+        },
+        {
+          "tag": "CAT 2025 Slot III · Q61",
+          "q": "Naturals p,q,r sum to 900; r is a perfect square with 150<r<500; 0.3q≤p≤0.7q. Find (p_max + p_min).",
+          "a": "With S=900−r, the bounds become ³⁄₁³S ≤ p ≤ ⁷⁄₁₇S. r ranges over perfect squares strictly between 150 and 500, i.e. 13² through 22² (169 to 484). p is maximised when r is smallest (r=169, S=731 → p=⌊⁷⁄₁₇×731⌋=301) and minimised when r is largest (r=484, S=416 → p=⌈³⁄₁³×416⌉=96). Sum = ×397."
+        }
+      ]
+    }
+  ]
+}

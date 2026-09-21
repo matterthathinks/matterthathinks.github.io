@@ -2,40 +2,158 @@
   "id": "number-system",
   "chapter": "04",
   "title": "Number System",
-  "tagline": "Factors, HCF-LCM, remainders \u2014 the topic most exams underestimate.",
+  "tagline": "Factors, HCF-LCM, remainders — the topic most exams underestimate.",
   "subsections": [
     {
       "id": "number-system-basics",
       "title": "Factors, LCM-HCF & Divisibility",
-      "trick": "1 is not prime \u2014 examiners plant this constantly in \u2018how many prime factors\u2019 questions. For \u2018least number leaving remainder r with x, y, z\u2019, always compute LCM(x,y,z) first and add r \u2014 never r first.",
+      "trick": "1 is not prime — examiners plant this constantly in ‘how many prime factors’ questions. For ‘least number leaving remainder r with x, y, z’, always compute LCM(x,y,z) first and add r — never r first.",
       "formulas": [
-        {"label": "1 is not a prime number", "latex": "1 \\notin \\{\\text{primes}\\}"},
-        {"label": "LCM \u00d7 HCF relation (two numbers)", "latex": "L \\times H = a \\times b"},
-        {"label": "LCM of fractions", "latex": "\\dfrac{\\text{LCM of numerators}}{\\text{HCF of denominators}}"},
-        {"label": "HCF of fractions", "latex": "\\dfrac{\\text{HCF of numerators}}{\\text{LCM of denominators}}"},
-        {"label": "Least number leaving remainder r with x, y, z", "latex": "\\text{LCM}(x,y,z) + r"},
-        {"label": "General series of such numbers", "latex": "\\text{LCM}(x,y,z)\\times n + r"}
+        {
+          "label": "1 is not a prime number",
+          "latex": "1 \\notin \\{\\text{primes}\\}"
+        },
+        {
+          "label": "LCM × HCF relation (two numbers)",
+          "latex": "L \\times H = a \\times b"
+        },
+        {
+          "label": "LCM of fractions",
+          "latex": "\\dfrac{\\text{LCM of numerators}}{\\text{HCF of denominators}}"
+        },
+        {
+          "label": "HCF of fractions",
+          "latex": "\\dfrac{\\text{HCF of numerators}}{\\text{LCM of denominators}}"
+        },
+        {
+          "label": "Least number leaving remainder r with x, y, z",
+          "latex": "\\text{LCM}(x,y,z) + r"
+        },
+        {
+          "label": "General series of such numbers",
+          "latex": "\\text{LCM}(x,y,z)\\times n + r"
+        }
       ],
-      "pyqs": []
+      "pyqs": [
+        {
+          "tag": "Classic CAT-style",
+          "q": "Find the least number which, when divided by 6, 9 and 15, leaves remainder 1 in each case.",
+          "a": "LCM(6,9,15) = 90, then add the common remainder: ×90+1 = 91 — always LCM first, remainder second, never the other way round."
+        }
+      ]
     },
     {
       "id": "factors-of-composite-numbers",
       "title": "Factors of a Composite Number",
-      "trick": "Write N = a\u1d50\u00d7b\u207f\u00d7c\u1d56... first, always \u2014 every formula on this page is a one-line plug-in once you have the prime factorisation, so that's the only genuinely hard step.",
+      "trick": "Write N = aᵐ×bⁿ×cᵖ... first, always — every formula on this page is a one-line plug-in once you have the prime factorisation, so that's the only genuinely hard step.",
       "formulas": [
-        {"label": "Composite number \u2014 prime factorised form", "latex": "C = a^m \\times b^n \\times c^p \\times \\cdots"},
-        {"label": "Number of factors", "latex": "(m+1)(n+1)(p+1)\\cdots"},
-        {"label": "Ways to write N as a product of 2 factors (N not a perfect square)", "latex": "\\tfrac{1}{2}\\{(p+1)(q+1)(r+1)\\cdots\\}"},
-        {"label": "Ways as a product of 2 different factors (N a perfect square)", "latex": "\\tfrac{1}{2}\\{(p+1)(q+1)(r+1)\\cdots -1\\}"},
-        {"label": "Ways as a product of 2 factors (N a perfect square)", "latex": "\\tfrac{1}{2}\\{(p+1)(q+1)(r+1)\\cdots +1\\}"},
-        {"label": "Sum of all factors", "latex": "\\left[\\dfrac{a^{p+1}-1}{a-1}\\right]\\left[\\dfrac{b^{q+1}-1}{b-1}\\right]\\left[\\dfrac{c^{r+1}-1}{c-1}\\right]\\cdots"},
-        {"label": "Euler's totient function", "latex": "\\phi(N) = N\\left(1-\\tfrac{1}{a}\\right)\\left(1-\\tfrac{1}{b}\\right)\\left(1-\\tfrac{1}{c}\\right)\\cdots"},
-        {"label": "Euler's theorem (remainder)", "latex": "P^{\\phi(N)} \\bmod N = 1 \\quad (\\gcd(P,N)=1)"},
-        {"label": "Sum of numbers < N and co-prime to N", "latex": "\\phi(N)\\times \\dfrac{N}{2}"},
-        {"label": "Ways to write N as a product of 2 co-prime numbers", "latex": "2^{n-1} \\quad (n = \\text{number of distinct prime factors})"},
-        {"label": "Product of all factors of N", "latex": "N^{\\left(\\frac{\\text{no. of factors}}{2}\\right)}"}
+        {
+          "label": "Composite number — prime factorised form",
+          "latex": "C = a^m \\times b^n \\times c^p \\times \\cdots"
+        },
+        {
+          "label": "Number of factors",
+          "latex": "(m+1)(n+1)(p+1)\\cdots"
+        },
+        {
+          "label": "Ways to write N as a product of 2 factors (N not a perfect square)",
+          "latex": "\\tfrac{1}{2}\\{(p+1)(q+1)(r+1)\\cdots\\}"
+        },
+        {
+          "label": "Ways as a product of 2 different factors (N a perfect square)",
+          "latex": "\\tfrac{1}{2}\\{(p+1)(q+1)(r+1)\\cdots -1\\}"
+        },
+        {
+          "label": "Ways as a product of 2 factors (N a perfect square)",
+          "latex": "\\tfrac{1}{2}\\{(p+1)(q+1)(r+1)\\cdots +1\\}"
+        },
+        {
+          "label": "Sum of all factors",
+          "latex": "\\left[\\dfrac{a^{p+1}-1}{a-1}\\right]\\left[\\dfrac{b^{q+1}-1}{b-1}\\right]\\left[\\dfrac{c^{r+1}-1}{c-1}\\right]\\cdots"
+        },
+        {
+          "label": "Euler's totient function",
+          "latex": "\\phi(N) = N\\left(1-\\tfrac{1}{a}\\right)\\left(1-\\tfrac{1}{b}\\right)\\left(1-\\tfrac{1}{c}\\right)\\cdots"
+        },
+        {
+          "label": "Euler's theorem (remainder)",
+          "latex": "P^{\\phi(N)} \\bmod N = 1 \\quad (\\gcd(P,N)=1)"
+        },
+        {
+          "label": "Sum of numbers < N and co-prime to N",
+          "latex": "\\phi(N)\\times \\dfrac{N}{2}"
+        },
+        {
+          "label": "Ways to write N as a product of 2 co-prime numbers",
+          "latex": "2^{n-1} \\quad (n = \\text{number of distinct prime factors})"
+        },
+        {
+          "label": "Product of all factors of N",
+          "latex": "N^{\\left(\\frac{\\text{no. of factors}}{2}\\right)}"
+        }
       ],
-      "pyqs": []
+      "pyqs": [
+        {
+          "tag": "CAT Blueprint · PYQ 4.1",
+          "q": "Find the total number of factors of 360, and how many are even.",
+          "a": "360 = 2³×3²×5¹ → total factors = 4×3×2 = 24. For even factors, force the exponent of 2 to be ≥1 (3 choices: 1,2,3) and let 3's and 5's exponents range freely (3×2 choices) — direct count = 3×3×2 = ×18, no subtraction needed."
+        },
+        {
+          "tag": "CAT 2025 Slot I · Q60",
+          "q": "A 3-digit number N has distinct non-zero digits, none a perfect square, and exactly one digit is prime. Find the number of factors of the minimum such N.",
+          "a": "Non-square digits available: {2,3,5,6,7,8}. Need exactly one prime digit (from {2,3,5,7}) and the rest composite (from {6,8}). To minimise N, take the smallest prime (2) plus both composites (6,8), arranged ascending: N=268=2²×67. Factors = (2+1)(1+1) = ×6."
+        },
+        {
+          "tag": "CAT 2025 Slot II · Q63",
+          "q": "N = 2⁶×3⁵×5³×7². Find the number of divisors of the form (3r+1).",
+          "a": "A divisor ≡ 1 (mod 3) can't contain any factor of 3 (since 3≡0 mod 3 would poison it) — so first strip out the 3⁵ entirely and only combine powers of 2, 5, 7, then filter by residue mod 3 using each prime's own cycle. Works out to ×28 divisors."
+        }
+      ]
+    },
+    {
+      "id": "digits-and-remainders",
+      "title": "Digit Sums & Remainder Theorems",
+      "trick": "For 'sum of digits of a huge power expression', rewrite everything as a power of 10 times a small leftover factor — the power-of-10 part contributes nothing but trailing zeros, so only the leftover's digits matter. For 'remainder when aᵖ is divided by prime p', check Fermat's Little Theorem first: if gcd(a,p)=1, a^(p−1) mod p is always 1.",
+      "formulas": [
+        {
+          "label": "Fermat's Little Theorem",
+          "latex": "a^{p-1} \\equiv 1 \\pmod p \\quad (p \\text{ prime}, \\gcd(a,p)=1)"
+        },
+        {
+          "label": "Euler's Theorem (general modulus)",
+          "latex": "a^{\\phi(N)} \\equiv 1 \\pmod N \\quad (\\gcd(a,N)=1)"
+        },
+        {
+          "label": "Divisibility by 3 or 9",
+          "latex": "\\text{sum of digits divisible by } 3 \\text{ or } 9"
+        },
+        {
+          "label": "Divisibility by 11",
+          "latex": "(\\text{sum of digits, odd places}) - (\\text{sum of digits, even places}) \\equiv 0 \\pmod{11}"
+        }
+      ],
+      "pyqs": [
+        {
+          "tag": "CAT Blueprint · PYQ 4.2",
+          "q": "Find the remainder when 2¹⁰⁰ is divided by 101.",
+          "a": "101 is prime and gcd(2,101)=1, and the exponent 100 is exactly p−1 — Fermat's Little Theorem gives the remainder as ×1 instantly, no computation at all."
+        },
+        {
+          "tag": "CAT 2025 Slot II · Q66",
+          "q": "Find the sum of digits of N = 625⁶⁵ × 128³⁶.",
+          "a": "Rewrite as prime powers: (5⁴)⁶⁵×(2⁷)³⁶ = 5²⁶⁰×2²⁵² = (2×5)²⁵²×5⁸ = 10²⁵²×390625. The 10²⁵² just appends zeros — only 390625's digits matter: 3+9+0+6+2+5 = ×25."
+        },
+        {
+          "tag": "CAT 2025 Slot III · Q57",
+          "q": "Find the sum of digits of (10⁵⁰+10²⁵−123).",
+          "a": "10²⁵−123 = a block of 22 nines followed by 877 (borrowing cascades all the way down). Adding 10⁵⁰ just places a leading 1 far to the left with zeros in between — doesn't touch those digits. Sum = 1+(22×9)+8+7+7 = ×221."
+        },
+        {
+          "tag": "CAT 2025 Slot III · Q49",
+          "q": "Find the sum of digits of the 4-digit number 4078.",
+          "a": "Straight addition: 4+0+7+8 = ×19 — a reminder that not every 'number properties' question needs a trick; sometimes it's just arithmetic."
+        }
+      ]
     }
   ]
 }
