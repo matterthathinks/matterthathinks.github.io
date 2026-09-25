@@ -1,5 +1,6 @@
 {
   "id": "sample-test",
+  "examType": "SBI PO / Clerk",
   "title": "Sample Test — SBI PO Prelims Format",
   "instructions": [
     "This test has 3 sections: English Language, Quantitative Aptitude, and Reasoning Ability.",
@@ -75,12 +76,14 @@
         {
           "id": "q1",
           "passageId": null,
-          "text": "A sum of ₹12,000 becomes ₹15,000 in 2 years at simple interest. What is the rate of interest per annum?",
+          "text": "A sum of ₹12,000 becomes ₹15,000 in **2 years** at simple interest. What is the rate of interest per annum?",
           "options": ["10%", "12.5%", "15%", "8%", "None of the above"],
           "correctIndex": 1,
           "difficulty": "medium",
           "marks": 1,
-          "negativeMarks": 0.25
+          "negativeMarks": 0.25,
+          "explanation": "SI = Principal × Rate × Time / 100. Here SI = 3000, Principal = 12000, Time = 2, so Rate = (3000×100)/(12000×2) = 12.5%.",
+          "shortcut": "Total growth is 3000/12000 = 25% over 2 years, so 12.5% per year — no need to write the full SI formula."
         },
         {
           "id": "q2",
